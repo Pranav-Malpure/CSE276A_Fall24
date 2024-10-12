@@ -1,3 +1,0 @@
-source;share/rb5_ros2_control/environment/ament_prefix_path.sh
-source;share/rb5_ros2_control/environment/path.sh
-source;share/rb5_ros2_control/environment/pythonpath.sh

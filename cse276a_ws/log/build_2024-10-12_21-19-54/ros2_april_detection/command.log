@@ -1,2 +1,0 @@
-Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
-Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '2': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8

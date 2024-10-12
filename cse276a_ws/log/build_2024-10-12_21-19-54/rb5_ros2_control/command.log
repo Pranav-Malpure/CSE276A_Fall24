@@ -1,2 +1,0 @@
-Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
-Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control' returned '2': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
