@@ -1,0 +1,35 @@
+[0.094s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision
+[0.476s] -- The C compiler identification is GNU 9.4.0
+[0.759s] -- The CXX compiler identification is GNU 9.4.0
+[0.764s] -- Check for working C compiler: /usr/bin/cc
+[0.972s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.980s] -- Detecting C compiler ABI info
+[1.248s] -- Detecting C compiler ABI info - done
+[1.273s] -- Detecting C compile features
+[1.274s] -- Detecting C compile features - done
+[1.275s] -- Check for working CXX compiler: /usr/bin/c++
+[1.536s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.550s] -- Detecting CXX compiler ABI info
+[1.866s] -- Detecting CXX compiler ABI info - done
+[1.905s] -- Detecting CXX compile features
+[1.906s] -- Detecting CXX compile features - done
+[1.906s] CMake Error at CMakeLists.txt:19 (find_package):
+[1.907s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[1.907s]   has asked CMake to find a package configuration file provided by
+[1.908s]   "ament_cmake", but CMake did not find one.
+[1.908s] 
+[1.910s]   Could not find a package configuration file provided by "ament_cmake" with
+[1.913s]   any of the following names:
+[1.914s] 
+[1.914s]     ament_cmakeConfig.cmake
+[1.915s]     ament_cmake-config.cmake
+[1.916s] 
+[1.917s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[1.917s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[1.918s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[1.919s]   has been installed.
+[1.920s] 
+[1.921s] 
+[1.921s] -- Configuring incomplete, errors occurred!
+[1.923s] See also "/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeOutput.log".
+[1.925s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision

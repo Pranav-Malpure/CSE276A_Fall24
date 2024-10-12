@@ -1,0 +1,35 @@
+[0.085s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/key_joy
+[0.503s] -- The C compiler identification is GNU 9.4.0
+[0.748s] -- The CXX compiler identification is GNU 9.4.0
+[0.760s] -- Check for working C compiler: /usr/bin/cc
+[1.025s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.029s] -- Detecting C compiler ABI info
+[1.300s] -- Detecting C compiler ABI info - done
+[1.343s] -- Detecting C compile features
+[1.344s] -- Detecting C compile features - done
+[1.348s] -- Check for working CXX compiler: /usr/bin/c++
+[1.554s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.562s] -- Detecting CXX compiler ABI info
+[1.810s] -- Detecting CXX compiler ABI info - done
+[1.836s] -- Detecting CXX compile features
+[1.836s] -- Detecting CXX compile features - done
+[1.853s] CMake Error at CMakeLists.txt:19 (find_package):
+[1.854s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[1.855s]   has asked CMake to find a package configuration file provided by
+[1.855s]   "ament_cmake", but CMake did not find one.
+[1.856s] 
+[1.856s]   Could not find a package configuration file provided by "ament_cmake" with
+[1.857s]   any of the following names:
+[1.857s] 
+[1.859s]     ament_cmakeConfig.cmake
+[1.860s]     ament_cmake-config.cmake
+[1.861s] 
+[1.862s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[1.863s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[1.863s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[1.865s]   has been installed.
+[1.873s] 
+[1.874s] 
+[1.896s] -- Configuring incomplete, errors occurred!
+[1.897s] See also "/root/CSE276A_Fall24/cse276a_ws/build/key_joy/CMakeFiles/CMakeOutput.log".
+[1.902s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/key_joy

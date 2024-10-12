@@ -1,0 +1,2 @@
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision
+Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision

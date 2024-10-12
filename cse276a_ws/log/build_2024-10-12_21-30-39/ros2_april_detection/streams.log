@@ -1,0 +1,35 @@
+[0.108s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection
+[0.448s] -- The C compiler identification is GNU 9.4.0
+[0.737s] -- The CXX compiler identification is GNU 9.4.0
+[0.743s] -- Check for working C compiler: /usr/bin/cc
+[0.956s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.965s] -- Detecting C compiler ABI info
+[1.213s] -- Detecting C compiler ABI info - done
+[1.244s] -- Detecting C compile features
+[1.245s] -- Detecting C compile features - done
+[1.245s] -- Check for working CXX compiler: /usr/bin/c++
+[1.533s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.538s] -- Detecting CXX compiler ABI info
+[1.750s] -- Detecting CXX compiler ABI info - done
+[1.780s] -- Detecting CXX compile features
+[1.781s] -- Detecting CXX compile features - done
+[1.821s] CMake Error at CMakeLists.txt:19 (find_package):
+[1.821s]   By not providing "Findament_cmake.cmake" in CMAKE_MODULE_PATH this project
+[1.821s]   has asked CMake to find a package configuration file provided by
+[1.822s]   "ament_cmake", but CMake did not find one.
+[1.822s] 
+[1.823s]   Could not find a package configuration file provided by "ament_cmake" with
+[1.823s]   any of the following names:
+[1.825s] 
+[1.826s]     ament_cmakeConfig.cmake
+[1.828s]     ament_cmake-config.cmake
+[1.835s] 
+[1.839s]   Add the installation prefix of "ament_cmake" to CMAKE_PREFIX_PATH or set
+[1.839s]   "ament_cmake_DIR" to a directory containing one of the above files.  If
+[1.840s]   "ament_cmake" provides a separate development package or SDK, be sure it
+[1.841s]   has been installed.
+[1.842s] 
+[1.842s] 
+[1.843s] -- Configuring incomplete, errors occurred!
+[1.845s] See also "/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection/CMakeFiles/CMakeOutput.log".
+[1.858s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection

@@ -1,0 +1,2 @@
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection
+Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection

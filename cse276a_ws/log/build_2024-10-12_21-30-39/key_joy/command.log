@@ -1,0 +1,2 @@
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/key_joy
+Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '1': _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/key_joy
