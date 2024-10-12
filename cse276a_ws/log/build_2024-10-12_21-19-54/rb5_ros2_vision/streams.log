@@ -1,0 +1,25 @@
+[0.057s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[0.109s] CMake Error: The current CMakeCache.txt directory /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeCache.txt is different than the directory /root/cse276a_ws/build/rb5_ros2_vision where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt
+[0.192s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.250s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.286s] Traceback (most recent call last):
+[0.287s]   File "/opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>
+[0.288s]     from ament_package.templates import get_environment_hook_template_path
+[0.289s] ModuleNotFoundError: No module named 'ament_package'
+[0.309s] CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):
+[0.310s]   execute_process(/usr/bin/python3
+[0.310s]   /opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py
+[0.310s]   /root/cse276a_ws/build/rb5_ros2_vision/ament_cmake_package_templates/templates.cmake)
+[0.311s]   returned error code 1
+[0.311s] Call Stack (most recent call first):
+[0.312s]   /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)
+[0.312s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)
+[0.313s]   /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)
+[0.313s]   CMakeLists.txt:19 (find_package)
+[0.313s] 
+[0.313s] 
+[0.313s] -- Configuring incomplete, errors occurred!
+[0.313s] See also "/root/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeOutput.log".
+[0.313s] See also "/root/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeError.log".
+[0.315s] make: *** [Makefile:266: cmake_check_build_system] Error 1
+[0.371s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '2': _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8

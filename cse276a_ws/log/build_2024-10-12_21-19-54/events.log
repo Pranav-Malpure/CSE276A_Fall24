@@ -1,0 +1,127 @@
+[0.000000] (-) TimerEvent: {}
+[0.001305] (key_joy) JobQueued: {'identifier': 'key_joy', 'dependencies': OrderedDict()}
+[0.001720] (rb5_ros2_control) JobQueued: {'identifier': 'rb5_ros2_control', 'dependencies': OrderedDict()}
+[0.002144] (rb5_ros2_vision) JobQueued: {'identifier': 'rb5_ros2_vision', 'dependencies': OrderedDict()}
+[0.002543] (ros2_april_detection) JobQueued: {'identifier': 'ros2_april_detection', 'dependencies': OrderedDict()}
+[0.003013] (key_joy) JobStarted: {'identifier': 'key_joy'}
+[0.022320] (rb5_ros2_control) JobStarted: {'identifier': 'rb5_ros2_control'}
+[0.030777] (rb5_ros2_vision) JobStarted: {'identifier': 'rb5_ros2_vision'}
+[0.041167] (ros2_april_detection) JobStarted: {'identifier': 'ros2_april_detection'}
+[0.051511] (key_joy) JobProgress: {'identifier': 'key_joy', 'progress': 'cmake'}
+[0.052813] (key_joy) JobProgress: {'identifier': 'key_joy', 'progress': 'build'}
+[0.054071] (key_joy) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', 'env': OrderedDict([('SHELL', '/bin/bash'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_CONNECTION', '192.168.165.179 42585 192.168.165.182 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '1'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('SSH_CLIENT', '192.168.165.179 42585 22'), ('LC_ALL', 'C.UTF-8'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.068896] (rb5_ros2_control) JobProgress: {'identifier': 'rb5_ros2_control', 'progress': 'cmake'}
+[0.070618] (rb5_ros2_control) JobProgress: {'identifier': 'rb5_ros2_control', 'progress': 'build'}
+[0.073348] (rb5_ros2_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', 'env': OrderedDict([('SHELL', '/bin/bash'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_CONNECTION', '192.168.165.179 42585 192.168.165.182 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '1'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('SSH_CLIENT', '192.168.165.179 42585 22'), ('LC_ALL', 'C.UTF-8'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.079659] (rb5_ros2_vision) JobProgress: {'identifier': 'rb5_ros2_vision', 'progress': 'cmake'}
+[0.081445] (rb5_ros2_vision) JobProgress: {'identifier': 'rb5_ros2_vision', 'progress': 'build'}
+[0.082719] (rb5_ros2_vision) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision', 'env': OrderedDict([('SHELL', '/bin/bash'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_CONNECTION', '192.168.165.179 42585 192.168.165.182 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '1'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('SSH_CLIENT', '192.168.165.179 42585 22'), ('LC_ALL', 'C.UTF-8'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.104317] (-) TimerEvent: {}
+[0.115458] (ros2_april_detection) JobProgress: {'identifier': 'ros2_april_detection', 'progress': 'cmake'}
+[0.120269] (ros2_april_detection) JobProgress: {'identifier': 'ros2_april_detection', 'progress': 'build'}
+[0.123502] (ros2_april_detection) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection', 'env': OrderedDict([('SHELL', '/bin/bash'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_CONNECTION', '192.168.165.179 42585 192.168.165.182 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '1'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('SSH_CLIENT', '192.168.165.179 42585 22'), ('LC_ALL', 'C.UTF-8'), ('PATH', '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.139698] (rb5_ros2_control) StderrLine: {'line': b'CMake Error: The current CMakeCache.txt directory /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control/CMakeCache.txt is different than the directory /root/cse276a_ws/build/rb5_ros2_control where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt\n'}
+[0.140420] (rb5_ros2_vision) StderrLine: {'line': b'CMake Error: The current CMakeCache.txt directory /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeCache.txt is different than the directory /root/cse276a_ws/build/rb5_ros2_vision where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt\n'}
+[0.140978] (key_joy) StderrLine: {'line': b'CMake Error: The current CMakeCache.txt directory /root/CSE276A_Fall24/cse276a_ws/build/key_joy/CMakeCache.txt is different than the directory /root/cse276a_ws/build/key_joy where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt\n'}
+[0.153781] (ros2_april_detection) StderrLine: {'line': b'CMake Error: The current CMakeCache.txt directory /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection/CMakeCache.txt is different than the directory /root/cse276a_ws/build/ros2_april_detection where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt\n'}
+[0.204622] (-) TimerEvent: {}
+[0.222848] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.224689] (key_joy) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.225425] (ros2_april_detection) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.243846] (rb5_ros2_control) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.265335] (ros2_april_detection) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.279716] (key_joy) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.281479] (rb5_ros2_vision) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.304851] (-) TimerEvent: {}
+[0.309566] (rb5_ros2_control) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.314319] (ros2_april_detection) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[0.315338] (ros2_april_detection) StderrLine: {'line': b'  File "/opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>\n'}
+[0.316119] (ros2_april_detection) StderrLine: {'line': b'    from ament_package.templates import get_environment_hook_template_path\n'}
+[0.316890] (ros2_april_detection) StderrLine: {'line': b"ModuleNotFoundError: No module named 'ament_package'\n"}
+[0.317963] (rb5_ros2_vision) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[0.318702] (rb5_ros2_vision) StderrLine: {'line': b'  File "/opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>\n'}
+[0.319327] (rb5_ros2_vision) StderrLine: {'line': b'    from ament_package.templates import get_environment_hook_template_path\n'}
+[0.320225] (rb5_ros2_vision) StderrLine: {'line': b"ModuleNotFoundError: No module named 'ament_package'\n"}
+[0.332703] (ros2_april_detection) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):\n'}
+[0.333727] (ros2_april_detection) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[0.334148] (ros2_april_detection) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py\n'}
+[0.334542] (ros2_april_detection) StderrLine: {'line': b'  /root/cse276a_ws/build/ros2_april_detection/ament_cmake_package_templates/templates.cmake)\n'}
+[0.334920] (ros2_april_detection) StderrLine: {'line': b'  returned error code 1\n'}
+[0.335295] (ros2_april_detection) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.335666] (ros2_april_detection) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)\n'}
+[0.336822] (ros2_april_detection) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)\n'}
+[0.337509] (ros2_april_detection) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)\n'}
+[0.338173] (ros2_april_detection) StderrLine: {'line': b'  CMakeLists.txt:19 (find_package)\n'}
+[0.338824] (ros2_april_detection) StderrLine: {'line': b'\n'}
+[0.339454] (ros2_april_detection) StderrLine: {'line': b'\n'}
+[0.340320] (rb5_ros2_vision) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):\n'}
+[0.341029] (rb5_ros2_vision) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[0.341854] (rb5_ros2_vision) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py\n'}
+[0.342224] (rb5_ros2_vision) StderrLine: {'line': b'  /root/cse276a_ws/build/rb5_ros2_vision/ament_cmake_package_templates/templates.cmake)\n'}
+[0.342588] (rb5_ros2_vision) StderrLine: {'line': b'  returned error code 1\n'}
+[0.342966] (rb5_ros2_vision) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.343332] (rb5_ros2_vision) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)\n'}
+[0.343708] (rb5_ros2_vision) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)\n'}
+[0.344214] (rb5_ros2_vision) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)\n'}
+[0.344730] (rb5_ros2_vision) StderrLine: {'line': b'  CMakeLists.txt:19 (find_package)\n'}
+[0.344828] (rb5_ros2_vision) StderrLine: {'line': b'\n'}
+[0.344915] (rb5_ros2_vision) StderrLine: {'line': b'\n'}
+[0.344993] (ros2_april_detection) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.345092] (ros2_april_detection) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/CMakeOutput.log".\n'}
+[0.345172] (ros2_april_detection) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/CMakeError.log".\n'}
+[0.345250] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.345338] (rb5_ros2_vision) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeOutput.log".\n'}
+[0.345417] (rb5_ros2_vision) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeError.log".\n'}
+[0.345495] (key_joy) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[0.345586] (key_joy) StderrLine: {'line': b'  File "/opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>\n'}
+[0.345661] (key_joy) StderrLine: {'line': b'    from ament_package.templates import get_environment_hook_template_path\n'}
+[0.345737] (key_joy) StderrLine: {'line': b"ModuleNotFoundError: No module named 'ament_package'\n"}
+[0.345813] (key_joy) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):\n'}
+[0.345890] (key_joy) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[0.345964] (key_joy) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py\n'}
+[0.346038] (key_joy) StderrLine: {'line': b'  /root/cse276a_ws/build/key_joy/ament_cmake_package_templates/templates.cmake)\n'}
+[0.346116] (key_joy) StderrLine: {'line': b'  returned error code 1\n'}
+[0.346194] (key_joy) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.346271] (key_joy) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)\n'}
+[0.346347] (key_joy) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)\n'}
+[0.346448] (key_joy) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)\n'}
+[0.346527] (key_joy) StderrLine: {'line': b'  CMakeLists.txt:19 (find_package)\n'}
+[0.346604] (key_joy) StderrLine: {'line': b'\n'}
+[0.346683] (key_joy) StderrLine: {'line': b'\n'}
+[0.346763] (ros2_april_detection) StderrLine: {'line': b'make: *** [Makefile:296: cmake_check_build_system] Error 1\n'}
+[0.346850] (key_joy) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.346938] (key_joy) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/key_joy/CMakeFiles/CMakeOutput.log".\n'}
+[0.347024] (key_joy) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/key_joy/CMakeFiles/CMakeError.log".\n'}
+[0.347111] (rb5_ros2_vision) StderrLine: {'line': b'make: *** [Makefile:266: cmake_check_build_system] Error 1\n'}
+[0.350724] (key_joy) StderrLine: {'line': b'make: *** [Makefile:222: cmake_check_build_system] Error 1\n'}
+[0.353455] (ros2_april_detection) CommandEnded: {'returncode': 2}
+[0.364229] (rb5_ros2_control) StderrLine: {'line': b'Traceback (most recent call last):\n'}
+[0.365341] (rb5_ros2_control) StderrLine: {'line': b'  File "/opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py", line 21, in <module>\n'}
+[0.365768] (rb5_ros2_control) StderrLine: {'line': b'    from ament_package.templates import get_environment_hook_template_path\n'}
+[0.366155] (rb5_ros2_control) StderrLine: {'line': b"ModuleNotFoundError: No module named 'ament_package'\n"}
+[0.368235] (rb5_ros2_control) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_package_templates-extras.cmake:41 (message):\n'}
+[0.369714] (rb5_ros2_control) StderrLine: {'line': b'  execute_process(/usr/bin/python3\n'}
+[0.371309] (rb5_ros2_control) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/package_templates/templates_2_cmake.py\n'}
+[0.374555] (rb5_ros2_control) StderrLine: {'line': b'  /root/cse276a_ws/build/rb5_ros2_control/ament_cmake_package_templates/templates.cmake)\n'}
+[0.375232] (rb5_ros2_control) StderrLine: {'line': b'  returned error code 1\n'}
+[0.377938] (rb5_ros2_control) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.386478] (rb5_ros2_control) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake_core/cmake/ament_cmake_coreConfig.cmake:41 (include)\n'}
+[0.387561] (rb5_ros2_control) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmake_export_dependencies-extras.cmake:15 (find_package)\n'}
+[0.388157] (rb5_ros2_control) StderrLine: {'line': b'  /opt/ros/foxy/share/ament_cmake/cmake/ament_cmakeConfig.cmake:41 (include)\n'}
+[0.388636] (rb5_ros2_control) StderrLine: {'line': b'  CMakeLists.txt:19 (find_package)\n'}
+[0.389072] (rb5_ros2_control) StderrLine: {'line': b'\n'}
+[0.389536] (rb5_ros2_control) StderrLine: {'line': b'\n'}
+[0.390286] (rb5_ros2_control) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.391123] (rb5_ros2_control) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/rb5_ros2_control/CMakeFiles/CMakeOutput.log".\n'}
+[0.391822] (rb5_ros2_control) StdoutLine: {'line': b'See also "/root/cse276a_ws/build/rb5_ros2_control/CMakeFiles/CMakeError.log".\n'}
+[0.396855] (rb5_ros2_vision) CommandEnded: {'returncode': 2}
+[0.403725] (rb5_ros2_control) StderrLine: {'line': b'make: *** [Makefile:222: cmake_check_build_system] Error 1\n'}
+[0.404020] (key_joy) CommandEnded: {'returncode': 2}
+[0.404956] (-) TimerEvent: {}
+[0.414292] (rb5_ros2_control) CommandEnded: {'returncode': 2}
+[0.505427] (-) TimerEvent: {}
+[0.524123] (ros2_april_detection) JobEnded: {'identifier': 'ros2_april_detection', 'rc': 2}
+[0.529694] (key_joy) JobEnded: {'identifier': 'key_joy', 'rc': 'SIGINT'}
+[0.533051] (rb5_ros2_control) JobEnded: {'identifier': 'rb5_ros2_control', 'rc': 'SIGINT'}
+[0.536350] (rb5_ros2_vision) JobEnded: {'identifier': 'rb5_ros2_vision', 'rc': 'SIGINT'}
+[0.541234] (-) EventReactorShutdown: {}
