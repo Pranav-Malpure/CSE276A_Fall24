@@ -1,0 +1,10 @@
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/install/strip.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/install/local.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/install.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/list_install_components.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/rebuild_cache.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/edit_cache.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/test.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/april_detection_node.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/ros2_april_detection_uninstall.dir
+/root/cse276a_ws/build/ros2_april_detection/CMakeFiles/uninstall.dir

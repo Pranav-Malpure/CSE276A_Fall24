@@ -1,0 +1,9 @@
+/root/cse276a_ws/build/key_joy/CMakeFiles/install/strip.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/install.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/list_install_components.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/rebuild_cache.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/edit_cache.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/test.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/install/local.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/key_joy_uninstall.dir
+/root/cse276a_ws/build/key_joy/CMakeFiles/uninstall.dir
