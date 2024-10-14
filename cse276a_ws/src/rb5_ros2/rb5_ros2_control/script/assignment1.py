@@ -71,7 +71,7 @@ def follow_waypoints(waypoints):
         omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
 
         # TODO: Call controller's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
-        
+        controller.setFourMotors(-omega1, omega2, omega3, -omega4)
         time.sleep(sleep_time)
         #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
         current_pose[2] = get_under_range(current_pose[2] + gamma)
