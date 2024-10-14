@@ -17,7 +17,7 @@ initial_time = 0
 current_pose = np.array([0,0,0])
 sleep_time = 1
 
-Kv = 0.5 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
+Kv = 2 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
 Ktheta = 1 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
@@ -78,7 +78,7 @@ def follow_waypoints(waypoints):
 
         
         controller.setFourMotors(-omega1, omega2, omega3, -omega4)
-        time.sleep(sleep_time)
+        # time.sleep(sleep_time)
         print("hello5")
 
         #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
