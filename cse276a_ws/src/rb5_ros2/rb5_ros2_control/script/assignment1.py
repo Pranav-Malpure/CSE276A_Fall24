@@ -45,7 +45,7 @@ def follow_waypoints(waypoints):
     global current_pose, Kv, sleep_time, Ktheta, threshold_distance
     controller = MegaPiController()
     waypoints_index = 0
-    linear_distance = np.sqrt((waypoints[0] - current_pose[0])**2 + (waypoints[1] - current_pose[1])**2) #initializing the linear distance
+    linear_distance = np.sqrt((waypoints[0][0] - current_pose[0])**2 + (waypoints[0][1] - current_pose[1])**2) #initializing the linear distance
     print("hello1")
     while True:
         print("hello2")
