@@ -46,12 +46,15 @@ def follow_waypoints(waypoints):
     controller = MegaPiController()
     waypoints_index = 0
     linear_distance = np.sqrt((waypoints[0] - current_pose[0])**2 + (waypoints[1] - current_pose[1])**2) #initializing the linear distance
-
+    print("hello1")
     while True:
+        print("hello2")
+
         if linear_distance < threshold_distance:
             waypoints_index = waypoints_index + 1
             if waypoints_index == len(waypoints):
                 controller.carStop()
+                print("hello3")
                 break               
         current_waypoint = waypoints[waypoints_index]
         linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
@@ -70,9 +73,12 @@ def follow_waypoints(waypoints):
         omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
         omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
 
-        # TODO: Call controller's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
+        print("hello4")
+        
         controller.setFourMotors(-omega1, omega2, omega3, -omega4)
         time.sleep(sleep_time)
+        print("hello5")
+
         #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
         current_pose[2] = get_under_range(current_pose[2] + gamma)
         current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
