@@ -92,7 +92,8 @@ if __name__ == "__main__":
     import time
     mpi_ctrl = MegaPiController(port='/dev/ttyUSB0', verbose=True)  
     time.sleep(1)
-    mpi_ctrl.carStraight(100)
+    # mpi_ctrl.carStraight(100)
+    mpi_ctrl.setFourMotors(-80, 54, 80, -54)
     time.sleep(1)
     # time.sleep(4)
     # mpi_ctrl.carSlide(30)
