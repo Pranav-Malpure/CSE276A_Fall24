@@ -57,15 +57,23 @@ def follow_waypoints(waypoints):
                 break               
         print("hello4")
         current_waypoint = waypoints[waypoints_index]
+        print("current_waypoint = ", current_waypoint)
+        print("current_pose = ", current_pose)
         linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
+        print("linear_distance = ", linear_distance)
         print("hello4v")
 
         v_target = Kv * linear_distance
         theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
+        print("theta_target = ", theta_target)
         gamma = Ktheta * calc_diff_theta(theta_target, current_pose[2])
+        print("gamma = ", gamma)
         
         vx = v_target * np.cos(current_pose[2])
+        print("vx = ", vx)
         vy = v_target * np.sin(current_pose[2])
+        print("vy = ", vy)
+        
         omegaz = gamma/sleep_time
         #controller.carStraight(v_target)
         #controller.carRotate(gamma/sleep_time)
