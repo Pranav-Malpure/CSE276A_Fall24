@@ -49,7 +49,8 @@ def follow_waypoints(waypoints):
     print("hello1")
     while True:
         print("hello2")
-
+        print (linear_distance)
+        print (threshold_distance)
         if linear_distance < threshold_distance:
             waypoints_index = waypoints_index + 1
             if waypoints_index == len(waypoints):
