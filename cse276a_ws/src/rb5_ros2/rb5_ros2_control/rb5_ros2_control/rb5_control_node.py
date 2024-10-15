@@ -110,7 +110,7 @@ class MegaPiControllerNode(Node):
                 #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
                 #print("this is also working>>>")
 
-                self.mpi_ctrl.setFourMotors(-omega1, omega2, omega3, -omega4)
+                self.mpi_ctrl.setFourMotors(int(-omega1), int(omega2), int(omega3), int(-omega4))
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
                 print("hello5")
                 time.sleep(sleep_time)
