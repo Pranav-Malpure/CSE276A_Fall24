@@ -1,0 +1,25 @@
+-- Install configuration: ""
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.sh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/__init__.py
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_joy_node.py
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_parser.py
+Listing '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy'...
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_parser.py
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_joy_node.py
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/package_run_dependencies/key_joy
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/parent_prefix_path/key_joy
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.sh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.sh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.bash
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.sh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.zsh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/packages/key_joy
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig.cmake
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig-version.cmake
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.xml

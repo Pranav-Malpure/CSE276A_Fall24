@@ -1,0 +1,11 @@
+source;share/rb5_ros2_control/hook/cmake_prefix_path.ps1
+source;share/rb5_ros2_control/hook/cmake_prefix_path.dsv
+source;share/rb5_ros2_control/hook/cmake_prefix_path.sh
+source;share/rb5_ros2_control/hook/pythonpath.ps1
+source;share/rb5_ros2_control/hook/pythonpath.dsv
+source;share/rb5_ros2_control/hook/pythonpath.sh
+source;share/rb5_ros2_control/local_setup.bash
+source;share/rb5_ros2_control/local_setup.dsv
+source;share/rb5_ros2_control/local_setup.ps1
+source;share/rb5_ros2_control/local_setup.sh
+source;share/rb5_ros2_control/local_setup.zsh

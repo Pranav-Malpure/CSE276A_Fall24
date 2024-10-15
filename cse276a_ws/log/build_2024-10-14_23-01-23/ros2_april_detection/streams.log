@@ -1,0 +1,81 @@
+[0.074s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection
+[0.112s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.176s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.177s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.418s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.455s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.461s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.871s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[0.920s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.017s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.085s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.092s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.097s] -- Looking for pthread.h
+[1.530s] -- Looking for pthread.h - found
+[1.531s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.833s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.833s] -- Looking for pthread_create in pthreads
+[2.048s] -- Looking for pthread_create in pthreads - not found
+[2.048s] -- Looking for pthread_create in pthread
+[2.320s] -- Looking for pthread_create in pthread - found
+[2.326s] -- Found Threads: TRUE  
+[2.503s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[2.628s] -- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)
+[2.663s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[2.679s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[3.029s] -- Found OpenCV: /usr (found version "4.2.0") 
+[3.038s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[3.130s] -- Added test 'copyright' to check source files copyright and LICENSE
+[3.132s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[3.133s] -- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/include
+[3.134s] -- Configured cppcheck exclude dirs and/or files: 
+[3.134s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[3.135s] -- Configured cpplint exclude dirs and/or files: 
+[3.136s] -- Added test 'lint_cmake' to check CMake code style
+[3.137s] -- Added test 'uncrustify' to check C / C++ code style
+[3.137s] -- Configured uncrustify additional arguments: 
+[3.138s] -- Added test 'xmllint' to check XML markup files
+[3.141s] -- Configuring done
+[3.177s] -- Generating done
+[3.179s] -- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+[3.211s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection
+[3.212s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[3.356s] [35m[1mScanning dependencies of target april_detection_node[0m
+[3.598s] [ 66%] [32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection.cpp.o[0m
+[3.599s] [ 66%] [32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection_node.cpp.o[0m
+[6.577s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:[m[K In member function ‘[01m[Kstd::tuple<std::vector<apriltag_pose_t, std::allocator<apriltag_pose_t> >, std::vector<int, std::allocator<int> >, cv::Mat> AprilDetection::processImage(cv::Mat) const[m[K’:
+[6.579s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:24:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[6.580s]    24 |   image_u8_t im = { [01;35m[K.[m[Kwidth  = image_gray.cols,
+[6.581s]       |                     [01;35m[K^[m[K
+[6.583s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:25:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[6.584s]    25 |                     [01;35m[K.[m[Kheight = image_gray.rows,
+[6.585s]       |                     [01;35m[K^[m[K
+[6.587s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:26:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[6.588s]    26 |                     [01;35m[K.[m[Kstride = image_gray.cols,
+[6.589s]       |                     [01;35m[K^[m[K
+[6.591s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:27:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[6.592s]    27 |                     [01;35m[K.[m[Kbuf    = image_gray.data
+[6.593s]       |                     [01;35m[K^[m[K
+[12.763s] [100%] [32m[1mLinking CXX executable april_detection_node[0m
+[13.994s] [100%] Built target april_detection_node
+[14.053s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[14.248s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+[14.283s] -- Install configuration: ""
+[14.284s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/ros2_april_detection/april_detection_node
+[14.288s] -- Set runtime path of "/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/ros2_april_detection/april_detection_node" to ""
+[14.289s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/package_run_dependencies/ros2_april_detection
+[14.291s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/parent_prefix_path/ros2_april_detection
+[14.292s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.sh
+[14.293s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.dsv
+[14.297s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.sh
+[14.307s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.dsv
+[14.313s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.bash
+[14.315s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.sh
+[14.316s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.zsh
+[14.318s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.dsv
+[14.320s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.dsv
+[14.321s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/packages/ros2_april_detection
+[14.323s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig.cmake
+[14.325s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig-version.cmake
+[14.326s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.xml
+[14.329s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection

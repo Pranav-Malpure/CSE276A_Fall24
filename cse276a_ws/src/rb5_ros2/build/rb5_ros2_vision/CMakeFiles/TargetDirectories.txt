@@ -1,0 +1,10 @@
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/install/strip.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/install/local.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/install.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/list_install_components.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/rebuild_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/edit_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/test.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/rb_camera_ocv_node.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/rb5_ros2_vision_uninstall.dir
+/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/build/rb5_ros2_vision/CMakeFiles/uninstall.dir

@@ -455,3 +455,35 @@ Parsed CXX implicit link information from above output:
   implicit fwks: []
 
 
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_6ed4f/fast && make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_6ed4f.dir/build.make CMakeFiles/cmTC_6ed4f.dir/build
+make[2]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6ed4f.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_6ed4f.dir/CheckIncludeFile.c.o   -c /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_6ed4f
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ed4f.dir/link.txt --verbose=1
+/usr/bin/cc      CMakeFiles/cmTC_6ed4f.dir/CheckIncludeFile.c.o  -o cmTC_6ed4f 
+make[2]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_a3e25/fast && make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_a3e25.dir/build.make CMakeFiles/cmTC_a3e25.dir/build
+make[2]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a3e25.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_a3e25.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_a3e25
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a3e25.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_a3e25.dir/CheckFunctionExists.c.o  -o cmTC_a3e25  -lpthread 
+make[2]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+
+
+

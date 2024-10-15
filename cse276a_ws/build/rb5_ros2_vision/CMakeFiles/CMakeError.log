@@ -1,0 +1,120 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_3d3ad/fast && /usr/bin/make -f CMakeFiles/cmTC_3d3ad.dir/build.make CMakeFiles/cmTC_3d3ad.dir/build
+make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3d3ad.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_3d3ad.dir/src.c.o   -c /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_3d3ad
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d3ad.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_3d3ad.dir/src.c.o  -o cmTC_3d3ad 
+/usr/bin/ld: CMakeFiles/cmTC_3d3ad.dir/src.c.o: in function `main':
+src.c:(.text+0x48): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_3d3ad.dir/build.make:87: cmTC_3d3ad] Error 1
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_3d3ad/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b3209/fast && /usr/bin/make -f CMakeFiles/cmTC_b3209.dir/build.make CMakeFiles/cmTC_b3209.dir/build
+make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b3209.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b3209.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b3209
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b3209.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_b3209.dir/CheckFunctionExists.c.o  -o cmTC_b3209  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[1]: *** [CMakeFiles/cmTC_b3209.dir/build.make:87: cmTC_b3209] Error 1
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make: *** [Makefile:121: cmTC_b3209/fast] Error 2
+
+
+
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_ebc10/fast && make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_ebc10.dir/build.make CMakeFiles/cmTC_ebc10.dir/build
+make[2]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ebc10.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_ebc10.dir/src.c.o   -c /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_ebc10
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ebc10.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    CMakeFiles/cmTC_ebc10.dir/src.c.o  -o cmTC_ebc10 
+/usr/bin/ld: CMakeFiles/cmTC_ebc10.dir/src.c.o: in function `main':
+src.c:(.text+0x48): undefined reference to `pthread_create'
+/usr/bin/ld: src.c:(.text+0x50): undefined reference to `pthread_detach'
+/usr/bin/ld: src.c:(.text+0x5c): undefined reference to `pthread_join'
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/cmTC_ebc10.dir/build.make:87: cmTC_ebc10] Error 1
+make[2]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make[1]: *** [Makefile:121: cmTC_ebc10/fast] Error 2
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_b0809/fast && make[1]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_b0809.dir/build.make CMakeFiles/cmTC_b0809.dir/build
+make[2]: Entering directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b0809.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_b0809.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.16/Modules/CheckFunctionExists.c
+Linking C executable cmTC_b0809
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b0809.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_b0809.dir/CheckFunctionExists.c.o  -o cmTC_b0809  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/cmTC_b0809.dir/build.make:87: cmTC_b0809] Error 1
+make[2]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+make[1]: *** [Makefile:121: cmTC_b0809/fast] Error 2
+make[1]: Leaving directory '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/CMakeFiles/CMakeTmp'
+
+
+
