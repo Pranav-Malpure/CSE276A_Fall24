@@ -25,7 +25,7 @@ initial_time = 0
 current_pose = np.array([0,0,0])
 sleep_time = 1
 
-Kv = 0.5 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
+Kv = 2 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
 Ktheta = 1 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
@@ -65,60 +65,65 @@ class MegaPiControllerNode(Node):
         waypoints_index = 0
         linear_distance = np.sqrt((waypoints[0][0] - current_pose[0])**2 + (waypoints[0][1] - current_pose[1])**2) #initializing the linear distance
         print("hello1")
-        while True:
-            print("hello2")
-            print (linear_distance)
-            print (threshold_distance)
-            if linear_distance < threshold_distance:
-                waypoints_index = waypoints_index + 1
-                if waypoints_index == len(waypoints):
-                    self.mpi_ctrl.carStop()
-                    break        
-            print("hello4")
-            current_waypoint = waypoints[waypoints_index]
-            print("current_waypoint = ", current_waypoint)
-            print("current_pose = ", current_pose)            
-            linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
-            print("linear_distance = ", linear_distance)
-            print("hello4v")
+        try:
+            while True:
+                print("hello2")
+                print (linear_distance)
+                print (threshold_distance)
+                if linear_distance < threshold_distance:
+                    waypoints_index = waypoints_index + 1
+                    if waypoints_index == len(waypoints):
+                        self.mpi_ctrl.carStop()
+                        break        
+                print("hello4")
+                current_waypoint = waypoints[waypoints_index]
+                print("current_waypoint = ", current_waypoint)
+                print("current_pose = ", current_pose)            
+                linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
+                print("linear_distance = ", linear_distance)
+                print("hello4v")
 
-            v_target = Kv * linear_distance
-            theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
-            print("theta_target = ", theta_target)
-            gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
-            print("gamma = ", gamma)
-            
-            vx = v_target * np.cos(current_pose[2])
-            print("vx = ", vx)
-            vy = v_target * np.sin(current_pose[2])
-            print("vy = ", vy)
-            
-            omegaz = gamma/sleep_time
-            #self.mpi_ctrl.carStraight(v_target)
-            #self.mpi_ctrl.carRotate(gamma/sleep_time)
-            omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
-            omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
-            omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
-            omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
-            print('hello5before')
+                v_target = Kv * linear_distance
+                theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
+                print("theta_target = ", theta_target)
+                gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
+                print("gamma = ", gamma)
+                
+                vx = v_target * np.cos(current_pose[2])
+                print("vx = ", vx)
+                vy = v_target * np.sin(current_pose[2])
+                print("vy = ", vy)
+                
+                omegaz = gamma/sleep_time
+                #self.mpi_ctrl.carStraight(v_target)
+                #self.mpi_ctrl.carRotate(gamma/sleep_time)
+                omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
+                omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
+                omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
+                omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
+                print(omega1, omega2, omega3, omega4)
 
-            # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
-            self.mpi_ctrl.printConfiguration()
-            print("PRINT configuration working")
-            #time.sleep(1)
-            #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
-            #print("this is also working>>>")
+                # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
+                self.mpi_ctrl.printConfiguration()
+                print("PRINT configuration working")
+                #time.sleep(1)
+                #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
+                #print("this is also working>>>")
 
-            #self.mpi_ctrl.setFourMotors(-omega1, omega2, omega3, -omega4)
-            self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
-            print("hello5")
-            time.sleep(sleep_time)
-            print("hello6")
-            #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
-            current_pose[2] = self.get_under_range(current_pose[2] + gamma)
-            current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
-            current_pose[1] = current_pose[1] + v_target * np.sin(current_pose[2]) * sleep_time
+                self.mpi_ctrl.setFourMotors(-omega1, omega2, omega3, -omega4)
+                # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
+                print("hello5")
+                time.sleep(sleep_time)
+                print("hello6")
+                #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
+                current_pose[2] = self.get_under_range(current_pose[2] + gamma)
+                current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
+                current_pose[1] = current_pose[1] + v_target * np.sin(current_pose[2]) * sleep_time
         
+        except KeyboardInterrupt:
+            print("Control-c pressed")
+            self.mpi_ctrl.carStop()
+            self.mpi_ctrl.close()
 
 
 
