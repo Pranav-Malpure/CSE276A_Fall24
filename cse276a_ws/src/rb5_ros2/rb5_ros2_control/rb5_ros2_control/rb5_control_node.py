@@ -120,7 +120,7 @@ if __name__ == "__main__":
     # waypoints, initial_time, initial_pose
     initial_time = time.time()
     
-    
+    print('before init')
     rclpy.init()
     print("hello from main 1")
     mpi_ctrl_node = MegaPiControllerNode()
