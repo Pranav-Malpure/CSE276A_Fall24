@@ -1,5 +1,8 @@
 """
 This file include code that control the robot motors
++,+,+,+ left
+-,+,+,- straight
+-,+,-,+ anticlockwise rotation
 """
 
 
@@ -42,6 +45,7 @@ class MegaPiController:
                   " vfr: " + repr(int(round(vfr,0))) +
                   " vbl: " + repr(int(round(vbl,0))) +
                   " vbr: " + repr(int(round(vbr,0))))
+        print('Inside sfm')
         self.bot.motorRun(self.mfl,-vfl)
         self.bot.motorRun(self.mfr,vfr)
         self.bot.motorRun(self.mbl,-vbl)
@@ -93,9 +97,10 @@ if __name__ == "__main__":
     mpi_ctrl = MegaPiController(port='/dev/ttyUSB0', verbose=True)  
     time.sleep(1)
     # mpi_ctrl.carStraight(100)
-    mpi_ctrl.setFourMotors(-80, 54, 80, -54)
-    time.sleep(1)
-    # time.sleep(4)
+    mpi_ctrl.setFourMotors(-100, 100, 100, -100)
+    time.sleep(5)
+    mpi_ctrl.setFourMotors(-100, 100, -100, 100) # for rotation
+    time.sleep(5)
     # mpi_ctrl.carSlide(30)
     # time.sleep(1)
     # mpi_ctrl.carRotate(30)
