@@ -1,4 +1,5 @@
-from rb5_ros2_control.mpi_control import MegaPiController
+#from rb5_ros2_control.mpi_control import MegaPiController
+from mpi_control import MegaPiController
 import numpy as np
 import time
 
