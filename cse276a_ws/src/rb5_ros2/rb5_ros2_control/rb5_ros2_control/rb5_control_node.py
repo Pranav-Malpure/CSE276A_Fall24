@@ -121,8 +121,9 @@ if __name__ == "__main__":
     
     
     rclpy.init()
+    print("hello from main 1")
     mpi_ctrl_node = MegaPiControllerNode()
-    print("hello from main ")
+    print("hello from main 2")
     # Start ROS2 node
     mpi_ctrl_node.follow_waypoints(waypoints)
     
