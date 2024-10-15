@@ -20,7 +20,7 @@ waypoints = [
 [0,0,0]
 ]
 
-initial_pose = [0,0]
+
 initial_time = 0
 current_pose = np.array([0,0,0])
 sleep_time = 1
@@ -64,22 +64,35 @@ class MegaPiControllerNode(Node):
         controller = self.mpi_ctrl.MegaPiController()
         waypoints_index = 0
         linear_distance = np.sqrt((waypoints[0] - current_pose[0])**2 + (waypoints[1] - current_pose[1])**2) #initializing the linear distance
-
+        print("hello1")
         while True:
+            print("hello2")
+            print (linear_distance)
+            print (threshold_distance)
             if linear_distance < threshold_distance:
                 waypoints_index = waypoints_index + 1
                 if waypoints_index == len(waypoints):
                     controller.carStop()
-                    break               
+                    break        
+            print("hello4")
             current_waypoint = waypoints[waypoints_index]
+            print("current_waypoint = ", current_waypoint)
+            print("current_pose = ", current_pose)            
             linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
+            print("linear_distance = ", linear_distance)
+            print("hello4v")
 
             v_target = Kv * linear_distance
             theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
+            print("theta_target = ", theta_target)
             gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
+            print("gamma = ", gamma)
             
             vx = v_target * np.cos(current_pose[2])
+            print("vx = ", vx)
             vy = v_target * np.sin(current_pose[2])
+            print("vy = ", vy)
+            
             omegaz = gamma/sleep_time
             #controller.carStraight(v_target)
             #controller.carRotate(gamma/sleep_time)
@@ -90,7 +103,9 @@ class MegaPiControllerNode(Node):
 
             # TODO: Call controller's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
             controller.setFourMotors(-omega1, omega2, omega3, -omega4)
+            print("hello5")
             time.sleep(sleep_time)
+            print("hello6")
             #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
             current_pose[2] = self.get_under_range(current_pose[2] + gamma)
             current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
@@ -103,7 +118,6 @@ class MegaPiControllerNode(Node):
 if __name__ == "__main__":
     # waypoints, initial_time, initial_pose
     initial_time = time.time()
-    initial_pose = [0,0]
     
     
     rclpy.init()

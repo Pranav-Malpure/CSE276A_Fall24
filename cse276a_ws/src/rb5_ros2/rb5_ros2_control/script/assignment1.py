@@ -96,6 +96,7 @@ def follow_waypoints(waypoints):
 def main():
     global waypoints, initial_time
     initial_time = time.time()
+    mpi_ctrl_node = MegaPiControllerNode()
     follow_waypoints(waypoints)
 
 if __name__ == "__main__":
