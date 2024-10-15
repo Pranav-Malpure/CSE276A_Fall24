@@ -1,0 +1,22 @@
+[0.103s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[0.330s] [100%] Built target april_detection_node
+[0.395s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[0.580s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+[0.593s] -- Install configuration: ""
+[0.597s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/ros2_april_detection/april_detection_node
+[0.597s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/package_run_dependencies/ros2_april_detection
+[0.598s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/parent_prefix_path/ros2_april_detection
+[0.598s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.sh
+[0.599s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.dsv
+[0.599s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.sh
+[0.599s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.dsv
+[0.600s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.bash
+[0.600s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.sh
+[0.600s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.zsh
+[0.601s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.dsv
+[0.602s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.dsv
+[0.602s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/packages/ros2_april_detection
+[0.602s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig.cmake
+[0.603s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig-version.cmake
+[0.603s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.xml
+[0.609s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection

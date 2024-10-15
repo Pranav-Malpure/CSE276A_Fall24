@@ -1,0 +1,31 @@
+[0.099s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[0.372s] [100%] Built target rb_camera_ocv_node
+[0.409s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[0.584s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision
+[0.613s] -- Install configuration: ""
+[0.616s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch
+[0.620s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_both_ocv.launch
+[0.622s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_both_ocv_launch.py
+[0.623s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_main_ocv.launch.xml
+[0.624s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_main_ocv_launch.py
+[0.624s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_side_ocv.launch
+[0.626s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_side_ocv_launch.py
+[0.630s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_webcam_ocv.launch
+[0.631s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_webcam_ocv_launch.py
+[0.632s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/rb5_ros2_vision/rb_camera_ocv_node
+[0.632s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/package_run_dependencies/rb5_ros2_vision
+[0.633s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/parent_prefix_path/rb5_ros2_vision
+[0.634s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/ament_prefix_path.sh
+[0.637s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/ament_prefix_path.dsv
+[0.639s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/path.sh
+[0.640s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/path.dsv
+[0.640s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.bash
+[0.640s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.sh
+[0.641s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.zsh
+[0.641s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.dsv
+[0.642s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.dsv
+[0.642s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/packages/rb5_ros2_vision
+[0.642s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/cmake/rb5_ros2_visionConfig.cmake
+[0.643s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/cmake/rb5_ros2_visionConfig-version.cmake
+[0.643s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.xml
+[0.670s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision

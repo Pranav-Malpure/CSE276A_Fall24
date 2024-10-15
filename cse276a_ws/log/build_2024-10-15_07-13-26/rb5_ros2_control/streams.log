@@ -1,0 +1,69 @@
+[0.107s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
+[0.192s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.254s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[0.256s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.559s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.605s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.611s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.979s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.014s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.113s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.177s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.179s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.180s] -- Looking for pthread.h
+[1.615s] -- Looking for pthread.h - found
+[1.615s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.844s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[1.845s] -- Looking for pthread_create in pthreads
+[2.076s] -- Looking for pthread_create in pthreads - not found
+[2.083s] -- Looking for pthread_create in pthread
+[2.378s] -- Looking for pthread_create in pthread - found
+[2.384s] -- Found Threads: TRUE  
+[2.548s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[2.624s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[2.756s] -- Added test 'copyright' to check source files copyright and LICENSE
+[2.759s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[2.759s] -- Configured cppcheck include dirs: 
+[2.760s] -- Configured cppcheck exclude dirs and/or files: 
+[2.761s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[2.761s] -- Configured cpplint exclude dirs and/or files: 
+[2.762s] -- Added test 'flake8' to check Python code syntax and style conventions
+[2.762s] -- Added test 'lint_cmake' to check CMake code style
+[2.763s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[2.765s] -- Added test 'uncrustify' to check C / C++ code style
+[2.766s] -- Configured uncrustify additional arguments: 
+[2.766s] -- Added test 'xmllint' to check XML markup files
+[2.774s] -- Configuring done
+[2.779s] -- Generating done
+[2.781s] -- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control
+[2.855s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
+[3.000s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control
+[3.030s] -- Install configuration: ""
+[3.031s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/pythonpath.sh
+[3.031s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/pythonpath.dsv
+[3.032s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control
+[3.032s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/__init__.py
+[3.033s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/mpi_control.py
+[3.033s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/rb5_control_node.py
+[3.033s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/rb5_keyjoy_control_node.py
+[3.102s] Listing '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control'...
+[3.104s] Compiling '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/rb5_control_node.py'...
+[3.112s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/mpi_control.py
+[3.115s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/rb5_control_node.py
+[3.117s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/rb5_keyjoy_control_node.py
+[3.119s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/package_run_dependencies/rb5_ros2_control
+[3.120s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/parent_prefix_path/rb5_ros2_control
+[3.123s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/ament_prefix_path.sh
+[3.124s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/ament_prefix_path.dsv
+[3.128s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/path.sh
+[3.129s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/path.dsv
+[3.129s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.bash
+[3.130s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.sh
+[3.130s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.zsh
+[3.130s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.dsv
+[3.133s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.dsv
+[3.133s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/packages/rb5_ros2_control
+[3.133s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/cmake/rb5_ros2_controlConfig.cmake
+[3.134s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/cmake/rb5_ros2_controlConfig-version.cmake
+[3.134s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.xml
+[3.139s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control

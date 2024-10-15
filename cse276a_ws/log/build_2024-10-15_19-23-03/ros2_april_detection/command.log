@@ -1,0 +1,4 @@
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection

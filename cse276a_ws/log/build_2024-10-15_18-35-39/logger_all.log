@@ -1,0 +1,374 @@
+[0.387s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.388s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fb73db910>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=8, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fb73db910>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7fb729f8e0>)
+[0.525s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.526s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.526s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.526s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.526s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.526s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.526s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/CSE276A_Fall24/cse276a_ws'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.526s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.542s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.543s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'ignore'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'ignore_ament_install'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['colcon_pkg']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'colcon_pkg'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['colcon_meta']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'colcon_meta'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['ros']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'ros'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['cmake', 'python']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'cmake'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'python'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extensions ['python_setup_py']
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2) by extension 'python_setup_py'
+[0.544s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/build) by extensions ['ignore', 'ignore_ament_install']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/build) by extension 'ignore'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/build) ignored
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/install) by extensions ['ignore', 'ignore_ament_install']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/install) by extension 'ignore'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/install) ignored
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extensions ['ignore', 'ignore_ament_install']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extension 'ignore'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extension 'ignore_ament_install'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extensions ['colcon_pkg']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extension 'colcon_pkg'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extensions ['colcon_meta']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extension 'colcon_meta'
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extensions ['ros']
+[0.545s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/key_joy) by extension 'ros'
+[0.549s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rb5_ros2/key_joy' with type 'ros.ament_cmake' and name 'key_joy'
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/log) by extensions ['ignore', 'ignore_ament_install']
+[0.549s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/log) by extension 'ignore'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/log) ignored
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extensions ['ignore', 'ignore_ament_install']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extension 'ignore'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extension 'ignore_ament_install'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extensions ['colcon_pkg']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extension 'colcon_pkg'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extensions ['colcon_meta']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extension 'colcon_meta'
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extensions ['ros']
+[0.550s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_control) by extension 'ros'
+[0.551s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rb5_ros2/rb5_ros2_control' with type 'ros.ament_cmake' and name 'rb5_ros2_control'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extensions ['ignore', 'ignore_ament_install']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extension 'ignore'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extension 'ignore_ament_install'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extensions ['colcon_pkg']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extension 'colcon_pkg'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extensions ['colcon_meta']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extension 'colcon_meta'
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extensions ['ros']
+[0.551s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/rb5_ros2_vision) by extension 'ros'
+[0.552s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rb5_ros2/rb5_ros2_vision' with type 'ros.ament_cmake' and name 'rb5_ros2_vision'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extensions ['ignore', 'ignore_ament_install']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extension 'ignore'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extension 'ignore_ament_install'
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extensions ['colcon_pkg']
+[0.552s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extension 'colcon_pkg'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extensions ['colcon_meta']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extension 'colcon_meta'
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extensions ['ros']
+[0.553s] Level 1:colcon.colcon_core.package_identification:_identify(src/rb5_ros2/ros2_april_detection) by extension 'ros'
+[0.554s] DEBUG:colcon.colcon_core.package_identification:Package 'src/rb5_ros2/ros2_april_detection' with type 'ros.ament_cmake' and name 'ros2_april_detection'
+[0.554s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.554s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.554s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.554s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.554s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.579s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.579s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.582s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 4 installed packages in /root/CSE276A_Fall24/cse276a_ws/install
+[0.583s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 173 installed packages in /opt/ros/foxy
+[0.585s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_args' from command line to 'None'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_target' from command line to 'None'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_clean_cache' from command line to 'False'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_clean_first' from command line to 'False'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'cmake_force_configure' from command line to 'False'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'ament_cmake_args' from command line to 'None'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'catkin_cmake_args' from command line to 'None'
+[0.627s] Level 5:colcon.colcon_core.verb:set package 'key_joy' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.627s] DEBUG:colcon.colcon_core.verb:Building package 'key_joy' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/CSE276A_Fall24/cse276a_ws/install/key_joy', 'merge_install': False, 'path': '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy', 'symlink_install': False, 'test_result_base': None}
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_target' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_clean_cache' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_clean_first' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'cmake_force_configure' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'ament_cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'catkin_cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_control' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.628s] DEBUG:colcon.colcon_core.verb:Building package 'rb5_ros2_control' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control', 'merge_install': False, 'path': '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_control', 'symlink_install': False, 'test_result_base': None}
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_target' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_clean_cache' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_clean_first' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'cmake_force_configure' from command line to 'False'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'ament_cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'catkin_cmake_args' from command line to 'None'
+[0.628s] Level 5:colcon.colcon_core.verb:set package 'rb5_ros2_vision' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.628s] DEBUG:colcon.colcon_core.verb:Building package 'rb5_ros2_vision' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision', 'merge_install': False, 'path': '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision', 'symlink_install': False, 'test_result_base': None}
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_args' from command line to 'None'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_target' from command line to 'None'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_clean_cache' from command line to 'False'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_clean_first' from command line to 'False'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'cmake_force_configure' from command line to 'False'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'ament_cmake_args' from command line to 'None'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'catkin_cmake_args' from command line to 'None'
+[0.629s] Level 5:colcon.colcon_core.verb:set package 'ros2_april_detection' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.629s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_april_detection' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection', 'merge_install': False, 'path': '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection', 'symlink_install': False, 'test_result_base': None}
+[0.629s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.632s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.632s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy' with build type 'ament_cmake'
+[0.632s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy'
+[0.640s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.640s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.640s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.659s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_control' with build type 'ament_cmake'
+[0.659s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_control'
+[0.659s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.659s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.671s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision' with build type 'ament_cmake'
+[0.671s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision'
+[0.672s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.672s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.681s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection' with build type 'ament_cmake'
+[0.682s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection'
+[0.682s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.683s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.710s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/key_joy -- -j8 -l8
+[0.732s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
+[0.749s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[0.778s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[0.903s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control -- -j8 -l8
+[0.939s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/key_joy -- -j8 -l8
+[1.066s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control
+[1.105s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/key_joy
+[1.121s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection -- -j8 -l8
+[1.142s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[1.220s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rb5_ros2_control)
+[1.232s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control
+[1.247s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control' for CMake module files
+[1.251s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control' for CMake config files
+[1.252s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_control', 'cmake_prefix_path')
+[1.254s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.ps1'
+[1.256s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.dsv'
+[1.257s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.sh'
+[1.258s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib'
+[1.258s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/bin'
+[1.259s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/pkgconfig/rb5_ros2_control.pc'
+[1.259s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages'
+[1.259s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_control', 'pythonpath')
+[1.259s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.ps1'
+[1.260s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.dsv'
+[1.260s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.sh'
+[1.261s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/bin'
+[1.262s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.ps1'
+[1.263s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.dsv'
+[1.264s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.sh'
+[1.265s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.bash'
+[1.266s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.zsh'
+[1.268s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/colcon-core/packages/rb5_ros2_control)
+[1.277s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(key_joy)
+[1.278s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy' for CMake module files
+[1.280s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/key_joy
+[1.281s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy' for CMake config files
+[1.281s] Level 1:colcon.colcon_core.shell:create_environment_hook('key_joy', 'cmake_prefix_path')
+[1.282s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.ps1'
+[1.282s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.dsv'
+[1.283s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.sh'
+[1.284s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib'
+[1.284s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/bin'
+[1.284s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/pkgconfig/key_joy.pc'
+[1.285s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages'
+[1.285s] Level 1:colcon.colcon_core.shell:create_environment_hook('key_joy', 'pythonpath')
+[1.285s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.ps1'
+[1.286s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.dsv'
+[1.286s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.sh'
+[1.287s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/bin'
+[1.287s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.ps1'
+[1.288s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.dsv'
+[1.288s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.sh'
+[1.289s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.bash'
+[1.289s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.zsh'
+[1.290s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/colcon-core/packages/key_joy)
+[1.307s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision
+[1.318s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+[1.349s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_april_detection)
+[1.350s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection' for CMake module files
+[1.354s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection' for CMake config files
+[1.356s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_april_detection', 'cmake_prefix_path')
+[1.356s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.ps1'
+[1.359s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.dsv'
+[1.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.sh'
+[1.361s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib'
+[1.361s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/bin'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/pkgconfig/ros2_april_detection.pc'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/python3.8/site-packages'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/bin'
+[1.363s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.ps1'
+[1.364s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.dsv'
+[1.366s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.sh'
+[1.367s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.bash'
+[1.368s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.zsh'
+[1.370s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/colcon-core/packages/ros2_april_detection)
+[1.379s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection
+[1.391s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rb5_ros2_vision)
+[1.392s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision
+[1.394s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision' for CMake module files
+[1.396s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision' for CMake config files
+[1.396s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_vision', 'cmake_prefix_path')
+[1.397s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.ps1'
+[1.398s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.dsv'
+[1.398s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.sh'
+[1.399s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib'
+[1.399s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/bin'
+[1.399s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/pkgconfig/rb5_ros2_vision.pc'
+[1.399s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/python3.8/site-packages'
+[1.400s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/bin'
+[1.400s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.ps1'
+[1.401s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.dsv'
+[1.401s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.sh'
+[1.402s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.bash'
+[1.402s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.zsh'
+[1.403s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/colcon-core/packages/rb5_ros2_vision)
+[1.413s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rb5_ros2_control)
+[1.414s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control' for CMake module files
+[1.415s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control' for CMake config files
+[1.415s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_control', 'cmake_prefix_path')
+[1.415s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.ps1'
+[1.416s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.dsv'
+[1.417s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/cmake_prefix_path.sh'
+[1.418s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib'
+[1.418s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/bin'
+[1.418s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/pkgconfig/rb5_ros2_control.pc'
+[1.418s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages'
+[1.418s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_control', 'pythonpath')
+[1.419s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.ps1'
+[1.419s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.dsv'
+[1.420s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/hook/pythonpath.sh'
+[1.421s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/bin'
+[1.421s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.ps1'
+[1.422s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.dsv'
+[1.423s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.sh'
+[1.423s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.bash'
+[1.424s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.zsh'
+[1.425s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/colcon-core/packages/rb5_ros2_control)
+[1.426s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(key_joy)
+[1.427s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy' for CMake module files
+[1.429s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy' for CMake config files
+[1.429s] Level 1:colcon.colcon_core.shell:create_environment_hook('key_joy', 'cmake_prefix_path')
+[1.430s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.ps1'
+[1.430s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.dsv'
+[1.431s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/cmake_prefix_path.sh'
+[1.431s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib'
+[1.431s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/bin'
+[1.432s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/pkgconfig/key_joy.pc'
+[1.432s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages'
+[1.432s] Level 1:colcon.colcon_core.shell:create_environment_hook('key_joy', 'pythonpath')
+[1.432s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.ps1'
+[1.433s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.dsv'
+[1.433s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/hook/pythonpath.sh'
+[1.434s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/bin'
+[1.435s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.ps1'
+[1.436s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.dsv'
+[1.436s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.sh'
+[1.437s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.bash'
+[1.438s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.zsh'
+[1.438s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/colcon-core/packages/key_joy)
+[1.501s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_april_detection)
+[1.502s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection' for CMake module files
+[1.505s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection' for CMake config files
+[1.507s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_april_detection', 'cmake_prefix_path')
+[1.508s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.ps1'
+[1.510s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.dsv'
+[1.511s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/hook/cmake_prefix_path.sh'
+[1.514s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib'
+[1.514s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/bin'
+[1.514s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/pkgconfig/ros2_april_detection.pc'
+[1.515s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/python3.8/site-packages'
+[1.516s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/bin'
+[1.517s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.ps1'
+[1.519s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.dsv'
+[1.521s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.sh'
+[1.523s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.bash'
+[1.524s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.zsh'
+[1.526s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/colcon-core/packages/ros2_april_detection)
+[1.560s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(rb5_ros2_vision)
+[1.562s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision' for CMake module files
+[1.566s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision' for CMake config files
+[1.568s] Level 1:colcon.colcon_core.shell:create_environment_hook('rb5_ros2_vision', 'cmake_prefix_path')
+[1.569s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.ps1'
+[1.572s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.dsv'
+[1.574s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/hook/cmake_prefix_path.sh'
+[1.576s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib'
+[1.576s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/bin'
+[1.577s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/pkgconfig/rb5_ros2_vision.pc'
+[1.578s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/python3.8/site-packages'
+[1.579s] Level 1:colcon.colcon_core.environment:checking '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/bin'
+[1.581s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.ps1'
+[1.583s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.dsv'
+[1.586s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.sh'
+[1.588s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.bash'
+[1.590s] INFO:colcon.colcon_core.shell:Creating package script '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.zsh'
+[1.591s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/colcon-core/packages/rb5_ros2_vision)
+[1.592s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.593s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.594s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.594s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.623s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[1.623s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.623s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.623s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.667s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[1.668s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.669s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/CSE276A_Fall24/cse276a_ws/install/local_setup.ps1'
+[1.675s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/CSE276A_Fall24/cse276a_ws/install/_local_setup_util_ps1.py'
+[1.682s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/CSE276A_Fall24/cse276a_ws/install/setup.ps1'
+[1.687s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/CSE276A_Fall24/cse276a_ws/install/local_setup.sh'
+[1.688s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/CSE276A_Fall24/cse276a_ws/install/_local_setup_util_sh.py'
+[1.689s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/CSE276A_Fall24/cse276a_ws/install/setup.sh'
+[1.691s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/CSE276A_Fall24/cse276a_ws/install/local_setup.bash'
+[1.691s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/CSE276A_Fall24/cse276a_ws/install/setup.bash'
+[1.693s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/CSE276A_Fall24/cse276a_ws/install/local_setup.zsh'
+[1.694s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/CSE276A_Fall24/cse276a_ws/install/setup.zsh'
