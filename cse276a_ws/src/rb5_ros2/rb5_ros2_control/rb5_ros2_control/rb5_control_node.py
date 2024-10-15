@@ -61,6 +61,7 @@ class MegaPiControllerNode(Node):
 
     def follow_waypoints(self, waypoints):
         global current_pose, Kv, sleep_time, Ktheta, threshold_distance
+        print("initial hello from function follow waypoints")
         controller = self.mpi_ctrl.MegaPiController()
         waypoints_index = 0
         linear_distance = np.sqrt((waypoints[0] - current_pose[0])**2 + (waypoints[1] - current_pose[1])**2) #initializing the linear distance
