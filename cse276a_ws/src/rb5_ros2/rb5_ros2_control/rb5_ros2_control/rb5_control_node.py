@@ -100,6 +100,7 @@ class MegaPiControllerNode(Node):
             omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
             omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
             omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
+            print('hello5before')
 
             # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
             self.mpi_ctrl.setFourMotors(-omega1, omega2, omega3, -omega4)
