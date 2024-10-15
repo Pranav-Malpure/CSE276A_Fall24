@@ -62,7 +62,6 @@ class MegaPiControllerNode(Node):
     def follow_waypoints(self, waypoints):
         global current_pose, Kv, sleep_time, Ktheta, threshold_distance
         print("initial hello from function follow waypoints")
-        controller = self.mpi_ctrl.MegaPiController()
         waypoints_index = 0
         linear_distance = np.sqrt((waypoints[0] - current_pose[0])**2 + (waypoints[1] - current_pose[1])**2) #initializing the linear distance
         print("hello1")
@@ -73,7 +72,7 @@ class MegaPiControllerNode(Node):
             if linear_distance < threshold_distance:
                 waypoints_index = waypoints_index + 1
                 if waypoints_index == len(waypoints):
-                    controller.carStop()
+                    self.mpi_ctrl.carStop()
                     break        
             print("hello4")
             current_waypoint = waypoints[waypoints_index]
@@ -95,15 +94,15 @@ class MegaPiControllerNode(Node):
             print("vy = ", vy)
             
             omegaz = gamma/sleep_time
-            #controller.carStraight(v_target)
-            #controller.carRotate(gamma/sleep_time)
+            #self.mpi_ctrl.carStraight(v_target)
+            #self.mpi_ctrl.carRotate(gamma/sleep_time)
             omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
             omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
             omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
             omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
 
-            # TODO: Call controller's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
-            controller.setFourMotors(-omega1, omega2, omega3, -omega4)
+            # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
+            self.mpi_ctrl.setFourMotors(-omega1, omega2, omega3, -omega4)
             print("hello5")
             time.sleep(sleep_time)
             print("hello6")
