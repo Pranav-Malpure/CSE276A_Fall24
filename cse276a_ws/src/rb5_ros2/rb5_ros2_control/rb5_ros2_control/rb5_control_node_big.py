@@ -75,32 +75,31 @@ class MegaPiControllerNode(Node):
                 print (linear_distance)
                 print (threshold_distance)
                 if linear_distance < threshold_distance:
-                    if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
-                        # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
-                        self.mpi_ctrl.carStop()
-                    current_pose[2] = waypoints[waypoints_index][2]
+                    # if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
+                    #     # calculate omega that will make the robot rotate towards the waypoint
+                    #     self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                    #     time.sleep(0.5)
+                    #     self.mpi_ctrl.carStop()
+                    # current_pose[2] = waypoints[waypoints_index][2]
 
                     waypoints_index = waypoints_index + 1
-                    if waypoints_index == len(waypoints):
-                            self.mpi_ctrl.carStop()
-                            break     
-                    theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
+                    # if waypoints_index == len(waypoints):
+                    #         self.mpi_ctrl.carStop()
+                    #         break     
                     
-                    if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
-                        # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
-                        self.mpi_ctrl.carStop()
-                    current_pose[2] = theta_target 
+                    # if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
+                    #     # calculate omega that will make the robot rotate towards the waypoint
+                    #     self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                    #     time.sleep(0.5)
+                    #     self.mpi_ctrl.carStop()
+                    # current_pose[2] = theta_target 
                     
-                linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
+                # linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
 
                 # add a while loop for the below, for loop maybe
-                self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
-                time.sleep(0.5) #callibrate this
-                self.mpi_ctrl.carStop()
+                # self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
+                # time.sleep(0.5) #callibrate this
+                # self.mpi_ctrl.carStop()
 
 
 
@@ -111,6 +110,8 @@ class MegaPiControllerNode(Node):
                 linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
                 print("linear_distance = ", linear_distance)
                 print("hello4v")
+                theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
+
 
                 v_target = Kv * linear_distance
                 print("theta_target = ", theta_target)
