@@ -89,9 +89,12 @@ class MegaPiControllerNode(Node):
                 if linear_distance < threshold_distance:
                     print('orientation delta', self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]))
                     if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
+                        print("current_waypoint", waypoints[waypoints_index])
                         # calculate omega that will make the robot rotate towards the waypoint
                         angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
                         time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
+                        print("angle time in seconds", time_in_seconds)
+                        print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
                             self.mpi_ctrl.setFourMotors(-angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate)
                         else:
@@ -108,12 +111,14 @@ class MegaPiControllerNode(Node):
                         self.mpi_ctrl.carStop()
                         print("DESTINATION REACHED")
                         break     
-                    
                     theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
-                    print('alignment', self.calc_diff_theta(theta_target, current_pose[2]))
+                    print('\nalignment', self.calc_diff_theta(theta_target, current_pose[2]))
                     if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
+                        print("current_waypoint", waypoints[waypoints_index])
                         angle_to_be_moved = self.calc_diff_theta(theta_target, current_pose[2]) # output is in radians
                         time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
+                        print("angle time in seconds", time_in_seconds)
+                        print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
                             self.mpi_ctrl.setFourMotors(-angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate)
                         else:
