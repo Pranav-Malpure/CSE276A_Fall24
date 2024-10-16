@@ -106,7 +106,7 @@ if __name__ == "__main__":
     #time.sleep(2)
     #for i in range(12):
     rspeed = 40
-    mpi_ctrl.setFourMotors(rspeed, -rspeed, -rspeed, rspeed)# for rotation
+    mpi_ctrl.setFourMotors(rspeed, -rspeed, rspeed, -rspeed)# for rotation
     time.sleep(6)
     mpi_ctrl.carStop()
     # mpi_ctrl.carSlide(30)
