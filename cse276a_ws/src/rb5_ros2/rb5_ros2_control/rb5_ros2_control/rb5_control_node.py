@@ -105,6 +105,7 @@ class MegaPiControllerNode(Node):
                         #this will align the robot to the waypoint
                    
                     current_pose[2] = waypoints[waypoints_index][2] # update current pose
+                    print('current_pose angle after orientation', current_pose[2])
 
                     waypoints_index = waypoints_index + 1
                     if waypoints_index == len(waypoints):
@@ -131,6 +132,7 @@ class MegaPiControllerNode(Node):
                         #this will align the robot to the waypoint
                    
                     current_pose[2] = theta_target 
+                    print('current_pose angle after alignment', current_pose[2])
                     
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
                 
