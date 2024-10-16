@@ -25,12 +25,16 @@ initial_time = 0
 current_pose = np.array([0,0,0])
 sleep_time = 1
 
+
 Kv = 2 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
 Ktheta = 1 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
 rw = 0.03 #Radius of the wheel
+angular_vel_rotate = 80
+linear_vel_straight = 80
+
 
 class MegaPiControllerNode(Node):
     def __init__(self, verbose=False, debug=False):
@@ -60,7 +64,7 @@ class MegaPiControllerNode(Node):
 
 
     def follow_waypoints(self, waypoints):
-        global current_pose, Kv, sleep_time, Ktheta, threshold_distance
+        global current_pose, Kv, sleep_time, Ktheta, threshold_distance, angular_vel_rotate, linear_vel_straight
         print("initial hello from function follow waypoints")
         waypoints_index = 0
         linear_distance = np.sqrt((waypoints[0][0] - current_pose[0])**2 + (waypoints[0][1] - current_pose[1])**2) #initializing the linear distance
@@ -71,10 +75,35 @@ class MegaPiControllerNode(Node):
                 print (linear_distance)
                 print (threshold_distance)
                 if linear_distance < threshold_distance:
+                    if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
+                        # calculate omega that will make the robot rotate towards the waypoint
+                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                        time.sleep(0.5)
+                        self.mpi_ctrl.carStop()
+                    current_pose[2] = waypoints[waypoints_index][2]
+
                     waypoints_index = waypoints_index + 1
                     if waypoints_index == len(waypoints):
+                            self.mpi_ctrl.carStop()
+                            break     
+                    theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
+                    
+                    if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
+                        # calculate omega that will make the robot rotate towards the waypoint
+                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                        time.sleep(0.5)
                         self.mpi_ctrl.carStop()
-                        break        
+                    current_pose[2] = theta_target 
+                    
+                linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
+
+                # add a while loop for the below, for loop maybe
+                self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
+                time.sleep(0.5) #callibrate this
+                self.mpi_ctrl.carStop()
+
+
+
                 print("hello4")
                 current_waypoint = waypoints[waypoints_index]
                 print("current_waypoint = ", current_waypoint)
@@ -84,7 +113,6 @@ class MegaPiControllerNode(Node):
                 print("hello4v")
 
                 v_target = Kv * linear_distance
-                theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
                 print("theta_target = ", theta_target)
                 gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
                 print("gamma = ", gamma)
@@ -104,13 +132,10 @@ class MegaPiControllerNode(Node):
                 print(omega1, omega2, omega3, omega4)
 
                 # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
-                self.mpi_ctrl.printConfiguration()
-                print("PRINT configuration working")
                 #time.sleep(1)
                 #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
                 #print("this is also working>>>")
 
-                self.mpi_ctrl.setFourMotors(int(-omega1), int(omega2), int(omega3), int(-omega4))
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
                 print("hello5")
                 time.sleep(sleep_time)
