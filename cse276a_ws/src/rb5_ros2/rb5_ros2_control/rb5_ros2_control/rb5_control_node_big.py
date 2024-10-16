@@ -74,11 +74,17 @@ class MegaPiControllerNode(Node):
     def map_omegas(self, omega1, omega2, omega3, omega4):
         # return values between 30 to 60 in proportion of the current omega values
 
-        sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
-        ret_omega1 = int(int(omega1*80/sum)//2 + 40*np.sign(omega1))
-        ret_omega2 = int(int(omega2*80/sum)//2 + 40*np.sign(omega2))
-        ret_omega3 = int(int(omega3*80/sum)//2 + 40*np.sign(omega3))
-        ret_omega4 = int(int(omega4*80/sum)//2 + 40*np.sign(omega4))
+        # sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
+        sum = 80
+        # ret_omega1 = int(int(omega1*8.35/sum)//2 + 40*np.sign(omega1))
+        # ret_omega2 = int(int(omega2*8.35/sum)//2 + 40*np.sign(omega2))
+        # ret_omega3 = int(int(omega3*8.35/sum)//2 + 40*np.sign(omega3))
+        # ret_omega4 = int(int(omega4*8.35/sum)//2 + 40*np.sign(omega4))
+        ret_omega1 = int(omega1*8.35)
+        ret_omega2 = int(omega2*8.35)
+        ret_omega3 = int(omega3*8.35)    
+        ret_omega4 = int(omega4*8.35)
+
 
         return [ret_omega1, ret_omega2, ret_omega3, ret_omega4]
 
@@ -145,11 +151,11 @@ class MegaPiControllerNode(Node):
                 omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
                 omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
                 omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
-                print(self.map_omegas(omega1, omega2, omega3, omega4))
-
+                motor_values = self.map_omegas(omega1, omega2, omega3, omega4)
+                print("motor_values = ", motor_values)
                 # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
                 #time.sleep(1)
-                self.mpi_ctrl.setFourMotors(self.map_omegas(-omega1, omega2, omega3, -omega4)[0], self.map_omegas(-omega1, omega2, omega3, -omega4)[1], self.map_omegas(-omega1, omega2, omega3, -omega4)[2], self.map_omegas(-omega1, omega2, omega3, -omega4)[3])
+                self.mpi_ctrl.setFourMotors(motor_values[0], motor_values[1], motor_values[2], motor_values[3])
                 #print("this is also working>>>")
 
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
@@ -170,7 +176,8 @@ class MegaPiControllerNode(Node):
 if __name__ == "__main__":
     # waypoints, initial_time, initial_pose
     initial_time = time.time()
-    
+    Kv = float(input("enter kv: "))
+    Ktheta = float(input("enter ktheta: "))
     print('before init')
     rclpy.init()
     print("hello from main 1")
