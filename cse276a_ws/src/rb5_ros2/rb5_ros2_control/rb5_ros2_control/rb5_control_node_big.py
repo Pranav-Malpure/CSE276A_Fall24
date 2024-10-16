@@ -63,7 +63,8 @@ class MegaPiControllerNode(Node):
 
     def map_omegas(self, omega1, omega2, omega3, omega4):
         # return values between 30 to 60 in proportion of the current omega values
-        sum = omega1 + omega2 + omega3 + omega4
+
+        sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
         ret_omega1 = int(omega1*60/sum)
         ret_omega2 = int(omega2*60/sum)
         ret_omega3 = int(omega3*60/sum)
