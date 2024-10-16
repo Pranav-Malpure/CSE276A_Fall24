@@ -107,6 +107,7 @@ class MegaPiControllerNode(Node):
                     # current_pose[2] = waypoints[waypoints_index][2]
 
                     waypoints_index = waypoints_index + 1
+                    time.sleep(1)
                     # if waypoints_index == len(waypoints):
                     #         self.mpi_ctrl.carStop()
                     #         break     
@@ -160,6 +161,7 @@ class MegaPiControllerNode(Node):
 
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
                 time.sleep(sleep_time)
+                self.mpi_ctrl.carStop()
                 #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
                 current_pose[2] = self.get_under_range(current_pose[2] + gamma)
                 current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
