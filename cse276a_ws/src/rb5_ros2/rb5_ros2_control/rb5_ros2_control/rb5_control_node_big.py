@@ -65,10 +65,10 @@ class MegaPiControllerNode(Node):
         # return values between 30 to 60 in proportion of the current omega values
 
         sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
-        ret_omega1 = int(omega1*60/sum)//2 +30
-        ret_omega2 = int(omega2*60/sum)//2 +30
-        ret_omega3 = int(omega3*60/sum)//2 +30
-        ret_omega4 = int(omega4*60/sum)//2 +30
+        ret_omega1 = int(omega1*80/sum)//2 + 40
+        ret_omega2 = int(omega2*80/sum)//2 + 40
+        ret_omega3 = int(omega3*80/sum)//2 + 40
+        ret_omega4 = int(omega4*80/sum)//2 + 40
 
 
         return [ret_omega1, ret_omega2, ret_omega3, ret_omega4]
