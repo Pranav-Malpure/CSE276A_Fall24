@@ -135,7 +135,7 @@ class MegaPiControllerNode(Node):
 
                 # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
                 #time.sleep(1)
-                self.mpi_ctrl.setFourMotors(self.map_omegas(-omega1, omega2, omega3, -omega4))
+                self.mpi_ctrl.setFourMotors(self.map_omegas(-omega1, omega2, omega3, -omega4)[0], self.map_omegas(-omega1, omega2, omega3, -omega4)[1], self.map_omegas(-omega1, omega2, omega3, -omega4)[2], self.map_omegas(-omega1, omega2, omega3, -omega4)[3])
                 #print("this is also working>>>")
 
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
