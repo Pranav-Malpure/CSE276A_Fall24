@@ -23,11 +23,11 @@ waypoints = [
 
 initial_time = 0
 current_pose = [0,0,0]
-sleep_time = 1
+sleep_time = 2
 
 
-Kv = 2 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
-Ktheta = 1 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
+Kv = 0.05 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
+Ktheta = 0.03 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
@@ -61,7 +61,8 @@ class MegaPiControllerNode(Node):
             diff += 6.28
         return diff
 
-
+    def map_omegas(self, omega1, omega2, omega3, omega4):
+        return [int(omega1*8.35), int(omega2*8.35), int(omega3*8.35), int(omega4*8.35)]
 
     def follow_waypoints(self, waypoints):
         global current_pose, Kv, sleep_time, Ktheta, threshold_distance, angular_vel_rotate, linear_vel_straight
@@ -134,7 +135,7 @@ class MegaPiControllerNode(Node):
 
                 # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
                 #time.sleep(1)
-                self.mpi_ctrl.setFourMotors(int(-omega1), int(omega2)), int(omega3), int(-omega4)
+                self.mpi_ctrl.setFourMotors(self.map_omegas(-omega1, omega2, omega3, -omega4))
                 #print("this is also working>>>")
 
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
