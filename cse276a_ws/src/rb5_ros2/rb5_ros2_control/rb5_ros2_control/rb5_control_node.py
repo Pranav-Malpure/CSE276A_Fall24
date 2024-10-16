@@ -32,7 +32,7 @@ waypoints = [
 
 
 initial_time = 0
-current_pose = np.array([0,0,0])
+current_pose = [0, 0, 0]
 sleep_time = 1
 
 
