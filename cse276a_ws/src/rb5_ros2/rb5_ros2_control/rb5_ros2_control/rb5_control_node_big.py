@@ -37,7 +37,7 @@ sleep_time = 0.5
 
 
 Kv = 0.1 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
-Ktheta = 0.08 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
+Ktheta = 0.16 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
