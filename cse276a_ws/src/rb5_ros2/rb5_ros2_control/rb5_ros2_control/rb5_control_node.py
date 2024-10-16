@@ -88,7 +88,7 @@ class MegaPiControllerNode(Node):
                 time.sleep(1)
                 if linear_distance < threshold_distance:
                     print('orientation delta', self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]))
-                    print("current_waypoint", waypoints[waypoints_index])
+                    print("current_waypoint for orientation", waypoints[waypoints_index])
                     if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
                         # calculate omega that will make the robot rotate towards the waypoint
                         angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
@@ -110,11 +110,12 @@ class MegaPiControllerNode(Node):
                     if waypoints_index == len(waypoints):
                         self.mpi_ctrl.carStop()
                         print("DESTINATION REACHED")
-                        break     
+                        break 
+                        
                     theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
                     print('\nalignment', self.calc_diff_theta(theta_target, current_pose[2]))
                     if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
-                        print("current_waypoint", waypoints[waypoints_index])
+                        print("current_waypoint for alignment", waypoints[waypoints_index])
                         angle_to_be_moved = self.calc_diff_theta(theta_target, current_pose[2]) # output is in radians
                         time_in_seconds = abs(angle_to_be_moved)*6.65/(2*3.14) + 0.35
                         print("angle time in seconds", time_in_seconds)
@@ -139,7 +140,8 @@ class MegaPiControllerNode(Node):
                 time.sleep(0.5)
                 current_pose[0] = waypoints[waypoints_index][0]
                 current_pose[1] = waypoints[waypoints_index][1]
-
+                print('current pos of robot', current_pose)
+                print('current waypoint for linear distance', waypoints[waypoints_index])
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
 
 
