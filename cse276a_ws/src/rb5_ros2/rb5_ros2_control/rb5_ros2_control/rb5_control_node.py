@@ -82,14 +82,14 @@ class MegaPiControllerNode(Node):
         print("hello1")
         try:
             while True:
-                print("hello2")
+                print("hello2")                
                 print ("linear dist",linear_distance)
-                print ("THRESHOLD DIST", threshold_distance )
+                print ("THRESHOLD DIST", threshold_distance)
                 time.sleep(1)
                 if linear_distance < threshold_distance:
                     print('orientation delta', self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]))
+                    print("current_waypoint", waypoints[waypoints_index])
                     if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
-                        print("current_waypoint", waypoints[waypoints_index])
                         # calculate omega that will make the robot rotate towards the waypoint
                         angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
                         time_in_seconds = abs(angle_to_be_moved)*6.65/(2*3.14) + 0.35
@@ -139,6 +139,8 @@ class MegaPiControllerNode(Node):
                 time.sleep(0.5)
                 current_pose[0] = waypoints[waypoints_index][0]
                 current_pose[1] = waypoints[waypoints_index][1]
+
+                linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
 
 
                 time.sleep(5)
