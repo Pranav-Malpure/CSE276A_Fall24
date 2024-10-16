@@ -62,7 +62,15 @@ class MegaPiControllerNode(Node):
         return diff
 
     def map_omegas(self, omega1, omega2, omega3, omega4):
-        return [int(omega1*8.35), int(omega2*8.35), int(omega3*8.35), int(omega4*8.35)]
+        # return values between 30 to 60 in proportion of the current omega values
+        sum = omega1 + omega2 + omega3 + omega4
+        ret_omega1 = int(omega1*60/sum)
+        ret_omega2 = int(omega2*60/sum)
+        ret_omega3 = int(omega3*60/sum)
+        ret_omega4 = int(omega4*60/sum)
+
+
+        return [ret_omega1, ret_omega2, ret_omega3, ret_omega4]
 
     def follow_waypoints(self, waypoints):
         global current_pose, Kv, sleep_time, Ktheta, threshold_distance, angular_vel_rotate, linear_vel_straight
