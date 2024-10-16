@@ -42,7 +42,7 @@ threshold_distance = 0.1 # callibrated depending on how fine you want the car to
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
 rw = 0.03 #Radius of the wheel
-angular_vel_rotate = 40
+angular_vel_rotate = 35
 linear_vel_straight = 40
 v_epsilon = 2
 
@@ -92,7 +92,7 @@ class MegaPiControllerNode(Node):
                     if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
                         # calculate omega that will make the robot rotate towards the waypoint
                         angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
-                        time_in_seconds = abs(angle_to_be_moved)*6.65/(2*3.14) + 0.35
+                        time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
@@ -119,7 +119,7 @@ class MegaPiControllerNode(Node):
                     if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
                         print("current_waypoint for alignment", waypoints[waypoints_index])
                         angle_to_be_moved = self.calc_diff_theta(theta_target, current_pose[2]) # output is in radians
-                        time_in_seconds = abs(angle_to_be_moved)*6.65/(2*3.14) + 0.35
+                        time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
