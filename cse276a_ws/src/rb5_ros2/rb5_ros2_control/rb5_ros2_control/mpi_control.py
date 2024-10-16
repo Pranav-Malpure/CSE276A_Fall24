@@ -97,12 +97,13 @@ if __name__ == "__main__":
     mpi_ctrl = MegaPiController(port='/dev/ttyUSB0', verbose=True)  
     time.sleep(1)
     # mpi_ctrl.carStraight(100)
-    # mpi_ctrl.setFourMotors(-100, 100, 100, -100)
-    # time.sleep(2)
-    # mpi_ctrl.carStop()
-    rspeed = 40
-    mpi_ctrl.setFourMotors(-rspeed, rspeed, -rspeed, rspeed) # for rotation
-    time.sleep(3.35)
+    vspeed = 40
+    mpi_ctrl.setFourMotors(-vspeed, vspeed+2, vspeed, -vspeed+2)
+    time.sleep(6.5)
+    mpi_ctrl.carStop()
+    # rspeed = 40
+    # mpi_ctrl.setFourMotors(-rspeed, rspeed, -rspeed, rspeed) # for rotation
+    # time.sleep(3.35)
     # mpi_ctrl.carSlide(30)
     # time.sleep(1)
     # mpi_ctrl.carRotate(30)
