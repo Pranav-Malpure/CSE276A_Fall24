@@ -10,13 +10,23 @@ import time
 
 
 
+# waypoints = [
+# [0,0,0],
+# [-1,0,0],
+# [-1,1,1.57],
+# [-2,1,0],
+# [-2,2,-1.57],
+# [-1,1,-0.78],
+# [0,0,0]
+# ]
+
 waypoints = [
 [0,0,0],
-[-1,0,0],
-[-1,1,1.57],
-[-2,1,0],
-[-2,2,-1.57],
-[-1,1,-0.78],
+[-1/2,0,0],
+[-1/2,1/2,1.57],
+[-2/2,1/2,0],
+[-2/2,2/2,-1.57],
+[-1/2,1/2,-0.78],
 [0,0,0]
 ]
 
@@ -32,8 +42,9 @@ threshold_distance = 0.1 # callibrated depending on how fine you want the car to
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
 rw = 0.03 #Radius of the wheel
-angular_vel_rotate = 80
-linear_vel_straight = 80
+angular_vel_rotate = 35
+linear_vel_straight = 840
+v_epsilon = 2
 
 
 class MegaPiControllerNode(Node):
@@ -53,7 +64,7 @@ class MegaPiControllerNode(Node):
             theta = -3.14
         return theta
 
-    def calc_diff_theta(self, theta_target, theta):
+    def calc_diff_theta(self, theta_target, theta): # output is in radians
         diff = theta_target - theta
         if diff >= 3.14:
             diff -= 6.28
@@ -75,75 +86,93 @@ class MegaPiControllerNode(Node):
                 print (linear_distance)
                 print (threshold_distance)
                 if linear_distance < threshold_distance:
-                    if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
+                    if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
                         # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
+                        angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
+                        time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
+                        if angle_to_be_moved >= 0:
+                            self.mpi_ctrl.setFourMotors(-angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate)
+                        else:
+                            self.mpi_ctrl.setFourMotors(angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate)
+                        time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
-                    current_pose[2] = waypoints[waypoints_index][2]
+                        time.sleep(0.5)
+                        #this will align the robot to the waypoint
+                   
+                    current_pose[2] = waypoints[waypoints_index][2] # update current pose
 
                     waypoints_index = waypoints_index + 1
                     if waypoints_index == len(waypoints):
-                            self.mpi_ctrl.carStop()
-                            break     
+                        self.mpi_ctrl.carStop()
+                        print("DESTINATION REACHED")
+                        break     
+                    
                     theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
                     
-                    if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
-                        # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
+                    if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
+                        angle_to_be_moved = self.calc_diff_theta(theta_target, current_pose[2]) # output is in radians
+                        time_in_seconds = abs(angle_to_be_moved)*7.65/(2*3.14) + 0.35
+                        if angle_to_be_moved >= 0:
+                            self.mpi_ctrl.setFourMotors(-angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate)
+                        else:
+                            self.mpi_ctrl.setFourMotors(angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate)
+                        time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
+                        time.sleep(0.5)
+                        #this will align the robot to the waypoint
+                   
                     current_pose[2] = theta_target 
                     
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
-
-                # add a while loop for the below, for loop maybe
-                self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
-                time.sleep(0.5) #callibrate this
+                
+                time_in_seconds = linear_distance*6.7/1 + 0.3
+                self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight + v_epsilon, linear_vel_straight, -linear_vel_straight + v_epsilon)
+                time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()
+                time.sleep(0.5)
 
 
 
-                print("hello4")
-                current_waypoint = waypoints[waypoints_index]
-                print("current_waypoint = ", current_waypoint)
-                print("current_pose = ", current_pose)            
-                linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
-                print("linear_distance = ", linear_distance)
-                print("hello4v")
+                # print("hello4")
+                # current_waypoint = waypoints[waypoints_index]
+                # print("current_waypoint = ", current_waypoint)
+                # print("current_pose = ", current_pose)            
+                # linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
+                # print("linear_distance = ", linear_distance)
+                # print("hello4v")
 
-                v_target = Kv * linear_distance
-                print("theta_target = ", theta_target)
-                gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
-                print("gamma = ", gamma)
+                # v_target = Kv * linear_distance
+                # print("theta_target = ", theta_target)
+                # gamma = Ktheta * self.calc_diff_theta(theta_target, current_pose[2])
+                # print("gamma = ", gamma)
                 
-                vx = v_target * np.cos(current_pose[2])
-                print("vx = ", vx)
-                vy = v_target * np.sin(current_pose[2])
-                print("vy = ", vy)
+                # vx = v_target * np.cos(current_pose[2])
+                # print("vx = ", vx)
+                # vy = v_target * np.sin(current_pose[2])
+                # print("vy = ", vy)
                 
-                omegaz = gamma/sleep_time
-                #self.mpi_ctrl.carStraight(v_target)
-                #self.mpi_ctrl.carRotate(gamma/sleep_time)
-                omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
-                omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
-                omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
-                omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
-                print(omega1, omega2, omega3, omega4)
+                # omegaz = gamma/sleep_time
+                # #self.mpi_ctrl.carStraight(v_target)
+                # #self.mpi_ctrl.carRotate(gamma/sleep_time)
+                # omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
+                # omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
+                # omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
+                # omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
+                # print(omega1, omega2, omega3, omega4)
 
-                # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
-                #time.sleep(1)
-                #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
-                #print("this is also working>>>")
+                # # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
+                # #time.sleep(1)
+                # #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
+                # #print("this is also working>>>")
 
-                # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
-                print("hello5")
-                time.sleep(sleep_time)
-                print("hello6")
-                #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
-                current_pose[2] = self.get_under_range(current_pose[2] + gamma)
-                current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
-                current_pose[1] = current_pose[1] + v_target * np.sin(current_pose[2]) * sleep_time
+                # # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
+                # print("hello5")
+                # time.sleep(sleep_time)
+                # print("hello6")
+                # #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
+                # current_pose[2] = self.get_under_range(current_pose[2] + gamma)
+                # current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
+                # current_pose[1] = current_pose[1] + v_target * np.sin(current_pose[2]) * sleep_time
         
         except KeyboardInterrupt:
             print("Control-c pressed")
