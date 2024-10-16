@@ -98,7 +98,7 @@ class MegaPiControllerNode(Node):
                             self.mpi_ctrl.setFourMotors(angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate)
                         time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
-                        time.sleep(0.5)
+                        # time.sleep(0.5)
                         #this will align the robot to the waypoint
                    
                     current_pose[2] = waypoints[waypoints_index][2] # update current pose
@@ -120,7 +120,7 @@ class MegaPiControllerNode(Node):
                             self.mpi_ctrl.setFourMotors(angular_vel_rotate, -angular_vel_rotate, angular_vel_rotate, -angular_vel_rotate)
                         time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
-                        time.sleep(0.5)
+                        # time.sleep(0.5)
                         #this will align the robot to the waypoint
                    
                     current_pose[2] = theta_target 
