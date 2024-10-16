@@ -137,6 +137,9 @@ class MegaPiControllerNode(Node):
                 time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()
                 time.sleep(0.5)
+                current_pose[0] = waypoints[waypoints_index][0]
+                current_pose[1] = waypoints[waypoints_index][1]
+
 
                 time.sleep(5)
                 print("ONE WAYPOINT COMPLETED")
