@@ -113,6 +113,7 @@ class MegaPiControllerNode(Node):
                         break 
                         
                     theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
+                    print('theta_target', theta_target)
                     print('\nalignment', self.calc_diff_theta(theta_target, current_pose[2]))
                     if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
                         print("current_waypoint for alignment", waypoints[waypoints_index])
@@ -138,6 +139,7 @@ class MegaPiControllerNode(Node):
                 time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()
                 time.sleep(0.5)
+                print('142 waypoints index', waypoints_index)
                 current_pose[0] = waypoints[waypoints_index][0]
                 current_pose[1] = waypoints[waypoints_index][1]
                 print('current pos of robot', current_pose)
