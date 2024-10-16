@@ -98,7 +98,7 @@ if __name__ == "__main__":
     time.sleep(1)
     # mpi_ctrl.carStraight(100)
     vspeed = 40
-    mpi_ctrl.setFourMotors(-vspeed, vspeed+2, vspeed, -vspeed+2)
+    mpi_ctrl.setFourMotors(-vspeed, vspeed+2, vspeed, -vspeed+1)
     time.sleep(6.5)
     mpi_ctrl.carStop()
     # rspeed = 40
