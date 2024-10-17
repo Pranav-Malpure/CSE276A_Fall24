@@ -76,10 +76,10 @@ class MegaPiControllerNode(Node):
 
         # sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
         sum = 50
-        ret_omega1 = int(int(omega1*8.35/sum)//2 + 30*np.sign(omega1))
-        ret_omega2 = int(int(omega2*8.35/sum)//2 + 30*np.sign(omega2))
-        ret_omega3 = int(int(omega3*8.35/sum)//2 + 30*np.sign(omega3))
-        ret_omega4 = int(int(omega4*8.35/sum)//2 + 30*np.sign(omega4))
+        ret_omega1 = int(int(omega1*8.35/sum)//2 + 40*np.sign(omega1))
+        ret_omega2 = int(int(omega2*8.35/sum)//2 + 40*np.sign(omega2))
+        ret_omega3 = int(int(omega3*8.35/sum)//2 + 40*np.sign(omega3))
+        ret_omega4 = int(int(omega4*8.35/sum)//2 + 40*np.sign(omega4))
         # ret_omega1 = int(omega1*8.35)
         # ret_omega2 = int(omega2*8.35)
         # ret_omega3 = int(omega3*8.35)    
