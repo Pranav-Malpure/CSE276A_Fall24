@@ -136,7 +136,7 @@ class MegaPiControllerNode(Node):
                     
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
                 
-                time_in_seconds = linear_distance*5.7/1 + 0.3
+                time_in_seconds = linear_distance*7/1 + 0.3
                 self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight + v_epsilon//2, linear_vel_straight, -linear_vel_straight + v_epsilon//2)
                 time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()
