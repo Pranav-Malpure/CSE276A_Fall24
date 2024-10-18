@@ -92,7 +92,7 @@ class MegaPiControllerNode(Node):
                     if abs(self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2])) > 0.12: # 0.12 radians is 7degrees
                         # calculate omega that will make the robot rotate towards the waypoint
                         angle_to_be_moved = self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) # output is in radians
-                        time_in_seconds = abs(angle_to_be_moved)*6.7/(2*3.14) + 0.1
+                        time_in_seconds = abs(angle_to_be_moved)*6.8/(2*3.14) + 0.25
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
@@ -119,7 +119,7 @@ class MegaPiControllerNode(Node):
                     if abs(self.calc_diff_theta(theta_target, current_pose[2])) > 0.12:
                         print("current_waypoint for alignment", waypoints[waypoints_index])
                         angle_to_be_moved = self.calc_diff_theta(theta_target, current_pose[2]) # output is in radians
-                        time_in_seconds = abs(angle_to_be_moved)*6.7/(2*3.14) + 0.35
+                        time_in_seconds = abs(angle_to_be_moved)*6.7/(2*3.14) +0.2
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
                         if angle_to_be_moved >= 0:
@@ -136,7 +136,7 @@ class MegaPiControllerNode(Node):
                     
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
                 
-                time_in_seconds = linear_distance*5.5/1 + 0.3
+                time_in_seconds = linear_distance*5.7/1 + 0.3
                 self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight + v_epsilon//2, linear_vel_straight, -linear_vel_straight + v_epsilon//2)
                 time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()

@@ -10,24 +10,34 @@ import time
 
 
 
+# waypoints = [
+# [0,0,0],
+# [-1,0,0],
+# [-1,1,1.57],
+# [-2,1,0],
+# [-2,2,-1.57],
+# [-1,1,-0.78],
+# [0,0,0]
+# ]
+
 waypoints = [
 [0,0,0],
-[-1,0,0],
-[-1,1,1.57],
-[-2,1,0],
-[-2,2,-1.57],
-[-1,1,-0.78],
+[-1/2,0,0],
+[-1/2,1/2,1.57],
+[-2/2,1/2,0],
+[-2/2,2/2,-1.57],
+[-1/2,1/2,-0.78],
 [0,0,0]
 ]
 
 
 initial_time = 0
-current_pose = np.array([0,0,0])
-sleep_time = 1
+current_pose = [0,0,0]
+sleep_time = 0.5
 
 
-Kv = 2 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
-Ktheta = 1 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
+Kv = 0.1 # this is the factor which gets multiplied with linear velocity to give the number to pass to the carStraight function, has to be callibrated
+Ktheta = 0.16 # this is the factor which gets multiplied with angular velocity to give the number to pass to the carRotate function, has to be callibrated
 threshold_distance = 0.1 # callibrated depending on how fine you want the car to follow the path
 lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
@@ -61,7 +71,22 @@ class MegaPiControllerNode(Node):
             diff += 6.28
         return diff
 
+    def map_omegas(self, omega1, omega2, omega3, omega4):
+        # return values between 30 to 60 in proportion of the current omega values
 
+        # sum = abs(omega1) + abs(omega2) + abs(omega3) + abs(omega4)
+        sum = 45
+        ret_omega1 = int(int(omega1*8.35/sum)//2 + 45*np.sign(omega1))
+        ret_omega2 = int(int(omega2*8.35/sum)//2 + 45*np.sign(omega2))
+        ret_omega3 = int(int(omega3*8.35/sum)//2 + 45*np.sign(omega3))
+        ret_omega4 = int(int(omega4*8.35/sum)//2 + 45*np.sign(omega4))
+        # ret_omega1 = int(omega1*8.35)
+        # ret_omega2 = int(omega2*8.35)
+        # ret_omega3 = int(omega3*8.35)    
+        # ret_omega4 = int(omega4*8.35)
+
+
+        return [ret_omega1, ret_omega2, ret_omega3, ret_omega4]
 
     def follow_waypoints(self, waypoints):
         global current_pose, Kv, sleep_time, Ktheta, threshold_distance, angular_vel_rotate, linear_vel_straight
@@ -71,46 +96,44 @@ class MegaPiControllerNode(Node):
         print("hello1")
         try:
             while True:
-                print("hello2")
-                print (linear_distance)
-                print (threshold_distance)
+                print ("linear_dst",linear_distance)
+                print ("threshold_distance",threshold_distance)
                 if linear_distance < threshold_distance:
-                    if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
-                        # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
-                        self.mpi_ctrl.carStop()
-                    current_pose[2] = waypoints[waypoints_index][2]
+                    # if self.calc_diff_theta(waypoints[waypoints_index][2], current_pose[2]) > 0.05:
+                    #     # calculate omega that will make the robot rotate towards the waypoint
+                    #     self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                    #     time.sleep(0.5)
+                    #     self.mpi_ctrl.carStop()
+                    # current_pose[2] = waypoints[waypoints_index][2]
 
                     waypoints_index = waypoints_index + 1
-                    if waypoints_index == len(waypoints):
-                            self.mpi_ctrl.carStop()
-                            break     
-                    theta_target = np.arctan2(waypoints[waypoints_index][1] - current_pose[1], waypoints[waypoints_index][0] - current_pose[0])
+                    time.sleep(1)
+                    # if waypoints_index == len(waypoints):
+                    #         self.mpi_ctrl.carStop()
+                    #         break     
                     
-                    if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
-                        # calculate omega that will make the robot rotate towards the waypoint
-                        self.mpi_ctrl.setFourMotors(angular_vel_rotate)
-                        time.sleep(0.5)
-                        self.mpi_ctrl.carStop()
-                    current_pose[2] = theta_target 
+                    # if self.calc_diff_theta(theta_target, current_pose[2]) > 0.05:
+                    #     # calculate omega that will make the robot rotate towards the waypoint
+                    #     self.mpi_ctrl.setFourMotors(angular_vel_rotate)
+                    #     time.sleep(0.5)
+                    #     self.mpi_ctrl.carStop()
+                    # current_pose[2] = theta_target 
                     
-                linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
+                # linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
 
                 # add a while loop for the below, for loop maybe
-                self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
-                time.sleep(0.5) #callibrate this
-                self.mpi_ctrl.carStop()
+                # self.mpi_ctrl.setFourMotors(-linear_vel_straight, linear_vel_straight, linear_vel_straight, -linear_vel_straight)
+                # time.sleep(0.5) #callibrate this
+                # self.mpi_ctrl.carStop()
 
-
-
-                print("hello4")
                 current_waypoint = waypoints[waypoints_index]
                 print("current_waypoint = ", current_waypoint)
                 print("current_pose = ", current_pose)            
                 linear_distance = np.sqrt((current_waypoint[0] - current_pose[0])**2 + (current_waypoint[1] - current_pose[1])**2)
                 print("linear_distance = ", linear_distance)
-                print("hello4v")
+
+                theta_target = np.arctan2(current_waypoint[1] - current_pose[1], current_waypoint[0] - current_pose[0])
+
 
                 v_target = Kv * linear_distance
                 print("theta_target = ", theta_target)
@@ -129,17 +152,16 @@ class MegaPiControllerNode(Node):
                 omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
                 omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
                 omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
-                print(omega1, omega2, omega3, omega4)
-
+                motor_values = self.map_omegas(omega1, omega2, omega3, omega4)
+                print("motor_values = ", motor_values)
                 # TODO: Call self.mpi_ctrl's setFourMotors(self, vfl=0, vfr=0, vbl=0, vbr=0) method, but clarify why some of the parameters are being passed as negative to the motor
                 #time.sleep(1)
-                #self.mpi_ctrl.carStraight(-100, 100, 100, -100)
+                self.mpi_ctrl.setFourMotors(motor_values[2], motor_values[1], motor_values[0], motor_values[3])
                 #print("this is also working>>>")
 
                 # self.mpi_ctrl.setFourMotors(-100, 100, 100, -100)
-                print("hello5")
                 time.sleep(sleep_time)
-                print("hello6")
+                self.mpi_ctrl.carStop()
                 #current_pose[2] = (current_pose[2] + theta_target/sleep_time * sleep_time) #Find out theta range from instructors
                 current_pose[2] = self.get_under_range(current_pose[2] + gamma)
                 current_pose[0] = current_pose[0] + v_target * np.cos(current_pose[2]) * sleep_time
@@ -156,14 +178,20 @@ class MegaPiControllerNode(Node):
 if __name__ == "__main__":
     # waypoints, initial_time, initial_pose
     initial_time = time.time()
-    
+    Kv = float(input("enter kv: "))
+    Ktheta = float(input("enter ktheta: "))
     print('before init')
     rclpy.init()
     print("hello from main 1")
     mpi_ctrl_node = MegaPiControllerNode()
     print("hello from main 2")
     # Start ROS2 node
-    mpi_ctrl_node.follow_waypoints(waypoints)
+    try:
+        mpi_ctrl_node.follow_waypoints(waypoints)
+    except KeyboardInterrupt:
+        print("Control-c pressed")
+        mpi_ctrl_node.mpi_ctrl.close()
+        rclpy.shutdown()
     
     rclpy.spin(mpi_ctrl_node) # Spin for until
     # Destroy node and shutdown when done. (Optional, as node would be cleaned up by garbage collection)
