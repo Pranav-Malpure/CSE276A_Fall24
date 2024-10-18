@@ -80,7 +80,7 @@ class MegaPiControllerNode(Node):
         omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
         omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
 
-        return omega1, omega2, omega3, omega4
+        return [omega1, omega2, omega3, omega4]
 
 
 
@@ -105,10 +105,10 @@ class MegaPiControllerNode(Node):
                         time_in_seconds = abs(angle_to_be_moved)*7/(2*3.14) + 0.2
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
-                        omega1, omega2, omega3, omega4 = self.get_omegas(vx = 0, vy = 0, omegaz = angular_vel_rotate)
+                        OMEGA = self.get_omegas(vx = 0, vy = 0, omegaz = angular_vel_rotate)
                         print(self.get_omegas(vx = 0, vy = 0, omegaz = angular_vel_rotate))
                         if angle_to_be_moved >= 0:
-                            self.mpi_ctrl.setFourMotors(int(-omega1*factor), int(omega2*factor), int(-omega3*factor), int(omega4*factor))
+                            self.mpi_ctrl.setFourMotors(int(-OMEGA[0]*factor), int(OMEGA[1]*factor), int(-OMEGA[2]*factor), int(OMEGA[3]*factor))
                         else:
                             self.mpi_ctrl.setFourMotors(int(omega1*factor), int(-omega2*factor), int(omega3*factor), int(-omega4*factor))
                         time.sleep(time_in_seconds)
