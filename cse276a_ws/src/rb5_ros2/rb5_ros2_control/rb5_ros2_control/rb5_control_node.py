@@ -116,10 +116,11 @@ class MegaPiControllerNode(Node):
                         # print(self.get_omegas(vx = 0, vy = 0, omegaz = angular_vel_rotate))
                         if angle_to_be_moved >= 0:
                             # self.mpi_ctrl.setFourMotors(int(-OMEGA[0]*factor), int(OMEGA[1]*factor), int(-OMEGA[2]*factor), int(OMEGA[3]*factor))
-                            self.mpi_ctrl.setFourMotors(-int(omega1), int(omega2), -int(omega3), int(omega4))
+                            self.mpi_ctrl.setFourMotors(-int(omega1*factor), int(omega2*factor), -int(omega3*factor), int(omega4*factor))
+
                         else:
                             # self.mpi_ctrl.setFourMotors(int(OMEGA[0]*factor), int(-OMEGA[1]*factor), int(OMEGA[2]*factor), int(-OMEGA[3]*factor))
-                            self.mpi_ctrl.setFourMotors(int(omega1), -int(omega2), int(omega3), -int(omega4))
+                            self.mpi_ctrl.setFourMotors(int(omega1*factor), -int(omega2*factor), int(omega3*factor), -int(omega4*factor))
 
                         time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
@@ -145,6 +146,7 @@ class MegaPiControllerNode(Node):
                         print("angle time in seconds", time_in_seconds)
                         print('angle to be moved', angle_to_be_moved)
                         print("SEcond loop")
+
                         vx = 0
                         vy=0
                         omegaz = angular_vel_rotate 
@@ -156,11 +158,11 @@ class MegaPiControllerNode(Node):
                         # print(self.get_omegas(vx = 0, vy = 0, omegaz = angular_vel_rotate))
                         if angle_to_be_moved >= 0:
                             # self.mpi_ctrl.setFourMotors(int(-OMEGA[0]*factor), int(OMEGA[1]*factor), int(-OMEGA[2]*factor), int(OMEGA[3]*factor))
-                            self.mpi_ctrl.setFourMotors(-int(omega1), int(omega2), -int(omega3), int(omega4))
+                            self.mpi_ctrl.setFourMotors(-int(omega1*factor), int(omega2*factor), -int(omega3*factor), int(omega4*factor))
 
                         else:
                             # self.mpi_ctrl.setFourMotors(int(OMEGA[0]*factor), int(-OMEGA[1]*factor), int(OMEGA[2]*factor), int(-OMEGA[3]*factor))
-                            self.mpi_ctrl.setFourMotors(int(omega1), -int(omega2), int(omega3), -int(omega4))
+                            self.mpi_ctrl.setFourMotors(int(omega1*factor), -int(omega2*factor), int(omega3*factor), -int(omega4*factor))
 
                         time.sleep(time_in_seconds)
                         self.mpi_ctrl.carStop()
@@ -173,9 +175,18 @@ class MegaPiControllerNode(Node):
                 linear_distance = np.sqrt((waypoints[waypoints_index][0] - current_pose[0])**2 + (waypoints[waypoints_index][1] - current_pose[1])**2)
                 
                 time_in_seconds = linear_distance*7.05/1 + 0.3
-                omega1, omega2, omega3, omega4 = self.get_omegas(vx = linear_vel_straight, vy = 0, omegaz = 0)
-                print(self.get_omegas(vx = linear_vel_straight, vy = 0, omegaz = 0))
-                self.mpi_ctrl.setFourMotors(int(-omega1 * factor), int(omega2*factor) + v_epsilon//2, int(omega3*factor), int(-omega4*factor) + v_epsilon//2)
+                # omega1, omega2, omega3, omega4 = self.get_omegas(vx = linear_vel_straight, vy = 0, omegaz = 0)
+                vx = linear_vel_straight
+                vy = 0
+                omegaz = 0
+                omega1 = (1 / rw) * (vx - vy - (lx+ly)*omegaz)
+                omega2 = (1 / rw) * (vx + vy + (lx+ly)*omegaz)
+                omega3 = (1 / rw) * (vx + vy - (lx+ly)*omegaz)
+                omega4 = (1 / rw) * (vx - vy + (lx+ly)*omegaz)
+                # print(self.get_omegas(vx = linear_vel_straight, vy = 0, omegaz = 0))
+                # self.mpi_ctrl.setFourMotors(int(-omega1 * factor), int(omega2*factor) + v_epsilon//2, int(omega3*factor), int(-omega4*factor) + v_epsilon//2)
+                self.mpi_ctrl.setFourMotors(-int(omega1*factor), int(omega2*factor), int(omega3*factor), -int(omega4*factor))
+
                 time.sleep(time_in_seconds)
                 self.mpi_ctrl.carStop()
                 time.sleep(0.5)
