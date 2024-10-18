@@ -22,7 +22,7 @@ import time
 
 waypoints = [
 [0,0,0],
-[-1/2,0,0],
+[1/2,0,0],
 [-1/2,1/2,1.57],
 [-2/2,1/2,0],
 [-2/2,2/2,-1.57],
@@ -104,7 +104,7 @@ class MegaPiControllerNode(Node):
                         time.sleep(2)
                         #this will align the robot to the waypoint
                    
-                    current_pose[2] = waypoints[waypoints_index][2] # update current pose
+                    current_pose[2] = waypoints[waypoints_index][2] # update current pose 
                     print('current_pose angle after orientation', current_pose[2])
 
                     waypoints_index = waypoints_index + 1
