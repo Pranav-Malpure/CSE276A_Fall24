@@ -44,7 +44,7 @@ lx = 0.0675 #Horizontal distance between wheel axis and vertical axis of the car
 ly = 0.057 # Vertical distance between the wheel axis and horizontal axis of the car
 rw = 0.03 #Radius of the wheel
 angular_vel_rotate = 4.33
-linear_vel_straight = 0.14
+linear_vel_straight = 0.13
 v_epsilon = 2
 factor = 9.24
 
