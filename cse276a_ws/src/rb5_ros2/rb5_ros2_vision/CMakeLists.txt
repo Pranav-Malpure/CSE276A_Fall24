@@ -84,6 +84,12 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 
+# Install Python script
+install(
+  PROGRAMS
+  src/click_images.py
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 
 ament_package()
