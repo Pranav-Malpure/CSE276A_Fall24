@@ -62,6 +62,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rb5_ros2_vision" TYPE PROGRAM FILES "/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/src/click_images.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/rb5_ros2_vision")
 endif()
 
