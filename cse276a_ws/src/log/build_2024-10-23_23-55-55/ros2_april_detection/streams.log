@@ -1,0 +1,74 @@
+[0.400s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/src/build/ros2_april_detection': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/src/install/ros2_april_detection
+[0.664s] -- The C compiler identification is GNU 9.4.0
+[0.839s] -- The CXX compiler identification is GNU 9.4.0
+[0.847s] -- Check for working C compiler: /usr/bin/cc
+[1.187s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.190s] -- Detecting C compiler ABI info
+[1.550s] -- Detecting C compiler ABI info - done
+[1.582s] -- Detecting C compile features
+[1.585s] -- Detecting C compile features - done
+[1.586s] -- Check for working CXX compiler: /usr/bin/c++
+[1.944s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.948s] -- Detecting CXX compiler ABI info
+[2.330s] -- Detecting CXX compiler ABI info - done
+[2.388s] -- Detecting CXX compile features
+[2.389s] -- Detecting CXX compile features - done
+[2.392s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.451s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.453s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.698s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.750s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.756s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[3.200s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[3.244s] -- Found FastRTPS: /opt/ros/foxy/include  
+[3.372s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.428s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[3.433s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.434s] -- Looking for pthread.h
+[3.788s] -- Looking for pthread.h - found
+[3.789s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[4.161s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[4.161s] -- Looking for pthread_create in pthreads
+[4.507s] -- Looking for pthread_create in pthreads - not found
+[4.508s] -- Looking for pthread_create in pthread
+[4.901s] -- Looking for pthread_create in pthread - found
+[4.906s] -- Found Threads: TRUE  
+[5.086s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[5.192s] -- Found cv_bridge: 3.0.7 (/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/share/cv_bridge/cmake)
+[5.222s] -- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)
+[5.233s] -- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)
+[5.550s] -- Found OpenCV: /usr (found version "4.2.0") 
+[5.559s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[5.665s] -- Added test 'copyright' to check source files copyright and LICENSE
+[5.666s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[5.666s] -- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/include
+[5.667s] -- Configured cppcheck exclude dirs and/or files: 
+[5.668s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[5.669s] -- Configured cpplint exclude dirs and/or files: 
+[5.669s] -- Added test 'lint_cmake' to check CMake code style
+[5.670s] -- Added test 'uncrustify' to check C / C++ code style
+[5.671s] -- Configured uncrustify additional arguments: 
+[5.671s] -- Added test 'xmllint' to check XML markup files
+[5.680s] -- Configuring done
+[5.712s] -- Generating done
+[5.714s] -- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/src/build/ros2_april_detection
+[5.732s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/src/build/ros2_april_detection' returned '0': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/src/install/ros2_april_detection
+[5.746s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/src/build/ros2_april_detection': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/src/build/ros2_april_detection -- -j8 -l8
+[5.917s] [35m[1mScanning dependencies of target april_detection_node[0m
+[6.073s] [ 66%] [32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection_node.cpp.o[0m
+[6.074s] [ 66%] [32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection.cpp.o[0m
+[8.883s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:[m[K In member function ‘[01m[Kstd::tuple<std::vector<apriltag_pose_t, std::allocator<apriltag_pose_t> >, std::vector<int, std::allocator<int> >, cv::Mat> AprilDetection::processImage(cv::Mat) const[m[K’:
+[8.885s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:24:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[8.887s]    24 |   image_u8_t im = { [01;35m[K.[m[Kwidth  = image_gray.cols,
+[8.889s]       |                     [01;35m[K^[m[K
+[8.890s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:25:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[8.891s]    25 |                     [01;35m[K.[m[Kheight = image_gray.rows,
+[8.893s]       |                     [01;35m[K^[m[K
+[8.894s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:26:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[8.895s]    26 |                     [01;35m[K.[m[Kstride = image_gray.cols,
+[8.896s]       |                     [01;35m[K^[m[K
+[8.898s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:27:21:[m[K [01;35m[Kwarning: [m[KC++ designated initializers only available with ‘[01m[K-std=c++2a[m[K’ or ‘[01m[K-std=gnu++2a[m[K’ [[01;35m[K-Wpedantic[m[K]
+[8.899s]    27 |                     [01;35m[K.[m[Kbuf    = image_gray.data
+[8.900s]       |                     [01;35m[K^[m[K
+[14.861s] [100%] [32m[1mLinking CXX executable april_detection_node[0m
+[15.834s] [100%] Built target april_detection_node
