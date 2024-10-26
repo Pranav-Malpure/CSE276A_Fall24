@@ -1,0 +1,1 @@
+Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/image_geometry -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry

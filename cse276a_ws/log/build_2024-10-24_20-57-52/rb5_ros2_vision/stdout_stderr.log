@@ -1,0 +1,9 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o[0m
+In file included from [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/src/rb_camera_ocv_node.cpp:1[m[K:
+[01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision/rb_camera_ocv.h:9:10:[m[K [01;31m[Kfatal error: [m[Kcv_bridge/cv_bridge.h: No such file or directory
+    9 | #include [01;31m[K<cv_bridge/cv_bridge.h>[m[K
+      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+compilation terminated.
+make[2]: *** [CMakeFiles/rb_camera_ocv_node.dir/build.make:63: CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/rb_camera_ocv_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

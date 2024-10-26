@@ -1,0 +1,29 @@
+[0.072s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/key_joy -- -j8 -l8
+[0.248s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/key_joy -- -j8 -l8
+[0.353s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/key_joy
+[0.370s] -- Install configuration: ""
+[0.373s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.sh
+[0.376s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.dsv
+[0.376s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy
+[0.377s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/__init__.py
+[0.377s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_joy_node.py
+[0.378s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_parser.py
+[0.424s] Listing '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy'...
+[0.444s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_parser.py
+[0.444s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_joy_node.py
+[0.445s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/package_run_dependencies/key_joy
+[0.445s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/parent_prefix_path/key_joy
+[0.445s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.sh
+[0.446s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.dsv
+[0.447s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.sh
+[0.449s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.dsv
+[0.451s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.bash
+[0.452s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.sh
+[0.453s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.zsh
+[0.454s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.dsv
+[0.455s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.dsv
+[0.455s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/packages/key_joy
+[0.456s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig.cmake
+[0.457s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig-version.cmake
+[0.457s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.xml
+[0.458s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/key_joy

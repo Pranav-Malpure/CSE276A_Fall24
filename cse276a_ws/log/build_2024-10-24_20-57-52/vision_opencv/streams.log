@@ -1,0 +1,21 @@
+[0.108s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/vision_opencv': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/vision_opencv -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/vision_opencv
+[0.341s] -- The C compiler identification is GNU 9.4.0
+[0.518s] -- The CXX compiler identification is GNU 9.4.0
+[0.524s] -- Check for working C compiler: /usr/bin/cc
+[0.791s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.796s] -- Detecting C compiler ABI info
+[1.160s] -- Detecting C compiler ABI info - done
+[1.196s] -- Detecting C compile features
+[1.197s] -- Detecting C compile features - done
+[1.201s] -- Check for working CXX compiler: /usr/bin/c++
+[1.587s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.599s] -- Detecting CXX compiler ABI info
+[2.022s] -- Detecting CXX compiler ABI info - done
+[2.076s] -- Detecting CXX compile features
+[2.077s] -- Detecting CXX compile features - done
+[2.082s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.142s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.143s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.524s] -- Configuring done
+[2.529s] -- Generating done
+[2.531s] -- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/vision_opencv
