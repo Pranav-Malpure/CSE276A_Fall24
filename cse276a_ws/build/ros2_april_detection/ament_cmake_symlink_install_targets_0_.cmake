@@ -1,0 +1,1 @@
+ament_cmake_symlink_install_targets("TARGET_FILES" "/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection/april_detection_node" "TARGETS" "april_detection_node" "DESTINATION" "lib/ros2_april_detection")

@@ -1,0 +1,57 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+-- Found cv_bridge: 3.0.7 (/opt/ros/foxy/share/cv_bridge/cmake)
+-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+-- Added test 'copyright' to check source files copyright and LICENSE
+-- Added test 'cppcheck' to perform static code analysis on C / C++ code
+-- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision
+-- Configured cppcheck exclude dirs and/or files: 
+-- Added test 'cpplint' to check C / C++ code against the Google style
+-- Configured cpplint exclude dirs and/or files: 
+-- Added test 'flake8' to check Python code syntax and style conventions
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+-- Added test 'uncrustify' to check C / C++ code style
+-- Configured uncrustify additional arguments: 
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision
+[ 50%] [32mBuilding CXX object CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o[0m
+[100%] [32m[1mLinking CXX executable rb_camera_ocv_node[0m
+[100%] Built target rb_camera_ocv_node
+-- Install configuration: ""
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_both_ocv.launch
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_both_ocv_launch.py
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_main_ocv.launch.xml
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_main_ocv_launch.py
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_side_ocv.launch
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_side_ocv_launch.py
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_webcam_ocv.launch
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/launch/rb_camera_webcam_ocv_launch.py
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/rb5_ros2_vision/rb_camera_ocv_node
+-- Set runtime path of "/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/rb5_ros2_vision/rb_camera_ocv_node" to ""
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/lib/rb5_ros2_vision/click_images.py
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/package_run_dependencies/rb5_ros2_vision
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/parent_prefix_path/rb5_ros2_vision
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/ament_prefix_path.sh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/ament_prefix_path.dsv
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/path.sh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/environment/path.dsv
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.bash
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.sh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.zsh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/local_setup.dsv
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.dsv
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/ament_index/resource_index/packages/rb5_ros2_vision
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/cmake/rb5_ros2_visionConfig.cmake
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/cmake/rb5_ros2_visionConfig-version.cmake
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision/share/rb5_ros2_vision/package.xml
