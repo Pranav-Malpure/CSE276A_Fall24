@@ -1,0 +1,22 @@
+[0.079s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/image_geometry -- -j8 -l8
+[0.205s] [35m[1mScanning dependencies of target gtest[0m
+[0.217s] [35m[1mScanning dependencies of target image_geometry[0m
+[0.228s] [35m[1mScanning dependencies of target gtest_main[0m
+[0.264s] [  9%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[0.287s] [ 18%] [32mBuilding CXX object CMakeFiles/image_geometry.dir/src/pinhole_camera_model.cpp.o[0m
+[0.288s] [ 27%] [32mBuilding CXX object CMakeFiles/image_geometry.dir/src/stereo_camera_model.cpp.o[0m
+[0.300s] [ 36%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[1.949s] [ 45%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[2.161s] [ 45%] Built target gtest_main
+[2.956s] [ 54%] [32m[1mLinking CXX shared library libimage_geometry.so[0m
+[3.255s] [ 54%] Built target image_geometry
+[5.266s] [ 63%] [32m[1mLinking CXX static library libgtest.a[0m
+[5.519s] [ 63%] Built target gtest
+[5.569s] [35m[1mScanning dependencies of target image_geometry-utest[0m
+[5.570s] [35m[1mScanning dependencies of target image_geometry-utest-equi[0m
+[5.667s] [ 72%] [32mBuilding CXX object test/CMakeFiles/image_geometry-utest.dir/utest.cpp.o[0m
+[5.668s] [ 81%] [32mBuilding CXX object test/CMakeFiles/image_geometry-utest-equi.dir/utest_equi.cpp.o[0m
+[7.807s] [ 90%] [32m[1mLinking CXX executable image_geometry-utest[0m
+[8.082s] [100%] [32m[1mLinking CXX executable image_geometry-utest-equi[0m
+[8.192s] [100%] Built target image_geometry-utest
+[8.464s] [100%] Built target image_geometry-utest-equi

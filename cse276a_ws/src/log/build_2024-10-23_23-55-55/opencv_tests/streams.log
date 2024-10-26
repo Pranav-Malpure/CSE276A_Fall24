@@ -1,0 +1,45 @@
+[0.995s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/opencv_tests': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/opencv_tests build --build-base /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build install --record /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/install.log --single-version-externally-managed install_data
+[1.208s] running egg_info
+[1.209s] creating ../../build/opencv_tests/opencv_tests.egg-info
+[1.210s] writing ../../build/opencv_tests/opencv_tests.egg-info/PKG-INFO
+[1.210s] writing dependency_links to ../../build/opencv_tests/opencv_tests.egg-info/dependency_links.txt
+[1.211s] writing entry points to ../../build/opencv_tests/opencv_tests.egg-info/entry_points.txt
+[1.213s] writing requirements to ../../build/opencv_tests/opencv_tests.egg-info/requires.txt
+[1.214s] writing top-level names to ../../build/opencv_tests/opencv_tests.egg-info/top_level.txt
+[1.216s] writing manifest file '../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.249s] reading manifest file '../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.250s] writing manifest file '../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.250s] running build
+[1.251s] running build_py
+[1.251s] creating /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build
+[1.252s] creating /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib
+[1.253s] creating /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests
+[1.253s] copying opencv_tests/__init__.py -> /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests
+[1.253s] copying opencv_tests/broadcast.py -> /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests
+[1.254s] copying opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests
+[1.255s] copying opencv_tests/source.py -> /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests
+[1.256s] running install
+[1.256s] running install_lib
+[1.257s] creating /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.257s] copying /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests/__init__.py -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.258s] copying /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests/broadcast.py -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.258s] copying /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.259s] copying /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build/lib/opencv_tests/source.py -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.259s] byte-compiling /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/__init__.py to __init__.cpython-38.pyc
+[1.260s] byte-compiling /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/broadcast.py to broadcast.cpython-38.pyc
+[1.260s] byte-compiling /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/rosfacedetect.py to rosfacedetect.cpython-38.pyc
+[1.260s] byte-compiling /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/source.py to source.cpython-38.pyc
+[1.261s] running install_data
+[1.261s] creating /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/share/ament_index
+[1.262s] creating /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/share/ament_index/resource_index
+[1.262s] creating /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/share/ament_index/resource_index/packages
+[1.263s] copying resource/opencv_tests -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/share/ament_index/resource_index/packages
+[1.263s] copying package.xml -> /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/share/opencv_tests
+[1.264s] running install_egg_info
+[1.264s] Copying ../../build/opencv_tests/opencv_tests.egg-info to /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages/opencv_tests-3.0.7-py3.8.egg-info
+[1.265s] running install_scripts
+[1.278s] Installing broadcast script to /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/opencv_tests
+[1.278s] Installing rosfacedetect script to /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/opencv_tests
+[1.279s] Installing source script to /root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/opencv_tests
+[1.279s] writing list of installed files to '/root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/install.log'
+[1.324s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/opencv_tests' returned '0': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/CSE276A_Fall24/cse276a_ws/src/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/src/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/opencv_tests build --build-base /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/build install --record /root/CSE276A_Fall24/cse276a_ws/src/build/opencv_tests/install.log --single-version-externally-managed install_data

@@ -1,0 +1,447 @@
+[0.000000] (-) TimerEvent: {}
+[0.001496] (cv_bridge) JobQueued: {'identifier': 'cv_bridge', 'dependencies': OrderedDict()}
+[0.001982] (image_geometry) JobQueued: {'identifier': 'image_geometry', 'dependencies': OrderedDict()}
+[0.002379] (key_joy) JobQueued: {'identifier': 'key_joy', 'dependencies': OrderedDict()}
+[0.002712] (rb5_ros2_control) JobQueued: {'identifier': 'rb5_ros2_control', 'dependencies': OrderedDict()}
+[0.003042] (opencv_tests) JobQueued: {'identifier': 'opencv_tests', 'dependencies': OrderedDict([('cv_bridge', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge')])}
+[0.003415] (rb5_ros2_vision) JobQueued: {'identifier': 'rb5_ros2_vision', 'dependencies': OrderedDict([('cv_bridge', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge')])}
+[0.003791] (ros2_april_detection) JobQueued: {'identifier': 'ros2_april_detection', 'dependencies': OrderedDict([('cv_bridge', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge')])}
+[0.004137] (vision_opencv) JobQueued: {'identifier': 'vision_opencv', 'dependencies': OrderedDict([('cv_bridge', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge'), ('image_geometry', '/root/CSE276A_Fall24/cse276a_ws/install/image_geometry')])}
+[0.004496] (cv_bridge) JobStarted: {'identifier': 'cv_bridge'}
+[0.029739] (image_geometry) JobStarted: {'identifier': 'image_geometry'}
+[0.046593] (key_joy) JobStarted: {'identifier': 'key_joy'}
+[0.065203] (rb5_ros2_control) JobStarted: {'identifier': 'rb5_ros2_control'}
+[0.089335] (cv_bridge) JobProgress: {'identifier': 'cv_bridge', 'progress': 'cmake'}
+[0.093425] (cv_bridge) JobProgress: {'identifier': 'cv_bridge', 'progress': 'build'}
+[0.096458] (cv_bridge) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.100669] (-) TimerEvent: {}
+[0.121061] (image_geometry) JobProgress: {'identifier': 'image_geometry', 'progress': 'cmake'}
+[0.122944] (image_geometry) Command: {'cmd': ['/usr/bin/cmake', '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/image_geometry', '-DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/cse276a_ws/install/image_geometry'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.135350] (key_joy) JobProgress: {'identifier': 'key_joy', 'progress': 'cmake'}
+[0.138786] (key_joy) JobProgress: {'identifier': 'key_joy', 'progress': 'build'}
+[0.139905] (key_joy) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.178626] (rb5_ros2_control) JobProgress: {'identifier': 'rb5_ros2_control', 'progress': 'cmake'}
+[0.187955] (rb5_ros2_control) JobProgress: {'identifier': 'rb5_ros2_control', 'progress': 'build'}
+[0.190102] (rb5_ros2_control) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.201245] (-) TimerEvent: {}
+[0.298646] (key_joy) CommandEnded: {'returncode': 0}
+[0.301997] (-) TimerEvent: {}
+[0.326737] (cv_bridge) StdoutLine: {'line': b'[ 12%] Built target gtest_main\n'}
+[0.336388] (cv_bridge) StdoutLine: {'line': b'[ 25%] Built target gtest\n'}
+[0.347609] (rb5_ros2_control) CommandEnded: {'returncode': 0}
+[0.398477] (cv_bridge) StdoutLine: {'line': b'[ 43%] Built target cv_bridge\n'}
+[0.402223] (-) TimerEvent: {}
+[0.412720] (key_joy) JobProgress: {'identifier': 'key_joy', 'progress': 'install'}
+[0.455030] (key_joy) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/key_joy', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/key_joy'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.479474] (rb5_ros2_control) JobProgress: {'identifier': 'rb5_ros2_control', 'progress': 'install'}
+[0.480520] (key_joy) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.484434] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.sh\n'}
+[0.484925] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/pythonpath.dsv\n'}
+[0.485335] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy\n'}
+[0.485739] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/__init__.py\n'}
+[0.487079] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_joy_node.py\n'}
+[0.487497] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy/key_parser.py\n'}
+[0.487891] (rb5_ros2_control) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_control'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.497541] (rb5_ros2_control) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.498125] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/pythonpath.sh\n'}
+[0.498279] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/pythonpath.dsv\n'}
+[0.498417] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control\n'}
+[0.498656] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/__init__.py\n'}
+[0.498941] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/mpi_control.py\n'}
+[0.499035] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/rb5_control_node.py\n'}
+[0.499122] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/rb5_keyjoy_control_node.py\n'}
+[0.499205] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/assignment1.py\n'}
+[0.501167] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control/.mpi_control.py.swp\n'}
+[0.503195] (-) TimerEvent: {}
+[0.512315] (cv_bridge) StdoutLine: {'line': b'[ 81%] Built target cv_bridge-utest\n'}
+[0.513289] (cv_bridge) StdoutLine: {'line': b'[100%] Built target cv_bridge_boost\n'}
+[0.541741] (rb5_ros2_control) StdoutLine: {'line': b"Listing '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages/rb5_ros2_control'...\n"}
+[0.544164] (key_joy) StdoutLine: {'line': b"Listing '/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages/key_joy'...\n"}
+[0.550375] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/mpi_control.py\n'}
+[0.552292] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_parser.py\n'}
+[0.553307] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/key_joy/key_joy_node.py\n'}
+[0.554826] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/package_run_dependencies/key_joy\n'}
+[0.555262] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/parent_prefix_path/key_joy\n'}
+[0.555765] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/rb5_control_node.py\n'}
+[0.556399] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/rb5_ros2_control/rb5_keyjoy_control_node.py\n'}
+[0.556971] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/package_run_dependencies/rb5_ros2_control\n'}
+[0.557370] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/parent_prefix_path/rb5_ros2_control\n'}
+[0.557754] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/ament_prefix_path.sh\n'}
+[0.558358] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/ament_prefix_path.dsv\n'}
+[0.562715] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/path.sh\n'}
+[0.564148] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/environment/path.dsv\n'}
+[0.564736] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.bash\n'}
+[0.565160] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.sh\n'}
+[0.566406] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.zsh\n'}
+[0.567234] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/local_setup.dsv\n'}
+[0.567859] (rb5_ros2_control) StdoutLine: {'line': b'-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.dsv\n'}
+[0.568738] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/ament_index/resource_index/packages/rb5_ros2_control\n'}
+[0.569453] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/cmake/rb5_ros2_controlConfig.cmake\n'}
+[0.570430] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/cmake/rb5_ros2_controlConfig-version.cmake\n'}
+[0.571128] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.sh\n'}
+[0.571584] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/ament_prefix_path.dsv\n'}
+[0.572110] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.sh\n'}
+[0.572544] (rb5_ros2_control) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/share/rb5_ros2_control/package.xml\n'}
+[0.573165] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/environment/path.dsv\n'}
+[0.573692] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.bash\n'}
+[0.574137] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.sh\n'}
+[0.574883] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.zsh\n'}
+[0.575812] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/local_setup.dsv\n'}
+[0.576222] (key_joy) StdoutLine: {'line': b'-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.dsv\n'}
+[0.576742] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/ament_index/resource_index/packages/key_joy\n'}
+[0.577144] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig.cmake\n'}
+[0.577726] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/cmake/key_joyConfig-version.cmake\n'}
+[0.578375] (key_joy) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/key_joy/share/key_joy/package.xml\n'}
+[0.578791] (rb5_ros2_control) CommandEnded: {'returncode': 0}
+[0.605542] (-) TimerEvent: {}
+[0.615718] (cv_bridge) CommandEnded: {'returncode': 0}
+[0.621933] (image_geometry) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[0.633650] (key_joy) CommandEnded: {'returncode': 0}
+[0.705585] (-) TimerEvent: {}
+[0.737647] (rb5_ros2_control) JobEnded: {'identifier': 'rb5_ros2_control', 'rc': 0}
+[0.756556] (cv_bridge) JobProgress: {'identifier': 'cv_bridge', 'progress': 'install'}
+[0.757876] (cv_bridge) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[0.796959] (cv_bridge) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.798051] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/pythonpath.sh\n'}
+[0.798690] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/pythonpath.dsv\n'}
+[0.799700] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge\n'}
+[0.800820] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/__init__.py\n'}
+[0.801387] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/core.py\n'}
+[0.806614] (-) TimerEvent: {}
+[0.826674] (key_joy) JobEnded: {'identifier': 'key_joy', 'rc': 0}
+[0.834552] (cv_bridge) StdoutLine: {'line': b"Listing '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge'...\n"}
+[0.835403] (cv_bridge) StdoutLine: {'line': b"Listing '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/boost'...\n"}
+[0.838729] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/library_path.sh\n'}
+[0.839591] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/library_path.dsv\n'}
+[0.840061] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge\n'}
+[0.840478] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/cv_bridge.h\n'}
+[0.840893] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/rgb_colors.h\n'}
+[0.841386] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/libcv_bridge.so\n'}
+[0.841881] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/package_run_dependencies/cv_bridge\n'}
+[0.843579] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/parent_prefix_path/cv_bridge\n'}
+[0.844319] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/ament_prefix_path.sh\n'}
+[0.845774] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/ament_prefix_path.dsv\n'}
+[0.846533] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/path.sh\n'}
+[0.847430] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/path.dsv\n'}
+[0.848165] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.bash\n'}
+[0.848973] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.sh\n'}
+[0.849711] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.zsh\n'}
+[0.850552] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.dsv\n'}
+[0.851223] (cv_bridge) StdoutLine: {'line': b'-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/package.dsv\n'}
+[0.851915] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/packages/cv_bridge\n'}
+[0.852591] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridge-extras.cmake\n'}
+[0.853262] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.853940] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.854996] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.856573] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig.cmake\n'}
+[0.858496] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake\n'}
+[0.863487] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/package.xml\n'}
+[0.864371] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/libcv_bridge.so\n'}
+[0.865277] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/cv_bridge_export.h\n'}
+[0.866254] (cv_bridge) StdoutLine: {'line': b'-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/boost/cv_bridge_boost.so\n'}
+[0.867407] (cv_bridge) CommandEnded: {'returncode': 0}
+[0.907213] (-) TimerEvent: {}
+[0.944171] (image_geometry) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[0.962922] (image_geometry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[1.007674] (-) TimerEvent: {}
+[1.108977] (-) TimerEvent: {}
+[1.121259] (cv_bridge) JobEnded: {'identifier': 'cv_bridge', 'rc': 0}
+[1.124708] (opencv_tests) JobStarted: {'identifier': 'opencv_tests'}
+[1.138974] (rb5_ros2_vision) JobStarted: {'identifier': 'rb5_ros2_vision'}
+[1.159874] (ros2_april_detection) JobStarted: {'identifier': 'ros2_april_detection'}
+[1.209311] (-) TimerEvent: {}
+[1.256924] (image_geometry) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[1.270349] (image_geometry) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.309586] (-) TimerEvent: {}
+[1.474839] (-) TimerEvent: {}
+[1.505783] (rb5_ros2_vision) JobProgress: {'identifier': 'rb5_ros2_vision', 'progress': 'cmake'}
+[1.509381] (rb5_ros2_vision) JobProgress: {'identifier': 'rb5_ros2_vision', 'progress': 'build'}
+[1.511218] (rb5_ros2_vision) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[1.532408] (ros2_april_detection) JobProgress: {'identifier': 'ros2_april_detection', 'progress': 'cmake'}
+[1.534413] (ros2_april_detection) JobProgress: {'identifier': 'ros2_april_detection', 'progress': 'build'}
+[1.535239] (ros2_april_detection) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection', '--', '-j8', '-l8'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection', 'env': OrderedDict([('SHELL', '/bin/bash'), ('ROS_VERSION', '2'), ('ROS_PYTHON_VERSION', '3'), ('PWD', '/root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection'), ('LOGNAME', 'root'), ('XDG_SESSION_TYPE', 'tty'), ('ROS_DOMAIN_ID', '42'), ('MOTD_SHOWN', 'pam'), ('HOME', '/root'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy'), ('CMAKE_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy'), ('COLCON_PREFIX_PATH', '/root/CSE276A_Fall24/cse276a_ws/install'), ('SSH_CONNECTION', '192.168.163.68 56455 192.168.163.102 22'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('XDG_SESSION_CLASS', 'user'), ('PYTHONPATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('TERM', 'xterm-256color'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('SHLVL', '1'), ('XDG_SESSION_ID', '2'), ('LD_LIBRARY_PATH', '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib'), ('XDG_RUNTIME_DIR', '/run/user/0'), ('ROS_LOCALHOST_ONLY', '0'), ('SSH_CLIENT', '192.168.163.68 56455 22'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('SSH_TTY', '/dev/pts/0'), ('ROS_DISTRO', 'foxy'), ('OLDPWD', '/root/CSE276A_Fall24'), ('_', '/usr/bin/env')]), 'shell': False}
+[1.575125] (-) TimerEvent: {}
+[1.582941] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.607128] (ros2_april_detection) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.617978] (image_geometry) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.643200] (image_geometry) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.645198] (image_geometry) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.647043] (rb5_ros2_vision) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.648400] (ros2_april_detection) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.649791] (image_geometry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[1.675326] (-) TimerEvent: {}
+[1.776433] (-) TimerEvent: {}
+[1.878098] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.879789] (-) TimerEvent: {}
+[1.903099] (ros2_april_detection) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[1.923797] (rb5_ros2_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.929431] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.938976] (ros2_april_detection) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.942299] (ros2_april_detection) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.980091] (-) TimerEvent: {}
+[2.031702] (image_geometry) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[2.043372] (image_geometry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[2.058628] (opencv_tests) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../../build/opencv_tests', 'build', '--build-base', '/root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build', 'install', '--record', '/root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/opencv_tests', 'env': {'SHELL': '/bin/bash', 'ROS_VERSION': '2', 'ROS_PYTHON_VERSION': '3', 'PWD': '/root/CSE276A_Fall24/cse276a_ws/build/opencv_tests', 'LOGNAME': 'root', 'XDG_SESSION_TYPE': 'tty', 'ROS_DOMAIN_ID': '42', 'MOTD_SHOWN': 'pam', 'HOME': '/root', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'AMENT_PREFIX_PATH': '/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/opt/ros/foxy', 'CMAKE_PREFIX_PATH': '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy', 'COLCON_PREFIX_PATH': '/root/CSE276A_Fall24/cse276a_ws/install', 'SSH_CONNECTION': '192.168.163.68 56455 192.168.163.102 22', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'XDG_SESSION_CLASS': 'user', 'PYTHONPATH': '/root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1', 'TERM': 'xterm-256color', 'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'root', 'SHLVL': '1', 'XDG_SESSION_ID': '2', 'LD_LIBRARY_PATH': '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib', 'XDG_RUNTIME_DIR': '/run/user/0', 'ROS_LOCALHOST_ONLY': '0', 'SSH_CLIENT': '192.168.163.68 56455 22', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/0/bus', 'SSH_TTY': '/dev/pts/0', 'ROS_DISTRO': 'foxy', 'OLDPWD': '/root/CSE276A_Fall24', '_': '/usr/bin/env'}, 'shell': False}
+[2.080348] (-) TimerEvent: {}
+[2.120513] (rb5_ros2_vision) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.121864] (ros2_april_detection) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.180561] (-) TimerEvent: {}
+[2.191322] (ros2_april_detection) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.193159] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.195149] (rb5_ros2_vision) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.196298] (ros2_april_detection) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.264226] (opencv_tests) StdoutLine: {'line': b'running egg_info\n'}
+[2.266326] (opencv_tests) StdoutLine: {'line': b'creating ../../../build/opencv_tests/opencv_tests.egg-info\n'}
+[2.266763] (opencv_tests) StdoutLine: {'line': b'writing ../../../build/opencv_tests/opencv_tests.egg-info/PKG-INFO\n'}
+[2.267158] (opencv_tests) StdoutLine: {'line': b'writing dependency_links to ../../../build/opencv_tests/opencv_tests.egg-info/dependency_links.txt\n'}
+[2.267546] (opencv_tests) StdoutLine: {'line': b'writing entry points to ../../../build/opencv_tests/opencv_tests.egg-info/entry_points.txt\n'}
+[2.267930] (opencv_tests) StdoutLine: {'line': b'writing requirements to ../../../build/opencv_tests/opencv_tests.egg-info/requires.txt\n'}
+[2.268317] (opencv_tests) StdoutLine: {'line': b'writing top-level names to ../../../build/opencv_tests/opencv_tests.egg-info/top_level.txt\n'}
+[2.269668] (opencv_tests) StdoutLine: {'line': b"writing manifest file '../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'\n"}
+[2.280761] (-) TimerEvent: {}
+[2.308142] (opencv_tests) StdoutLine: {'line': b"reading manifest file '../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'\n"}
+[2.310711] (opencv_tests) StdoutLine: {'line': b"writing manifest file '../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'\n"}
+[2.312209] (opencv_tests) StdoutLine: {'line': b'running build\n'}
+[2.314006] (opencv_tests) StdoutLine: {'line': b'running build_py\n'}
+[2.314545] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build\n'}
+[2.314946] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib\n'}
+[2.315334] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests\n'}
+[2.315734] (opencv_tests) StdoutLine: {'line': b'copying opencv_tests/__init__.py -> /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests\n'}
+[2.316224] (opencv_tests) StdoutLine: {'line': b'copying opencv_tests/broadcast.py -> /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests\n'}
+[2.316678] (opencv_tests) StdoutLine: {'line': b'copying opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests\n'}
+[2.317076] (opencv_tests) StdoutLine: {'line': b'copying opencv_tests/source.py -> /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests\n'}
+[2.317568] (opencv_tests) StdoutLine: {'line': b'running install\n'}
+[2.318127] (opencv_tests) StdoutLine: {'line': b'running install_lib\n'}
+[2.318814] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests\n'}
+[2.319194] (opencv_tests) StdoutLine: {'line': b'copying /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests/__init__.py -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests\n'}
+[2.319593] (opencv_tests) StdoutLine: {'line': b'copying /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests/broadcast.py -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests\n'}
+[2.319981] (opencv_tests) StdoutLine: {'line': b'copying /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests\n'}
+[2.320358] (opencv_tests) StdoutLine: {'line': b'copying /root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/build/lib/opencv_tests/source.py -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests\n'}
+[2.320821] (opencv_tests) StdoutLine: {'line': b'byte-compiling /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/__init__.py to __init__.cpython-38.pyc\n'}
+[2.321240] (opencv_tests) StdoutLine: {'line': b'byte-compiling /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/broadcast.py to broadcast.cpython-38.pyc\n'}
+[2.321655] (opencv_tests) StdoutLine: {'line': b'byte-compiling /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/rosfacedetect.py to rosfacedetect.cpython-38.pyc\n'}
+[2.322131] (opencv_tests) StdoutLine: {'line': b'byte-compiling /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/source.py to source.cpython-38.pyc\n'}
+[2.322545] (opencv_tests) StdoutLine: {'line': b'running install_data\n'}
+[2.322919] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/share/ament_index\n'}
+[2.323290] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/share/ament_index/resource_index\n'}
+[2.323665] (opencv_tests) StdoutLine: {'line': b'creating /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/share/ament_index/resource_index/packages\n'}
+[2.324042] (opencv_tests) StdoutLine: {'line': b'copying resource/opencv_tests -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/share/ament_index/resource_index/packages\n'}
+[2.324423] (opencv_tests) StdoutLine: {'line': b'copying package.xml -> /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/share/opencv_tests\n'}
+[2.324818] (opencv_tests) StdoutLine: {'line': b'running install_egg_info\n'}
+[2.325203] (opencv_tests) StdoutLine: {'line': b'Copying ../../../build/opencv_tests/opencv_tests.egg-info to /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/python3.8/site-packages/opencv_tests-3.0.7-py3.8.egg-info\n'}
+[2.325585] (opencv_tests) StdoutLine: {'line': b'running install_scripts\n'}
+[2.343184] (opencv_tests) StdoutLine: {'line': b'Installing broadcast script to /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/opencv_tests\n'}
+[2.344126] (opencv_tests) StdoutLine: {'line': b'Installing rosfacedetect script to /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/opencv_tests\n'}
+[2.344591] (opencv_tests) StdoutLine: {'line': b'Installing source script to /root/CSE276A_Fall24/cse276a_ws/install/opencv_tests/lib/opencv_tests\n'}
+[2.345017] (opencv_tests) StdoutLine: {'line': b"writing list of installed files to '/root/CSE276A_Fall24/cse276a_ws/build/opencv_tests/install.log'\n"}
+[2.367658] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[2.368591] (ros2_april_detection) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[2.382530] (opencv_tests) CommandEnded: {'returncode': 0}
+[2.384989] (-) TimerEvent: {}
+[2.410565] (opencv_tests) JobEnded: {'identifier': 'opencv_tests', 'rc': 0}
+[2.434521] (image_geometry) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[2.480260] (image_geometry) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[2.482061] (image_geometry) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[2.483525] (image_geometry) StdoutLine: {'line': b'-- Found ament_cmake_python: 0.9.12 (/opt/ros/foxy/share/ament_cmake_python/cmake)\n'}
+[2.485470] (image_geometry) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[2.487127] (-) TimerEvent: {}
+[2.488493] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found cv_bridge: 3.0.7 (/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake)\n'}
+[2.495408] (ros2_april_detection) StdoutLine: {'line': b'-- Found cv_bridge: 3.0.7 (/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake)\n'}
+[2.526821] (ros2_april_detection) StdoutLine: {'line': b'-- Found tf2: 0.13.14 (/opt/ros/foxy/share/tf2/cmake)\n'}
+[2.538100] (ros2_april_detection) StdoutLine: {'line': b'-- Found tf2_ros: 0.13.14 (/opt/ros/foxy/share/tf2_ros/cmake)\n'}
+[2.551926] (rb5_ros2_vision) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.568203] (image_geometry) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") \n'}
+[2.569959] (image_geometry) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.587462] (-) TimerEvent: {}
+[2.672216] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[2.674728] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[2.676323] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision\n'}
+[2.677744] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[2.680280] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[2.681749] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[2.683239] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[2.684428] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[2.685578] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the style conventions in PEP 257\n"}
+[2.686949] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[2.688067] (-) TimerEvent: {}
+[2.689097] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[2.690752] (rb5_ros2_vision) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[2.692048] (rb5_ros2_vision) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.717701] (rb5_ros2_vision) StdoutLine: {'line': b'-- Generating done\n'}
+[2.719986] (rb5_ros2_vision) StdoutLine: {'line': b'-- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision\n'}
+[2.788526] (-) TimerEvent: {}
+[2.850593] (rb5_ros2_vision) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target rb_camera_ocv_node\x1b[0m\n'}
+[2.888731] (-) TimerEvent: {}
+[2.894105] (ros2_april_detection) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)\n'}
+[2.945159] (image_geometry) StdoutLine: {'line': b'-- Found OpenCV: /usr (found version "4.2.0") found components: calib3d core highgui imgproc \n'}
+[2.947190] (image_geometry) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[2.978500] (image_geometry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.987594] (image_geometry) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[2.989301] (-) TimerEvent: {}
+[2.992667] (rb5_ros2_vision) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o\x1b[0m\n'}
+[3.004385] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[3.005368] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[3.005875] (ros2_april_detection) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/include\n'}
+[3.006321] (ros2_april_detection) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[3.006801] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[3.007254] (ros2_april_detection) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[3.007649] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.008244] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[3.008694] (ros2_april_detection) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[3.009065] (ros2_april_detection) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.015983] (ros2_april_detection) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.055810] (ros2_april_detection) StdoutLine: {'line': b'-- Generating done\n'}
+[3.057736] (ros2_april_detection) StdoutLine: {'line': b'-- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/ros2_april_detection\n'}
+[3.089623] (-) TimerEvent: {}
+[3.159872] (ros2_april_detection) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target april_detection_node\x1b[0m\n'}
+[3.189823] (-) TimerEvent: {}
+[3.263967] (ros2_april_detection) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection_node.cpp.o\x1b[0m\n'}
+[3.264816] (ros2_april_detection) StdoutLine: {'line': b'[ 66%] \x1b[32mBuilding CXX object CMakeFiles/april_detection_node.dir/src/april_detection.cpp.o\x1b[0m\n'}
+[3.290169] (-) TimerEvent: {}
+[3.391283] (-) TimerEvent: {}
+[3.461608] (image_geometry) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[3.491752] (-) TimerEvent: {}
+[3.514048] (image_geometry) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[3.547533] (rb5_ros2_vision) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/src/rb_camera_ocv_node.cpp:1\x1b[m\x1b[K:\n'}
+[3.549356] (rb5_ros2_vision) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision/rb_camera_ocv.h:9:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Kcv_bridge/cv_bridge.h: No such file or directory\n'}
+[3.552537] (rb5_ros2_vision) StderrLine: {'line': b'    9 | #include \x1b[01;31m\x1b[K<cv_bridge/cv_bridge.h>\x1b[m\x1b[K\n'}
+[3.553873] (rb5_ros2_vision) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[3.556482] (rb5_ros2_vision) StderrLine: {'line': b'compilation terminated.\n'}
+[3.575390] (rb5_ros2_vision) StderrLine: {'line': b'make[2]: *** [CMakeFiles/rb_camera_ocv_node.dir/build.make:63: CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o] Error 1\n'}
+[3.577745] (rb5_ros2_vision) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/rb_camera_ocv_node.dir/all] Error 2\n'}
+[3.580092] (rb5_ros2_vision) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[3.594775] (-) TimerEvent: {}
+[3.601998] (rb5_ros2_vision) CommandEnded: {'returncode': 2}
+[3.645626] (image_geometry) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.695045] (-) TimerEvent: {}
+[3.797128] (-) TimerEvent: {}
+[3.845405] (image_geometry) StdoutLine: {'line': b"-- Found gtest sources under '/opt/ros/foxy/src/gtest_vendor': C++ tests using 'Google Test' will be built\n"}
+[3.848125] (image_geometry) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[3.883270] (rb5_ros2_vision) JobEnded: {'identifier': 'rb5_ros2_vision', 'rc': 2}
+[3.897345] (-) TimerEvent: {}
+[3.998523] (-) TimerEvent: {}
+[4.099592] (-) TimerEvent: {}
+[4.200720] (-) TimerEvent: {}
+[4.222521] (image_geometry) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[4.225397] (image_geometry) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[4.301041] (-) TimerEvent: {}
+[4.402601] (-) TimerEvent: {}
+[4.504317] (-) TimerEvent: {}
+[4.606132] (-) TimerEvent: {}
+[4.648224] (image_geometry) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[4.650110] (image_geometry) StdoutLine: {'line': b'-- Check if compiler accepts -pthread\n'}
+[4.706390] (-) TimerEvent: {}
+[4.807909] (-) TimerEvent: {}
+[4.909711] (-) TimerEvent: {}
+[5.011395] (-) TimerEvent: {}
+[5.055623] (image_geometry) StdoutLine: {'line': b'-- Check if compiler accepts -pthread - yes\n'}
+[5.067135] (image_geometry) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.112038] (-) TimerEvent: {}
+[5.213608] (-) TimerEvent: {}
+[5.263205] (image_geometry) StdoutLine: {'line': b'-- Configuring done\n'}
+[5.291397] (image_geometry) StdoutLine: {'line': b'-- Generating done\n'}
+[5.294029] (image_geometry) StdoutLine: {'line': b'-- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/image_geometry\n'}
+[5.311043] (image_geometry) JobEnded: {'identifier': 'image_geometry', 'rc': 'SIGINT'}
+[5.314877] (-) TimerEvent: {}
+[5.416509] (-) TimerEvent: {}
+[5.518426] (-) TimerEvent: {}
+[5.620252] (-) TimerEvent: {}
+[5.667953] (ros2_april_detection) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kstd::tuple<std::vector<apriltag_pose_t, std::allocator<apriltag_pose_t> >, std::vector<int, std::allocator<int> >, cv::Mat> AprilDetection::processImage(cv::Mat) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.669971] (ros2_april_detection) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:24:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[KC++ designated initializers only available with \xe2\x80\x98\x1b[01m\x1b[K-std=c++2a\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K-std=gnu++2a\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[5.671409] (ros2_april_detection) StderrLine: {'line': b'   24 |   image_u8_t im = { \x1b[01;35m\x1b[K.\x1b[m\x1b[Kwidth  = image_gray.cols,\n'}
+[5.672612] (ros2_april_detection) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[5.673821] (ros2_april_detection) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:25:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[KC++ designated initializers only available with \xe2\x80\x98\x1b[01m\x1b[K-std=c++2a\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K-std=gnu++2a\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[5.675341] (ros2_april_detection) StderrLine: {'line': b'   25 |                     \x1b[01;35m\x1b[K.\x1b[m\x1b[Kheight = image_gray.rows,\n'}
+[5.676514] (ros2_april_detection) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[5.677662] (ros2_april_detection) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:26:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[KC++ designated initializers only available with \xe2\x80\x98\x1b[01m\x1b[K-std=c++2a\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K-std=gnu++2a\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[5.679099] (ros2_april_detection) StderrLine: {'line': b'   26 |                     \x1b[01;35m\x1b[K.\x1b[m\x1b[Kstride = image_gray.cols,\n'}
+[5.680369] (ros2_april_detection) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[5.681742] (ros2_april_detection) StderrLine: {'line': b'\x1b[01m\x1b[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/ros2_april_detection/src/april_detection.cpp:27:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[KC++ designated initializers only available with \xe2\x80\x98\x1b[01m\x1b[K-std=c++2a\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K-std=gnu++2a\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[5.683303] (ros2_april_detection) StderrLine: {'line': b'   27 |                     \x1b[01;35m\x1b[K.\x1b[m\x1b[Kbuf    = image_gray.data\n'}
+[5.684723] (ros2_april_detection) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[5.720964] (-) TimerEvent: {}
+[5.822676] (-) TimerEvent: {}
+[5.924693] (-) TimerEvent: {}
+[6.026672] (-) TimerEvent: {}
+[6.128628] (-) TimerEvent: {}
+[6.230464] (-) TimerEvent: {}
+[6.332369] (-) TimerEvent: {}
+[6.434244] (-) TimerEvent: {}
+[6.535986] (-) TimerEvent: {}
+[6.637855] (-) TimerEvent: {}
+[6.739816] (-) TimerEvent: {}
+[6.841430] (-) TimerEvent: {}
+[6.943232] (-) TimerEvent: {}
+[7.044857] (-) TimerEvent: {}
+[7.146552] (-) TimerEvent: {}
+[7.248266] (-) TimerEvent: {}
+[7.349958] (-) TimerEvent: {}
+[7.451587] (-) TimerEvent: {}
+[7.553196] (-) TimerEvent: {}
+[7.654898] (-) TimerEvent: {}
+[7.756576] (-) TimerEvent: {}
+[7.858408] (-) TimerEvent: {}
+[7.960107] (-) TimerEvent: {}
+[8.061799] (-) TimerEvent: {}
+[8.163548] (-) TimerEvent: {}
+[8.265143] (-) TimerEvent: {}
+[8.366990] (-) TimerEvent: {}
+[8.468640] (-) TimerEvent: {}
+[8.570324] (-) TimerEvent: {}
+[8.671962] (-) TimerEvent: {}
+[8.773606] (-) TimerEvent: {}
+[8.875386] (-) TimerEvent: {}
+[8.977004] (-) TimerEvent: {}
+[9.078688] (-) TimerEvent: {}
+[9.180313] (-) TimerEvent: {}
+[9.282030] (-) TimerEvent: {}
+[9.383722] (-) TimerEvent: {}
+[9.485408] (-) TimerEvent: {}
+[9.587156] (-) TimerEvent: {}
+[9.688842] (-) TimerEvent: {}
+[9.790753] (-) TimerEvent: {}
+[9.892428] (-) TimerEvent: {}
+[9.994259] (-) TimerEvent: {}
+[10.096004] (-) TimerEvent: {}
+[10.197704] (-) TimerEvent: {}
+[10.299311] (-) TimerEvent: {}
+[10.400847] (-) TimerEvent: {}
+[10.502492] (-) TimerEvent: {}
+[10.604159] (-) TimerEvent: {}
+[10.705856] (-) TimerEvent: {}
+[10.807525] (-) TimerEvent: {}
+[10.909339] (-) TimerEvent: {}
+[11.011041] (-) TimerEvent: {}
+[11.112628] (-) TimerEvent: {}
+[11.214213] (-) TimerEvent: {}
+[11.315812] (-) TimerEvent: {}
+[11.417378] (-) TimerEvent: {}
+[11.519123] (-) TimerEvent: {}
+[11.620727] (-) TimerEvent: {}
+[11.722431] (-) TimerEvent: {}
+[11.824185] (-) TimerEvent: {}
+[11.926049] (-) TimerEvent: {}
+[12.027784] (-) TimerEvent: {}
+[12.129379] (-) TimerEvent: {}
+[12.231170] (-) TimerEvent: {}
+[12.332895] (-) TimerEvent: {}
+[12.434637] (-) TimerEvent: {}
+[12.536355] (-) TimerEvent: {}
+[12.627982] (ros2_april_detection) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable april_detection_node\x1b[0m\n'}
+[12.636545] (-) TimerEvent: {}
+[12.738129] (-) TimerEvent: {}
+[12.840031] (-) TimerEvent: {}
+[12.941743] (-) TimerEvent: {}
+[13.043811] (-) TimerEvent: {}
+[13.145550] (-) TimerEvent: {}
+[13.247378] (-) TimerEvent: {}
+[13.349116] (-) TimerEvent: {}
+[13.451280] (-) TimerEvent: {}
+[13.553387] (-) TimerEvent: {}
+[13.655356] (-) TimerEvent: {}
+[13.756994] (-) TimerEvent: {}
+[13.841647] (ros2_april_detection) StdoutLine: {'line': b'[100%] Built target april_detection_node\n'}
+[13.857391] (-) TimerEvent: {}
+[13.905054] (ros2_april_detection) JobEnded: {'identifier': 'ros2_april_detection', 'rc': 'SIGINT'}
+[13.920216] (vision_opencv) JobSkipped: {'identifier': 'vision_opencv'}
+[13.921074] (-) EventReactorShutdown: {}

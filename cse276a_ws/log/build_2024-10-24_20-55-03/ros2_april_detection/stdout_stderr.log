@@ -1,0 +1,19 @@
+[100%] Built target april_detection_node
+-- Install configuration: ""
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/ros2_april_detection/april_detection_node
+-- Set runtime path of "/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/lib/ros2_april_detection/april_detection_node" to ""
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/package_run_dependencies/ros2_april_detection
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/parent_prefix_path/ros2_april_detection
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.sh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/ament_prefix_path.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.sh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/environment/path.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.bash
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.sh
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.zsh
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/local_setup.dsv
+-- Installing: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.dsv
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ament_index/resource_index/packages/ros2_april_detection
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig.cmake
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/cmake/ros2_april_detectionConfig-version.cmake
+-- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection/share/ros2_april_detection/package.xml

@@ -1,0 +1,21 @@
+[35m[1mScanning dependencies of target gtest[0m
+[35m[1mScanning dependencies of target image_geometry[0m
+[35m[1mScanning dependencies of target gtest_main[0m
+[  9%] [32mBuilding CXX object gtest/CMakeFiles/gtest.dir/src/gtest-all.cc.o[0m
+[ 18%] [32mBuilding CXX object CMakeFiles/image_geometry.dir/src/pinhole_camera_model.cpp.o[0m
+[ 27%] [32mBuilding CXX object CMakeFiles/image_geometry.dir/src/stereo_camera_model.cpp.o[0m
+[ 36%] [32mBuilding CXX object gtest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o[0m
+[ 45%] [32m[1mLinking CXX static library libgtest_main.a[0m
+[ 45%] Built target gtest_main
+[ 54%] [32m[1mLinking CXX shared library libimage_geometry.so[0m
+[ 54%] Built target image_geometry
+[ 63%] [32m[1mLinking CXX static library libgtest.a[0m
+[ 63%] Built target gtest
+[35m[1mScanning dependencies of target image_geometry-utest[0m
+[35m[1mScanning dependencies of target image_geometry-utest-equi[0m
+[ 72%] [32mBuilding CXX object test/CMakeFiles/image_geometry-utest.dir/utest.cpp.o[0m
+[ 81%] [32mBuilding CXX object test/CMakeFiles/image_geometry-utest-equi.dir/utest_equi.cpp.o[0m
+[ 90%] [32m[1mLinking CXX executable image_geometry-utest[0m
+[100%] [32m[1mLinking CXX executable image_geometry-utest-equi[0m
+[100%] Built target image_geometry-utest
+[100%] Built target image_geometry-utest-equi

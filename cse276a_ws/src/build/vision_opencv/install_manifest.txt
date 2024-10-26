@@ -1,0 +1,15 @@
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/ament_index/resource_index/package_run_dependencies/vision_opencv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/ament_index/resource_index/parent_prefix_path/vision_opencv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/environment/ament_prefix_path.sh
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/environment/ament_prefix_path.dsv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/environment/path.sh
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/environment/path.dsv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/local_setup.bash
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/local_setup.sh
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/local_setup.zsh
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/local_setup.dsv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/package.dsv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/ament_index/resource_index/packages/vision_opencv
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/cmake/vision_opencvConfig.cmake
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/cmake/vision_opencvConfig-version.cmake
+/root/CSE276A_Fall24/cse276a_ws/src/install/vision_opencv/share/vision_opencv/package.xml

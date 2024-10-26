@@ -1,0 +1,9 @@
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/install/strip.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/install/local.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/install.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/list_install_components.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/rebuild_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/edit_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/test.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/vision_opencv_uninstall.dir
+/root/CSE276A_Fall24/cse276a_ws/src/build/vision_opencv/CMakeFiles/uninstall.dir

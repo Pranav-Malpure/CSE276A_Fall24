@@ -1,0 +1,38 @@
+[0.379s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision': CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
+[0.445s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.509s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.740s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[0.786s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.792s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.982s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.056s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.057s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.229s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[1.350s] -- Found cv_bridge: 3.0.7 (/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake)
+[1.414s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[1.534s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.537s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[1.538s] -- Configured cppcheck include dirs: /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision
+[1.541s] -- Configured cppcheck exclude dirs and/or files: 
+[1.542s] -- Added test 'cpplint' to check C / C++ code against the Google style
+[1.544s] -- Configured cpplint exclude dirs and/or files: 
+[1.545s] -- Added test 'flake8' to check Python code syntax and style conventions
+[1.546s] -- Added test 'lint_cmake' to check CMake code style
+[1.547s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[1.549s] -- Added test 'uncrustify' to check C / C++ code style
+[1.551s] -- Configured uncrustify additional arguments: 
+[1.553s] -- Added test 'xmllint' to check XML markup files
+[1.554s] -- Configuring done
+[1.580s] -- Generating done
+[1.582s] -- Build files have been written to: /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision
+[1.713s] [35m[1mScanning dependencies of target rb_camera_ocv_node[0m
+[1.855s] [ 50%] [32mBuilding CXX object CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o[0m
+[2.410s] In file included from [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/src/rb_camera_ocv_node.cpp:1[m[K:
+[2.413s] [01m[K/root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/rb5_ros2_vision/include/rb5_ros2_vision/rb_camera_ocv.h:9:10:[m[K [01;31m[Kfatal error: [m[Kcv_bridge/cv_bridge.h: No such file or directory
+[2.414s]     9 | #include [01;31m[K<cv_bridge/cv_bridge.h>[m[K
+[2.417s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.418s] compilation terminated.
+[2.437s] make[2]: *** [CMakeFiles/rb_camera_ocv_node.dir/build.make:63: CMakeFiles/rb_camera_ocv_node.dir/src/rb_camera_ocv_node.cpp.o] Error 1
+[2.440s] make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/rb_camera_ocv_node.dir/all] Error 2
+[2.442s] make: *** [Makefile:141: all] Error 2
+[2.464s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision' returned '2': CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge:/root/CSE276A_Fall24/cse276a_ws/install/ros2_april_detection:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_vision:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control:/root/CSE276A_Fall24/cse276a_ws/install/key_joy:/opt/ros/foxy PYTHONPATH=/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/rb5_ros2_control/lib/python3.8/site-packages:/root/CSE276A_Fall24/cse276a_ws/install/key_joy/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_ros2_vision -- -j8 -l8
