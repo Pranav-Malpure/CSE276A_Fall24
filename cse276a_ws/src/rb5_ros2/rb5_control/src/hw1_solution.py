@@ -23,6 +23,7 @@ class PIDcontroller(Node):
         self.timestep = 0.1
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
+        print("created publisher")
 
     def setTarget(self, targetx, targety, targetw):
         """
@@ -113,8 +114,9 @@ if __name__ == "__main__":
                          [0.0,0.0,0.0]]) 
 
     # init pid controller
-    pid = PIDcontroller(2,0.005,0.05)
+    pid = PIDcontroller(0.25,0.005,0.05)
 
+    time.sleep(3)
     # init current state
     current_state = np.array([0.0,0.0,0.0])
 
