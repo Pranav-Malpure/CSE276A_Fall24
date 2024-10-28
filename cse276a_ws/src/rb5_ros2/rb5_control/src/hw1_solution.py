@@ -7,7 +7,7 @@ from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
 import numpy as np
-import time
+import time 
 
 """
 The class of the pid controller.
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
     # init pid controller
     pid = PIDcontroller(0.25,0.005,0.05)
-
+    print("Hello i am here")
     time.sleep(3)
     # init current state
     current_state = np.array([0.0,0.0,0.0])
