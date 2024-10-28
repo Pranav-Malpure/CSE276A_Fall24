@@ -10,7 +10,7 @@ import numpy as np
 
 
 class MegaPiControllerNode(Node):
-    def __init__(self, verbose=False, debug=False):
+    def __init__(self, verbose=True, debug=False):
         super().__init__('megapi_controller_node')
         self.mpi_ctrl = MegaPiController(port='/dev/ttyUSB0', verbose=verbose)
         self.r = 0.025 # radius of the wheel
