@@ -113,7 +113,7 @@ if __name__ == "__main__":
                          [0.0,0.0,0.0]]) 
 
     # init pid controller
-    pid = PIDcontroller(2,0.005,0.5)
+    pid = PIDcontroller(0.5,0.005,0.05)
 
     # init current state
     current_state = np.array([0.0,0.0,0.0])
