@@ -89,7 +89,7 @@ def genTwistMsg(desired_twist):
     twist_msg.angular.x = 0.0
     twist_msg.angular.y = 0.0
     twist_msg.angular.z = desired_twist[2]
-    print("linear_x", twist_msg.linear.x, "linear_y", twist_msg.linear.y, "angular_z", twist_msg.angular.z)
+
     return twist_msg
 
 def coord(twist, current_state):
@@ -118,7 +118,7 @@ if __name__ == "__main__":
                          [-1.0,0.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
     # init pid controller
-    pid = PIDcontroller(0.05,0.005,0.005)
+    pid = PIDcontroller(0.5,0.005,0.005)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     # init current state
@@ -149,6 +149,8 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             current_state += update_value
+            print("current_state = ", current_state)
+
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
 
