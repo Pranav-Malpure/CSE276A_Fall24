@@ -13,6 +13,7 @@
 
 using std::placeholders::_1;
 // camera parameters
+
 double distortion_coeff[5] = {0.022327, 
                             -0.019742, 
                             -0.000961, 
