@@ -116,7 +116,7 @@ if __name__ == "__main__":
                          [0.0,0.0,0.0]]) 
 
     # init pid controller
-    pid = PIDcontroller(0.05,0.005,0.05)
+    pid = PIDcontroller(0.01,0.005,0.9)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     # init current state
