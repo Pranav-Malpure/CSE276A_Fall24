@@ -8,6 +8,12 @@ from geometry_msgs.msg import Twist
 from mpi_control import MegaPiController
 import numpy as np
 
+"""
+This file include code that control the robot motors
++,+,+,+ left
+-,+,+,- straight
+-,+,-,+ anticlockwise rotation
+"""
 
 class MegaPiControllerNode(Node):
     def __init__(self, verbose=True, debug=False):
@@ -18,12 +24,12 @@ class MegaPiControllerNode(Node):
         self.ly = 0.07 # half of the distance between left wheel and right wheel
         self.calibration_x = 125
         self.calibration_y = 213
-        self.calibration_ang = 150
+        self.calibration_ang = 215
         self.subscription = self.create_subscription(Twist, '/twist', self.twist_callback, 10)
         self.subscription
 
     def twist_callback(self, twist_cmd):
-        desired_twist = np.array([[self.calibration_x*twist_cmd.linear.x], [self.calibration_y*twist_cmd.linear.y], [self.calibration_ang*twist_cmd.angular.z]])
+        desired_twist = np.array([[self.calibration_x*twist_cmd.linear.y], [self.calibration_y*twist_cmd.linear.x], [self.calibration_ang*twist_cmd.angular.z]])
         # calculate the jacobian matrix
         jacobian_matrix = np.array([[1, -1, -(self.lx + self.ly)],
                                      [1, 1, (self.lx + self.ly)],
@@ -33,7 +39,7 @@ class MegaPiControllerNode(Node):
         result = np.dot(jacobian_matrix, desired_twist)
 
         # send command to each wheel
-        self.mpi_ctrl.setFourMotors(-int(result[0][0]), int(result[1][0]), int(result[2][0]), -int(result[3][0]))
+        self.mpi_ctrl.setFourMotors(int(result[0][0]), int(result[1][0]), int(result[2][0]), int(result[3][0]))
 
         
 
