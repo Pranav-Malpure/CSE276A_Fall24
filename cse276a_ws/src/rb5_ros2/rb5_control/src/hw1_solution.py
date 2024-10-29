@@ -212,7 +212,7 @@ if __name__ == "__main__":
         #print(coord(update_value, current_state))
         time.sleep(0.05)
         # update the current state
-        pid.wait_for_new_pose()
+        pid.wait_for_new_pose(update_value)
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1]])
         # current_state += update_value
@@ -226,7 +226,7 @@ if __name__ == "__main__":
             # update the current state
             # current_state += update_value
             pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
-            pid.wait_for_new_pose()
+            pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
 
     # stop the car and exit
