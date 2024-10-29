@@ -24,11 +24,12 @@ class MegaPiControllerNode(Node):
         self.ly = 0.07 # half of the distance between left wheel and right wheel
         self.calibration_x = 125
         self.calibration_y = 213
-        self.calibration_ang = 215
+        self.calibration_ang = 150
         self.subscription = self.create_subscription(Twist, '/twist', self.twist_callback, 10)
         self.subscription
 
     def twist_callback(self, twist_cmd):
+        # note below we have changed the order of the axis because the robot's motors have a misaligned axis as well
         desired_twist = np.array([[self.calibration_x*twist_cmd.linear.y], [self.calibration_y*twist_cmd.linear.x], [self.calibration_ang*twist_cmd.angular.z]])
         # calculate the jacobian matrix
         jacobian_matrix = np.array([[1, -1, -(self.lx + self.ly)],
