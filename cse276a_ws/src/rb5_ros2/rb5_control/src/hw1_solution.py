@@ -120,7 +120,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], [0.0, 0.0, np.pi/2.0]])
 
     # init pid controller
-    pid = PIDcontroller(0.01, 0.015, 0.075)
+    pid = PIDcontroller(0.01, 0.015, 0.095)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     # init current state
