@@ -65,7 +65,7 @@ class PIDcontroller(Node):
         P = np.array([self.Kp * e[0]/0.4, self.Kp * e[1]/0.5, self.Kp * e[2]/2])
         self.I = self.I + self.Ki * e * self.timestep 
         I = self.I
-        D = np.array([self.Kd * (e[0] - self.lastError[0]), self.Kd * (e[1] - self.lastError[1])/2, self.Kd * (e[2] - self.lastError[2])/2])
+        D = np.array([self.Kd * (e[0] - self.lastError[0]), self.Kd * (e[1] - self.lastError[1])/2, self.Kd * (e[2] - self.lastError[2])/0.75])
         result = P + I + D
 
         self.lastError = e
