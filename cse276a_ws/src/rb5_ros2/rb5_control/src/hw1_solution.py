@@ -21,7 +21,7 @@ class PIDcontroller(Node):
         self.target = None
         self.I = np.array([0.0,0.0,0.0])
         self.lastError = np.array([0.0,0.0,0.0])
-        self.timestep = 0.05
+        self.timestep = 0.085
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
@@ -118,7 +118,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], [0.0, 0.0, np.pi/2.0]])
 
     # init pid controller
-    pid = PIDcontroller(0.002, 0.013,0.035)
+    pid = PIDcontroller(0.02, 0.013,0.035)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     # init current state
