@@ -13,6 +13,8 @@ This file include code that control the robot motors
 +,+,+,+ left
 -,+,+,- straight
 -,+,-,+ anticlockwise rotation
+
+140, 215, 230
 """
 
 class MegaPiControllerNode(Node):
@@ -22,9 +24,9 @@ class MegaPiControllerNode(Node):
         self.r = 0.025 # radius of the wheel
         self.lx = 0.055 # half of the distance between front wheel and back wheel
         self.ly = 0.07 # half of the distance between left wheel and right wheel
-        self.calibration_x = 140
-        self.calibration_y = 215
-        self.calibration_ang = 230
+        self.calibration_x = 100 #140
+        self.calibration_y = 150 #215
+        self.calibration_ang = 180 #230
         self.subscription = self.create_subscription(Twist, '/twist', self.twist_callback, 10)
         self.subscription
 
@@ -40,7 +42,8 @@ class MegaPiControllerNode(Node):
         result = np.dot(jacobian_matrix, desired_twist)
 
         # send command to each wheel
-        self.mpi_ctrl.setFourMotors(int(result[0][0]), int(result[1][0]), int(result[2][0]), int(result[3][0]))
+        self.mpi_ctrl.setFourMotors(int(result[0][0])+ np.sign(result[0][0])*35, int(result[1][0])+np.sign(result[1][0])*35, int(result[2][0])+np.sign(result[2][0])*35, int(result[3][0])+np.sign(result[3][0])*35)
+        # self.mpi_ctrl.setFourMotors(int(result[0][0]), int(result[1][0]), int(result[2][0]), int(result[3][0]))
 
         
 

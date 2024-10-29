@@ -114,7 +114,8 @@ if __name__ == "__main__":
     #                      [-2.0/2,2.0/2,-np.pi/2.0],
     #                      [-1.0/2,1.0/2,-np.pi/4.0],
     #                      [0.0,0.0,0.0]]) 
-    waypoint = np.array([[0.0,0.0,0.0], [0,0,np.pi/4]])
+    waypoint = np.array([[0.0,0.0,0.0], [0,0,np.pi/2]])
+    waypoint = np.array([[0.0,0.0,0.0], [-1,0,0]])
     # waypoint = np.array([[0.0,0.0,0.0], [0.0, 0.0, np.pi/2.0]])
 
     # init pid controller
