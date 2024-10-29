@@ -41,31 +41,31 @@ class MegaPiControllerNode(Node):
         # calculate the desired wheel velocity
         result = np.dot(jacobian_matrix, desired_twist)
         
-        def map_value(value, in_min, in_max, out_min, out_max):
-            # Linear mapping function
-            return out_min + (float(value - in_min) / float(in_max - in_min)) * (out_max - out_min)
+        # def map_value(value, in_min, in_max, out_min, out_max):
+        #     # Linear mapping function
+        #     return out_min + (float(value - in_min) / float(in_max - in_min)) * (out_max - out_min)
 
-        # Define the input and output ranges
-        input_min, input_max = 0, 220  #input range
-        positive_output_min, positive_output_max = 35, 100
-        negative_output_min, negative_output_max = -100, -35
+        # # Define the input and output ranges
+        # input_min, input_max = 0, 220  #input range
+        # positive_output_min, positive_output_max = 35, 100
+        # negative_output_min, negative_output_max = -100, -35
 
-        # Map each motor value based on its sign
-        def map_motor(value):
-            if value >= 0:
-                return int(map_value(value, input_min, input_max, positive_output_min, positive_output_max))
-            else:
-                return int(map_value(value, -input_max, -input_min, negative_output_min, negative_output_max))
+        # # Map each motor value based on its sign
+        # def map_motor(value):
+        #     if value >= 0:
+        #         return int(map_value(value, input_min, input_max, positive_output_min, positive_output_max))
+        #     else:
+        #         return int(map_value(value, -input_max, -input_min, negative_output_min, negative_output_max))
 
-        motor1 = int(map_motor(result[0][0]))
-        motor2 = int(map_motor(result[1][0]))
-        motor3 = int(map_motor(result[2][0]))
-        motor4 = int(map_motor(result[3][0]))
+        # motor1 = int(map_motor(result[0][0]))
+        # motor2 = int(map_motor(result[1][0]))
+        # motor3 = int(map_motor(result[2][0]))
+        # motor4 = int(map_motor(result[3][0]))
 
 
         # send command to each wheel
-        self.mpi_ctrl.setFourMotors(motor1, motor2, motor3, motor4)
-        # self.mpi_ctrl.setFourMotors(int(result[0][0]), int(result[1][0]), int(result[2][0]), int(result[3][0]))
+        # self.mpi_ctrl.setFourMotors(motor1, motor2, motor3, motor4)
+        self.mpi_ctrl.setFourMotors(int(result[0][0]), int(result[1][0]), int(result[2][0]), int(result[3][0]))
 
         
 
