@@ -38,6 +38,7 @@ class PIDcontroller(Node):
             10)     
         # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
         self.tags = {'1': [x1, z1, t1], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
+        self.position_history = []
 
     def pose_callback(self, msg):
         x = msg.pose.position.x
@@ -190,6 +191,7 @@ if __name__ == "__main__":
         # update the current state
         pid.wait_for_new_pose()
         print("current_state = ", pid.current_state)
+        pid.position_history.append([pid.current_state[0], pid.current_state[1]])
         # current_state += update_value
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)) > 0.05): # check the error between current state and current way point
             # calculate the current twist
@@ -207,3 +209,5 @@ if __name__ == "__main__":
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
 
+    print(pid.x_position_history)
+    print(pid.z_position_history)
