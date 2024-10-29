@@ -26,7 +26,7 @@ class MegaPiControllerNode(Node):
         self.ly = 0.07 # half of the distance between left wheel and right wheel
         self.calibration_x = 60 #140
         self.calibration_y = 135 #215
-        self.calibration_ang = 180 #230
+        self.calibration_ang = 100 #230
         self.subscription = self.create_subscription(Twist, '/twist', self.twist_callback, 10)
         self.subscription
 
