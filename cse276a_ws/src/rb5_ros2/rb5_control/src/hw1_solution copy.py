@@ -42,8 +42,12 @@ class PIDcontroller(Node):
     def pose_callback(self, msg):
         x = msg.pose.position.x
         z = msg.pose.position.z
+        x_ang = msg.pose.orientation.x
+        y_ang = msg.pose.orientation.y
+        z_ang = msg.pose.orientation.z
+        w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
-        self.current_state = self.calc_curr_state(x, z, frame_id)
+        self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
         self.new_pose_received = True
 
     def wait_for_new_pose(self, update_value):
@@ -60,15 +64,21 @@ class PIDcontroller(Node):
 
         self.new_pose_received = False
 
-    def calc_curr_state(self, x, z, frame_id):
+    def calc_curr_state(self, x_det, z_det, x_ang, y_ang, z_ang, w_ang, frame_id):
         april_tag = self.tags[frame_id]
-        x_out = april_tag[0] - x
-        z_out = april_tag[1] - z
+        
+        trat = math.atan2(2 * (w_ang*y_ang - x_ang*z_ang), 1 - 2 * (y_ang*y_ang + z_ang*z_ang)) #calcutate pitch
 
+        tro = april_tag[2] + trat
+        tro = (tro + math.pi) % (2 * math.pi) - math.pi # scale to range
 
-        angle = math.atan2(z, x)
-        angle = (angle + math.pi) % (2 * math.pi) - math.pi  # Adjust angle to [-pi, pi]
-        return np.array([x_out, z_out, angle])  # Assuming y is not used
+        xrat = x_det * np.cos(tro) - z_det * np.sin(tro)
+        zrat = x_det * np.sin(tro) + z_det * np.cos(tro)
+
+        xor = april_tag[0] - xrat
+        zor = april_tag[1] - zrat
+
+        return np.array([xor, zor, tro])
 
     def setTarget(self, targetx, targety, targetw):
         """
@@ -153,11 +163,8 @@ if __name__ == "__main__":
 
     # waypoint = np.array([[0.0,0.0,0.0], 
     #                      [-1.0/2,0.0,0.0],
-    #                      [-1.0/2,1.0/2,np.pi/2.0],
-    #                      [-2.0/2,1.0/2,0.0],
-    #                      [-2.0/2,2.0/2,-np.pi/2.0],
-    #                      [-1.0/2,1.0/2,-np.pi/4.0],
-    #                      [0.0,0.0,0.0]]) 
+    #                      [-1.0/2,1.0,np.pi.0],
+    #                      [0.0,0.0,0.0]])
     waypoint = np.array([[0.0,0.0,0.0], 
                          [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
@@ -193,6 +200,7 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             # current_state += update_value
+            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose()
             print("current_state = ", pid.current_state)
 
