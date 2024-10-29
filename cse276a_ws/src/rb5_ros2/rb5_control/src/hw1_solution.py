@@ -62,7 +62,7 @@ class PIDcontroller(Node):
         """
         e = self.getError(currentState, self.target)
 
-        P = np.array([self.Kp * e[0]/0.4, self.Kp * e[1]/0.5, self.Kp * e[2]/1.5])
+        P = np.array([self.Kp * e[0]/0.75, self.Kp * e[1]/0.5, self.Kp * e[2]/1.5])
         # self.I = np.array([self.I[0] + self.Ki * e[0] * self.timestep, self.I[1] + self.Ki * e[1] * self.timestep , self.I[2] + self.Ki * e[2] * self.timestep/2]) 
         self.I = self.I + self.Ki * e * self.timestep
         I = self.I
@@ -115,7 +115,7 @@ if __name__ == "__main__":
     #                      [-2.0/2,2.0/2,-np.pi/2.0],
     #                      [-1.0/2,1.0/2,-np.pi/4.0],
     #                      [0.0,0.0,0.0]]) 
-    waypoint = np.array([[0.0,0.0,0.0], [-1/2, 0, 0]])
+    waypoint = np.array([[0.0,0.0,0.0], [0, -1/2, 0]])
     # waypoint = np.array([[0.0,0.0,0.0], [-1/4,-1/4,0]])
     # waypoint = np.array([[0.0,0.0,0.0], [0.0, 0.0, np.pi/2.0]])
 
