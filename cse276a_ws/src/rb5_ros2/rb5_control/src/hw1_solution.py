@@ -29,7 +29,7 @@ class PIDcontroller(Node):
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
-        self.current_state = np.array([0.0, 0.0, 0.0])
+        self.current_state = np.array([0.0, 0.0, np.pi/2])
         self.new_pose_received = False
         self.subscription = self.create_subscription(
             PoseStamped,
@@ -188,10 +188,10 @@ if __name__ == "__main__":
     #                      [-1.0/2,0.0,0.0],
     #                      [-1.0/2,1.0,np.pi.0],
     #                      [0.0,0.0,0.0]])
-    waypoint = np.array([[0.0,0.0,0.0], 
-                         [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
+    # waypoint = np.array([[0.0,0.0,0.0], 
+                        #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[0.0,0.0,np.pi/2],[-1, -1, np.pi/2]])
+    waypoint = np.array([[0.0,0.0,np.pi/2],[-1, 0, np.pi/2]])
     # init pid controller
     pid = PIDcontroller(0.02, 0.015, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
