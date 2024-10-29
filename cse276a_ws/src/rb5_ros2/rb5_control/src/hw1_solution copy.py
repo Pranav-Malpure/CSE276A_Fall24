@@ -73,8 +73,8 @@ class PIDcontroller(Node):
         tro = april_tag[2] + trat
         tro = (tro + math.pi) % (2 * math.pi) - math.pi # scale to range
 
-        xrat = x_det * np.cos(tro) - z_det * np.sin(tro)
-        zrat = x_det * np.sin(tro) + z_det * np.cos(tro)
+        xrat = x_det * np.cos(tro - np.pi/2) - z_det * np.sin(tro - np.pi/2)
+        zrat = x_det * np.sin(tro - np.pi/2) + z_det * np.cos(tro - np.pi/2)
 
         xor = april_tag[0] - xrat
         zor = april_tag[1] - zrat
