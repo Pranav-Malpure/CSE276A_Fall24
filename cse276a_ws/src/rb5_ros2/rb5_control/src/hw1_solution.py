@@ -287,7 +287,7 @@ if __name__ == "__main__":
             # print("update value",update_value)
             time.sleep(1)
             # time.sleep(2)
-            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.05):
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.1):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
                 while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.1: # check the error between current state and current way point
