@@ -249,6 +249,9 @@ if __name__ == "__main__":
                     # print("update_value",update_value)
 
                     # print(genTwistMsg(coord(update_value, pid.current_state)))
+                    angle_twist_msg = genTwistMsg(coord(update_value, pid.current_state))
+                    angle_twist_msg.linear.x = 0.0
+                    angle_twist_msg.linear.y = 0.0
                     pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)).angular.z)
                     #print(coord(update_value, current_state))
                     time.sleep(0.05)
