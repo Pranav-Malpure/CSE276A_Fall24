@@ -268,7 +268,7 @@ if __name__ == "__main__":
 
             # print(genTwistMsg(coord(update_value, pid.current_state)))
             twist_msg = genTwistMsg(coord(update_value, pid.current_state))
-            # twist_msg.angular.z = 0.0
+            twist_msg.angular.z = 0.0
             if x_reached:
                 twist_msg.linear.x = 0.0
             if z_reached:
