@@ -182,14 +182,14 @@ def genTwistMsg(desired_twist):
     return twist_msg
 
 def coord(twist, current_state):
-    print("twist before",twist)
+    # print("twist before",twist)
     J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
                   [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
                   [0.0,0.0,1.0]])
     # J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
     #               [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
     #               [0.0,0.0,1.0]])
-    print("twist after", np.dot(J, twist))
+    # print("twist after", np.dot(J, twist))
     return np.dot(J, twist)
     
 
@@ -267,7 +267,7 @@ if __name__ == "__main__":
             # print("update_value",update_value)
 
             # print(genTwistMsg(coord(update_value, pid.current_state)))
-            twist_msg = genTwistMsg(update_value)
+            twist_msg = genTwistMsg(coord(update_value, pid.current_state))
             # twist_msg.angular.z = 0.0
             if x_reached:
                 twist_msg.linear.x = 0.0
