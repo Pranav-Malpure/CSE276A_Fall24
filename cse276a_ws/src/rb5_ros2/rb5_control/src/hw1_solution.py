@@ -25,7 +25,7 @@ class PIDcontroller(Node):
         self.target = None
         self.I = np.array([0.0,0.0,0.0])
         self.lastError = np.array([0.0,0.0,0.0])
-        self.timestep = 0.1
+        self.timestep = 0.2
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
@@ -226,10 +226,10 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             # current_state += update_value
-            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+            # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
-            time.sleep(2)
+            # time.sleep(2)
 
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
