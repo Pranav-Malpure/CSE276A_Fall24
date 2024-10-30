@@ -255,7 +255,7 @@ if __name__ == "__main__":
                     angle_twist_msg = genTwistMsg(coord(update_value, pid.current_state))
                     angle_twist_msg.linear.x = 0.0
                     angle_twist_msg.linear.y = 0.0
-                    pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
+                    pid.publisher_.publish(angle_twist_msg)
                     #print(coord(update_value, current_state))
                     time.sleep(0.05)
                     # update the current state
