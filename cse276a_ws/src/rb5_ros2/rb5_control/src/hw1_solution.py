@@ -223,8 +223,12 @@ if __name__ == "__main__":
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
             if pid.getError(pid.current_state, wp)[0] < 0.05:
                 x_reached = True
+            else:
+                x_reached = False
             if pid.getError(pid.current_state, wp)[1] < 0.05:
                 z_reached = True
+            else:
+                z_reached = False
 
 
             print("current error = ", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
