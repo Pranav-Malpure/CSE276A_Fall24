@@ -191,7 +191,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], 
                         #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[0.0,0.0,np.pi/2],[0,1/2,np.pi/2]])
+    waypoint = np.array([[0,1/2,np.pi/2]])
     # init pid controller
     pid = PIDcontroller(0.02, 0.015, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
