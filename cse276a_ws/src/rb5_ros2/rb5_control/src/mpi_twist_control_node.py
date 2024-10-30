@@ -32,7 +32,7 @@ class MegaPiControllerNode(Node):
 
     def twist_callback(self, twist_cmd):
         # note below we have changed the order of the axis because the robot's motors have a misaligned axis as well
-        desired_twist = np.array([[-self.calibration_y*twist_cmd.linear.y], [self.calibration_x*twist_cmd.linear.x], [self.calibration_ang*twist_cmd.angular.z]])
+        desired_twist = np.array([[self.calibration_x*twist_cmd.linear.x], [self.calibration_y*twist_cmd.linear.y], [self.calibration_ang*twist_cmd.angular.z]])
         # calculate the jacobian matrix
         jacobian_matrix = np.array([[1, -1, -(self.lx + self.ly)],
                                      [1, 1, (self.lx + self.ly)],
