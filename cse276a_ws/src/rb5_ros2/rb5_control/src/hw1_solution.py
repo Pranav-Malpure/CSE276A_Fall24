@@ -75,16 +75,23 @@ class PIDcontroller(Node):
         april_tag = self.tags[frame_id]
         
         trat = math.atan2(2 * (w_ang*y_ang - x_ang*z_ang), 1 - 2 * (y_ang*y_ang + z_ang*z_ang)) #calcutate pitch
+        print('trat = ', trat)
+        print('frame_id = ', frame_id)
+
 
         tro = april_tag[2] + trat
         tro = (tro + math.pi) % (2 * math.pi) - math.pi # scale to range
-
+        print('tro = ', tro)
         xrat = x_det * np.cos(tro - np.pi/2) - z_det * np.sin(tro - np.pi/2)
         zrat = x_det * np.sin(tro - np.pi/2) + z_det * np.cos(tro - np.pi/2)
 
+        print('xrat = ', xrat)
+        print('zrat = ', zrat)
+
         xor = april_tag[0] - xrat
         zor = april_tag[1] - zrat
-
+        print('xor = ', xor)
+        print('zor = ', zor)
         return np.array([xor, zor, tro])
 
     def setTarget(self, targetx, targety, targetw):
