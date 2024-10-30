@@ -196,7 +196,7 @@ if __name__ == "__main__":
 
     waypoint = np.array([[-1/2,-1/2,np.pi]])
     # init pid controller
-    pid = PIDcontroller(0.02, 0.015, 0.075)
+    pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     pid.current_state = np.array([0.0,0.0,np.pi/2])
@@ -246,7 +246,7 @@ if __name__ == "__main__":
                 angle_reached = False
 
 
-            print("current error = ", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
+            print("current error = ", (pid.getError(pid.current_state, wp)))
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
