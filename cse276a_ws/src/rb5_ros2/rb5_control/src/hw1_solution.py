@@ -221,14 +221,14 @@ if __name__ == "__main__":
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
-            if pid.getError(pid.current_state, wp)[0] < 0.05:
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.05:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
 
             else:
                 x_reached = False
-            if pid.getError(pid.current_state, wp)[1] < 0.05:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.05:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
@@ -264,7 +264,7 @@ if __name__ == "__main__":
             if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.05):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
-                while rclpy.ok() and (pid.getError(pid.current_state, wp)[2] > 0.1): # check the error between current state and current way point
+                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.1: # check the error between current state and current way point
                     # calculate the current twist
                     update_value = pid.update(pid.current_state)
 
