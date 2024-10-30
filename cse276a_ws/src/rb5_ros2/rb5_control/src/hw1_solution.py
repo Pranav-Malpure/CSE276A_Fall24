@@ -182,12 +182,14 @@ def genTwistMsg(desired_twist):
     return twist_msg
 
 def coord(twist, current_state):
-    # J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
-    #               [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
-    #               [0.0,0.0,1.0]])
-    J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
-                  [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    print("twist before",twist)
+    J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
+                  [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
                   [0.0,0.0,1.0]])
+    # J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
+    #               [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    #               [0.0,0.0,1.0]])
+    print("twist after", np.dot(J, twist))
     return np.dot(J, twist)
     
 
