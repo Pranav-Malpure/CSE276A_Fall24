@@ -160,8 +160,8 @@ def genTwistMsg(desired_twist):
     Convert the twist to twist msg.
     """
     twist_msg = Twist()
-    twist_msg.linear.x = desired_twist[0] 
-    twist_msg.linear.y = desired_twist[1] 
+    twist_msg.linear.y = desired_twist[0] 
+    twist_msg.linear.x = desired_twist[1] 
     twist_msg.linear.z = 0.0
     twist_msg.angular.x = 0.0
     twist_msg.angular.y = 0.0
