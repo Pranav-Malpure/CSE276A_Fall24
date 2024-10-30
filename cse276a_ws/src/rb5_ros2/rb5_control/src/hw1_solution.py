@@ -170,8 +170,8 @@ def genTwistMsg(desired_twist):
     return twist_msg
 
 def coord(twist, current_state):
-    J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
-                  [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
+                  [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
                   [0.0,0.0,1.0]])
     return np.dot(J, twist)
     
@@ -209,7 +209,8 @@ if __name__ == "__main__":
         # calculate the current twist
         update_value = pid.update(pid.current_state)
         # publish the twist
-        print(genTwistMsg(coord(update_value, pid.current_state)))
+        # print("update_value",update_value)
+        # print(genTwistMsg(coord(update_value, pid.current_state)))
         pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
         #print(coord(update_value, current_state))
         time.sleep(0.05)
@@ -223,7 +224,9 @@ if __name__ == "__main__":
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
-            print(genTwistMsg(coord(update_value, pid.current_state)))
+            # print("update_value",update_value)
+
+            # print(genTwistMsg(coord(update_value, pid.current_state)))
             pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
             #print(coord(update_value, current_state))
             time.sleep(0.05)
