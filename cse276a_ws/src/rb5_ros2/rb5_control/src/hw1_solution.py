@@ -238,6 +238,13 @@ if __name__ == "__main__":
             else:
                 z_reached = False
 
+            if abs(pid.getError(pid.current_state, wp)[2]) < 0.2:
+                angle_reached = True
+                print('ANGLE ERROR', pid.getError(pid.current_state, wp)[2])
+                print("reached angle")
+            else:
+                angle_reached = False
+
 
             print("current error = ", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
             # calculate the current twist
@@ -252,6 +259,8 @@ if __name__ == "__main__":
                 twist_msg.linear.x = 0.0
             if z_reached:
                 twist_msg.linear.z = 0.0
+            if angle_reached:
+                twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
             #print(coord(update_value, current_state))
             time.sleep(0.05)
