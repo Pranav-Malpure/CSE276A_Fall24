@@ -166,7 +166,7 @@ def genTwistMsg(desired_twist):
     twist_msg.angular.x = 0.0
     twist_msg.angular.y = 0.0
     twist_msg.angular.z = desired_twist[2]
-    print(twist_msg)
+    # print(twist_msg)
     return twist_msg
 
 def coord(twist, current_state):
