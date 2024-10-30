@@ -38,7 +38,7 @@ class PIDcontroller(Node):
             10)     
         # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
         # self.tags = {'6': [0, 1, np.pi/2], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
-        self.tags = {'4': [1, 0, 0], '6':[1, 1, 0]}
+        self.tags = {'4': [1, 0, 0], '6':[1, 1, 0], '5':[0.5, 1.5, np.pi/2], '7':[-0.41, 1, -np.pi],'2': [-0.41, 0, -np.pi], '1':[0, -0.5, -np.pi/2]}
 
         self.position_history = []
 
@@ -208,7 +208,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], 
                         #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[1/2,0,0], [1/2, 1, 0]])
+    waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
     # init pid controller
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
@@ -237,27 +237,27 @@ if __name__ == "__main__":
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
-            if abs(pid.getError(pid.current_state, wp)[0]) < 0.05:
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.1): # check the error between current state and current way point
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.1:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
 
             else:
                 x_reached = False
-            if abs(pid.getError(pid.current_state, wp)[1]) < 0.05:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.1:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
             else:
                 z_reached = False
 
-            if abs(pid.getError(pid.current_state, wp)[2]) < 0.2:
-                angle_reached = True
-                print('ANGLE ERROR', pid.getError(pid.current_state, wp)[2])
-                print("reached angle")
-            else:
-                angle_reached = False
+            # if abs(pid.getError(pid.current_state, wp)[2]) < 0.2:
+            #     angle_reached = True
+            #     print('ANGLE ERROR', pid.getError(pid.current_state, wp)[2])
+            #     print("reached angle")
+            # else:
+            #     angle_reached = False
 
 
             print("current error = ", (pid.getError(pid.current_state, wp)))
@@ -273,8 +273,8 @@ if __name__ == "__main__":
                 twist_msg.linear.x = 0.0
             if z_reached:
                 twist_msg.linear.z = 0.0
-            if angle_reached:
-                twist_msg.angular.z = 0.0
+            # if angle_reached:
+            #     twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
             #print(coord(update_value, current_state))
             time.sleep(0.05)
