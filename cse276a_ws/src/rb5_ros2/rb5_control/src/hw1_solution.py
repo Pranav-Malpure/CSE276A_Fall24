@@ -38,7 +38,8 @@ class PIDcontroller(Node):
             10)     
         # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
         # self.tags = {'6': [0, 1, np.pi/2], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
-        self.tags = {'6': [0, 0.3, np.pi/2], '4':[-0.8, -0.3, -np.pi]}
+        self.tags = {'4': [0, 1, -np.pi], '6':[1, 1, -np.pi]}
+
         self.position_history = []
 
     def pose_callback(self, msg):
@@ -49,6 +50,7 @@ class PIDcontroller(Node):
         z_ang = msg.pose.orientation.z
         w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
+        z = z - (z-37.5)/12.5 # correcting for z error.
         self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
         self.new_pose_received = True
 
@@ -194,7 +196,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], 
                         #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[-1/2,-1/2,np.pi]])
+    waypoint = np.array([[0,1/2,0], [1, 1/2, 0]])
     # init pid controller
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
