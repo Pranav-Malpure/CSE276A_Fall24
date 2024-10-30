@@ -222,14 +222,16 @@ if __name__ == "__main__":
         # current_state += update_value
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
 
-
+            print("current error = ", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
             # print("update_value",update_value)
 
             # print(genTwistMsg(coord(update_value, pid.current_state)))
-            pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
+            angle_twist_msg = genTwistMsg(coord(update_value, pid.current_state))
+            angle_twist_msg.angular.z = 0.0
+            pid.publisher_.publish(angle_twist_msg)
             #print(coord(update_value, current_state))
             time.sleep(0.05)
             # update the current state
