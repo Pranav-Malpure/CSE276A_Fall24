@@ -270,9 +270,9 @@ if __name__ == "__main__":
             twist_msg = genTwistMsg(coord(update_value, pid.current_state))
             twist_msg.angular.z = 0.0
             if x_reached:
-                twist_msg.linear.x = 0.0
-            if z_reached:
                 twist_msg.linear.z = 0.0
+            if z_reached:
+                twist_msg.linear.x = 0.0
             # if angle_reached:
             #     twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
