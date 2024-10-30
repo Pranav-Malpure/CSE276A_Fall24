@@ -182,12 +182,12 @@ def genTwistMsg(desired_twist):
     return twist_msg
 
 def coord(twist, current_state):
-    J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
-                  [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
-                  [0.0,0.0,1.0]])
-    # J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
-    #               [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    # J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
+    #               [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
     #               [0.0,0.0,1.0]])
+    J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
+                  [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+                  [0.0,0.0,1.0]])
     return np.dot(J, twist)
     
 
@@ -206,7 +206,7 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], 
                         #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[0, 1/2,0], [1, 1/2, 0]])
+    waypoint = np.array([[1/2,0,0], [1/2, 1, 0]])
     # init pid controller
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
