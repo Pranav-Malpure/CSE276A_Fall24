@@ -209,12 +209,13 @@ if __name__ == "__main__":
         # calculate the current twist
         update_value = pid.update(pid.current_state)
         # publish the twist
+        print(genTwistMsg(coord(update_value, pid.current_state)))
         pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
         #print(coord(update_value, current_state))
         time.sleep(0.05)
         # update the current state
         pid.wait_for_new_pose(update_value)
-        print("update value",update_value)
+        # print("update value",update_value)
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
@@ -222,6 +223,7 @@ if __name__ == "__main__":
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
+            print(genTwistMsg(coord(update_value, pid.current_state)))
             pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)))
             #print(coord(update_value, current_state))
             time.sleep(0.05)
@@ -230,7 +232,7 @@ if __name__ == "__main__":
             pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
-            print("update value",update_value)
+            # print("update value",update_value)
             time.sleep(1)
             # time.sleep(2)
 

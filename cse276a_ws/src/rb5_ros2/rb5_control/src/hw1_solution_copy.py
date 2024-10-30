@@ -115,7 +115,7 @@ if __name__ == "__main__":
     #                      [-2.0/2,2.0/2,-np.pi/2.0],
     #                      [-1.0/2,1.0/2,-np.pi/4.0],
     #                      [0.0,0.0,0.0]]) 
-    waypoint = np.array([[0.0,0.0,0.0], [0, 1/2, np.pi/2]])
+    waypoint = np.array([[0.0,0.0,np.pi/2], [0, 1/2, np.pi/2]])
     # waypoint = np.array([[0.0,0.0,0.0], [-1/4,-1/4,0]])
     # waypoint = np.array([[0.0,0.0,0.0], [0.0, 0.0, np.pi/2.0]])
 
@@ -124,7 +124,7 @@ if __name__ == "__main__":
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
     # init current state
-    current_state = np.array([0.0,0.0,0.0])
+    current_state = np.array([0.0,0.0,np.pi/2])
 
     # in this loop we will go through each way point.
     # once error between the current state and the current way point is small enough, 
