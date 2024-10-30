@@ -149,11 +149,13 @@ if __name__ == "__main__":
             # publish the twist
             pid.publisher_.publish(genTwistMsg(coord(update_value, current_state)))
             #print(coord(update_value, current_state))
-            time.sleep(0.05)
+            time.sleep(0.1)
             # update the current state
             current_state += update_value
             print("current_state = ", current_state)
-            print("update value",update_value)
+            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+
+            # print("update value",update_value)
             time.sleep(0.5)
 
     # stop the car and exit
