@@ -136,6 +136,7 @@ if __name__ == "__main__":
 
         # calculate the current twist
         update_value = pid.update(current_state)
+        print("update value",update_value)
         # publish the twist
         pid.publisher_.publish(genTwistMsg(coord(update_value, current_state)))
         #print(coord(update_value, current_state))
@@ -152,6 +153,8 @@ if __name__ == "__main__":
             # update the current state
             current_state += update_value
             print("current_state = ", current_state)
+            print("update value",update_value)
+            time.sleep(0.5)
 
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))

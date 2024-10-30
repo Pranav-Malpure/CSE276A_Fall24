@@ -25,7 +25,7 @@ class PIDcontroller(Node):
         self.target = None
         self.I = np.array([0.0,0.0,0.0])
         self.lastError = np.array([0.0,0.0,0.0])
-        self.timestep = 0.2
+        self.timestep = 0.1
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
@@ -160,8 +160,8 @@ def genTwistMsg(desired_twist):
     Convert the twist to twist msg.
     """
     twist_msg = Twist()
-    twist_msg.linear.y = desired_twist[0] 
-    twist_msg.linear.x = desired_twist[1] 
+    twist_msg.linear.x = desired_twist[0] 
+    twist_msg.linear.y = desired_twist[1] 
     twist_msg.linear.z = 0.0
     twist_msg.angular.x = 0.0
     twist_msg.angular.y = 0.0
@@ -214,6 +214,7 @@ if __name__ == "__main__":
         time.sleep(0.05)
         # update the current state
         pid.wait_for_new_pose(update_value)
+        print("update value",update_value)
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
@@ -226,9 +227,11 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             # current_state += update_value
-            # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
+            print("update value",update_value)
+            time.sleep(1)
             # time.sleep(2)
 
     # stop the car and exit
