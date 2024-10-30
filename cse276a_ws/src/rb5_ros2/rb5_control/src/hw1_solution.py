@@ -220,7 +220,9 @@ if __name__ == "__main__":
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)) > 0.05) and pid.getError(pid.current_state, wp)[2] >0.1: # check the error between current state and current way point
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
+
+
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
@@ -238,6 +240,26 @@ if __name__ == "__main__":
             # print("update value",update_value)
             time.sleep(1)
             # time.sleep(2)
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.05):
+                pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+                while rclpy.ok() and (pid.getError(pid.current_state, wp)[2] > 0.1): # check the error between current state and current way point
+                    # calculate the current twist
+                    update_value = pid.update(pid.current_state)
+                    # publish the twist
+                    # print("update_value",update_value)
+
+                    # print(genTwistMsg(coord(update_value, pid.current_state)))
+                    pid.publisher_.publish(genTwistMsg(coord(update_value, pid.current_state)).angular.z)
+                    #print(coord(update_value, current_state))
+                    time.sleep(0.05)
+                    # update the current state
+                    # current_state += update_value
+                    # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+                    pid.wait_for_new_pose(update_value)
+                    print("current_state = ", pid.current_state)
+                    # print("update value",update_value)
+                    time.sleep(1)
+                    # time.sleep(2)
 
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
