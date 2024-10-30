@@ -25,7 +25,7 @@ class PIDcontroller(Node):
         self.target = None
         self.I = np.array([0.0,0.0,0.0])
         self.lastError = np.array([0.0,0.0,0.0])
-        self.timestep = 0.1
+        self.timestep = 0.2
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
