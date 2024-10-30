@@ -220,7 +220,7 @@ if __name__ == "__main__":
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)) > 0.05): # check the error between current state and current way point
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)) > 0.05) and pid.getError(pid.current_state, wp)[2] >0.1: # check the error between current state and current way point
             # calculate the current twist
             update_value = pid.update(pid.current_state)
             # publish the twist
@@ -236,7 +236,7 @@ if __name__ == "__main__":
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
             # print("update value",update_value)
-            # time.sleep(1)
+            time.sleep(1)
             # time.sleep(2)
 
     # stop the car and exit
