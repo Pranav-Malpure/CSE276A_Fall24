@@ -224,10 +224,13 @@ if __name__ == "__main__":
             if pid.getError(pid.current_state, wp)[0] < 0.05:
                 x_reached = True
                 print("reached x")
+                print('X ERROR', pid.getError(pid.current_state, wp)[0])
+
             else:
                 x_reached = False
             if pid.getError(pid.current_state, wp)[1] < 0.05:
                 z_reached = True
+                print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
             else:
                 z_reached = False
