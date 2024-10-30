@@ -38,7 +38,7 @@ class PIDcontroller(Node):
             10)     
         # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
         # self.tags = {'6': [0, 1, np.pi/2], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
-        self.tags = {'4': [0, 1, -np.pi], '6':[1, 1, -np.pi]}
+        self.tags = {'4': [0, 1, 0], '6':[1, 1, 0]}
 
         self.position_history = []
 
@@ -175,12 +175,12 @@ def genTwistMsg(desired_twist):
     return twist_msg
 
 def coord(twist, current_state):
-    # J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
-    #               [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
-    #               [0.0,0.0,1.0]])
-    J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
-                  [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    J = np.array([[np.cos(current_state[2]-np.pi/2), np.sin(current_state[2]-np.pi/2), 0.0],
+                  [-np.sin(current_state[2]-np.pi/2), np.cos(current_state[2]-np.pi/2), 0.0],
                   [0.0,0.0,1.0]])
+    # J = np.array([[np.cos(current_state[2]), np.sin(current_state[2]), 0.0],
+    #               [-np.sin(current_state[2]), np.cos(current_state[2]), 0.0],
+    #               [0.0,0.0,1.0]])
     return np.dot(J, twist)
     
 
