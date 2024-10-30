@@ -58,7 +58,7 @@ class PIDcontroller(Node):
 
         while not self.new_pose_received:
             rclpy.spin_once(self)
-            time.sleep(0.05)
+            # time.sleep(0.05)
 
             if time.time() - start_time > timeout:
                 self.current_state += update_value
@@ -196,6 +196,7 @@ if __name__ == "__main__":
     pid = PIDcontroller(0.02, 0.015, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
+    pid.current_state = np.array([0.0,0.0,np.pi/2])
 
     # in this loop we will go through each way point.
     # once error between the current state and the current way point is small enough, 
@@ -214,7 +215,7 @@ if __name__ == "__main__":
         # update the current state
         pid.wait_for_new_pose(update_value)
         print("current_state = ", pid.current_state)
-        pid.position_history.append([pid.current_state[0], pid.current_state[1]])
+        pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)) > 0.05): # check the error between current state and current way point
             # calculate the current twist
@@ -225,12 +226,11 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             # current_state += update_value
-            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+            # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
 
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
 
-    print(pid.x_position_history)
-    print(pid.z_position_history)
+    print(pid.position_history)
