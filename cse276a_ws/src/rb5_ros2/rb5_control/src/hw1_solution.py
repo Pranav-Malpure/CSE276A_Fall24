@@ -234,7 +234,7 @@ if __name__ == "__main__":
             time.sleep(0.05)
             # update the current state
             # current_state += update_value
-            # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+            pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
             # print("update value",update_value)
