@@ -38,7 +38,7 @@ class PIDcontroller(Node):
             10)     
         # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
         # self.tags = {'6': [0, 1, np.pi/2], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
-        self.tags = {'6': [0, 0.3, np.pi/2], '4':[-0.8, -0.5, 0]}
+        self.tags = {'6': [0, 0.3, np.pi/2], '4':[-0.8, -0.3, 0]}
         self.position_history = []
 
     def pose_callback(self, msg):
@@ -56,14 +56,17 @@ class PIDcontroller(Node):
         timeout = 1
         start_time = time.time()
 
-        while not self.new_pose_received:
+        # while not self.new_pose_received:
+        #     rclpy.spin_once(self)
+        #     # time.sleep(0.05)
+
+        #     if time.time() - start_time > timeout:
+        #         self.current_state += update_value
+        #         break
+        if not self.new_pose_received:
             rclpy.spin_once(self)
-            # time.sleep(0.05)
-
-            if time.time() - start_time > timeout:
-                self.current_state += update_value
-                break
-
+        else:
+            self.current_state += update_value
         self.new_pose_received = False
 
     def calc_curr_state(self, x_det, z_det, x_ang, y_ang, z_ang, w_ang, frame_id):
@@ -282,8 +285,8 @@ if __name__ == "__main__":
                     # update the current state
                     # current_state += update_value
                     # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
-                    pid.wait_for_new_pose(update_value)
                     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
+                    pid.wait_for_new_pose(update_value)
 
                     print("current_state = ", pid.current_state)
                     # print("update value",update_value)
