@@ -201,7 +201,7 @@ if __name__ == "__main__":
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
-    pid.current_state = np.array([0.0,0.0,np.pi/2])
+    pid.current_state = np.array([0,0,0])
 
     # in this loop we will go through each way point.
     # once error between the current state and the current way point is small enough, 
