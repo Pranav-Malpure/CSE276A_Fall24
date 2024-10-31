@@ -286,7 +286,7 @@ if __name__ == "__main__":
             pid.wait_for_new_pose(update_value)
             print("current_state = ", pid.current_state)
             # print("update value",update_value)
-            time.sleep(1)
+            time.sleep(0.5)
             pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
 
             # time.sleep(2)
@@ -316,7 +316,7 @@ if __name__ == "__main__":
 
                     print("current_state = ", pid.current_state)
                     # print("update value",update_value)
-                    time.sleep(1)
+                    time.sleep(0.5)
                     pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
 
                     # time.sleep(2)
