@@ -1,0 +1,9 @@
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/install/strip.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/install.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/list_install_components.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/rebuild_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/edit_cache.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/test.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/install/local.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/rb5_control_uninstall.dir
+/root/CSE276A_Fall24/cse276a_ws/build/rb5_control/CMakeFiles/uninstall.dir

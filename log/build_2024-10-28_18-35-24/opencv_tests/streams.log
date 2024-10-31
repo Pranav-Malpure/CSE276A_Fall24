@@ -1,0 +1,45 @@
+[1.203s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/opencv_tests': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/install/cv_bridge:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/CSE276A_Fall24/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/build/opencv_tests/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/opencv_tests build --build-base /root/CSE276A_Fall24/build/opencv_tests/build install --record /root/CSE276A_Fall24/build/opencv_tests/install.log --single-version-externally-managed install_data
+[1.612s] running egg_info
+[1.617s] creating ../../../../build/opencv_tests/opencv_tests.egg-info
+[1.617s] writing ../../../../build/opencv_tests/opencv_tests.egg-info/PKG-INFO
+[1.620s] writing dependency_links to ../../../../build/opencv_tests/opencv_tests.egg-info/dependency_links.txt
+[1.621s] writing entry points to ../../../../build/opencv_tests/opencv_tests.egg-info/entry_points.txt
+[1.621s] writing requirements to ../../../../build/opencv_tests/opencv_tests.egg-info/requires.txt
+[1.623s] writing top-level names to ../../../../build/opencv_tests/opencv_tests.egg-info/top_level.txt
+[1.643s] writing manifest file '../../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.701s] reading manifest file '../../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.702s] writing manifest file '../../../../build/opencv_tests/opencv_tests.egg-info/SOURCES.txt'
+[1.704s] running build
+[1.705s] running build_py
+[1.705s] creating /root/CSE276A_Fall24/build/opencv_tests/build
+[1.705s] creating /root/CSE276A_Fall24/build/opencv_tests/build/lib
+[1.705s] creating /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests
+[1.705s] copying opencv_tests/__init__.py -> /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests
+[1.705s] copying opencv_tests/broadcast.py -> /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests
+[1.706s] copying opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests
+[1.706s] copying opencv_tests/source.py -> /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests
+[1.706s] running install
+[1.707s] running install_lib
+[1.708s] creating /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.709s] copying /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests/__init__.py -> /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.712s] copying /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests/broadcast.py -> /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.712s] copying /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests/rosfacedetect.py -> /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.712s] copying /root/CSE276A_Fall24/build/opencv_tests/build/lib/opencv_tests/source.py -> /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests
+[1.712s] byte-compiling /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/__init__.py to __init__.cpython-38.pyc
+[1.712s] byte-compiling /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/broadcast.py to broadcast.cpython-38.pyc
+[1.714s] byte-compiling /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/rosfacedetect.py to rosfacedetect.cpython-38.pyc
+[1.714s] byte-compiling /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests/source.py to source.cpython-38.pyc
+[1.717s] running install_data
+[1.717s] creating /root/CSE276A_Fall24/install/opencv_tests/share/ament_index
+[1.717s] creating /root/CSE276A_Fall24/install/opencv_tests/share/ament_index/resource_index
+[1.717s] creating /root/CSE276A_Fall24/install/opencv_tests/share/ament_index/resource_index/packages
+[1.717s] copying resource/opencv_tests -> /root/CSE276A_Fall24/install/opencv_tests/share/ament_index/resource_index/packages
+[1.717s] copying package.xml -> /root/CSE276A_Fall24/install/opencv_tests/share/opencv_tests
+[1.718s] running install_egg_info
+[1.719s] Copying ../../../../build/opencv_tests/opencv_tests.egg-info to /root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages/opencv_tests-3.0.7-py3.8.egg-info
+[1.721s] running install_scripts
+[1.764s] Installing broadcast script to /root/CSE276A_Fall24/install/opencv_tests/lib/opencv_tests
+[1.764s] Installing rosfacedetect script to /root/CSE276A_Fall24/install/opencv_tests/lib/opencv_tests
+[1.765s] Installing source script to /root/CSE276A_Fall24/install/opencv_tests/lib/opencv_tests
+[1.765s] writing list of installed files to '/root/CSE276A_Fall24/build/opencv_tests/install.log'
+[1.838s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/src/vision_opencv/opencv_tests' returned '0': AMENT_PREFIX_PATH=/root/CSE276A_Fall24/install/cv_bridge:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/CSE276A_Fall24/install/cv_bridge:${CMAKE_PREFIX_PATH} LD_LIBRARY_PATH=/root/CSE276A_Fall24/install/cv_bridge/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/CSE276A_Fall24/build/opencv_tests/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/root/CSE276A_Fall24/install/opencv_tests/lib/python3.8/site-packages:/root/CSE276A_Fall24/install/cv_bridge/lib/python3.8/site-packages:${PYTHONPATH} _=/usr/bin/env /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../../../build/opencv_tests build --build-base /root/CSE276A_Fall24/build/opencv_tests/build install --record /root/CSE276A_Fall24/build/opencv_tests/install.log --single-version-externally-managed install_data

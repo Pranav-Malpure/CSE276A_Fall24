@@ -1,0 +1,26 @@
+[0.110s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_control -- -j8 -l8
+[0.266s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/rb5_control -- -j8 -l8
+[0.453s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_control': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_control
+[0.493s] -- Install configuration: ""
+[0.494s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/launch
+[0.494s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/launch/hw1_solution.launch
+[0.495s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/launch/mpi_twist_control.launch
+[0.511s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/hw1_solution.py
+[0.512s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/mpi_twist_control_node.py
+[0.512s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/lib/rb5_control/mpi_control.py
+[0.512s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/ament_index/resource_index/package_run_dependencies/rb5_control
+[0.512s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/ament_index/resource_index/parent_prefix_path/rb5_control
+[0.512s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/environment/ament_prefix_path.sh
+[0.513s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/environment/ament_prefix_path.dsv
+[0.513s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/environment/path.sh
+[0.513s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/environment/path.dsv
+[0.513s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/local_setup.bash
+[0.513s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/local_setup.sh
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/local_setup.zsh
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/local_setup.dsv
+[0.514s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/package.dsv
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/ament_index/resource_index/packages/rb5_control
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/cmake/rb5_controlConfig.cmake
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/cmake/rb5_controlConfig-version.cmake
+[0.514s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/rb5_control/share/rb5_control/package.xml
+[0.515s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/rb5_control' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/rb5_control

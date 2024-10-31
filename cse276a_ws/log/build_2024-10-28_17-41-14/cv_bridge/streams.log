@@ -1,0 +1,45 @@
+[0.107s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/cv_bridge -- -j8 -l8
+[0.317s] [ 12%] Built target gtest
+[0.336s] [ 31%] Built target cv_bridge
+[0.343s] [ 43%] Built target gtest_main
+[0.386s] [ 62%] Built target cv_bridge_boost
+[0.420s] [100%] Built target cv_bridge-utest
+[0.471s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/cv_bridge -- -j8 -l8
+[0.814s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/cv_bridge
+[0.861s] -- Install configuration: ""
+[0.861s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/pythonpath.sh
+[0.862s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/pythonpath.dsv
+[0.863s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge
+[0.863s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/__init__.py
+[0.864s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/core.py
+[0.925s] Listing '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge'...
+[0.926s] Listing '/root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/boost'...
+[0.927s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/library_path.sh
+[0.929s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/library_path.dsv
+[0.929s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge
+[0.930s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/cv_bridge.h
+[0.931s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/rgb_colors.h
+[0.932s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/libcv_bridge.so
+[0.934s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/package_run_dependencies/cv_bridge
+[0.934s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/parent_prefix_path/cv_bridge
+[0.935s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/ament_prefix_path.sh
+[0.936s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/ament_prefix_path.dsv
+[0.936s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/path.sh
+[0.937s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/environment/path.dsv
+[0.938s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.bash
+[0.939s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.sh
+[0.943s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.zsh
+[0.946s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/local_setup.dsv
+[0.947s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/package.dsv
+[0.947s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/ament_index/resource_index/packages/cv_bridge
+[0.948s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridge-extras.cmake
+[0.948s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.949s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.950s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/ament_cmake_export_libraries-extras.cmake
+[0.950s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig.cmake
+[0.951s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/cmake/cv_bridgeConfig-version.cmake
+[0.951s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/share/cv_bridge/package.xml
+[0.952s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/libcv_bridge.so
+[0.952s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/include/cv_bridge/cv_bridge_export.h
+[0.953s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/cv_bridge/lib/python3.8/site-packages/cv_bridge/boost/cv_bridge_boost.so
+[1.003s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/cv_bridge' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/cv_bridge

@@ -1,0 +1,41 @@
+[0.106s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/image_geometry -- -j8 -l8
+[0.352s] [ 27%] Built target image_geometry
+[0.424s] [ 45%] Built target gtest_main
+[0.521s] [ 63%] Built target gtest
+[0.586s] [ 81%] Built target image_geometry-utest-equi
+[0.681s] [100%] Built target image_geometry-utest
+[0.747s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/cse276a_ws/build/image_geometry -- -j8 -l8
+[0.962s] Invoking command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/image_geometry
+[1.007s] -- Install configuration: ""
+[1.009s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/pythonpath.sh
+[1.010s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/pythonpath.dsv
+[1.010s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/python3.8/site-packages/image_geometry
+[1.011s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/python3.8/site-packages/image_geometry/__init__.py
+[1.011s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/python3.8/site-packages/image_geometry/cameramodels.py
+[1.069s] Listing '/root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/python3.8/site-packages/image_geometry'...
+[1.075s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/include/image_geometry
+[1.077s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/include/image_geometry/pinhole_camera_model.h
+[1.081s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/include/image_geometry/stereo_camera_model.h
+[1.088s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/include/image_geometry/visibility_control.hpp
+[1.089s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/lib/libimage_geometry.so
+[1.090s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/library_path.sh
+[1.094s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/library_path.dsv
+[1.095s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/ament_index/resource_index/package_run_dependencies/image_geometry
+[1.096s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/ament_index/resource_index/parent_prefix_path/image_geometry
+[1.097s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/ament_prefix_path.sh
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/ament_prefix_path.dsv
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/path.sh
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/environment/path.dsv
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/local_setup.bash
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/local_setup.sh
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/local_setup.zsh
+[1.100s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/local_setup.dsv
+[1.101s] -- Installing: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/package.dsv
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/ament_index/resource_index/packages/image_geometry
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/cmake/ament_cmake_export_libraries-extras.cmake
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/cmake/ament_cmake_export_dependencies-extras.cmake
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/cmake/ament_cmake_export_include_directories-extras.cmake
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/cmake/image_geometryConfig.cmake
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/cmake/image_geometryConfig-version.cmake
+[1.101s] -- Up-to-date: /root/CSE276A_Fall24/cse276a_ws/install/image_geometry/share/image_geometry/package.xml
+[1.120s] Invoked command in '/root/CSE276A_Fall24/cse276a_ws/build/image_geometry' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/cse276a_ws/build/image_geometry

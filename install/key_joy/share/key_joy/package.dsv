@@ -1,0 +1,11 @@
+source;share/key_joy/hook/cmake_prefix_path.ps1
+source;share/key_joy/hook/cmake_prefix_path.dsv
+source;share/key_joy/hook/cmake_prefix_path.sh
+source;share/key_joy/hook/pythonpath.ps1
+source;share/key_joy/hook/pythonpath.dsv
+source;share/key_joy/hook/pythonpath.sh
+source;share/key_joy/local_setup.bash
+source;share/key_joy/local_setup.dsv
+source;share/key_joy/local_setup.ps1
+source;share/key_joy/local_setup.sh
+source;share/key_joy/local_setup.zsh

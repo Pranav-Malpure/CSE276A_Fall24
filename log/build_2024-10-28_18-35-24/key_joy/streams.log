@@ -1,0 +1,78 @@
+[0.094s] Invoking command in '/root/CSE276A_Fall24/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/install/key_joy
+[0.403s] -- The C compiler identification is GNU 9.4.0
+[0.578s] -- The CXX compiler identification is GNU 9.4.0
+[0.590s] -- Check for working C compiler: /usr/bin/cc
+[0.867s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.868s] -- Detecting C compiler ABI info
+[1.209s] -- Detecting C compiler ABI info - done
+[1.242s] -- Detecting C compile features
+[1.247s] -- Detecting C compile features - done
+[1.248s] -- Check for working CXX compiler: /usr/bin/c++
+[1.589s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.595s] -- Detecting CXX compiler ABI info
+[1.992s] -- Detecting CXX compiler ABI info - done
+[2.036s] -- Detecting CXX compile features
+[2.036s] -- Detecting CXX compile features - done
+[2.038s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.082s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.10", minimum required is "3") 
+[2.084s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.615s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.750s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.784s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[3.200s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[3.246s] -- Found FastRTPS: /opt/ros/foxy/include  
+[3.455s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.620s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[3.631s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.639s] -- Looking for pthread.h
+[3.939s] -- Looking for pthread.h - found
+[3.944s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[4.304s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[4.305s] -- Looking for pthread_create in pthreads
+[4.629s] -- Looking for pthread_create in pthreads - not found
+[4.629s] -- Looking for pthread_create in pthread
+[4.950s] -- Looking for pthread_create in pthread - found
+[4.980s] -- Found Threads: TRUE  
+[5.338s] -- Found rclpy: 1.0.13 (/opt/ros/foxy/share/rclpy/cmake)
+[5.449s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[5.690s] -- Added test 'copyright' to check source files copyright and LICENSE
+[5.711s] -- Added test 'flake8' to check Python code syntax and style conventions
+[5.711s] -- Added test 'lint_cmake' to check CMake code style
+[5.711s] -- Added test 'pep257' to check Python code against some of the style conventions in PEP 257
+[5.718s] -- Added test 'xmllint' to check XML markup files
+[5.731s] -- Configuring done
+[5.743s] -- Generating done
+[5.749s] -- Build files have been written to: /root/CSE276A_Fall24/build/key_joy
+[5.770s] Invoked command in '/root/CSE276A_Fall24/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake /root/CSE276A_Fall24/cse276a_ws/src/rb5_ros2/key_joy -DCMAKE_INSTALL_PREFIX=/root/CSE276A_Fall24/install/key_joy
+[5.785s] Invoking command in '/root/CSE276A_Fall24/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/build/key_joy -- -j8 -l8
+[5.960s] Invoked command in '/root/CSE276A_Fall24/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --build /root/CSE276A_Fall24/build/key_joy -- -j8 -l8
+[6.145s] Invoking command in '/root/CSE276A_Fall24/build/key_joy': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/build/key_joy
+[6.168s] -- Install configuration: ""
+[6.175s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/pythonpath.sh
+[6.186s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/pythonpath.dsv
+[6.187s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy
+[6.187s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/__init__.py
+[6.188s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/key_joy_node.py
+[6.191s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/key_parser.py
+[6.306s] Listing '/root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy'...
+[6.306s] Compiling '/root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/__init__.py'...
+[6.306s] Compiling '/root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/key_joy_node.py'...
+[6.306s] Compiling '/root/CSE276A_Fall24/install/key_joy/lib/python3.8/site-packages/key_joy/key_parser.py'...
+[6.306s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/key_joy/key_parser.py
+[6.306s] -- Installing: /root/CSE276A_Fall24/install/key_joy/lib/key_joy/key_joy_node.py
+[6.308s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/ament_index/resource_index/package_run_dependencies/key_joy
+[6.309s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/ament_index/resource_index/parent_prefix_path/key_joy
+[6.309s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/ament_prefix_path.sh
+[6.311s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/ament_prefix_path.dsv
+[6.312s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/path.sh
+[6.314s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/environment/path.dsv
+[6.316s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/local_setup.bash
+[6.317s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/local_setup.sh
+[6.318s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/local_setup.zsh
+[6.320s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/local_setup.dsv
+[6.320s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/package.dsv
+[6.321s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/ament_index/resource_index/packages/key_joy
+[6.321s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/cmake/key_joyConfig.cmake
+[6.322s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/cmake/key_joyConfig-version.cmake
+[6.322s] -- Installing: /root/CSE276A_Fall24/install/key_joy/share/key_joy/package.xml
+[6.373s] Invoked command in '/root/CSE276A_Fall24/build/key_joy' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/root/CSE276A_Fall24/cse276a_ws/install/opencv_tests:/opt/ros/foxy _=/usr/bin/env /usr/bin/cmake --install /root/CSE276A_Fall24/build/key_joy
