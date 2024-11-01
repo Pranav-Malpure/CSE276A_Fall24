@@ -238,15 +238,15 @@ if __name__ == "__main__":
         print("current_state = ", pid.current_state)
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05): # check the error between current state and current way point
-            if abs(pid.getError(pid.current_state, wp)[0]) < 0.05:
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.03): # check the error between current state and current way point
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.03:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
             else:
                 x_reached = False
 
-            if abs(pid.getError(pid.current_state, wp)[1]) < 0.05:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.03:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
@@ -290,10 +290,10 @@ if __name__ == "__main__":
             pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
 
             # time.sleep(2)
-            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.05):
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.03):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
-                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.05: # check the error between current state and current way point
+                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.03: # check the error between current state and current way point
                     # calculate the current twist
                     update_value = pid.update(pid.current_state)
 
