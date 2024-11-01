@@ -35,13 +35,13 @@ tuple<vector<apriltag_pose_t>, vector<int>, cv::Mat> AprilDetection::processImag
   vector<apriltag_pose_t> poses;
   vector<int> ids;
 
-  // tag_info.tagsize = 0.124;
+  tag_info.tagsize = 0.124;
   // tag_info.fx = 702.79986589; 
   // tag_info.fy = 702.50728709;
   // tag_info.cx = 970.71791977;
   // tag_info.cy = 521.41213062;
 
-  tag_info.tagsize = 0.159;
+  // tag_info.tagsize = 0.159;
   tag_info.fx = 663.57507; 
   tag_info.fy = 694.47272;
   tag_info.cx = 956.22994;
