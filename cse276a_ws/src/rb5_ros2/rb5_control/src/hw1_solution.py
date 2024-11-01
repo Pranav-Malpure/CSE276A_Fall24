@@ -51,7 +51,7 @@ class PIDcontroller(Node):
         z_ang = msg.pose.orientation.z
         w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
-        # z = z - (z-37.5)/12.5 # correcting for z error.
+        z = z - (z-37.5)/12.5 # correcting for z error.
         self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
         self.new_pose_received = True
 
