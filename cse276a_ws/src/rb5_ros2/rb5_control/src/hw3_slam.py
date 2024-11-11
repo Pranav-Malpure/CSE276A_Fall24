@@ -130,7 +130,7 @@ class KalmanFilter():
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
 
-        self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance)
+        self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
         print("variance", self.variance)
         # return self.next_state
 
