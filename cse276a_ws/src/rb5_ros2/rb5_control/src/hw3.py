@@ -90,6 +90,7 @@ class KalmanFilter():
         self.G[0] = [1,0,0]
         self.G[1] = [1,0,0] 
         self.G[2] = [1,0,0]
+        self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
         
         self.variance = 1000*np.identity(53)
@@ -177,6 +178,7 @@ def main():
             for j in range(25):
                 pid.get_measurement(kf)
             
+            print(kf.z[7], kf.z[8])
             
             kf.update() 
             
