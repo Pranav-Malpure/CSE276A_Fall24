@@ -137,7 +137,7 @@ def main():
 
     kf = KalmanFilter()
     current_state = np.array([0, 0, 0])
-    pid = PIDcontroller((0.02, 0, 0.075))
+    pid = PIDcontroller(0.02, 0, 0.075)
 
     # move in a square path of 1.5m side
     for i in range(4):
