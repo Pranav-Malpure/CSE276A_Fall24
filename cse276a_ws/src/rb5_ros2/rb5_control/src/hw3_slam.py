@@ -97,7 +97,8 @@ class KalmanFilter():
         self.variance[1][1] = 0
         self.variance[2][2] = 0
 
-        self.Q = np.zeros((53, 53))
+        # self.Q = np.zeros((53, 53))
+        self.Q = np.identity(53)
 
         self.K_t = np.zeros((53, 50))
 
@@ -112,7 +113,8 @@ class KalmanFilter():
         self.state = np.zeros((53, 1))
         self.state_update = np.zeros((53, 1))
 
-        self.R = np.zeros((50, 50))
+        # self.R = np.zeros((50, 50))
+        self.R = 0.1*np.identity(50)
 
 
 
