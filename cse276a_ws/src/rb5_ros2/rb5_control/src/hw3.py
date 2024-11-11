@@ -114,8 +114,8 @@ class KalmanFilter():
 
 
 
-    def predict(self, current_state, u):
-        self.state_update = np.dot(self.F, current_state) + self.G*u
+    def predict(self, u):
+        self.state_update = np.dot(self.F, self.current_state) + self.G*u
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
 
 
@@ -170,7 +170,7 @@ def main():
             pid.publisher_.publish(twist_msg)
             
             # have to check below parameters if they are actually angular velocities
-            kf.predict(np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]))) # have to correct this input according to the kinematic model and rewrite
+            kf.predict(np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z])),) # have to correct this input according to the kinematic model and rewrite
 
             for j in range(25):
                 pid.get_measurement(kf)
