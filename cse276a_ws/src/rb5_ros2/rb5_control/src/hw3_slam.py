@@ -122,7 +122,7 @@ class KalmanFilter():
         # print("G.u", np.dot(self.G, u))
         # print("state update", self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
-
+        print("variance update", self.variance_update)
 
     def update(self):
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.pinv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
