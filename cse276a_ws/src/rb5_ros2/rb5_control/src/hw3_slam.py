@@ -178,10 +178,10 @@ def main():
             
             pid.publisher_.publish(twist_msg)
             
-
-            for j in range(25):
-                pid.get_measurement(kf)
-            # pid.get_measurement(kf)
+            time.sleep(0.5)
+            # for j in range(25):
+            #     pid.get_measurement(kf)
+            pid.get_measurement(kf)
             
             print(kf.z[7], kf.z[8])
             
@@ -190,7 +190,6 @@ def main():
             print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
             
             # if square side complete, break # TODO
-            time.sleep(0.5)
 
             
 if __name__ == '__main__':
