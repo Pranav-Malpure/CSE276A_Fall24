@@ -149,8 +149,8 @@ def main():
     for i in range(4):
         while(True):
             twist_msg = Twist()
-            twist_msg.linear.x = 0.0
-            twist_msg.linear.y = 0.1
+            twist_msg.linear.x = 0.1
+            twist_msg.linear.y = 0.0
             twist_msg.linear.z = 0.0
             twist_msg.angular.x = 0.0
             twist_msg.angular.y = 0.0
@@ -168,9 +168,9 @@ def main():
             #                          [1, -1, (lx + ly)]])/r
             
             # input = np.dot(jacobian_matrix, desired_twist)
-            twist_msg.linear.y = 0.0
+            twist_msg.linear.x = 0.0
 
-            input = np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]))
+            input = np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
 
             # have to check below parameters if they are actually angular velocities
             kf.predict(input) # have to correct this input according to the kinematic model and rewrite
