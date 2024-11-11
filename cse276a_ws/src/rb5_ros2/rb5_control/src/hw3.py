@@ -67,6 +67,7 @@ class PIDcontroller(Node):
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
+        print("callback data", self.callback_data)
         theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         if self.callback_data[2] in self.detected_tag:
             
@@ -175,8 +176,9 @@ def main():
             # have to check below parameters if they are actually angular velocities
             kf.predict(np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]))) # have to correct this input according to the kinematic model and rewrite
 
-            for j in range(25):
-                pid.get_measurement(kf)
+            # for j in range(25):
+            #     pid.get_measurement(kf)
+            pid.get_measurement(kf)
             
             print(kf.z[7], kf.z[8])
             
