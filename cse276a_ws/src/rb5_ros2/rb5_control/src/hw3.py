@@ -12,7 +12,7 @@ from geometry_msgs.msg import PoseStamped
 import math
 from collections import defaultdict
 import pickle
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
