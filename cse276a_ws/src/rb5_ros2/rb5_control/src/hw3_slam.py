@@ -168,7 +168,7 @@ def main():
             twist_msg.linear.y = 0.0
 
             input = np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
-
+            print("input", input)
             # have to check below parameters if they are actually angular velocities
             kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
