@@ -152,7 +152,7 @@ def main():
             pid.publisher_.publish(twist_msg)
 
             time.sleep(delta_t)
-
+            print("moving forward")
             # calculating the input vector below
 
             # desired_twist = np.array([[-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]])
