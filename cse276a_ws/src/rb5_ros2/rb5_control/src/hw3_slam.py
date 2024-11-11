@@ -69,6 +69,7 @@ class PIDcontroller(Node):
         rclpy.spin_once(self)
         # print("callback data", self.callback_data)
         theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
+        print("callback data", self.callback_data)
         if self.callback_data[2] in self.detected_tag:
             
             kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
@@ -79,7 +80,7 @@ class PIDcontroller(Node):
             kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
             kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
 
-        print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
+        # print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
 
 class KalmanFilter():
     def __init__(self):
