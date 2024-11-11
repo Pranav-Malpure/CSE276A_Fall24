@@ -67,12 +67,13 @@ class PIDcontroller(Node):
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
+        theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         if self.callback_data[2] in self.detected_tag:
-            theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
             
             kf.z[self.callback_data[3]*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
             kf.z[self.callback_data[3]*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
         else:
+            
             self.detected_tag.append(self.callback_data[2])
             kf.z[self.callback_data[3]*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
             kf.z[self.callback_data[3]*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
