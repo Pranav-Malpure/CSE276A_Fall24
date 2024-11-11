@@ -89,8 +89,8 @@ class KalmanFilter():
         self.F = np.identity(53)
         self.G = np.zeros((53, 3)) 
         self.G[0] = [1,0,0]
-        self.G[1] = [1,0,0] 
-        self.G[2] = [1,0,0]
+        self.G[1] = [0,1,0] 
+        self.G[2] = [0,0,1]
         self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
         
