@@ -165,7 +165,7 @@ def main():
 
 
 
-            twist_msg.linear.x = 0
+            twist_msg.linear.x = 0.0
             
             pid.publisher_.publish(twist_msg)
             
