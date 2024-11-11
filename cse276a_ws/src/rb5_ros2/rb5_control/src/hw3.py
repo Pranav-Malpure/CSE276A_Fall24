@@ -66,6 +66,7 @@ class PIDcontroller(Node):
         # self.new_pose_received = True
 
     def get_measurement(self, kf):
+        rclpy.spin_once(self)
         if self.callback_data[2] in self.detected_tag:
             theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
             
