@@ -117,7 +117,7 @@ class KalmanFilter():
     def predict(self, u):
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
         # print("u", u)
-        print("G.u", np.dot(self.G, u))
+        # print("G.u", np.dot(self.G, u))
         # print("state update", self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
 
@@ -166,7 +166,7 @@ def main():
             
             # input = np.dot(jacobian_matrix, desired_twist)
 
-            input = np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+            input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
             twist_msg.linear.x = 0.0
             # print("input", input)
             # have to check below parameters if they are actually angular velocities
