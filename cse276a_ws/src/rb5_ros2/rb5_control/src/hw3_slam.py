@@ -126,7 +126,7 @@ class KalmanFilter():
 
     def update(self):
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.pinv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
-        # print("K_t", self.K_t)
+        print("K_t", self.K_t)
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
 
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance)
@@ -183,7 +183,7 @@ def main():
             #     pid.get_measurement(kf)
             pid.get_measurement(kf)
             
-            print(kf.z[7], kf.z[8])
+            # print(kf.z[7], kf.z[8])
             
             kf.update() 
             
