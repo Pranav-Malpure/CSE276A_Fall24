@@ -178,7 +178,7 @@ def main():
             
             pid.publisher_.publish(twist_msg)
             
-            time.sleep(0.5)
+            time.sleep(1.5)
             # for j in range(25):
             #     pid.get_measurement(kf)
             pid.get_measurement(kf)
