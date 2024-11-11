@@ -59,7 +59,7 @@ class PIDcontroller(Node):
         w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
         
-        z = z - np.sign(z)*(np.abs(z)-0.375)/0.125 # correcting for z error caused by april tag
+        # z = z - np.sign(z)*(np.abs(z)-0.375)/0.125 # correcting for z error caused by april tag
         
         self.callback_data = [x, z, frame_id]
         # self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
