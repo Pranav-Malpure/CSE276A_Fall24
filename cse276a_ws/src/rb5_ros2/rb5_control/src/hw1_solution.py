@@ -42,6 +42,7 @@ class PIDcontroller(Node):
         self.tags = {'4': [1, 0, 0], '6':[1, 1, 0], '5':[0.5, 1.5, np.pi/2], '7':[-0.45, 1, -np.pi],'2': [-0.41, 0, -np.pi], '1':[0, -0.5, -np.pi/2]}
 
         self.position_history = []
+        self.april_tag_data = dict()
 
     def pose_callback(self, msg):
         x = msg.pose.position.x
@@ -51,8 +52,11 @@ class PIDcontroller(Node):
         z_ang = msg.pose.orientation.z
         w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
-        # z = z - np.sign(z)*(np.abs(z)-37.5)/12.5 # correcting for z error.
-        self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
+        
+        z = z - np.sign(z)*(np.abs(z)-0.375)/0.125 # correcting for z error caused by april tag
+
+        # self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
+        self.april_tag_data[frame_id] = [x, z, w_ang]
         self.new_pose_received = True
 
     def wait_for_new_pose(self, update_value):
