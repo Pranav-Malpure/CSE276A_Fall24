@@ -67,7 +67,7 @@ class PIDcontroller(Node):
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
-        print("callback data", self.callback_data)
+        # print("callback data", self.callback_data)
         theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         if self.callback_data[2] in self.detected_tag:
             
@@ -120,6 +120,8 @@ class KalmanFilter():
 
     def predict(self, u):
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
+        print("G.u", np.dot(self.G, u))
+        print("state update", self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
 
 
