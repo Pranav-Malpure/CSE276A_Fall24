@@ -70,13 +70,13 @@ class PIDcontroller(Node):
         theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         if self.callback_data[2] in self.detected_tag:
             
-            kf.z[self.callback_data[2]*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
-            kf.z[self.callback_data[2]*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
+            kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
+            kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
         else:
             
             self.detected_tag.append(self.callback_data[2])
-            kf.z[self.callback_data[2]*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
-            kf.z[self.callback_data[2]*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
+            kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
+            kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
 
 
         
