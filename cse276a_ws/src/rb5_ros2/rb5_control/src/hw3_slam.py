@@ -124,7 +124,7 @@ class KalmanFilter():
         # print("G.u", np.dot(self.G, u))
         # print("state update", self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
-        print("variance update", self.variance_update)
+        # print("variance update", self.variance_update)
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
@@ -134,7 +134,7 @@ class KalmanFilter():
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
 
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
-        print("variance", self.variance)
+        # print("variance", self.variance)
         # return self.next_state
 
 
