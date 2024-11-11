@@ -79,7 +79,8 @@ class PIDcontroller(Node):
             kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
             kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
 
-        print("z", kf.z)
+        print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
+
 class KalmanFilter():
     def __init__(self):
         self.F = np.identity(53)
