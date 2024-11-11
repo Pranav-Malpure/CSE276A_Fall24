@@ -27,6 +27,7 @@ install(
   src/mpi_twist_control_node.py
   src/mpi_control.py
   src/hw3_slam.py
+  src/hw3.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
