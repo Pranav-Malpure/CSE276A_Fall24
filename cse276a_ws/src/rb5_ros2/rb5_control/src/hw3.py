@@ -84,7 +84,7 @@ class PIDcontroller(Node):
 class KalmanFilter():
     def __init__(self):
         self.F = np.identity(53)
-        self.G = np.zeros((53, 4)) 
+        self.G = np.zeros((53, 3)) 
         self.G[0] = [1,0,0,0]
         self.G[1] = [1,0,0,0] 
         self.G[2] = [1,0,0,0]
