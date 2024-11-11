@@ -23,7 +23,7 @@ calibration_y = 100
 calibration_ang = 60
 
 
-class PIDcontroller():
+class PIDcontroller(Node):
     def __init__(self, Kp, Ki, Kd):
         super().__init__('PID_Controller_NodePub')
         self.Kp = Kp
