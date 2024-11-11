@@ -129,7 +129,7 @@ class KalmanFilter():
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
-        # print("K_t", self.K_t)
+        print("K_t", self.K_t[0][7], self.K_t[0][8])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         print("z-H.state", self.z - np.dot(self.H, self.state_update))
