@@ -168,12 +168,13 @@ def main():
             #                          [1, -1, (lx + ly)]])/r
             
             # input = np.dot(jacobian_matrix, desired_twist)
+            twist_msg.linear.y = 0.0
 
+            input = np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]))
 
             # have to check below parameters if they are actually angular velocities
-            kf.predict(np.array(([-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]))) # have to correct this input according to the kinematic model and rewrite
+            kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
-            twist_msg.linear.y = 0.0
             
             pid.publisher_.publish(twist_msg)
             
