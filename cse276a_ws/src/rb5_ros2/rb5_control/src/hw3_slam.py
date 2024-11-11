@@ -135,23 +135,21 @@ class KalmanFilter():
         print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
         # print("variance", self.variance)
-        # return self.next_state
-
-
-
-    
+        # return self.next_state 
 
 
 def main():
     rclpy.init()
 
     kf = KalmanFilter()
-    current_state = np.array([0, 0, 0])
     pid = PIDcontroller(0.02, 0, 0.075)
 
-    # move in a square path of 1.5m side
-    for i in range(4):
-        while(True):
+    waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+    time.sleep(3)
+
+    for wp in waypoint:
+        print("move to way point", wp)
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05):
             twist_msg = Twist()
             twist_msg.linear.x = 0.0
             twist_msg.linear.y = 0.1
@@ -160,40 +158,57 @@ def main():
             twist_msg.angular.y = 0.0
             twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
-
             time.sleep(delta_t)
             print("moving forward")
-            # calculating the input vector below
-
-            # desired_twist = np.array([[-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]])
-            # jacobian_matrix = np.array([[1, -1, -(lx + ly)],
-            #                          [1, 1, (lx + ly)],
-            #                          [1, 1, -(lx + ly)],
-            #                          [1, -1, (lx + ly)]])/r
-            
-            # input = np.dot(jacobian_matrix, desired_twist)
 
             input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+            # Stop Car
             twist_msg.linear.y = 0.0
-            # print("input", input)
-            # have to check below parameters if they are actually angular velocities
-            kf.predict(input) # have to correct this input according to the kinematic model and rewrite
-
-            
             pid.publisher_.publish(twist_msg)
-            
             time.sleep(1.5)
-            # for j in range(25):
-            #     pid.get_measurement(kf)
+            # Predict state in open loop
+            kf.predict(input)
+            # Measure april tag detection               
             pid.get_measurement(kf)
-            
-            # print(kf.z[7], kf.z[8])
-            
+            # Reconcile measured and predicted measurements
             kf.update() 
-            
             print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
-            
-            # if square side complete, break # TODO
+            # Update current state
+            pid.current_state[0] = kf.state[0]
+            pid.current_state[1] = kf.state[1]
+            pid.current_state[2] = kf.state[2]           
+
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.05):
+                print('inside angle regime')
+                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.03:
+                    # rotating (1 movment = x rad)
+                    twist_msg = Twist()
+                    twist_msg.linear.x = 0.0
+                    twist_msg.linear.y = 0.0
+                    twist_msg.linear.z = 0.0
+                    twist_msg.angular.x = 0.0
+                    twist_msg.angular.y = 0.0
+                    twist_msg.angular.z = 0.1
+                    pid.publisher_.publish(twist_msg)
+                    time.sleep(delta_t)
+                    print("rotating")
+
+                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+                    # Stop Car
+                    twist_msg.angular.z = 0.0
+                    pid.publisher_.publish(twist_msg)
+                    time.sleep(1.5)
+                    # Predict state in open loop
+                    kf.predict(input)
+                    # Measure april tag detection               
+                    pid.get_measurement(kf)
+                    # Reconcile measured and predicted measurements
+                    kf.update() 
+                    print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
+                    # Update current state
+                    pid.current_state[0] = kf.state[0]
+                    pid.current_state[1] = kf.state[1]
+                    pid.current_state[2] = kf.state[2]
 
             
 if __name__ == '__main__':
