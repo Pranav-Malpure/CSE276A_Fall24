@@ -74,6 +74,7 @@ class PIDcontroller(Node):
             kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
             kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
             if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
+                print('inside new tag')
                 kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0] + kf.state_update[0] # TODO: Add angle transformation of axes
                 kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[1] + kf.state_update[1] # TODO: Add angle transformation of axes
         # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
@@ -89,16 +90,18 @@ class KalmanFilter():
         self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
         
-        self.variance = 1000*np.identity(53)
-        self.variance[0][0] = 0
-        self.variance[1][1] = 0
-        self.variance[2][2] = 0
+        # self.variance = 1000*np.identity(53)
+        self.variance = 1e-2*np.identity(53)
+        # self.variance[0][0] = 0
+        # self.variance[1][1] = 0
+        # self.variance[2][2] = 0
 
         # self.Q = np.zeros((53, 53))
-        self.Q = np.identity(53)*1e-2
+        self.Q = np.identity(53)*1e-4
 
-        self.K_t = np.zeros((53, 50))
+        # self.K_t = np.zeros((53, 50))
 
+        # self.S = np.zeros((50, 50))
 
         self.H_core = np.zeros((50, 53))
         for i in range(50):
@@ -131,30 +134,33 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
+        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[11], self.state_update[12])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         # print("variance update", self.variance_update)
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
-        self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
-        # print("K_t", self.K_t[0][7], self.K_t[0][8])
+        # self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
+        # print("K_t", self.K_t[0][8], self.K_t[0][9])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
-        print('z', self.z[6:8])
-        print('estimated z', np.dot(self.H, self.state_update)[6:8])
-        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8])
+        S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
+        K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[11], self.state_update[12])
+        print('z', self.z[8:10])
+        print('estimated z', np.dot(self.H, self.state_update)[8:10])
+        print('innovation', (self.z - np.dot(self.H, self.state_update))[8:10])
         # print(self.z - np.dot(self.H, self.state_update))
-        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10])
+        print('kalman update term:', np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[11], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[12])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
-        self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
+        self.state = self.state_update + np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
-        self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
+        self.variance = np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update)
+        # self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
+        # self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
         # print("variance", self.variance)
         self.H = self.H_core
         self.detected_tag = []
-        # TODO;just have to finalize now whether the april tag measurements in z vector shuold be in which frame.
 
 
     
@@ -167,37 +173,37 @@ def main():
     pid = PIDcontroller(0.02, 0, 0.075)
 
     # move in a square path of 1.5m side
-    for _ in range(4):
-        while(True):
-            twist_msg = Twist()
-            twist_msg.linear.x = 0.0
-            twist_msg.linear.y = 0.1
-            twist_msg.linear.z = 0.0
-            twist_msg.angular.x = 0.0
-            twist_msg.angular.y = 0.0
-            twist_msg.angular.z = 0.0
-            pid.publisher_.publish(twist_msg)
+    for _ in range(1):
+        # while(True):
+        twist_msg = Twist()
+        twist_msg.linear.x = 0.0
+        twist_msg.linear.y = 0.1
+        twist_msg.linear.z = 0.0
+        twist_msg.angular.x = 0.0
+        twist_msg.angular.y = 0.0
+        twist_msg.angular.z = 0.0
+        pid.publisher_.publish(twist_msg)
 
-            time.sleep(delta_t)
-            print("moving forward")
+        time.sleep(delta_t)
+        print("moving forward")
 
-            input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
-            twist_msg.linear.y = 0.0
-            kf.predict(input) # have to correct this input according to the kinematic model and rewrite
+        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+        twist_msg.linear.y = 0.0
+        kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
-            
-            pid.publisher_.publish(twist_msg)
-            
-            time.sleep(1.5)
-            pid.get_measurement(kf)
-            
-            # print(kf.z[7], kf.z[8])
-            
-            kf.update() 
-            
-            print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11])
-            
-            # if square side complete, break # TODO
+        
+        pid.publisher_.publish(twist_msg)
+        
+        time.sleep(1.5)
+        pid.get_measurement(kf)
+        
+        # print(kf.z[7], kf.z[8])
+        
+        kf.update() 
+        
+        print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11])
+        
+        # if square side complete, break # TODO
 
             
 if __name__ == '__main__':
