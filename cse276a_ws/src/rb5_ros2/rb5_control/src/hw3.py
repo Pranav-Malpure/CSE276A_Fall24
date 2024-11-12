@@ -74,7 +74,7 @@ class PIDcontroller(Node):
             if kf.state_update[int(self.callback_data[2])*2 - 1 + 3] == 0 and kf.state_update[int(self.callback_data[2])*2 + 3] == 0:
                 kf.state_update[int(self.callback_data[2])*2 - 1 + 3] = self.callback_data[0] + kf.state_update[0] # TODO: Add angle transformation of axes
                 kf.state_update[int(self.callback_data[2])*2 + 3] = self.callback_data[1] + kf.state_update[1] # TODO: Add angle transformation of axes
-        print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
+        # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
 
 
 class KalmanFilter():
@@ -134,12 +134,12 @@ class KalmanFilter():
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
         # print("K_t", self.K_t[0][7], self.K_t[0][8])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
-        print('state update inside UPDATE', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
-        self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
         print('z', self.z[7:9])
         print('estimated z', np.dot(self.H, self.state_update)[7:9])
         print('innovation', (self.z - np.dot(self.H, self.state_update))[7:9])
         print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[:12])
+        self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
         # print("variance", self.variance)
