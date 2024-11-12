@@ -100,13 +100,17 @@ class KalmanFilter():
 
         self.H_core = np.zeros((50, 53))
         for i in range(50):
-            self.H_core[i][0] = -1
-            self.H_core[i][1] = -1 
+            if i % 2 == 0:
+                self.H_core[i][0] = -1
+            else:
+                self.H_core[i][1] = -1 
 
         self.H = np.zeros((50, 53)) # H.s is actually where you think the april tag is, and z is actually where it is. it should be in robot frame
         for i in range(50):
-            self.H[i][0] = -1
-            self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
+            if i % 2 == 0:
+                self.H[i][0] = -1
+            else:
+                self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
         
         self.z = np.zeros((50, 1))
 
