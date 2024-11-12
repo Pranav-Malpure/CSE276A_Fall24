@@ -132,6 +132,7 @@ class KalmanFilter():
         # print("G.u", np.dot(self.G, u))
 
         print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
+        print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         # print("variance update", self.variance_update)
 
@@ -140,11 +141,13 @@ class KalmanFilter():
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
         # print("K_t", self.K_t[0][7], self.K_t[0][8])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
-        print('z', self.z[7:9])
-        print('estimated z', np.dot(self.H, self.state_update)[7:9])
-        print('innovation', (self.z - np.dot(self.H, self.state_update))[7:9])
-        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[11])
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
+        print('z', self.z[6:8])
+        print('estimated z', np.dot(self.H, self.state_update)[6:8])
+        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8])
+        print(self.z - np.dot(self.H, self.state_update))
+        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10])
+        print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
