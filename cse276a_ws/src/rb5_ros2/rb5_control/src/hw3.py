@@ -72,8 +72,8 @@ class PIDcontroller(Node):
             kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
             kf.z[int(self.callback_data[2])*2] = self.callback_data[1]
             if kf.state_update[int(self.callback_data[2])*2 - 1 + 3] == 0 and kf.state_update[int(self.callback_data[2])*2 + 3] == 0:
-                kf.state_update[int(self.callback_data[2])*2 - 1 + 3] = self.callback_data[0]
-                kf.state_update[int(self.callback_data[2])*2 + 3] = self.callback_data[1]
+                kf.state_update[int(self.callback_data[2])*2 - 1 + 3] = self.callback_data[0] + kf.state_update[0] # TODO: Add angle transformation of axes
+                kf.state_update[int(self.callback_data[2])*2 + 3] = self.callback_data[1] + kf.state_update[1] # TODO: Add angle transformation of axes
         print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
 
 
