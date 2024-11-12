@@ -187,7 +187,7 @@ def main():
         time.sleep(delta_t)
         print("moving forward")
 
-        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/25], [calibration_ang*twist_msg.angular.z]))
         twist_msg.linear.y = 0.0
         kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
