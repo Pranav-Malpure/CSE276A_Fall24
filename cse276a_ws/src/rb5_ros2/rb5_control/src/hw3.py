@@ -116,11 +116,12 @@ class KalmanFilter():
 
     def predict(self, u):
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
-        print("u", u)
-        print("G.u", np.dot(self.G, u))
-        print("state update", self.state_update)
+        # print("u", u)
+        # print("G.u", np.dot(self.G, u))
+
+        print("state update", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
-        print("variance update", self.variance_update)
+        # print("variance update", self.variance_update)
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
