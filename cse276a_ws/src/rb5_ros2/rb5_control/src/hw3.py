@@ -43,9 +43,6 @@ class PIDcontroller(Node):
             '/april_poses',
             self.pose_callback,
             1)     
-        # Dictionary with key being frame_id and value being a list [x, y, theta] of the april tag
-        # self.tags = {'6': [0, 1, np.pi/2], '2': [x2, z2, t2], '3': [x3, z3, t3], '4': [x4, z4, t4], '5': [x5, z5, t5]}
-        # self.tags = {'4': [1, 0, 0], '6':[1, 1, 0], '5':[0.5, 1.5, np.pi/2], '7':[-0.45, 1, -np.pi],'2': [-0.41, 0, -np.pi], '1':[0, -0.5, -np.pi/2]}
         self.callback_data = []
         self.position_history = []
 
@@ -58,11 +55,7 @@ class PIDcontroller(Node):
         w_ang = msg.pose.orientation.w
         frame_id = msg.header.frame_id
         
-        # z = z - np.sign(z)*(np.abs(z)-0.375)/0.125 # correcting for z error caused by april tag
-        
         self.callback_data = [x, z, frame_id]
-        # self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
-        # self.new_pose_received = True
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
@@ -72,19 +65,12 @@ class PIDcontroller(Node):
         if self.callback_data[2] in kf.detected_tag:
             kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
             kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
-            # kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
-            # kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
-            kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
-            kf.z[int(self.callback_data[2])*2] = self.callback_data[1] 
         else:
             kf.detected_tag.append(self.callback_data[2])
             kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
             kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
-            # kf.z[int(self.callback_data[2])*2 - 1] = kf.state_update[0] + (self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta))
-            # kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
             kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
             kf.z[int(self.callback_data[2])*2] = self.callback_data[1]
-        # print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
 
 class KalmanFilter():
     def __init__(self):
@@ -102,7 +88,7 @@ class KalmanFilter():
         self.variance[2][2] = 0
 
         # self.Q = np.zeros((53, 53))
-        self.Q = np.identity(53)*1e-4
+        self.Q = np.identity(53)*1e-2
 
         self.K_t = np.zeros((53, 50))
 
@@ -124,22 +110,17 @@ class KalmanFilter():
         self.state = np.zeros((53, 1))
         self.state_update = np.zeros((53, 1))
 
-        # self.R = np.zeros((50, 50))
         self.R = np.identity(50)*1e-2
 
         self.detected_tag = []
 
-
-
-
     def predict(self, u):
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
-        # print("u", u)
-        # print("G.u", np.dot(self.G, u))
-        # print("state update", self.state_update)
+        print("u", u)
+        print("G.u", np.dot(self.G, u))
+        print("state update", self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
-        # print("variance update", self.variance_update)
-
+        print("variance update", self.variance_update)
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
@@ -147,10 +128,10 @@ class KalmanFilter():
         # print("K_t", self.K_t[0][7], self.K_t[0][8])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
+        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
         # print("variance", self.variance)
-        # return self.next_state
         self.H = self.H_core
         self.detected_tag = []
         # TODO;just have to finalize now whether the april tag measurements in z vector shuold be in which frame.
@@ -180,28 +161,15 @@ def main():
 
             time.sleep(delta_t)
             print("moving forward")
-            # calculating the input vector below
-
-            # desired_twist = np.array([[-calibration_x*twist_msg.linear.x], [calibration_y*twist_msg.linear.y], [calibration_ang*twist_msg.angular.z]])
-            # jacobian_matrix = np.array([[1, -1, -(lx + ly)],
-            #                          [1, 1, (lx + ly)],
-            #                          [1, 1, -(lx + ly)],
-            #                          [1, -1, (lx + ly)]])/r
-            
-            # input = np.dot(jacobian_matrix, desired_twist)
 
             input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
             twist_msg.linear.y = 0.0
-            # print("input", input)
-            # have to check below parameters if they are actually angular velocities
             kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
             
             pid.publisher_.publish(twist_msg)
             
             time.sleep(1.5)
-            # for j in range(25):
-            #     pid.get_measurement(kf)
             pid.get_measurement(kf)
             
             # print(kf.z[7], kf.z[8])
