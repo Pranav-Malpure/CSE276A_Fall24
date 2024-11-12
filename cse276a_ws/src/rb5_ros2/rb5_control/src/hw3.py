@@ -60,17 +60,26 @@ class PIDcontroller(Node):
     def get_measurement(self, kf):
         rclpy.spin_once(self)
         # print("callback data", self.callback_data)
-        theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
+        # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
+        theta = kf.state[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
         if self.callback_data[2] in kf.detected_tag:
-            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = 1
-            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = 1
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
             # kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
             # kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
         else:
             kf.detected_tag.append(self.callback_data[2])
-            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = 1
-            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = 1
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
+
+
             kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
             kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
             if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
