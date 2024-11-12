@@ -156,8 +156,8 @@ class KalmanFilter():
         self.state = self.state_update + np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         # self.variance = np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update)
-        # self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
-        self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
+        self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
+        # self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
         # print("variance", self.variance)
         self.H = self.H_core
         self.detected_tag = []
