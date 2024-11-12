@@ -84,7 +84,7 @@ class PIDcontroller(Node):
             # kf.z[int(self.callback_data[2])*2] = kf.state_update[1] + (self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta))
             kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
             kf.z[int(self.callback_data[2])*2] = self.callback_data[1]
-        print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
+        # print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
 
 class KalmanFilter():
     def __init__(self):
@@ -200,9 +200,9 @@ def main():
             pid.publisher_.publish(twist_msg)
             
             time.sleep(1.5)
-            for j in range(25):
-                pid.get_measurement(kf)
-            # pid.get_measurement(kf)
+            # for j in range(25):
+            #     pid.get_measurement(kf)
+            pid.get_measurement(kf)
             
             # print(kf.z[7], kf.z[8])
             
