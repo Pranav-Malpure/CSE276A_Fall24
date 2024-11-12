@@ -71,6 +71,11 @@ class PIDcontroller(Node):
             kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
             kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
             kf.z[int(self.callback_data[2])*2] = self.callback_data[1]
+            if kf.state_update[int(self.callback_data[2])*2 - 1 + 3] == 0 and kf.state_update[int(self.callback_data[2])*2 + 3] == 0:
+                kf.state_update[int(self.callback_data[2])*2 - 1 + 3] = self.callback_data[0]
+                kf.state_update[int(self.callback_data[2])*2 + 3] = self.callback_data[1]
+        print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
+
 
 class KalmanFilter():
     def __init__(self):
@@ -108,6 +113,7 @@ class KalmanFilter():
         self.variance_update = np.zeros((53, 53))
 
         self.state = np.zeros((53, 1))
+
         self.state_update = np.zeros((53, 1))
 
         self.R = np.identity(50)*1e-2
@@ -119,7 +125,7 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
+        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[10], self.state_update[11])
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         # print("variance update", self.variance_update)
 
