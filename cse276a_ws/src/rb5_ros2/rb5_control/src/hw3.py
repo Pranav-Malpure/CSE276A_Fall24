@@ -142,7 +142,7 @@ class KalmanFilter():
         print('z', self.z[7:9])
         print('estimated z', np.dot(self.H, self.state_update)[7:9])
         print('innovation', (self.z - np.dot(self.H, self.state_update))[7:9])
-        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[:12])
+        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1]), np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2]), np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[11])
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
