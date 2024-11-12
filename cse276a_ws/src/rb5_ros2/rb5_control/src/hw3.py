@@ -177,7 +177,7 @@ def main():
         # while(True):
         twist_msg = Twist()
         twist_msg.linear.x = 0.0
-        twist_msg.linear.y = 0.1
+        twist_msg.linear.y = 0.5
         twist_msg.linear.z = 0.0
         twist_msg.angular.x = 0.0
         twist_msg.angular.y = 0.0
