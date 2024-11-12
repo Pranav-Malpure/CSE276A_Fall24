@@ -92,9 +92,9 @@ class KalmanFilter():
         
         # self.variance = 1000*np.identity(53)
         self.variance = 1e-2*np.identity(53)
-        # self.variance[0][0] = 0
-        # self.variance[1][1] = 0
-        # self.variance[2][2] = 0
+        self.variance[0][0] = 0
+        self.variance[1][1] = 0
+        self.variance[2][2] = 0
 
         # self.Q = np.zeros((53, 53))
         self.Q = np.identity(53)*1e-4
