@@ -63,17 +63,19 @@ class PIDcontroller(Node):
         theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         # print("callback data", self.callback_data)
         if self.callback_data[2] in kf.detected_tag:
-            kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
-            kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = 1
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = 1
+            # kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
+            # kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
         else:
             kf.detected_tag.append(self.callback_data[2])
-            kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
-            kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
-            kf.z[int(self.callback_data[2])*2 - 1] = self.callback_data[0]
-            kf.z[int(self.callback_data[2])*2] = self.callback_data[1]
-            if kf.state_update[int(self.callback_data[2])*2 - 1 + 3] == 0 and kf.state_update[int(self.callback_data[2])*2 + 3] == 0:
-                kf.state_update[int(self.callback_data[2])*2 - 1 + 3] = self.callback_data[0] + kf.state_update[0] # TODO: Add angle transformation of axes
-                kf.state_update[int(self.callback_data[2])*2 + 3] = self.callback_data[1] + kf.state_update[1] # TODO: Add angle transformation of axes
+            kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = 1
+            kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = 1
+            kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
+            kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
+            if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
+                kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0] + kf.state_update[0] # TODO: Add angle transformation of axes
+                kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[1] + kf.state_update[1] # TODO: Add angle transformation of axes
         # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
 
 
@@ -100,14 +102,14 @@ class KalmanFilter():
 
         self.H_core = np.zeros((50, 53))
         for i in range(50):
-            if i % 2 != 0:
+            if i % 2 == 0:
                 self.H_core[i][0] = -1
             else:
                 self.H_core[i][1] = -1 
 
         self.H = np.zeros((50, 53)) # H.s is actually where you think the april tag is, and z is actually where it is. it should be in robot frame
         for i in range(50):
-            if i % 2 != 0:
+            if i % 2 == 0:
                 self.H[i][0] = -1
             else:
                 self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
@@ -159,11 +161,10 @@ def main():
     rclpy.init()
 
     kf = KalmanFilter()
-    current_state = np.array([0, 0, 0])
     pid = PIDcontroller(0.02, 0, 0.075)
 
     # move in a square path of 1.5m side
-    for i in range(4):
+    for _ in range(4):
         while(True):
             twist_msg = Twist()
             twist_msg.linear.x = 0.0
