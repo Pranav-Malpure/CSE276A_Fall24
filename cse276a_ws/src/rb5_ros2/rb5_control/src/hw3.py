@@ -173,7 +173,7 @@ def main():
     pid = PIDcontroller(0.02, 0, 0.075)
 
     # move in a square path of 1.5m side
-    for _ in range(3):
+    for _ in range(2):
         # while(True):
         twist_msg = Twist()
         twist_msg.linear.x = 0.0
