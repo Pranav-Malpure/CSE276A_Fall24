@@ -64,7 +64,11 @@ class PIDcontroller(Node):
         theta = kf.state[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
         print("detected tag list ",kf.detected_tag)
-
+        # for tag_list in kf.detected_tag:
+        #     kf.H[(int(self.callback_data[2]) - 1)*2][] # TODO: DO THIS
+        
+        kf.H[(int(self.callback_data[2]) - 1)*2][0] = -1
+        kf.H[(int(self.callback_data[2]) - 1)*2 + 1][1] = -1
         if self.callback_data[2] in kf.detected_tag:
             kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
             kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
@@ -122,18 +126,18 @@ class KalmanFilter():
         # self.S = np.zeros((50, 50))
 
         self.H_core = np.zeros((50, 53))
-        for i in range(50):
-            if i % 2 == 0:
-                self.H_core[i][0] = -1
-            else:
-                self.H_core[i][1] = -1 
+        # for i in range(50):
+        #     if i % 2 == 0:
+        #         self.H_core[i][0] = -1
+        #     else:
+        #         self.H_core[i][1] = -1 
 
         self.H = np.zeros((50, 53)) # H.s is actually where you think the april tag is, and z is actually where it is. it should be in robot frame
-        for i in range(50):
-            if i % 2 == 0:
-                self.H[i][0] = -1
-            else:
-                self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
+        # for i in range(50):
+        #     if i % 2 == 0:
+        #         self.H[i][0] = -1
+        #     else:
+        #         self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
         
         self.z = np.zeros((50, 1))
 
