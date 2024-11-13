@@ -68,6 +68,7 @@ class PIDcontroller(Node):
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
+        kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
@@ -351,7 +352,7 @@ def main():
                         time.sleep(delta_t)
                         print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [0]))
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
@@ -375,7 +376,7 @@ def main():
                         if ang_rot != 0:
                             kf.state[2] += ang_rot
                         else:
-                            # TODO: Record the rotation estimated from open loop
+                            # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen[:]
