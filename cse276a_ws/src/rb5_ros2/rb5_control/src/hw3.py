@@ -148,7 +148,7 @@ class KalmanFilter():
         print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[11], self.state_update[12])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
-        # print("variance update", self.variance_update)
+        print("variance update", self.variance_update)
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
