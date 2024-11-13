@@ -155,12 +155,12 @@ class KalmanFilter():
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[11], self.state_update[12])
-        print('z', self.z[8:10])
-        print('estimated z', np.dot(self.H, self.state_update)[8:10])
-        print('innovation', (self.z - np.dot(self.H, self.state_update))[8:10])
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
+        print('z', self.z[6:8])
+        print('estimated z', np.dot(self.H, self.state_update)[6:8])
+        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8])
         # print(self.z - np.dot(self.H, self.state_update))
-        print('kalman update term:', np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[11], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[12])
+        print('kalman update term:', np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[10])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         self.state = self.state_update + np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
@@ -210,7 +210,7 @@ def main():
         
         kf.update() 
         
-        print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[11], kf.state[12])
+        print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10])
         
         # if square side complete, break # TODO
 
