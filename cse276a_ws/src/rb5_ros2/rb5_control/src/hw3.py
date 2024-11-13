@@ -86,6 +86,8 @@ class PIDcontroller(Node):
                 print('inside new tag')
                 kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) + self.callback_data[1]*np.sin(theta)  + kf.state_update[0] # TODO: Add angle transformation of axes
                 kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
+                kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
+                kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-2
         # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
 
 
@@ -100,7 +102,7 @@ class KalmanFilter():
         # self.G = self.G*delta_t*r*0.25
         
         # self.variance = 1000*np.identity(53)
-        self.variance = 1e-2*np.identity(53)
+        self.variance = 1000*np.identity(53)
         self.variance[0][0] = 0
         self.variance[1][1] = 0
         self.variance[2][2] = 0
