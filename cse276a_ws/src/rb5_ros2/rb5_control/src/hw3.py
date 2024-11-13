@@ -213,6 +213,7 @@ def main():
         kf.update() 
         
         print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10])
+        print()
         
         # if square side complete, break # TODO
 
