@@ -121,6 +121,14 @@ class PIDcontroller(Node):
         # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
 
 
+    def getError(self, currentState, targetState):
+        """
+        return the different between two states
+        """
+        result = targetState - currentState
+        result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
+        return result 
+
 class KalmanFilter():
     def __init__(self):
         self.F = np.identity(53)
@@ -215,47 +223,121 @@ class KalmanFilter():
 
 
 def main():
-    rclpy.init()
+    # rclpy.init()
 
-    kf = KalmanFilter()
-    pid = PIDcontroller(0.02, 0, 0.075)
+    # kf = KalmanFilter()
+    # pid = PIDcontroller(0.02, 0, 0.075)
 
-    # move in a square path of 1.5m side
-    # for _ in range(3):
-    while(True):
-        twist_msg = Twist()
-        twist_msg.linear.x = 0.0
-        twist_msg.linear.y = 0.04
-        twist_msg.linear.z = 0.0
-        twist_msg.angular.x = 0.0
-        twist_msg.angular.y = 0.0
-        twist_msg.angular.z = 0.0
-        pid.publisher_.publish(twist_msg)
+    # # move in a square path of 1.5m side
+    # # for _ in range(3):
+    # while(True):
+    #     twist_msg = Twist()
+    #     twist_msg.linear.x = 0.0
+    #     twist_msg.linear.y = 0.04
+    #     twist_msg.linear.z = 0.0
+    #     twist_msg.angular.x = 0.0
+    #     twist_msg.angular.y = 0.0
+    #     twist_msg.angular.z = 0.0
+    #     pid.publisher_.publish(twist_msg)
 
-        time.sleep(delta_t)
-        print("moving forward")
+    #     time.sleep(delta_t)
+    #     print("moving forward")
 
-        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z]))
-        twist_msg.linear.y = 0.0
-        kf.predict(input) # have to correct this input according to the kinematic model and rewrite
+    #     input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z]))
+    #     twist_msg.linear.y = 0.0
+    #     kf.predict(input) # have to correct this input according to the kinematic model and rewrite
 
         
-        pid.publisher_.publish(twist_msg)
+    #     pid.publisher_.publish(twist_msg)
         
-        time.sleep(1.5)
-        # print("HEREREREER")
-        pid.get_measurement(kf)
+    #     time.sleep(1.5)
+    #     # print("HEREREREER")
+    #     pid.get_measurement(kf)
         
-        # print(kf.z[7], kf.z[8])
+    #     # print(kf.z[7], kf.z[8])
         
-        kf.update() 
+    #     kf.update() 
         
-        print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10])
-        print()
+    #     print('state after update', kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10])
+    #     print()
         
-        # if square side complete, break # TODO
+    #     # if square side complete, break # TODO
 
-            
+        # NEW CLOSED LOOP code ________________________________________________________________________________________________________________
+
+        rclpy.init()
+
+        kf = KalmanFilter()
+        pid = PIDcontroller(0.02, 0, 0.075)
+
+        waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+        time.sleep(3)
+
+        for wp in waypoint:
+            print("move to way point", wp)
+            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.05):
+                twist_msg = Twist()
+                twist_msg.linear.x = 0.0
+                twist_msg.linear.y = 0.1
+                twist_msg.linear.z = 0.0
+                twist_msg.angular.x = 0.0
+                twist_msg.angular.y = 0.0
+                twist_msg.angular.z = 0.0
+                pid.publisher_.publish(twist_msg)
+                time.sleep(delta_t)
+                print("moving forward")
+
+                input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+                # Stop Car
+                twist_msg.linear.y = 0.0
+                pid.publisher_.publish(twist_msg)
+                time.sleep(1.5)
+                # Predict state in open loop
+                kf.predict(input)
+                # Measure april tag detection    
+                for _ in range(25):           
+                    pid.get_measurement(kf)
+                # Reconcile measured and predicted measurements
+                kf.update() 
+                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])           
+
+                if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
+                    print('inside angle regime')
+                    while rclpy.ok() and abs(pid.getError(kf.state[0:3], wp)[2]) > 0.03:
+                        # rotating (1 movment = x rad)
+                        twist_msg = Twist()
+                        twist_msg.linear.x = 0.0
+                        twist_msg.linear.y = 0.0
+                        twist_msg.linear.z = 0.0
+                        twist_msg.angular.x = 0.0
+                        twist_msg.angular.y = 0.0
+                        twist_msg.angular.z = 0.05
+                        pid.publisher_.publish(twist_msg)
+                        time.sleep(delta_t)
+                        print("rotating")
+
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+                        # Stop Car
+                        twist_msg.angular.z = 0.0
+                        pid.publisher_.publish(twist_msg)
+                        time.sleep(1.5)
+                        # Predict state in open loop
+                        kf.predict(input)
+                        # Measure april tag detection  
+                        for _ in range(25):             
+                            pid.get_measurement(kf)
+                        # Reconcile measured and predicted measurements
+                        kf.update() 
+                        print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
+
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     print("starting")
     main()
