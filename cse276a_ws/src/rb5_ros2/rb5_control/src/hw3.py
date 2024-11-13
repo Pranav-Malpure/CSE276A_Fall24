@@ -114,7 +114,7 @@ class KalmanFilter():
         self.Q[1][1] = 0.02
         self.Q[2][2] = 0.0
 
-        # self.K_t = np.zeros((53, 50))
+        self.K_t = np.zeros((53, 50))
 
         # self.S = np.zeros((50, 50))
 
@@ -160,13 +160,14 @@ class KalmanFilter():
         # print("K_t", self.K_t[0][8], self.K_t[0][9])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
-        K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
+        self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
+        print("K_t", self.K_t[1][6:8])
         print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
         print('z', self.z[6:8])
         print('estimated z', np.dot(self.H, self.state_update)[6:8])
         print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8])
         # print(self.z - np.dot(self.H, self.state_update))
-        print('kalman update term:', np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[10])
+        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))[10])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         self.state = self.state_update + np.dot(K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
