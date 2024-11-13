@@ -17,7 +17,7 @@ import pickle
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
 ly = 0.07 
-delta_t = 0.05
+delta_t = 0.01
 calibration_x = 180
 calibration_y = 100
 calibration_ang = 60
@@ -184,7 +184,7 @@ def main():
     pid = PIDcontroller(0.02, 0, 0.075)
 
     # move in a square path of 1.5m side
-    for _ in range(2):
+    for _ in range(3):
         # while(True):
         twist_msg = Twist()
         twist_msg.linear.x = 0.0
@@ -192,7 +192,7 @@ def main():
         twist_msg.linear.z = 0.0
         twist_msg.angular.x = 0.0
         twist_msg.angular.y = 0.0
-        twist_msg.angular.z = 0.1
+        twist_msg.angular.z = 0.0
         pid.publisher_.publish(twist_msg)
 
         time.sleep(delta_t)
