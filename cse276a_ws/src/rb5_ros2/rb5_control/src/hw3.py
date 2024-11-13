@@ -53,9 +53,12 @@ class PIDcontroller(Node):
         y_ang = msg.pose.orientation.y
         z_ang = msg.pose.orientation.z
         w_ang = msg.pose.orientation.w
+
+        pitch = math.atan2(2 * (w_ang*y_ang - x_ang*z_ang), 1 - 2 * (y_ang*y_ang + z_ang*z_ang))
+
         frame_id = msg.header.frame_id
         
-        self.callback_data = [x, z, frame_id]
+        self.callback_data = [x, z, frame_id, pitch]
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
@@ -138,7 +141,10 @@ class KalmanFilter():
         self.G[2] = [0,0,1]
         self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
-        
+
+        self.curpit = np.zeros(50)
+        self.newpit = np.zeros(50)
+
         # self.variance = 1000*np.identity(53)
         self.variance = 1000*np.identity(53)
         self.variance[0][0] = 0
@@ -275,6 +281,14 @@ def main():
 
         for wp in waypoint:
             print("move to way point", wp)
+
+            seen_tags = []
+            for _ in range(25):
+                frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                kf.curpit[int(frame_id) - 1] = pitch
+                seen_tags.append(frame_id)
+
+            time.sleep(1)
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.05):
                 twist_msg = Twist()
                 twist_msg.linear.x = 0.0
@@ -295,14 +309,35 @@ def main():
                 # Predict state in open loop
                 kf.predict(input)
                 # Measure april tag detection    
+                it_seen = []
                 for _ in range(25):           
                     pid.get_measurement(kf)
+                    frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                    kf.newpit[int(frame_id) - 1] = pitch
+                    it_seen.append(frame_id)
                 # Reconcile measured and predicted measurements
                 kf.update() 
+                
+                ang_rot = 0
+                for tag in seen_tags:
+                    if tag in it_seen:
+                        ang_rot += abs(kf.curpit[int(tag) - 1] - kf.newpit[int(tag) - 1])
+                ang_rot /= len(it_seen)
+                kf.state[2] += ang_rot
+                kf.curpit = kf.newpit.copy()
+                seen_tags = it_seen[:]
+
                 print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])           
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
                     print('inside angle regime')
+                    seen_tags = []
+                    for _ in range(25):
+                        frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                        kf.curpit[int(frame_id) - 1] = pitch
+                        seen_tags.append(frame_id)
+
+                    time.sleep(1)
                     while rclpy.ok() and abs(pid.getError(kf.state[0:3], wp)[2]) > 0.03:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
@@ -324,10 +359,27 @@ def main():
                         # Predict state in open loop
                         kf.predict(input)
                         # Measure april tag detection  
-                        for _ in range(25):             
+                        it_seen = []
+                        for _ in range(25):           
                             pid.get_measurement(kf)
+                            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                            kf.newpit[int(frame_id) - 1] = pitch
+                            it_seen.append(frame_id)
                         # Reconcile measured and predicted measurements
                         kf.update() 
+                        ang_rot = 0
+                        for tag in seen_tags:
+                            if tag in it_seen:
+                                ang_rot += abs(kf.curpit[int(tag) - 1] - kf.newpit[int(tag) - 1])
+                        ang_rot /= len(it_seen)
+                        if ang_rot != 0:
+                            kf.state[2] += ang_rot
+                        else:
+                            # TODO: Record the rotation estimated from open loop
+                            pass
+                        kf.curpit = kf.newpit.copy()
+                        seen_tags = it_seen[:]
+
                         print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
 
 
