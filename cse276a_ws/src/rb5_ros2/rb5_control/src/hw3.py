@@ -17,7 +17,7 @@ import pickle
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
 ly = 0.07 
-delta_t = 0.01
+delta_t = 0.03
 calibration_x = 180
 calibration_y = 100
 calibration_ang = 60
@@ -188,7 +188,7 @@ def main():
         # while(True):
         twist_msg = Twist()
         twist_msg.linear.x = 0.0
-        twist_msg.linear.y = 0.01
+        twist_msg.linear.y = 0.05
         twist_msg.linear.z = 0.0
         twist_msg.angular.x = 0.0
         twist_msg.angular.y = 0.0
