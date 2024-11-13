@@ -17,7 +17,7 @@ import pickle
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
 ly = 0.07 
-delta_t = 0.03
+delta_t = 0.02
 calibration_x = 180
 calibration_y = 100
 calibration_ang = 60
