@@ -63,6 +63,8 @@ class PIDcontroller(Node):
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         theta = kf.state[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
+        print("detected tag list ",kf.detected_tag)
+
         if self.callback_data[2] in kf.detected_tag:
             kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
             kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
