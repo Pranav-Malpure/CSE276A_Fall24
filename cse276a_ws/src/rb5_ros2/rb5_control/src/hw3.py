@@ -55,6 +55,7 @@ class PIDcontroller(Node):
         w_ang = msg.pose.orientation.w
 
         pitch = math.atan2(2 * (w_ang*y_ang - x_ang*z_ang), 1 - 2 * (y_ang*y_ang + z_ang*z_ang))
+        pitch = (pitch + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
 
         frame_id = msg.header.frame_id
         
@@ -190,6 +191,7 @@ class KalmanFilter():
 
     def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
+        self.state_update[2] = (self.state_update[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
@@ -325,6 +327,7 @@ def main():
                         ang_rot += abs(kf.curpit[int(tag) - 1] - kf.newpit[int(tag) - 1])
                 ang_rot /= len(it_seen)
                 kf.state[2] += ang_rot
+                kf.state[2] = (kf.state[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen[:]
 
@@ -375,6 +378,7 @@ def main():
                         ang_rot /= len(it_seen)
                         if ang_rot != 0:
                             kf.state[2] += ang_rot
+                            kf.state[2] = (kf.state[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         else:
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
