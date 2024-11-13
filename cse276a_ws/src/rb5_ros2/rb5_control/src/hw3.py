@@ -189,7 +189,7 @@ class KalmanFilter():
 
         self.detected_tag = []
 
-        self.states = []
+        self.states_track = []
 
     def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
@@ -333,7 +333,9 @@ def main():
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen[:]
 
-                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])           
+                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
+
+                kf.states_track.append([kf.state[0], kf.state[1], kf.state[2]])     
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
                     print('inside angle regime')
@@ -389,8 +391,12 @@ def main():
 
                         print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
 
-        # with open('array.pkl', 'wb') as file:    # Save state to .pkl
+        # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
         #     pickle.dump(kf.state, file)
+        # with open('states_track.pkl', 'wb') as file:   # Save robot trajectory
+        #     pickle.dump(kf.states_track, file)
+        # with open('final_variance.pkl', 'wb') as file:    # Save variance to .pkl
+        #     pickle.dump(kf.variance, file)       
 
 
 
