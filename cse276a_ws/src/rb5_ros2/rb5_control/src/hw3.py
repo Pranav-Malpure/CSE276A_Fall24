@@ -161,7 +161,10 @@ class KalmanFilter():
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
-        print("K_t", self.K_t[1][9:11])
+        print("K_t_0: ", self.K_t[0][6:8])
+        print("K_t_1: ", self.K_t[1][6:8])
+        print("K_t_9: ", self.K_t[9][6:8])
+        print("K_t_10: ", self.K_t[10][6:8])
         print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
         print('z', self.z[6:8])
         print('estimated z', np.dot(self.H, self.state_update)[6:8])
