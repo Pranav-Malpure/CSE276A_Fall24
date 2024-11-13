@@ -108,7 +108,9 @@ class KalmanFilter():
         self.variance[2][2] = 0
 
         # self.Q = np.zeros((53, 53))
-        self.Q = np.identity(53)*1e-4
+        self.Q = np.identity(53)
+        self.Q[0][0] = 0.01
+        self.Q[1][1] = 0.02
 
         # self.K_t = np.zeros((53, 50))
 
@@ -140,7 +142,7 @@ class KalmanFilter():
 
         self.detected_tag = []
 
-    def predict(self, u):
+    def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
