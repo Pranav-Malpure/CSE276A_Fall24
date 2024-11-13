@@ -65,7 +65,7 @@ class PIDcontroller(Node):
         rclpy.spin_once(self)
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
-        theta = kf.state[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
+        theta = kf.state_update[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
