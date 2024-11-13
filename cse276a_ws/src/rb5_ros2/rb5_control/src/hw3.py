@@ -210,7 +210,7 @@ def main():
         pid.publisher_.publish(twist_msg)
         
         time.sleep(1.5)
-        print("HEREREREER")
+        # print("HEREREREER")
         pid.get_measurement(kf)
         
         # print(kf.z[7], kf.z[8])
