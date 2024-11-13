@@ -189,6 +189,8 @@ class KalmanFilter():
 
         self.detected_tag = []
 
+        self.states = []
+
     def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
         self.state_update[2] = (self.state_update[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
@@ -387,11 +389,8 @@ def main():
 
                         print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
 
-
-
-
-
-
+        # with open('array.pkl', 'wb') as file:    # Save state to .pkl
+        #     pickle.dump(kf.state, file)
 
 
 
