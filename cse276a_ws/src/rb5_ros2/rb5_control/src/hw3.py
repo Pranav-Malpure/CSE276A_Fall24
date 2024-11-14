@@ -191,7 +191,7 @@ class KalmanFilter():
         # self.Q = np.zeros((53, 53))
         self.Q = np.identity(53)
         self.Q[0][0] = 0.01
-        self.Q[1][1] = 0.01
+        self.Q[1][1] = 0.03
         self.Q[2][2] = 0
 
         self.K_t = np.zeros((53, 50))
