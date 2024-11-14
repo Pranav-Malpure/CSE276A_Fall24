@@ -411,7 +411,7 @@ def main():
                     time.sleep(1)
                     print("What is this kf.state[2][0]??", kf.state[2][0])
                     print("What is wp[2]?? ", wp[2])
-                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.1:
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.01:
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
