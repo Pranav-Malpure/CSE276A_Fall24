@@ -322,12 +322,12 @@ def main():
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
-            print("signs array: ", pid.update_sign(kf.state[0:3][0]))
+            print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3][0])[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
