@@ -130,11 +130,11 @@ class PIDcontroller(Node):
         """
         return the different between two states
         """
-        # result = np.zeros(3)
-        # result[0] = targetState[0] - currentState[0]
-        # result[1] = targetState[1] - currentState[1]
-        # result[2] = targetState[2] - currentState[2]
-        result = targetState - currentState
+        result = np.zeros(3)
+        result[0] = targetState[0] - currentState[0]
+        result[1] = targetState[1] - currentState[1]
+        result[2] = targetState[2] - currentState[2]
+        # result = targetState - currentState
 
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
         return result 
@@ -420,15 +420,15 @@ def main():
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
-                        print("WHATS SIGN??", pid.update_sign(kf.state[0:3][0].T)[2])
-                        print("THIS IS E, and the culprit: ", pid.getError(kf.state[0:3][0].T, pid.target))
+                        print("WHATS SIGN??", pid.update_sign(kf.state[0:3][0])[2])
+                        print("THIS IS E, and the culprit: ", pid.getError(kf.state[0:3][0], pid.target))
                         print("This is the target: ", pid.target)
                         twist_msg.linear.x = 0.0
                         twist_msg.linear.y = 0.0
                         twist_msg.linear.z = 0.0
                         twist_msg.angular.x = 0.0
                         twist_msg.angular.y = 0.0
-                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3][0].T)[2]
+                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3][0])[2]
                         pid.publisher_.publish(twist_msg)
                         time.sleep(2*delta_t)
                         print("rotating")
