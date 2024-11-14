@@ -156,29 +156,29 @@ def main():
     time.sleep(3)
 
     for _ in range(20):
-    twist_msg = Twist()
-    twist_msg.linear.x = 0.0
-    twist_msg.linear.y = 0.0
-    twist_msg.linear.z = 0.0
-    twist_msg.angular.x = 0.0
-    twist_msg.angular.y = 0.0
-    twist_msg.angular.z = 0.1
-    pid.publisher_.publish(twist_msg)
-    time.sleep(2*delta_t)
-    print("moving forward")
+        twist_msg = Twist()
+        twist_msg.linear.x = 0.0
+        twist_msg.linear.y = 0.0
+        twist_msg.linear.z = 0.0
+        twist_msg.angular.x = 0.0
+        twist_msg.angular.y = 0.0
+        twist_msg.angular.z = 0.1
+        pid.publisher_.publish(twist_msg)
+        time.sleep(2*delta_t)
+        print("moving forward")
 
-    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
-    # Stop Car
-    twist_msg.angular.z = 0.0
-    pid.publisher_.publish(twist_msg)
-    time.sleep(0.2)
-    # Predict state in open loop
-    kf.predict(input)
-    # Measure april tag detection               
-    pid.get_measurement(kf)
-    # Reconcile measured and predicted measurements
-    kf.update() 
-    print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
+        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+        # Stop Car
+        twist_msg.angular.z = 0.0
+        pid.publisher_.publish(twist_msg)
+        time.sleep(0.2)
+        # Predict state in open loop
+        kf.predict(input)
+        # Measure april tag detection               
+        pid.get_measurement(kf)
+        # Reconcile measured and predicted measurements
+        kf.update() 
+        print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
     """
     for wp in waypoint:
         print("move to way point", wp)
