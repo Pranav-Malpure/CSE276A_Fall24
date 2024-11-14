@@ -396,6 +396,7 @@ def main():
                 print()
                 # print("error", np.linalg.norm(pid.getError(kf.state[0:3][0], wp[0:3])[:2]))
                 print("error", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
+                print("WAYPOINT:  ", wp)
 
                 print()
 
