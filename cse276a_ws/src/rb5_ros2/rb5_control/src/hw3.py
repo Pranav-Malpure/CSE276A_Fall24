@@ -325,8 +325,8 @@ def main():
         pid = PIDcontroller(0.02, 0, 0.075)
 
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
-        waypoint = np.array([[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
-        # waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        # waypoint = np.array([[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         seen_tags = []
         for _ in range(25):
             rclpy.spin_once(pid)
@@ -402,9 +402,9 @@ def main():
                             min_tag = tag
                 
 
-                # kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                # kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen.copy()
@@ -454,8 +454,8 @@ def main():
                         time.sleep(2*delta_t)
                         print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
-                        # input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
+                        # input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
@@ -480,8 +480,8 @@ def main():
                                     min_tag = tag
                         
                         if min_tag != 100:
-                            # kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                            # kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             pass
                         else:
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
