@@ -382,7 +382,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.1:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.07:
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
@@ -391,7 +391,7 @@ def main():
                         seen_tags.append(frame_id)
 
                     time.sleep(1)
-                    while rclpy.ok() and abs(pid.getError(kf.state[0:3], wp)[2]) > 0.03:
+                    while rclpy.ok() and (np.sqrt(kf.state[2][0] - wp[2])) > 0.03:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                        
@@ -435,7 +435,7 @@ def main():
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen[:]
 
-                        print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
+                        print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[9], kf.state[10], kf.state[3], kf.state[4])
 
         # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
         #     pickle.dump(kf.state, file)
