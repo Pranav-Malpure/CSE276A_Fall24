@@ -377,7 +377,7 @@ def main():
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
                 print()
-                print("error", np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]))
+                print("error", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])[:2]))
                 print()
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])[:2]) < 0.1):
