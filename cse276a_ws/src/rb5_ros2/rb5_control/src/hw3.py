@@ -393,7 +393,7 @@ def main():
                 # kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 # kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                kf.state_update[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen.copy()
 
@@ -470,7 +470,7 @@ def main():
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                        kf.state_update[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                        kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen[:]
 
