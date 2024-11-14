@@ -398,7 +398,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.1:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.04:
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
@@ -407,7 +407,7 @@ def main():
                         seen_tags.append(frame_id)
 
                     time.sleep(1)
-                    while rclpy.ok() and (np.sqrt(kf.state[2][0] - wp[2])) > 0.03:
+                    while rclpy.ok() and (np.sqrt(kf.state[2][0] - wp[2])) > 0.1:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                        
