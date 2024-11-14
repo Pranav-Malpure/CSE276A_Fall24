@@ -140,11 +140,11 @@ class PIDcontroller(Node):
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
         return result 
     
-    def update_sign(self, currentState):
+    def update_sign(self, currentState, wp):
         """
         calculate the update value on the state based on the error between current state and target state with PID.
         """
-        e = self.getError(currentState, self.target)
+        e = self.getError(currentState, wp)
 
         # P = np.array([self.Kp * e[0]/0.75, self.Kp * e[1], self.Kp * e[2]])
         # # self.I = np.array([self.I[0] + self.Ki * e[0] * self.timestep, self.I[1] + self.Ki * e[1] * self.timestep , self.I[2] + self.Ki * e[2] * self.timestep/2]) 
@@ -343,9 +343,15 @@ def main():
                 print()
                 print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
+                robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
+                                      -kf.state[1][0]*np.sin(kf.state[2][0]) + kf.state[0][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
+
+                wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
+                                    -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
+
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.y = 0.04*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
@@ -359,7 +365,7 @@ def main():
                     input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 else:
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
@@ -430,6 +436,11 @@ def main():
 
                     time.sleep(1)
                     while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.09:
+                        robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
+                                             -kf.state[1][0]*np.sin(kf.state[2][0]) + kf.state[0][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
+
+                        wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
+                                          -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
@@ -438,7 +449,7 @@ def main():
                         twist_msg.linear.z = 0.0
                         twist_msg.angular.x = 0.0
                         twist_msg.angular.y = 0.0
-                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3])[2]
+                        twist_msg.angular.z = 0.1*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
                         pid.publisher_.publish(twist_msg)
                         time.sleep(2*delta_t)
                         print("rotating")
