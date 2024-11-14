@@ -318,13 +318,15 @@ def main():
             kf.curpit[int(frame_id) - 1] = pitch
             seen_tags.append(frame_id)
         time.sleep(3)
-        
+        counter = 0
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
             while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.05):
                 print("NEW OUTSIDE LOOP____________________________________________________________")
+                print("COUNTER: ", counter)
+                counter += 1
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
