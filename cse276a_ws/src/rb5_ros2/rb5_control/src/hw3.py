@@ -69,7 +69,7 @@ class PIDcontroller(Node):
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
-        # kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
+        kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
@@ -191,7 +191,7 @@ class KalmanFilter():
         self.Q = np.identity(53)
         self.Q[0][0] = 0.01
         self.Q[1][1] = 0.02
-        self.Q[2][2] = 0.0
+        self.Q[2][2] = 0
 
         self.K_t = np.zeros((53, 50))
 
@@ -234,6 +234,7 @@ class KalmanFilter():
         print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10], self.state_update[3], self.state_update[4])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
+        self.variance_update[2][2] = 0
         print("variance update", self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], self.variance_update[9][9], self.variance_update[10][10])
 
     def update(self):
@@ -241,6 +242,8 @@ class KalmanFilter():
         # self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
         # print("K_t", self.K_t[0][8], self.K_t[0][9])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
+        self.variance[2][2] = 0
+        self.variance_update[2][2] = 0
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
         print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
@@ -257,6 +260,7 @@ class KalmanFilter():
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
+        self.variance[2][2] = 0
         # self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
         # self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
         # print("variance", self.variance)
