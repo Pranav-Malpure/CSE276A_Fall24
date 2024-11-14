@@ -65,7 +65,7 @@ class PIDcontroller(Node):
         rclpy.spin_once(self)
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
-        theta = kf.state_update[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
+        theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
@@ -222,7 +222,7 @@ class KalmanFilter():
 
     def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
-        self.state_update[2] = (self.state_update[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+        self.state_update[2][0] = (self.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
@@ -323,9 +323,9 @@ def main():
             pid.setTarget(wp)
             print("move to way point", wp)
             print("signs array: ", pid.update_sign(kf.state[0:3])[1])
-            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3].T, wp[0:3])) > 0.05):
+            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])) > 0.05):
                 twist_msg = Twist()
-                if (np.linalg.norm(pid.getError(kf.state[0:3].T, wp)[:2]) > 0.15):
+                if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3])[1]
                     twist_msg.linear.z = 0.0
@@ -421,8 +421,8 @@ def main():
                                 ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                         ang_rot /= len(it_seen)
                         if ang_rot != 0:
-                            kf.state[2] += ang_rot
-                            kf.state[2] = (kf.state[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                            kf.state[2][0] += ang_rot
+                            kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         else:
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
