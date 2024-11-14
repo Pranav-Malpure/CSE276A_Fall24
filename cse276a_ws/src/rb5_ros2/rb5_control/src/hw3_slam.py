@@ -166,7 +166,7 @@ def main():
     time.sleep(delta_t)
     print("moving forward")
 
-    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z/1.45]))
+    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/13], [calibration_ang*twist_msg.angular.z/1.45]))
     # Stop Car
     twist_msg.linear.y = 0.0
     pid.publisher_.publish(twist_msg)
