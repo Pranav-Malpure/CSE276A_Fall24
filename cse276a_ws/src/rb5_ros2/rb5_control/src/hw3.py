@@ -86,8 +86,10 @@ class PIDcontroller(Node):
 
 
         for tag_list in kf.detected_tag:
-            kf.H[(int(tag_list) - 1)*2][0] = -1
-            kf.H[(int(tag_list) - 1)*2 + 1][1] = -1
+            kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
+            kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
+            kf.H[(int(tag_list) - 1)*2 + 1][0] = np.sin(theta)
+            kf.H[(int(tag_list) - 1)*2 + 1][1] = -np.cos(theta)
             kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 3] = np.cos(theta)
             kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 1 + 3] = np.sin(theta)
 
