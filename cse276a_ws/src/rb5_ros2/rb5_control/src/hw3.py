@@ -231,7 +231,7 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10], self.state_update[3], self.state_update[4])
+        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4], self.state_update[9], self.state_update[10])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         self.variance_update[2][2] = 0
@@ -328,7 +328,7 @@ def main():
             kf.curpit[int(frame_id) - 1] = pitch
             seen_tags.append(frame_id)
         time.sleep(3)
-        counter = 0
+
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
@@ -336,8 +336,6 @@ def main():
             while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.05):
                 print()
                 print("NEW OUTSIDE LOOP____________________________________________________________")
-                print("COUNTER: ", counter)
-                counter += 1
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
@@ -348,7 +346,11 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg)
                     time.sleep(delta_t)
-                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
+
+                    theta_ = kf.state[2][0]
+                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
+                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
+                    input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 else:
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3])[1]
@@ -358,7 +360,9 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg)
                     time.sleep(delta_t)
-                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.3], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.3
+                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.3
+                    input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
 
                 # Stop Car
@@ -418,15 +422,10 @@ def main():
                         seen_tags.append(frame_id)
 
                     time.sleep(1)
-                    print("What is this kf.state[2][0]??", kf.state[2][0])
-                    print("What is wp[2]?? ", wp[2])
                     while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.09:
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
-                        print("WHATS SIGN??", pid.update_sign(kf.state[0:3])[2])
-                        print("THIS IS E, and the culprit: ", pid.getError(kf.state[0:3], pid.target))
-                        print("This is the target: ", pid.target)
                         twist_msg.linear.x = 0.0
                         twist_msg.linear.y = 0.0
                         twist_msg.linear.z = 0.0
@@ -480,7 +479,7 @@ def main():
                         # Reconcile measured and predicted measurements
                         kf.update() 
 
-                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10], kf.state[3], kf.state[4])
+                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
 
         # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
         #     pickle.dump(kf.state, file)
