@@ -388,7 +388,7 @@ def main():
                 kf.predict(input)
 
                 # Measure april tag detection    
-                seen_tags = set()
+                it_seen = set()
                 for _ in range(25):   
                     rclpy.spin_once(pid)  
                     time.sleep(0.1)      
