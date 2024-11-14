@@ -407,7 +407,7 @@ def main():
                         seen_tags.append(frame_id)
 
                     time.sleep(1)
-                    while rclpy.ok() and (np.sqrt(kf.state[2][0] - wp[2])) > 0.1:
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.1:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                        
