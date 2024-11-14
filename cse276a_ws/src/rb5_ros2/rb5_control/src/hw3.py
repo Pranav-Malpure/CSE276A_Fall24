@@ -238,16 +238,16 @@ class KalmanFilter():
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
-        print("K_t_0: ", self.K_t[0][6:8])
-        print("K_t_1: ", self.K_t[1][6:8])
-        print("K_t_9: ", self.K_t[9][6:8])
-        print("K_t_10: ", self.K_t[10][6:8])
+        print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
+        print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
+        print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
+        print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
         print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
-        print('z', self.z[6:8])
-        print('estimated z', np.dot(self.H, self.state_update)[6:8])
-        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8])
+        print('z', self.z[6:8], self.z[0:2])
+        print('estimated z', np.dot(self.H, self.state_update)[6:8], np.dot(self.H, self.state_update)[0:2])
+        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8], (self.z - np.dot(self.H, self.state_update))[0:2])
         # print(self.z - np.dot(self.H, self.state_update))
-        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10])
+        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
@@ -322,7 +322,7 @@ def main():
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
-            print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
+            # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
@@ -376,7 +376,11 @@ def main():
 
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
-                if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
+                print()
+                print("error", np.linalg.norm(pid.getError(kf.state[0:3], wp)))
+                print()
+
+                if (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])[:2]) < 0.1):
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
