@@ -310,7 +310,7 @@ def main():
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
 
-        waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         time.sleep(3)
 
         for wp in waypoint:
@@ -346,7 +346,7 @@ def main():
                     time.sleep(delta_t)
                 print("moving forward")
 
-                input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z]))
+                input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
                 # Stop Car
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
@@ -389,28 +389,18 @@ def main():
                     while rclpy.ok() and abs(pid.getError(kf.state[0:3], wp)[2]) > 0.03:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
-                        if abs(pid.getError(kf.state[0:3], wp)[2]) > 0.09:
-                            twist_msg.linear.x = 0.0
-                            twist_msg.linear.y = 0.0
-                            twist_msg.linear.z = 0.0
-                            twist_msg.angular.x = 0.0
-                            twist_msg.angular.y = 0.0
-                            twist_msg.angular.z = 0.05*pid.update_sign(kf.state[0:3])[2]
-                            pid.publisher_.publish(twist_msg)
-                            time.sleep(delta_t)
-                            print("rotating")
-                        else:
-                            twist_msg.linear.x = 0.0
-                            twist_msg.linear.y = 0.0
-                            twist_msg.linear.z = 0.0
-                            twist_msg.angular.x = 0.0
-                            twist_msg.angular.y = 0.0
-                            twist_msg.angular.z = 0.03*pid.update_sign(kf.state[0:3])[2]
-                            pid.publisher_.publish(twist_msg/2)
-                            time.sleep(delta_t)
-                            print("rotating")
+                       
+                        twist_msg.linear.x = 0.0
+                        twist_msg.linear.y = 0.0
+                        twist_msg.linear.z = 0.0
+                        twist_msg.angular.x = 0.0
+                        twist_msg.angular.y = 0.0
+                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3])[2]
+                        pid.publisher_.publish(twist_msg)
+                        time.sleep(2*delta_t)
+                        print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z])) # TODO: have to calibrate the angle
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
