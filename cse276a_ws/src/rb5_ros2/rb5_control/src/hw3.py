@@ -310,7 +310,8 @@ def main():
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
 
-        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        waypoint = np.array([[0,1/3,0]])
+        # waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         seen_tags = []
         for _ in range(25):
             rclpy.spin_once(pid)
