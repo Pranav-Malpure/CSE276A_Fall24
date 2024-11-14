@@ -419,7 +419,7 @@ def main():
                         twist_msg.linear.z = 0.0
                         twist_msg.angular.x = 0.0
                         twist_msg.angular.y = 0.0
-                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3][0])[2]
+                        twist_msg.angular.z = -0.1*pid.update_sign(kf.state[0:3][0])[2]
                         pid.publisher_.publish(twist_msg)
                         time.sleep(2*delta_t)
                         print("rotating")
