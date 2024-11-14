@@ -324,6 +324,7 @@ def main():
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
             while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.05):
+                print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
@@ -344,7 +345,7 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg/2)
                     time.sleep(delta_t)
-                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.3], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
 
                 # Stop Car
@@ -363,7 +364,6 @@ def main():
                 # Reconcile measured and predicted measurements
                 kf.update() 
                 
-                ang_rot = 0
                 min_dist = 1e5
                 min_tag = 100
                 for tag in seen_tags:
@@ -378,7 +378,7 @@ def main():
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen[:]
 
-                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
+                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
 
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
@@ -411,7 +411,7 @@ def main():
                         time.sleep(2*delta_t)
                         print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
@@ -427,21 +427,26 @@ def main():
                             it_seen.append(frame_id)
                         # Reconcile measured and predicted measurements
                         kf.update() 
-                        ang_rot = 0
+                        
+                        min_dist = 1e5
+                        min_tag = 100
                         for tag in seen_tags:
                             if tag in it_seen:
-                                ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
-                        ang_rot /= len(it_seen)
-                        if ang_rot != 0:
-                            kf.state[2][0] += ang_rot
-                            kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                                d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0])**2)
+                                if d < min_dist:
+                                    min_dist = d
+                                    min_tag = tag
+                        
+                        if min_tag != 100:
+                            kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                         else:
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
+                        kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen[:]
 
-                        print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[9], kf.state[10], kf.state[3], kf.state[4])
+                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10], kf.state[3], kf.state[4])
 
         # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
         #     pickle.dump(kf.state, file)
