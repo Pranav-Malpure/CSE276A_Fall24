@@ -170,7 +170,7 @@ def main():
     # Stop Car
     twist_msg.angular.z = 0.0
     pid.publisher_.publish(twist_msg)
-    time.sleep(0.2)
+    time.sleep(1)
     # Predict state in open loop
     kf.predict(input)
     # Measure april tag detection               
