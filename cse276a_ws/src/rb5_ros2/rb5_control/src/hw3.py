@@ -218,8 +218,8 @@ class KalmanFilter():
         self.variance_update = np.zeros((53, 53))
 
         self.state = np.zeros((53, 1))
-        self.state[1] = 1/2
-        self.state[2] = np.pi/2
+        # self.state[1] = 1/2
+        # self.state[2] = np.pi/2
 
         self.state_update = np.zeros((53, 1))
         # self.state_update[1] = 1/2
@@ -237,7 +237,7 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4], self.state_update[9], self.state_update[10])
+        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4], self.state_update[9], self.state_update[10], self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         self.variance_update[2][2] = 0.0
@@ -256,7 +256,7 @@ class KalmanFilter():
         print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
         print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
         print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10], self.state_update[3], self.state_update[4])
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4],self.state_update[9], self.state_update[10],self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
         print('z', self.z[6:8], self.z[0:2])
         print('estimated z', np.dot(self.H, self.state_update)[6:8], np.dot(self.H, self.state_update)[0:2])
         print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8], (self.z - np.dot(self.H, self.state_update))[0:2])
@@ -328,6 +328,7 @@ def main():
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
         waypoint = np.array([[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0, 0], [0.0,1/2,0.0]])
         seen_tags = set()
         for _ in range(25):
             rclpy.spin_once(pid)
@@ -346,7 +347,7 @@ def main():
                 print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
                 robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
-                                      -kf.state[1][0]*np.sin(kf.state[2][0]) + kf.state[0][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
+                                      -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
                 wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
                                     -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
@@ -432,7 +433,7 @@ def main():
                 # Reconcile measured and predicted measurements
                 kf.update() 
 
-                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
+                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14]) 
 
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
@@ -449,7 +450,7 @@ def main():
                     time.sleep(0.5)
                     while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.09:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
-                                             -kf.state[1][0]*np.sin(kf.state[2][0]) + kf.state[0][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
+                                             -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
                         wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
                                           -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
@@ -520,16 +521,16 @@ def main():
                         # Reconcile measured and predicted measurements
                         kf.update() 
 
-                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
+                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14])
 
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
-        # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
-        #     pickle.dump(kf.state, file)
-        # with open('states_track.pkl', 'wb') as file:   # Save robot trajectory
-        #     pickle.dump(kf.states_track, file)
-        # with open('final_variance.pkl', 'wb') as file:    # Save variance to .pkl
-        #     pickle.dump(kf.variance, file)       
+        with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
+            pickle.dump(kf.state, file)
+        with open('states_track.pkl', 'wb') as file:   # Save robot trajectory
+            pickle.dump(kf.states_track, file)
+        with open('final_variance.pkl', 'wb') as file:    # Save variance to .pkl
+            pickle.dump(kf.variance, file)       
 
 
 
