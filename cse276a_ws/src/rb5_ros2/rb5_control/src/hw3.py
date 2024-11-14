@@ -315,7 +315,7 @@ def main():
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
 
-        waypoint = np.array([[0,1/2,0]])
+        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2]])
         # waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         seen_tags = []
         for _ in range(25):
@@ -416,7 +416,7 @@ def main():
                     time.sleep(1)
                     print("What is this kf.state[2][0]??", kf.state[2][0])
                     print("What is wp[2]?? ", wp[2])
-                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.01:
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.09:
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
