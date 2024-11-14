@@ -354,7 +354,7 @@ def main():
                 # Stop Car
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
-                time.sleep(1.5)
+                time.sleep(1)
                 # Predict state in open loop
                 kf.predict(input)
 
@@ -398,7 +398,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.04:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.1:
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
@@ -426,7 +426,7 @@ def main():
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
-                        time.sleep(1.5)
+                        time.sleep(1)
                         # Predict state in open loop
                         kf.predict(input)
 
