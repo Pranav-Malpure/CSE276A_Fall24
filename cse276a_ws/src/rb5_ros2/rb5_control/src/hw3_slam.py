@@ -163,7 +163,7 @@ def main():
     twist_msg.angular.y = 0.0
     twist_msg.angular.z = 0.1
     pid.publisher_.publish(twist_msg)
-    time.sleep(delta_t)
+    time.sleep(2*delta_t)
     print("moving forward")
 
     input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
