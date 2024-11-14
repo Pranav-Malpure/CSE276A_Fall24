@@ -164,20 +164,20 @@ def main():
         twist_msg.angular.z = 0.05
         pid.publisher_.publish(twist_msg)
         time.sleep(delta_t)
-    print("moving forward")
+        print("moving forward")
 
-    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.3], [calibration_ang*twist_msg.angular.z/1.45]))
-    # Stop Car
-    twist_msg.angular.z = 0.0
-    pid.publisher_.publish(twist_msg)
-    time.sleep(1)
-    # Predict state in open loop
-    kf.predict(input)
-    # Measure april tag detection               
-    pid.get_measurement(kf)
-    # Reconcile measured and predicted measurements
-    kf.update() 
-    print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
+        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.3], [calibration_ang*twist_msg.angular.z/1.45]))
+        # Stop Car
+        twist_msg.angular.z = 0.0
+        pid.publisher_.publish(twist_msg)
+        time.sleep(0.2)
+        # Predict state in open loop
+        kf.predict(input)
+        # Measure april tag detection               
+        pid.get_measurement(kf)
+        # Reconcile measured and predicted measurements
+        kf.update() 
+        print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
     """
     for wp in waypoint:
         print("move to way point", wp)
