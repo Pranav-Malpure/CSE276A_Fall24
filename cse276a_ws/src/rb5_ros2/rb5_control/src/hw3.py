@@ -69,7 +69,7 @@ class PIDcontroller(Node):
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
-        kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
+        # kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
@@ -242,7 +242,7 @@ class KalmanFilter():
         print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
         print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
         print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
+        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10], self.state_update[3], self.state_update[4])
         print('z', self.z[6:8], self.z[0:2])
         print('estimated z', np.dot(self.H, self.state_update)[6:8], np.dot(self.H, self.state_update)[0:2])
         print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8], (self.z - np.dot(self.H, self.state_update))[0:2])
@@ -336,7 +336,7 @@ def main():
                     time.sleep(delta_t)
                 else:
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3][0])[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
@@ -400,7 +400,7 @@ def main():
                         twist_msg.linear.z = 0.0
                         twist_msg.angular.x = 0.0
                         twist_msg.angular.y = 0.0
-                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3])[2]
+                        twist_msg.angular.z = 0.1*pid.update_sign(kf.state[0:3][0])[2]
                         pid.publisher_.publish(twist_msg)
                         time.sleep(2*delta_t)
                         print("rotating")
