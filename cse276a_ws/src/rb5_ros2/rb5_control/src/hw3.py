@@ -427,7 +427,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.04:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.05:
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
