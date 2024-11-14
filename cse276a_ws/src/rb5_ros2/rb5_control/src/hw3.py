@@ -372,10 +372,8 @@ def main():
                         if d < min_dist:
                             min_dist = d
                             min_tag = tag
-
-                        ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
-                ang_rot /= len(it_seen)
-                kf.state[2][0] += ang_rot
+                
+                kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen[:]
