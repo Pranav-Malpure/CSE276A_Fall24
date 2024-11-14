@@ -417,6 +417,7 @@ def main():
                         twist_msg = Twist()
                         print("WHATS SIGN??", pid.update_sign(kf.state[0:3][0])[2])
                         print("THIS IS E, and the culprit: ", pid.getError(kf.state[0:3][0], pid.target))
+                        print("This is the target: ", pid.target)
                         twist_msg.linear.x = 0.0
                         twist_msg.linear.y = 0.0
                         twist_msg.linear.z = 0.0
