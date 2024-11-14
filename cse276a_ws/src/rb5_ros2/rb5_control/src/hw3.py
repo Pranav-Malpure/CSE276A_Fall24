@@ -311,9 +311,9 @@ def main():
         pid = PIDcontroller(0.02, 0, 0.075)
 
         waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
-        rclpy.spin_once(pid)
         seen_tags = []
         for _ in range(25):
+            rclpy.spin_once(pid)
             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
             kf.curpit[int(frame_id) - 1] = pitch
             seen_tags.append(frame_id)
@@ -334,6 +334,7 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg)
                     time.sleep(delta_t)
+                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
                 else:
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3][0])[1]
@@ -343,9 +344,9 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg/2)
                     time.sleep(delta_t)
+                    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
 
-                input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45]))
                 # Stop Car
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
@@ -363,8 +364,13 @@ def main():
                 kf.update() 
                 
                 ang_rot = 0
+                min_dist = 1e5
+                min_tag = 100
                 for tag in seen_tags:
                     if tag in it_seen:
+                        d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1][0]))
+
+
                         ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                 ang_rot /= len(it_seen)
                 kf.state[2][0] += ang_rot
