@@ -61,7 +61,7 @@ class PIDcontroller(Node):
         rclpy.spin_once(self)
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
-        theta = kf.state[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
+        theta = kf.state_update[2]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         theta_update = kf.state_update[2]
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
@@ -223,6 +223,7 @@ class KalmanFilter():
         print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
+        self.variance_update[2][2] = 0
         print("variance update", self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], self.variance_update[9][9], self.variance_update[10][10])
 
     def update(self):
@@ -230,6 +231,8 @@ class KalmanFilter():
         # self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
         # print("K_t", self.K_t[0][8], self.K_t[0][9])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
+        self.variance[2][2] = 0
+        self.variance_update[2][2] = 0
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
         print("K_t_0: ", self.K_t[0][6:8])
@@ -246,6 +249,7 @@ class KalmanFilter():
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
+        self.variance[2][2] = 0
         # self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
         # self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
         # print("variance", self.variance)
