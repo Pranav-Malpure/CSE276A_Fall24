@@ -368,7 +368,7 @@ def main():
                 min_tag = 100
                 for tag in seen_tags:
                     if tag in it_seen:
-                        d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1][0]))
+                        d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0]))
 
 
                         ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
