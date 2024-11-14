@@ -311,19 +311,18 @@ def main():
         pid = PIDcontroller(0.02, 0, 0.075)
 
         waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        rclpy.spin_once(pid)
+        seen_tags = []
+        for _ in range(25):
+            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+            kf.curpit[int(frame_id) - 1] = pitch
+            seen_tags.append(frame_id)
         time.sleep(3)
-
+        
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
 
-            seen_tags = []
-            for _ in range(25):
-                frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-                kf.curpit[int(frame_id) - 1] = pitch
-                seen_tags.append(frame_id)
-
-            time.sleep(1)
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
@@ -366,7 +365,7 @@ def main():
                 ang_rot = 0
                 for tag in seen_tags:
                     if tag in it_seen:
-                        ang_rot += abs(kf.curpit[int(tag) - 1] - kf.newpit[int(tag) - 1])
+                        ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                 ang_rot /= len(it_seen)
                 kf.state[2] += ang_rot
                 kf.state[2] = (kf.state[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
@@ -419,7 +418,7 @@ def main():
                         ang_rot = 0
                         for tag in seen_tags:
                             if tag in it_seen:
-                                ang_rot += abs(kf.curpit[int(tag) - 1] - kf.newpit[int(tag) - 1])
+                                ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                         ang_rot /= len(it_seen)
                         if ang_rot != 0:
                             kf.state[2] += ang_rot
