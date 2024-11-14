@@ -339,7 +339,7 @@ def main():
             pid.setTarget(wp)
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
-            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.05):
+            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.06):
                 print()
                 print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
@@ -500,6 +500,8 @@ def main():
 
                         print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
 
+
+                print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
         # with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
         #     pickle.dump(kf.state, file)
         # with open('states_track.pkl', 'wb') as file:   # Save robot trajectory
