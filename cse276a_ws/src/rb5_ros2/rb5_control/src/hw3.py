@@ -327,7 +327,7 @@ def main():
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.y = float(0.04*pid.update_sign(kf.state[0:3])[1])
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
