@@ -168,7 +168,6 @@ class KalmanFilter():
         self.G[2] = [0,0,1]
         self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
-        
         # self.variance = 1000*np.identity(53)
         self.variance = 1000*np.identity(53)
         self.variance[0][0] = 0
@@ -340,7 +339,7 @@ def main():
                     pid.get_measurement(kf)
                 # Reconcile measured and predicted measurements
                 kf.update() 
-                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])           
+                print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
                     print('inside angle regime')
@@ -376,16 +375,11 @@ def main():
                         # Predict state in open loop
                         kf.predict(input)
                         # Measure april tag detection  
-                        for _ in range(25):             
+                        for _ in range(25):           
                             pid.get_measurement(kf)
                         # Reconcile measured and predicted measurements
                         kf.update() 
                         print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10])
-
-
-
-
-
 
 
 

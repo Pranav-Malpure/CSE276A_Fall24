@@ -69,7 +69,7 @@ class PIDcontroller(Node):
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
 
-        kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small
+        kf.variance_update[2][2] = 1e-2 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
@@ -133,6 +133,35 @@ class PIDcontroller(Node):
         result = targetState - currentState
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
         return result 
+    
+    def update_sign(self, currentState):
+        """
+        calculate the update value on the state based on the error between current state and target state with PID.
+        """
+        e = self.getError(currentState, self.target)
+
+        # P = np.array([self.Kp * e[0]/0.75, self.Kp * e[1], self.Kp * e[2]])
+        # # self.I = np.array([self.I[0] + self.Ki * e[0] * self.timestep, self.I[1] + self.Ki * e[1] * self.timestep , self.I[2] + self.Ki * e[2] * self.timestep/2]) 
+        # self.I = self.I + self.Ki * e * self.timestep
+        # I = self.I
+        # D = np.array([self.Kd * (e[0] - self.lastError[0]), self.Kd * (e[1] - self.lastError[1]), self.Kd * (e[2] - self.lastError[2])])
+        # result = P + I + D
+
+        # self.lastError = e
+
+        # scale down the twist if its norm is more than the maximum value. 
+        # resultNorm = np.linalg.norm(result)
+        # if(resultNorm > self.maximumValue):
+        #     result = (result / resultNorm) * self.maximumValue
+        #     self.I = 0.0
+        result = [np.sign(e[0]), np.sign(e[1]), np.sign(e[2])]
+        return result
+
+    def setTarget(self, state):
+        """
+        set the target pose.
+        """
+        self.target = np.array(state)
 
 class KalmanFilter():
     def __init__(self):
@@ -285,6 +314,7 @@ def main():
         time.sleep(3)
 
         for wp in waypoint:
+            pid.setTarget(wp)
             print("move to way point", wp)
 
             seen_tags = []
@@ -296,14 +326,24 @@ def main():
             time.sleep(1)
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.05):
                 twist_msg = Twist()
-                twist_msg.linear.x = 0.0
-                twist_msg.linear.y = 0.04
-                twist_msg.linear.z = 0.0
-                twist_msg.angular.x = 0.0
-                twist_msg.angular.y = 0.0
-                twist_msg.angular.z = 0.0
-                pid.publisher_.publish(twist_msg)
-                time.sleep(delta_t)
+                if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
+                    twist_msg.linear.x = 0.0
+                    twist_msg.linear.y = 0.04*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.z = 0.0
+                    twist_msg.angular.x = 0.0
+                    twist_msg.angular.y = 0.0
+                    twist_msg.angular.z = 0.0
+                    pid.publisher_.publish(twist_msg)
+                    time.sleep(delta_t)
+                else:
+                    twist_msg.linear.x = 0.0
+                    twist_msg.linear.y = 0.02*pid.update_sign(kf.state[0:3])[1]
+                    twist_msg.linear.z = 0.0
+                    twist_msg.angular.x = 0.0
+                    twist_msg.angular.y = 0.0
+                    twist_msg.angular.z = 0.0
+                    pid.publisher_.publish(twist_msg/2)
+                    time.sleep(delta_t)
                 print("moving forward")
 
                 input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z]))
@@ -349,17 +389,28 @@ def main():
                     while rclpy.ok() and abs(pid.getError(kf.state[0:3], wp)[2]) > 0.03:
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
-                        twist_msg.linear.x = 0.0
-                        twist_msg.linear.y = 0.0
-                        twist_msg.linear.z = 0.0
-                        twist_msg.angular.x = 0.0
-                        twist_msg.angular.y = 0.0
-                        twist_msg.angular.z = 0.05
-                        pid.publisher_.publish(twist_msg)
-                        time.sleep(delta_t)
-                        print("rotating")
+                        if abs(pid.getError(kf.state[0:3], wp)[2]) > 0.09:
+                            twist_msg.linear.x = 0.0
+                            twist_msg.linear.y = 0.0
+                            twist_msg.linear.z = 0.0
+                            twist_msg.angular.x = 0.0
+                            twist_msg.angular.y = 0.0
+                            twist_msg.angular.z = 0.05*pid.update_sign(kf.state[0:3])[2]
+                            pid.publisher_.publish(twist_msg)
+                            time.sleep(delta_t)
+                            print("rotating")
+                        else:
+                            twist_msg.linear.x = 0.0
+                            twist_msg.linear.y = 0.0
+                            twist_msg.linear.z = 0.0
+                            twist_msg.angular.x = 0.0
+                            twist_msg.angular.y = 0.0
+                            twist_msg.angular.z = 0.03*pid.update_sign(kf.state[0:3])[2]
+                            pid.publisher_.publish(twist_msg/2)
+                            time.sleep(delta_t)
+                            print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [0]))
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z])) # TODO: have to calibrate the angle
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
