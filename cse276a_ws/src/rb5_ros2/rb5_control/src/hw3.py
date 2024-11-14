@@ -322,7 +322,7 @@ def main():
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
-            print("signs array: ", pid.update_sign(kf.state[0:3])[1])
+            print("signs array: ", pid.update_sign(kf.state[0:3]))
             while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
@@ -367,14 +367,14 @@ def main():
                     if tag in it_seen:
                         ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                 ang_rot /= len(it_seen)
-                kf.state[2] += ang_rot
-                kf.state[2] = (kf.state[2] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                kf.state[2][0] += ang_rot
+                kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen[:]
 
                 print(kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
 
-                kf.states_track.append([kf.state[0], kf.state[1], kf.state[2]])     
+                kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) < 0.05):
                     print('inside angle regime')
