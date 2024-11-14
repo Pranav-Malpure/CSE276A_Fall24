@@ -396,29 +396,28 @@ def main():
                     kf.newpit[int(frame_id) - 1] = pitch
                     it_seen.add(frame_id)
 
-                ang_rot = 0.0
-                for tag in seen_tags.intersection(it_seen):
-                    ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
-                ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
+                # ang_rot = 0.0
+                # for tag in seen_tags.intersection(it_seen):
+                #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
+                # ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
 
-                kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
-                kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
-                kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                
-                # min_dist = 1e5
-                # min_tag = 100
-                # for tag in seen_tags:
-                #     if tag in it_seen:
-                #         d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0])**2)
-                #         if d < min_dist:
-                #             min_dist = d
-                #             min_tag = tag               
-
-                # kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
+                # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                 # kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                # kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 # kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                
+                min_dist = 1e5
+                min_tag = 100
+                for tag in seen_tags.intersection(it_seen):
+                    d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0])**2)
+                    if d < min_dist:
+                        min_dist = d
+                        min_tag = tag               
+
+                kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
 
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen.copy()
@@ -480,34 +479,33 @@ def main():
                             kf.newpit[int(frame_id) - 1] = pitch
                             it_seen.add(frame_id)
 
-                        ang_rot = 0.0
-                        for tag in seen_tags.intersection(it_seen):
-                            ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
-                        ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
+                        # ang_rot = 0.0
+                        # for tag in seen_tags.intersection(it_seen):
+                        #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
+                        # ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
 
-                        kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
-                        kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
-                        kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                        kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)                        
-                        
-                        # min_dist = 1e5
-                        # min_tag = 100
-                        # for tag in seen_tags:
-                        #     if tag in it_seen:
-                        #         d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0])**2)
-                        #         if d < min_dist:
-                        #             min_dist = d
-                        #             min_tag = tag
-                        
-                        # if min_tag != 100:
-                        #     kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                        #     kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                        #     pass
-                        # else:
-                        #     # TODO: kf.state[2] = Record the rotation estimated from open loop
-                        #     pass
+                        # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
+                        # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                         # kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                        # kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                        # kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)                        
+                        
+                        min_dist = 1e5
+                        min_tag = 100
+                        for tag in seen_tags.intersection(it_seen):
+                            d = np.sqrt((kf.state[0][0] - kf.state[2*(int(tag)-1)+3][0])**2 + (kf.state[1][0] - kf.state[2*(int(tag)-1)+1+3][0])**2)
+                            if d < min_dist:
+                                min_dist = d
+                                min_tag = tag
+                        
+                        if min_tag != 100:
+                            kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            pass
+                        else:
+                            # TODO: kf.state[2] = Record the rotation estimated from open loop
+                            pass
+                        kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                        kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
 
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen.copy()
