@@ -155,6 +155,7 @@ def main():
     waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
     time.sleep(3)
 
+    for _ in range(20):
     twist_msg = Twist()
     twist_msg.linear.x = 0.0
     twist_msg.linear.y = 0.0
@@ -170,7 +171,7 @@ def main():
     # Stop Car
     twist_msg.angular.z = 0.0
     pid.publisher_.publish(twist_msg)
-    time.sleep(1.5)
+    time.sleep(0.2)
     # Predict state in open loop
     kf.predict(input)
     # Measure april tag detection               
