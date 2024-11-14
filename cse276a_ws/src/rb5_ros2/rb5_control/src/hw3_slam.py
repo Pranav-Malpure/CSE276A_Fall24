@@ -82,6 +82,14 @@ class PIDcontroller(Node):
 
         print("z", kf.z[int(self.callback_data[2])*2 - 1], kf.z[int(self.callback_data[2])*2])
 
+    def getError(self, currentState, targetState):
+        """
+        return the different between two states
+        """
+        result = targetState - currentState
+        result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
+        return result 
+
 class KalmanFilter():
     def __init__(self):
         self.F = np.identity(53)
