@@ -323,7 +323,7 @@ def main():
             pid.setTarget(wp)
             print("move to way point", wp)
 
-            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.05):
+            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3].T, wp[0:3])) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
