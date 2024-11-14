@@ -413,7 +413,7 @@ def main():
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
-                       
+                        print("WHATS SIGN??", pid.update_sign(kf.state[0:3][0])[2])
                         twist_msg.linear.x = 0.0
                         twist_msg.linear.y = 0.0
                         twist_msg.linear.z = 0.0
