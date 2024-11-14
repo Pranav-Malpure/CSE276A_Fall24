@@ -226,7 +226,7 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10])
+        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[9], self.state_update[10], self.state_update[3], self.state_update[4])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         print("variance update", self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], self.variance_update[9][9], self.variance_update[10][10])
@@ -323,7 +323,7 @@ def main():
             pid.setTarget(wp)
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
-            while rclpy.ok() and (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])) > 0.05):
+            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.05):
                 twist_msg = Twist()
                 if (np.linalg.norm(pid.getError(kf.state[0:3][0], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
@@ -382,7 +382,7 @@ def main():
 
                 print()
 
-                if (np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])[:2]) < 0.1):
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.1:
                     print('inside angle regime')
                     seen_tags = []
                     for _ in range(25):
