@@ -74,7 +74,6 @@ class PIDcontroller(Node):
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
             print('inside new tag')
             kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
-            print("Line 78 ", self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0])
             kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
             kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
             kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-2
