@@ -68,7 +68,6 @@ class PIDcontroller(Node):
         theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
         # print("callback data", self.callback_data)
         # print("detected tag list ",kf.detected_tag)
-        print("THETA ", theta)
         kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
