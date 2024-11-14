@@ -184,7 +184,7 @@ class KalmanFilter():
         self.newpit = np.zeros(50)
 
         # self.variance = 1000*np.identity(53)
-        self.variance = 1000*np.identity(53)
+        self.variance = 100*np.identity(53)
         self.variance[0][0] = 0.0
         self.variance[1][1] = 0.0
         self.variance[2][2] = 0.0
@@ -350,6 +350,9 @@ def main():
 
                 wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
                                     -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
+                
+                print("robot frame state", robot_frame_state)
+                print("wp robot frame", wp_robot_frame)
 
                 if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                     twist_msg.linear.x = 0.0
