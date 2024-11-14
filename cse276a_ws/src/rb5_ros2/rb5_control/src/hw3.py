@@ -310,7 +310,7 @@ def main():
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
 
-        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        waypoint = np.array([[0,1/2,0], [0, 1/2, np.pi/2],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         seen_tags = []
         for _ in range(25):
             rclpy.spin_once(pid)
@@ -414,6 +414,7 @@ def main():
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                         print("WHATS SIGN??", pid.update_sign(kf.state[0:3][0])[2])
+                        print("THIS IS E, and the culprit: ", pid.getError(kf.state[0:3][0], pid.target))
                         twist_msg.linear.x = 0.0
                         twist_msg.linear.y = 0.0
                         twist_msg.linear.z = 0.0
