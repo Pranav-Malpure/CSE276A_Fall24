@@ -126,7 +126,12 @@ class PIDcontroller(Node):
         """
         return the different between two states
         """
-        result = targetState - currentState
+        result = np.zeros(3)
+        result[0] = targetState[0] - currentState[0][0]
+        result[1] = targetState[1] - currentState[1][0]
+        result[2] = targetState[2] - currentState[2][0]
+        # result = targetState - currentState
+
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
         return result 
     
@@ -299,7 +304,9 @@ def main():
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
 
-        waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+        # waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+        waypoint = np.array([[0, 0, 0], [0,0,np.pi/2]])
+
         time.sleep(3)
 
         for wp in waypoint:
@@ -367,7 +374,7 @@ def main():
                             time.sleep(delta_t)
                             print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z])) # TODO: have to calibrate the angle
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
