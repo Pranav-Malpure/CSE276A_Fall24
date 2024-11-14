@@ -130,7 +130,7 @@ class KalmanFilter():
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
-        # print("state update", self.state_update)
+        print("state update", self.state_update[0:3])
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         # print("variance update", self.variance_update)
 
@@ -140,7 +140,7 @@ class KalmanFilter():
         print("K_t", self.K_t[0][7], self.K_t[0][8])
         # print("CAPITAL S", np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R)
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
-        print("z-H.state", self.z - np.dot(self.H, self.state_update))
+        # print("z-H.state", self.z - np.dot(self.H, self.state_update))
         self.variance = np.dot(np.identity(53) - np.dot(self.K_t, self.H), self.variance_update)
         # print("variance", self.variance)
         # return self.next_state 
@@ -168,7 +168,7 @@ def main():
 
     input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
     # Stop Car
-    twist_msg.linear.z = 0.0
+    twist_msg.angular.z = 0.0
     pid.publisher_.publish(twist_msg)
     time.sleep(1.5)
     # Predict state in open loop
