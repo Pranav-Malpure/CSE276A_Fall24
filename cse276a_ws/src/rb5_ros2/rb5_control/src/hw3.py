@@ -132,9 +132,9 @@ class PIDcontroller(Node):
         return the different between two states
         """
         result = np.zeros(3)
-        result[0] = targetState[0] - currentState[0][0]
-        result[1] = targetState[1] - currentState[1][0]
-        result[2] = targetState[2] - currentState[2][0]
+        result[0] = targetState[0] - currentState[0]
+        result[1] = targetState[1] - currentState[1]
+        result[2] = targetState[2] - currentState[2]
         # result = targetState - currentState
 
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
