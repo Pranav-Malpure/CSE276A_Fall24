@@ -357,15 +357,14 @@ def main():
                 time.sleep(1.5)
                 # Predict state in open loop
                 kf.predict(input)
+
                 # Measure april tag detection    
                 it_seen = []
-                for _ in range(25):           
-                    pid.get_measurement(kf)
+                for _ in range(25):   
+                    rclpy.spin_once(pid)        
                     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                     kf.newpit[int(frame_id) - 1] = pitch
                     it_seen.append(frame_id)
-                # Reconcile measured and predicted measurements
-                kf.update() 
                 
                 min_dist = 1e5
                 min_tag = 100
@@ -378,8 +377,16 @@ def main():
                 
                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                kf.state_update[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.curpit = kf.newpit.copy()
-                seen_tags = it_seen[:]
+                seen_tags = it_seen.copy()
+
+                for i in range(25):
+                    pid.get_measurement(kf)
+            
+                # Reconcile measured and predicted measurements
+                kf.update() 
 
                 print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10]) 
 
@@ -414,22 +421,21 @@ def main():
                         time.sleep(2*delta_t)
                         print("rotating")
 
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
+                        # input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0]))
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
                         time.sleep(1.5)
                         # Predict state in open loop
                         kf.predict(input)
+
                         # Measure april tag detection  
                         it_seen = []
                         for _ in range(25):           
-                            pid.get_measurement(kf)
                             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                             kf.newpit[int(frame_id) - 1] = pitch
                             it_seen.append(frame_id)
-                        # Reconcile measured and predicted measurements
-                        kf.update() 
                         
                         min_dist = 1e5
                         min_tag = 100
@@ -442,12 +448,20 @@ def main():
                         
                         if min_tag != 100:
                             kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                         else:
                             # TODO: kf.state[2] = Record the rotation estimated from open loop
                             pass
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
+                        kf.state_update[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen[:]
+
+                        for _ in range(25):           
+                            pid.get_measurement(kf)
+
+                        # Reconcile measured and predicted measurements
+                        kf.update() 
 
                         print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[9], kf.state[10], kf.state[3], kf.state[4])
 
