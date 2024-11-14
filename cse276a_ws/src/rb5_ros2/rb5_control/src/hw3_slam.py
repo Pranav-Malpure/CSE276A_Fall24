@@ -155,6 +155,30 @@ def main():
     waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
     time.sleep(3)
 
+    twist_msg = Twist()
+    twist_msg.linear.x = 0.0
+    twist_msg.linear.y = 0.0
+    twist_msg.linear.z = 0.0
+    twist_msg.angular.x = 0.0
+    twist_msg.angular.y = 0.0
+    twist_msg.angular.z = 0.05
+    pid.publisher_.publish(twist_msg)
+    time.sleep(delta_t)
+    print("moving forward")
+
+    input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/5], [calibration_ang*twist_msg.angular.z]))
+    # Stop Car
+    twist_msg.linear.z = 0.0
+    pid.publisher_.publish(twist_msg)
+    time.sleep(1.5)
+    # Predict state in open loop
+    kf.predict(input)
+    # Measure april tag detection               
+    pid.get_measurement(kf)
+    # Reconcile measured and predicted measurements
+    kf.update() 
+    print(kf.state[0], kf.state[1], kf.state[2], kf.state[10], kf.state[11], kf.state[12], kf.state[13])
+    """
     for wp in waypoint:
         print("move to way point", wp)
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.05):
@@ -217,7 +241,7 @@ def main():
                     pid.current_state[0] = kf.state[0]
                     pid.current_state[1] = kf.state[1]
                     pid.current_state[2] = kf.state[2]
-
+"""
             
 if __name__ == '__main__':
     print("starting")
