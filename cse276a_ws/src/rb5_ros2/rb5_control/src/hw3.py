@@ -190,7 +190,7 @@ class KalmanFilter():
         self.variance[2][2] = 0.0
 
         # self.Q = np.zeros((53, 53))
-        self.Q = np.identity(53)
+        self.Q = 0.05*np.identity(53)
         self.Q[0][0] = 0.01
         self.Q[1][1] = 0.02
         self.Q[2][2] = 0.0
