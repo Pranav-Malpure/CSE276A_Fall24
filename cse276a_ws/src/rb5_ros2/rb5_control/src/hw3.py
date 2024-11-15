@@ -222,8 +222,8 @@ class KalmanFilter():
         self.state[2] = -np.pi/4
 
         self.state_update = np.zeros((53, 1))
-        # self.state_update[1] = 1/2
-        # self.state_update[2] = np.pi/2
+        self.state_update[1] = 1/2
+        self.state_update[2] = np.pi/2
 
         self.R = np.identity(50)*1e-2
 
@@ -327,7 +327,7 @@ def main():
 
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
         # waypoint = np.array([[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
-        waypoint = np.array([[1/2,1/2,-np.pi/4]])
+        # waypoint = np.array([[1/2,1/2,-np.pi/4]])
         # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0, 0], [0.0,1/2,0.0]])
         seen_tags = set()
         for _ in range(25):
@@ -478,7 +478,8 @@ def main():
 
                         # Measure april tag detection  
                         it_seen = set()
-                        for _ in range(25):           
+                        for _ in range(25):      
+                            rclpy.spin_once(pid)       
                             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                             kf.newpit[int(frame_id) - 1] = pitch
                             it_seen.add(frame_id)
