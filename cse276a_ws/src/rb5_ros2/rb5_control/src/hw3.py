@@ -218,8 +218,8 @@ class KalmanFilter():
         self.variance_update = np.zeros((53, 53))
 
         self.state = np.zeros((53, 1))
-        # self.state[1] = 1/2
-        # self.state[2] = np.pi/2
+        self.state[1] = 0
+        self.state[2] = np.pi/4
 
         self.state_update = np.zeros((53, 1))
         # self.state_update[1] = 1/2
@@ -327,8 +327,8 @@ def main():
 
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
         # waypoint = np.array([[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
-        # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
-        waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0, 0], [0.0,1/2,0.0]])
+        waypoint = np.array([[1/2,1/2,np.pi/4]])
+        # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0, 0], [0.0,1/2,0.0]])
         seen_tags = set()
         for _ in range(25):
             rclpy.spin_once(pid)
