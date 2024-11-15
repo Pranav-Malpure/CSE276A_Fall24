@@ -481,7 +481,7 @@ def main():
                         pid.publisher_.publish(twist_msg)
                         time.sleep(0.5)
                         # Predict state in open loop
-                        kf.predict(input)
+                        # kf.predict(input)
 
                         # Measure april tag detection  
                         it_seen = set()
@@ -525,11 +525,11 @@ def main():
                         seen_tags = it_seen.copy()
                         time.sleep(0.1)
 
-                        for _ in range(25):           
-                            pid.get_measurement(kf)
+                        # for _ in range(25):           
+                        #     pid.get_measurement(kf)
 
                         # Reconcile measured and predicted measurements
-                        kf.update() 
+                        # kf.update() 
 
                         print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14])
 
