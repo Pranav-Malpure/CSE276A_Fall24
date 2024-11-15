@@ -350,8 +350,8 @@ def main():
                 robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                       -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
-                wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
-                                    -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
+                wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
+                                    -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
                 
                 print("robot frame state", robot_frame_state)
                 print("wp robot frame", wp_robot_frame)
@@ -445,7 +445,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.05:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.065:
                     print('inside angle regime')
 
                     time.sleep(0.5)
@@ -453,8 +453,8 @@ def main():
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
-                        wp_robot_frame = [wp[0]*np.cos(wp[2]) + wp[1]*np.sin(wp[2]),
-                                          -wp[0]*np.sin(wp[2]) + wp[1]*np.cos(wp[2]), wp[2]]
+                        wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
+                                          -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
