@@ -82,7 +82,7 @@ class PIDcontroller(Node):
             kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
             kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
             kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-2
-            print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
+            # print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
 
         if self.callback_data[2] not in kf.detected_tag:
             kf.detected_tag.append(self.callback_data[2])
@@ -247,11 +247,11 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update before AT", self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4], self.state_update[9], self.state_update[10], self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
+        print("state update in PREDICT", 'Robot', self.state_update[0], self.state_update[1], self.state_update[2], 'AT1', self.state_update[3], self.state_update[4], 'AT4', self.state_update[9], self.state_update[10], 'AT5', self.state_update[11], self.state_update[12], 'AT6', self.state_update[13], self.state_update[14], 'AT11', self.state_update[23], self.state_update[24])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         self.variance_update[2][2] = 0.0
-        print("variance update", self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], self.variance_update[9][9], self.variance_update[10][10])
+        print("variance update", 'Robot', self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], 'AT1', self.variance_update[9][9], self.variance_update[10][10], 'AT4', self.variance_update[9][9], self.variance_update[10][10], 'AT5', self.variance_update[11][11], self.variance_update[12][12], 'AT6', self.variance_update[13][13], self.variance_update[14][14], 'AT11', self.variance_update[23][23], self.variance_update[24][24])
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
@@ -262,14 +262,14 @@ class KalmanFilter():
         self.variance_update[2][2] = 0.0
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S))
-        print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
-        print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
-        print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
-        print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
-        print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4],self.state_update[9], self.state_update[10],self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
-        print('z', self.z[6:8], self.z[0:2])
-        print('estimated z', np.dot(self.H, self.state_update)[6:8], np.dot(self.H, self.state_update)[0:2])
-        print('innovation', (self.z - np.dot(self.H, self.state_update))[6:8], (self.z - np.dot(self.H, self.state_update))[0:2])
+        # print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
+        # print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
+        # print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
+        # print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
+        # print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4],self.state_update[9], self.state_update[10],self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
+        print('Measured z', 'AT1', self.z[0:2], 'AT4', self.z[6:8], 'AT5', self.z[8:10], 'AT6', self.z[10:12], 'AT11', self.z[20:22])
+        print('Estimated z', 'AT1', np.dot(self.H, self.state_update)[0:2], 'AT4', np.dot(self.H, self.state_update)[6:8], 'AT5', np.dot(self.H, self.state_update)[8:10], 'AT6', np.dot(self.H, self.state_update)[10:12], 'AT11', np.dot(self.H, self.state_update)[20:22])
+        print('innovation', 'AT1', (self.z - np.dot(self.H, self.state_update))[0:2], 'AT4', (self.z - np.dot(self.H, self.state_update))[6:8], 'AT5', (self.z - np.dot(self.H, self.state_update))[8:10], 'AT6', (self.z - np.dot(self.H, self.state_update))[10:12], 'AT11', (self.z - np.dot(self.H, self.state_update))[20:22])
         # print(self.z - np.dot(self.H, self.state_update))
         print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
@@ -444,11 +444,13 @@ def main():
 
                 for i in range(25):
                     pid.get_measurement(kf)
+                print('DETECTED TAGS THIS ITR', kf.detected_tag)
             
                 # Reconcile measured and predicted measurements
                 kf.update() 
+                print('DETECTED TAGS CLEARED OR NOT?', kf.detected_tag)
 
-                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14], kf.state[23], kf.state[24]) 
+                print("______STATES(L)_________", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT11', kf.state[23], kf.state[24]) 
 
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
@@ -539,7 +541,7 @@ def main():
                         # Reconcile measured and predicted measurements
                         # kf.update() 
 
-                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14], kf.state[23], kf.state[24])
+                        print("_____STATES(A)_____: ", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT11', kf.state[23], kf.state[24])
 
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
