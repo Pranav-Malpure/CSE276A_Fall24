@@ -218,12 +218,12 @@ class KalmanFilter():
         self.variance_update = np.zeros((53, 53))
 
         self.state = np.zeros((53, 1))
-        self.state[1] = 0
-        self.state[2] = -np.pi/4
+        self.state[1] = 1/2
+        # self.state[2] = 0
 
         self.state_update = np.zeros((53, 1))
-        self.state_update[1] = 1/2
-        self.state_update[2] = np.pi/2
+        # self.state_update[1] = 1/2
+        # self.state_update[2] = np.pi/2
 
         self.R = np.identity(50)*1e-2
 
