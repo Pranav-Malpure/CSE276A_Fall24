@@ -87,7 +87,7 @@ class PIDcontroller(Node):
         if self.callback_data[2] not in kf.detected_tag:
             kf.detected_tag.append(self.callback_data[2])
 
-        
+        kf.R = np.zeros((50, 50))
         for tag_list in kf.detected_tag:
             kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
             kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
