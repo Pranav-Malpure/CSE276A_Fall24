@@ -63,7 +63,7 @@ class PIDcontroller(Node):
 
     def get_measurement(self, kf):
         rclpy.spin_once(self)
-        if int(self.callback_data[2]) > 15:
+        while int(self.callback_data[2]) > 15:
             rclpy.spin_once(self)
         time.sleep(0.1)
         # print("callback data", self.callback_data)
@@ -335,7 +335,7 @@ def main():
         seen_tags = set()
         for _ in range(25):
             rclpy.spin_once(pid)
-            if int(pid.callback_data[2]) > 15:
+            while int(pid.callback_data[2]) > 15:
                 rclpy.spin_once(pid)
             time.sleep(0.1)
             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
@@ -400,7 +400,7 @@ def main():
                 it_seen = set()
                 for _ in range(25):   
                     rclpy.spin_once(pid)  
-                    if int(pid.callback_data[2]) > 15:
+                    while int(pid.callback_data[2]) > 15:
                         rclpy.spin_once(pid)
                     time.sleep(0.1)      
                     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
@@ -487,7 +487,7 @@ def main():
                         it_seen = set()
                         for _ in range(25):      
                             rclpy.spin_once(pid)   
-                            if int(pid.callback_data[2]) > 15:
+                            while int(pid.callback_data[2]) > 15:
                                 rclpy.spin_once(pid)    
                             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                             kf.newpit[int(frame_id) - 1] = pitch
