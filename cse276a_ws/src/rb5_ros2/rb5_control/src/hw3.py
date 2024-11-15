@@ -87,7 +87,7 @@ class PIDcontroller(Node):
         if self.callback_data[2] not in kf.detected_tag:
             kf.detected_tag.append(self.callback_data[2])
 
-        kf.R = np.zeros((50, 50))
+        # kf.R = np.zeros((50, 50))
         for tag_list in kf.detected_tag:
             kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
             kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
@@ -98,8 +98,8 @@ class PIDcontroller(Node):
 
             kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
             kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
-            kf.R[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2] = 1e-2
-            kf.R[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1] = 1e-2
+            # kf.R[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2] = 1e-2
+            # kf.R[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1] = 1e-2
             # kf.Q[(int(tag_list) - 1)*2 + 3][(int(tag_list) - 1)*2 + 3] = 1e-2
             # kf.Q[(int(tag_list) - 1)*2 + 3 + 1][(int(tag_list) - 1)*2 + 3 + 1] = 1e-2
         
@@ -234,8 +234,8 @@ class KalmanFilter():
         # self.state_update[1] = 1/2
         # self.state_update[2] = np.pi/2
 
-        # self.R = np.identity(50)*1e-2
-        self.R = np.zeros((50, 50))
+        self.R = np.identity(50)*1e-4
+        # self.R = np.zeros((50, 50))
 
         self.detected_tag = []
 
