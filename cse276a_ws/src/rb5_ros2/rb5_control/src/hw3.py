@@ -328,9 +328,9 @@ def main():
         pid = PIDcontroller(0.02, 0, 0.075)
 
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
-        waypoint = np.array([[0,1/2, 0],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
+        # waypoint = np.array([[0,1/2, 0],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         # waypoint = np.array([[1/2,1/2,-np.pi/4]])
-        # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0, 0], [0.0,1/2,0.0]])
+        waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0,0]])
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
         for _ in range(25):
@@ -440,7 +440,7 @@ def main():
                 # Reconcile measured and predicted measurements
                 kf.update() 
 
-                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14]) 
+                print("______STATES(L)_________",kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14], kf.state[23], kf.state[24]) 
 
                 kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
 
@@ -531,7 +531,7 @@ def main():
                         # Reconcile measured and predicted measurements
                         # kf.update() 
 
-                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14])
+                        print("_____STATES(A)_____: ", kf.state[0], kf.state[1], kf.state[2], kf.state[3], kf.state[4], kf.state[9], kf.state[10], kf.state[11], kf.state[12], kf.state[13], kf.state[14], kf.state[23], kf.state[24])
 
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
