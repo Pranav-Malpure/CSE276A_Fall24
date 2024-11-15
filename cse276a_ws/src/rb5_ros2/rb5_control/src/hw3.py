@@ -66,6 +66,8 @@ class PIDcontroller(Node):
         while int(self.callback_data[2]) > 15:
             rclpy.spin_once(self)
         time.sleep(0.1)
+
+
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
@@ -85,7 +87,7 @@ class PIDcontroller(Node):
         if self.callback_data[2] not in kf.detected_tag:
             kf.detected_tag.append(self.callback_data[2])
 
-
+        
         for tag_list in kf.detected_tag:
             kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
             kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
@@ -96,6 +98,11 @@ class PIDcontroller(Node):
 
             kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
             kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
+            kf.R[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2] = 1e-2
+            kf.R[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1] = 1e-2
+            # kf.Q[(int(tag_list) - 1)*2 + 3][(int(tag_list) - 1)*2 + 3] = 1e-2
+            # kf.Q[(int(tag_list) - 1)*2 + 3 + 1][(int(tag_list) - 1)*2 + 3 + 1] = 1e-2
+        
 
         # kf.H[(int(self.callback_data[2]) - 1)*2][0] = -1
         # kf.H[(int(self.callback_data[2]) - 1)*2 + 1][1] = -1
@@ -227,7 +234,8 @@ class KalmanFilter():
         # self.state_update[1] = 1/2
         # self.state_update[2] = np.pi/2
 
-        self.R = np.identity(50)*1e-2
+        # self.R = np.identity(50)*1e-2
+        self.R = np.zeros((50, 50))
 
         self.detected_tag = []
 
@@ -253,7 +261,7 @@ class KalmanFilter():
         self.variance[2][2] = 0.0
         self.variance_update[2][2] = 0.0
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
-        self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S) )
+        self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S))
         print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
         print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
         print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
