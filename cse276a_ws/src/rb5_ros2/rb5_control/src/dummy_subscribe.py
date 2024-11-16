@@ -48,7 +48,7 @@ class sdkf(Node):
 if __name__ == '__main__':
     rclpy.init()
     a = sdkf()
-
-    for i in range(10):
-        rclpy.spin_once(a)
+    rclpy.spin_once(a)
+    # for i in range(10):
+    #     rclpy.spin_once(a)
     print(a.callback_data)
