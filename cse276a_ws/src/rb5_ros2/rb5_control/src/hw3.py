@@ -347,7 +347,7 @@ def main():
         # square
         # waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0,0.4,0]]) # for square
         octagon_side = 0.8/np.sqrt(2)
-        np.array([
+        waypoint = np.array([
             [0.0, 0.0, -np.pi/8],
             [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
             [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
@@ -512,7 +512,8 @@ def main():
 
                 print("______STATES(L)_________", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
 
-                kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
+                # kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])  
+                kf.states_track.append(kf.state)   
 
                 print()
                 # print("error", np.linalg.norm(pid.getError(kf.state[0:3][0], wp[0:3])[:2]))
