@@ -161,7 +161,7 @@ def main():
         twist_msg.linear.z = 0.0
         twist_msg.angular.x = 0.0
         twist_msg.angular.y = 0.0
-        twist_msg.angular.z = 0.05
+        twist_msg.angular.z = 0.0
         pid.publisher_.publish(twist_msg)
         time.sleep(delta_t)
         print("moving forward")
