@@ -384,7 +384,7 @@ def main():
             pid.setTarget(wp)
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
-            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.06):
+            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.07):
                 print()
                 print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
@@ -413,7 +413,7 @@ def main():
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.05:
+                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.04:
                     print('Y Small')
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
@@ -436,7 +436,7 @@ def main():
 
                 input_x_moved = np.array(([0], [0], [0]))
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) < 0.05:
-                    if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.05:
+                    if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.04:
                         input_y_moved = np.array(([0], [0], [0]))
                         print('inside x correction')
                         theta_ = kf.state[2][0]
@@ -466,7 +466,7 @@ def main():
 
                 # Measure april tag detection    
                 it_seen = set()
-                for _ in range(25):   
+                for _ in range(8):   
                     rclpy.spin_once(pid)  
                     while int(pid.callback_data[2]) > 15:
                         rclpy.spin_once(pid)
@@ -502,7 +502,7 @@ def main():
                 seen_tags = it_seen.copy()
                 time.sleep(0.1)
 
-                for i in range(25):
+                for i in range(8):
                     pid.get_measurement(kf)
                 print('DETECTED TAGS THIS ITR', kf.detected_tag)
             
