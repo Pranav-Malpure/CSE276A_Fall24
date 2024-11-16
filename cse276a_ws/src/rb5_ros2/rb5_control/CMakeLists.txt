@@ -28,6 +28,7 @@ install(
   src/mpi_control.py
   src/hw3_slam.py
   src/hw3.py
+  dummy_subscribe.py
   DESTINATION lib/${PROJECT_NAME}
 )
 
