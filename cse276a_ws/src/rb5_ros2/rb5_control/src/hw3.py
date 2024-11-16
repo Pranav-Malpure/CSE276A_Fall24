@@ -378,7 +378,7 @@ def main():
             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
             kf.curpit[int(frame_id) - 1] = pitch
             seen_tags.add(frame_id)
-        time.sleep(0.5)
+        time.sleep(0.2)
 
         for wp in waypoint:
             pid.setTarget(wp)
@@ -460,7 +460,7 @@ def main():
                 twist_msg.linear.x = 0.0
                 
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.5)
+                time.sleep(0.2)
                 # Predict state in open loop
                 kf.predict(input)
 
@@ -525,7 +525,6 @@ def main():
                 if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.065:
                     print('inside angle regime')
 
-                    time.sleep(0.5)
                     while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.06:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
@@ -550,7 +549,7 @@ def main():
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
-                        time.sleep(0.5)
+                        time.sleep(0.2)
                         # Predict state in open loop
                         # kf.predict(input)
 
