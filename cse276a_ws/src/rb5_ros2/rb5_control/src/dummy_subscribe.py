@@ -17,8 +17,6 @@ import pickle
 
 
 class sdkf(Node):
-    
-
 
     def __init__(self):
         super().__init__('dummy_subscriber')
@@ -28,6 +26,7 @@ class sdkf(Node):
             self.pose_callback,
             10) 
         self.callback_data = defaultdict(dict)
+        self.subscription
         
     def pose_callback(self, msg):
         x = msg.pose.position.x
@@ -49,8 +48,7 @@ class sdkf(Node):
 if __name__ == '__main__':
     rclpy.init()
     a = sdkf()
-    rclpy.spin_once(a)
 
     for i in range(10):
-        rclpy.spin_once()
+        rclpy.spin_once(a)
     print(a.callback_data)
