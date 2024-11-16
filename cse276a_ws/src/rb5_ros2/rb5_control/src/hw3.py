@@ -605,13 +605,21 @@ def main():
 
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
-        with open('final_state_oct.pkl', 'wb') as file:    # Save state to .pkl
-            pickle.dump(kf.state, file)
-        with open('states_track_oct.pkl', 'wb') as file:   # Save robot trajectory
-            pickle.dump(kf.states_track, file)
-        with open('final_variance_oct.pkl', 'wb') as file:    # Save variance to .pkl
-            pickle.dump(kf.variance, file)       
 
+            if wp == [0,0,0]:
+                with open('final_state_square_1.pkl', 'wb') as file:    # Save state to .pkl
+                    pickle.dump(kf.state, file)
+                with open('states_track_square_1.pkl', 'wb') as file:   # Save robot trajectory
+                    pickle.dump(kf.states_track, file)
+                with open('final_variance_square_1.pkl', 'wb') as file:    # Save variance to .pkl
+                    pickle.dump(kf.variance, file)       
+       
+        with open('final_state_square_2.pkl', 'wb') as file:    # Save state to .pkl
+            pickle.dump(kf.state, file)
+        with open('states_track_square_2.pkl', 'wb') as file:   # Save robot trajectory
+            pickle.dump(kf.states_track, file)
+        with open('final_variance_square_2.pkl', 'wb') as file:    # Save variance to .pkl
+            pickle.dump(kf.variance, file)       
 
 
 if __name__ == '__main__':
