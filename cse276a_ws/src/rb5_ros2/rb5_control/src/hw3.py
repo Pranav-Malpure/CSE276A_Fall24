@@ -61,7 +61,7 @@ class PIDcontroller(Node):
 
         frame_id = msg.header.frame_id
 
-        if frame_id < 15:
+        if int(frame_id) < 15:
             self.callback_data[frame_id] = [x, z, pitch]
         # self.callback_data = [x, z, frame_id, pitch]
 
