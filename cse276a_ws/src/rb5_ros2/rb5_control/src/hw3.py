@@ -370,7 +370,7 @@ def main():
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
-        for _ in range(15):
+        for _ in range(25):
             rclpy.spin_once(pid)
             while int(pid.callback_data[2]) > 15:
                 rclpy.spin_once(pid)
@@ -378,7 +378,7 @@ def main():
             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
             kf.curpit[int(frame_id) - 1] = pitch
             seen_tags.add(frame_id)
-        time.sleep(0.2)
+        time.sleep(0.5)
 
         for wp in waypoint:
             pid.setTarget(wp)
@@ -432,7 +432,7 @@ def main():
                 # Stop Car's
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.4)
+                time.sleep(0.5)
 
                 input_x_moved = np.array(([0], [0], [0]))
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) < 0.05:
@@ -466,11 +466,11 @@ def main():
 
                 # Measure april tag detection    
                 it_seen = set()
-                for _ in range(15):   
+                for _ in range(25):   
                     rclpy.spin_once(pid)  
                     while int(pid.callback_data[2]) > 15:
                         rclpy.spin_once(pid)
-                    time.sleep(0.1)      
+                    time.sleep(0.5)      
                     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                     kf.newpit[int(frame_id) - 1] = pitch
                     it_seen.add(frame_id)
@@ -558,7 +558,8 @@ def main():
                         for _ in range(25):      
                             rclpy.spin_once(pid)   
                             while int(pid.callback_data[2]) > 15:
-                                rclpy.spin_once(pid)    
+                                rclpy.spin_once(pid) 
+                            time.sleep(0.2)
                             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                             kf.newpit[int(frame_id) - 1] = pitch
                             it_seen.add(frame_id)
