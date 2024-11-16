@@ -165,6 +165,8 @@ def main():
         for _ in range(19):
             pid.publisher_.publish(twist_msg)
             time.sleep(2*delta_t)
+            twist_msg.angular.z = 0.0
+
             pid.publisher_.publish(twist_msg)
             time.sleep(2*delta_t)
         print("moving forward")
