@@ -375,7 +375,7 @@ def main():
                 print("wp robot frame", wp_robot_frame)
 
                 # if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
-                if abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.15:
+                if abs(kf.state[1][0] - wp[1]) > 0.15:
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.04*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
@@ -389,7 +389,7 @@ def main():
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15:
+                elif abs(kf.state[1][0] - wp[1]) <= 0.15:
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
@@ -410,23 +410,23 @@ def main():
                 time.sleep(0.2)
 
                 input_x_moved = np.array(([0], [0], [0]))
-                # if abs(kf.state[1][0] - wp[1]) < 0.05:
-                if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.05:
-                    print('inside x correction')
-                    theta_ = kf.state[2][0]
-                    twist_msg.linear.x = 0.05*pid.update_sign(robot_frame_state, wp_robot_frame)[0]
-                    twist_msg.linear.y = 0.0
-                    twist_msg.linear.z = 0.0
-                    twist_msg.angular.x = 0.0
-                    twist_msg.angular.y = 0.0
-                    twist_msg.angular.z = 0.0
-                    pid.publisher_.publish(twist_msg)
-                    time.sleep(delta_t)
-                    input_x = np.cos(theta_)*calibration_x*twist_msg.linear.x/9
-                    input_y = np.sin(theta_)*calibration_x*twist_msg.linear.x/9
-                    input_x_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                    twist_msg.linear.x = 0.0
-                    pid.publisher_.publish(twist_msg)
+                if abs(kf.state[1][0] - wp[1]) < 0.05:
+                    if abs(kf.state[0][0] - wp[0]) > 0.05:
+                        print('inside x correction')
+                        theta_ = kf.state[2][0]
+                        twist_msg.linear.x = 0.05*pid.update_sign(robot_frame_state, wp_robot_frame)[0]
+                        twist_msg.linear.y = 0.0
+                        twist_msg.linear.z = 0.0
+                        twist_msg.angular.x = 0.0
+                        twist_msg.angular.y = 0.0
+                        twist_msg.angular.z = 0.0
+                        pid.publisher_.publish(twist_msg)
+                        time.sleep(delta_t)
+                        input_x = np.cos(theta_)*calibration_x*twist_msg.linear.x/9
+                        input_y = np.sin(theta_)*calibration_x*twist_msg.linear.x/9
+                        input_x_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                        twist_msg.linear.x = 0.0
+                        pid.publisher_.publish(twist_msg)
 
                 print('X and Y velocites calculated')
                 input = input_x_moved + input_y_moved
