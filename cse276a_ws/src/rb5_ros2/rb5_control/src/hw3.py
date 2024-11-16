@@ -432,7 +432,7 @@ def main():
                 # Stop Car's
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.5)
+                time.sleep(0.2)
 
                 input_x_moved = np.array(([0], [0], [0]))
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) < 0.05:
@@ -460,7 +460,7 @@ def main():
                 twist_msg.linear.x = 0.0
                 
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.5)
+                time.sleep(0.3)
                 # Predict state in open loop
                 kf.predict(input)
 
@@ -470,7 +470,7 @@ def main():
                     rclpy.spin_once(pid)  
                     while int(pid.callback_data[2]) > 15:
                         rclpy.spin_once(pid)
-                    time.sleep(0.5)      
+                    time.sleep(0.1)      
                     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                     kf.newpit[int(frame_id) - 1] = pitch
                     it_seen.add(frame_id)
@@ -559,11 +559,10 @@ def main():
                             rclpy.spin_once(pid)   
                             while int(pid.callback_data[2]) > 15:
                                 rclpy.spin_once(pid) 
-                            time.sleep(0.2)
+                            time.sleep(0.1)
                             frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
                             kf.newpit[int(frame_id) - 1] = pitch
                             it_seen.add(frame_id)
-
                         # ang_rot = 0.0
                         # for tag in seen_tags.intersection(it_seen):
                         #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
