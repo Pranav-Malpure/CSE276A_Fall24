@@ -605,11 +605,11 @@ def main():
 
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
-        with open('final_state_square.pkl', 'wb') as file:    # Save state to .pkl
+        with open('final_state_oct.pkl', 'wb') as file:    # Save state to .pkl
             pickle.dump(kf.state, file)
-        with open('states_track_square.pkl', 'wb') as file:   # Save robot trajectory
+        with open('states_track_oct.pkl', 'wb') as file:   # Save robot trajectory
             pickle.dump(kf.states_track, file)
-        with open('final_variance_square.pkl', 'wb') as file:    # Save variance to .pkl
+        with open('final_variance_oct.pkl', 'wb') as file:    # Save variance to .pkl
             pickle.dump(kf.variance, file)       
 
 
