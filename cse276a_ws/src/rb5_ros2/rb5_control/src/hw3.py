@@ -370,7 +370,7 @@ def main():
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
-        for _ in range(25):
+        for _ in range(15):
             rclpy.spin_once(pid)
             while int(pid.callback_data[2]) > 15:
                 rclpy.spin_once(pid)
@@ -466,7 +466,7 @@ def main():
 
                 # Measure april tag detection    
                 it_seen = set()
-                for _ in range(8):   
+                for _ in range(15):   
                     rclpy.spin_once(pid)  
                     while int(pid.callback_data[2]) > 15:
                         rclpy.spin_once(pid)
