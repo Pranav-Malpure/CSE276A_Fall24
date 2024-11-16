@@ -44,7 +44,7 @@ class PIDcontroller(Node):
             self.pose_callback,
             10)     
         self.subscription
-        self.callback_data = {}
+        self.callback_data = defaultdict(list)
         # self.callback_data = []
         self.position_history = []
 
@@ -60,82 +60,73 @@ class PIDcontroller(Node):
         pitch = (pitch + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
 
         frame_id = msg.header.frame_id
-        
-        self.callback_data[frame_id] = {'x': x, 'z': z, 'pitch': pitch}
+
+        if frame_id < 15:
+            self.callback_data[frame_id] = [x, z, pitch]
         # self.callback_data = [x, z, frame_id, pitch]
 
-
     def get_measurement(self, kf):
-        rclpy.spin_once(self)
-        while int(self.callback_data[2]) > 15:
+        for _ in range(10):
             rclpy.spin_once(self)
-        time.sleep(0.1)
-        # print("callback data", self.callback_data)
-        # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
-        theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
-        # print("callback data", self.callback_data)
-        # print("detected tag list ",kf.detected_tag)
-        kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
-        kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
-        kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
-        if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
-            kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
-            kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
-            kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-4
-            kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-4
-            # print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
 
-        if self.callback_data[2] not in kf.detected_tag:
-            kf.detected_tag.append(self.callback_data[2])
+        theta = kf.state_update[2][0]
+        kf.variance_update[2][2] = 0
 
-        # kf.R = np.zeros((50, 50))
-        for tag_list in kf.detected_tag:
-            kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
-            kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
-            kf.H[(int(tag_list) - 1)*2 + 1][0] = np.sin(theta)
-            kf.H[(int(tag_list) - 1)*2 + 1][1] = -np.cos(theta)
-            kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 3] = np.cos(theta)
-            kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 1 + 3] = np.sin(theta)
+        for tag in self.callback_data.keys():
+            kf.z[(int(tag) - 1)*2] = self.callback_data[tag][0]
+            kf.z[(int(tag) - 1)*2 + 1] = self.callback_data[tag][1]
+            if kf.state_update[(int(tag) - 1)*2 + 3] == 0 and kf.state_update[(int(tag) - 1)*2 + 1 + 3] == 0:
+                kf.state_update[(int(tag) - 1)*2 + 3] = self.callback_data[tag][0]*np.cos(theta) - self.callback_data[tag][1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
+                kf.state_update[(int(tag) - 1)*2 + 1 + 3] = self.callback_data[tag][0]*np.sin(theta) + self.callback_data[tag][1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
+                kf.variance_update[(int(tag) - 1)*2 + 3][(int(tag) - 1)*2 + 3] = 1e-4
+                kf.variance_update[(int(tag) - 1)*2 + 3 + 1][(int(tag) - 1)*2 + 3 + 1] = 1e-4
+            kf.H[(int(tag) - 1)*2][0] = -np.cos(theta)
+            kf.H[(int(tag) - 1)*2][1] = -np.sin(theta)
+            kf.H[(int(tag) - 1)*2 + 1][0] = np.sin(theta)
+            kf.H[(int(tag) - 1)*2 + 1][1] = -np.cos(theta)
+            kf.H[(int(tag) - 1)*2][(int(tag) - 1)*2 + 3] = np.cos(theta)
+            kf.H[(int(tag) - 1)*2][(int(tag) - 1)*2 + 1 + 3] = np.sin(theta)
+            kf.H[(int(tag) - 1)*2 + 1][(int(tag) - 1)*2 + 3] = -np.sin(theta)
+            kf.H[(int(tag) - 1)*2 + 1][(int(tag) - 1)*2 + 1 + 3] = np.cos(theta)
 
-            kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
-            kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
-            # kf.R[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2] = 1e-2
-            # kf.R[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1] = 1e-2
-            # kf.Q[(int(tag_list) - 1)*2 + 3][(int(tag_list) - 1)*2 + 3] = 1e-2
-            # kf.Q[(int(tag_list) - 1)*2 + 3 + 1][(int(tag_list) - 1)*2 + 3 + 1] = 1e-2
-        
+        print("DETECTED TAGS THIS ITR", self.callback_data.keys())
+        self.callback_data = defaultdict(list)
 
-        # kf.H[(int(self.callback_data[2]) - 1)*2][0] = -1
-        # kf.H[(int(self.callback_data[2]) - 1)*2 + 1][1] = -1
 
-        # #  _____________OLD CODE___________________
-        # if self.callback_data[2] in kf.detected_tag:
-        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
-        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+    # def get_measurement(self, kf):
+    #     rclpy.spin_once(self)
+    #     while int(self.callback_data[2]) > 15:
+    #         rclpy.spin_once(self)
+    #     time.sleep(0.1)
+    #     # print("callback data", self.callback_data)
+    #     # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
+    #     theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
+    #     # print("callback data", self.callback_data)
+    #     # print("detected tag list ",kf.detected_tag)
+    #     kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
+    #     kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
+    #     kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
+    #     if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
+    #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
+    #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
+    #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-4
+    #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-4
+    #         # print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
 
-        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
-        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
-        #     # kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
-        #     # kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
-        # else:
-        #     print("inside elsee")
-        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
-        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+    #     if self.callback_data[2] not in kf.detected_tag:
+    #         kf.detected_tag.append(self.callback_data[2])
 
-        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
-        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
+    #     # kf.R = np.zeros((50, 50))
+    #     for tag_list in kf.detected_tag:
+    #         kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
+    #         kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
+    #         kf.H[(int(tag_list) - 1)*2 + 1][0] = np.sin(theta)
+    #         kf.H[(int(tag_list) - 1)*2 + 1][1] = -np.cos(theta)
+    #         kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 3] = np.cos(theta)
+    #         kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 1 + 3] = np.sin(theta)
 
-            
-        #     kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
-        #     kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
-        #     if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
-        #         print('inside new tag')
-        #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) + self.callback_data[1]*np.sin(theta)  + kf.state_update[0] # TODO: Add angle transformation of axes
-        #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
-        #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
-        #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-2
-        #         print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
-        # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
+    #         kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
+    #         kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
 
 
     def getError(self, currentState, targetState):
@@ -286,7 +277,7 @@ class KalmanFilter():
         # print("variance", self.variance)
         self.H = np.zeros((50, 53))
         self.z = np.zeros((50, 1))
-        self.detected_tag = []
+        # self.detected_tag = []
 
 
     
@@ -370,15 +361,25 @@ def main():
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
-        for _ in range(25):
+        for _ in range(10):
             rclpy.spin_once(pid)
-            while int(pid.callback_data[2]) > 15:
-                rclpy.spin_once(pid)
-            time.sleep(0.1)
-            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-            kf.curpit[int(frame_id) - 1] = pitch
-            seen_tags.add(frame_id)
-        time.sleep(0.5)
+        
+        for tag in pid.callback_data.keys():
+            kf.curpit[int(tag) - 1] = pid.callback_data[tag][2]
+            seen_tags.add(tag)
+
+        pid.callback_data = defaultdict(list)
+
+        # seen_tags = set()
+        # for _ in range(10):
+        #     rclpy.spin_once(pid)
+        #     while int(pid.callback_data[2]) > 15:
+        #         rclpy.spin_once(pid)
+        #     time.sleep(0.1)
+        #     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+        #     kf.curpit[int(frame_id) - 1] = pitch
+        #     seen_tags.add(frame_id)
+        # time.sleep(0.5)
 
         for wp in waypoint:
             pid.setTarget(wp)
@@ -466,14 +467,21 @@ def main():
 
                 # Measure april tag detection    
                 it_seen = set()
-                for _ in range(25):   
+                for _ in range(10):   
                     rclpy.spin_once(pid)  
-                    while int(pid.callback_data[2]) > 15:
-                        rclpy.spin_once(pid)
-                    time.sleep(0.1)      
-                    frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-                    kf.newpit[int(frame_id) - 1] = pitch
-                    it_seen.add(frame_id)
+                
+                for tag in pid.callback_data.keys():
+                    kf.newpit[int(tag) - 1] = pid.callback_data[tag][2]
+                    it_seen.add(tag)
+
+                pid.callback_data = defaultdict(list)
+
+                    # while int(pid.callback_data[2]) > 15:
+                    #     rclpy.spin_once(pid)
+                    # time.sleep(0.1)      
+                    # frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                    # kf.newpit[int(frame_id) - 1] = pitch
+                    # it_seen.add(frame_id)
 
                 # ang_rot = 0.0
                 # for tag in seen_tags.intersection(it_seen):
@@ -502,13 +510,13 @@ def main():
                 seen_tags = it_seen.copy()
                 time.sleep(0.1)
 
-                for i in range(8):
-                    pid.get_measurement(kf)
-                print('DETECTED TAGS THIS ITR', kf.detected_tag)
+                # for i in range(8):
+                #     pid.get_measurement(kf)
+                pid.get_measurement(kf)
+                print('DETECTED TAGS CLEARED OR NOT?', pid.callback_data.keys())
             
                 # Reconcile measured and predicted measurements
                 kf.update() 
-                print('DETECTED TAGS CLEARED OR NOT?', kf.detected_tag)
 
                 print("______STATES(L)_________", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
 
@@ -553,16 +561,26 @@ def main():
                         # Predict state in open loop
                         # kf.predict(input)
 
-                        # Measure april tag detection  
+                        # Measure april tag detection
                         it_seen = set()
-                        for _ in range(25):      
-                            rclpy.spin_once(pid)   
-                            while int(pid.callback_data[2]) > 15:
-                                rclpy.spin_once(pid) 
-                            time.sleep(0.1)
-                            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-                            kf.newpit[int(frame_id) - 1] = pitch
-                            it_seen.add(frame_id)
+                        for _ in range(10):   
+                            rclpy.spin_once(pid)  
+                        
+                        for tag in pid.callback_data.keys():
+                            kf.newpit[int(tag) - 1] = pid.callback_data[tag][2]
+                            it_seen.add(tag)
+
+                        pid.callback_data = defaultdict(list)  
+
+                        # it_seen = set()
+                        # for _ in range(25):      
+                        #     rclpy.spin_once(pid)   
+                        #     while int(pid.callback_data[2]) > 15:
+                        #         rclpy.spin_once(pid) 
+                        #     time.sleep(0.1)
+                        #     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                        #     kf.newpit[int(frame_id) - 1] = pitch
+                        #     it_seen.add(frame_id)
                         # ang_rot = 0.0
                         # for tag in seen_tags.intersection(it_seen):
                         #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
