@@ -77,7 +77,6 @@ class PIDcontroller(Node):
         kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
         kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
         if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
-            print('inside new tag')
             kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
             kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
             kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
@@ -247,11 +246,11 @@ class KalmanFilter():
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
 
-        print("state update in PREDICT", 'Robot', self.state_update[0], self.state_update[1], self.state_update[2], 'AT1', self.state_update[3], self.state_update[4], 'AT4', self.state_update[9], self.state_update[10], 'AT5', self.state_update[11], self.state_update[12], 'AT6', self.state_update[13], self.state_update[14], 'AT11', self.state_update[23], self.state_update[24])
+        print("state update in PREDICT ", 'Robot', self.state_update[0], self.state_update[1], self.state_update[2], 'AT1', self.state_update[3], self.state_update[4], 'AT2', self.state_update[5], self.state_update[6], 'AT4', self.state_update[9], self.state_update[10], 'AT5', self.state_update[11], self.state_update[12], 'AT6', self.state_update[13], self.state_update[14], 'AT7', self.state_update[15], self.state_update[16], 'AT10', self.state_update[21], self.state_update[22], 'AT11', self.state_update[23], self.state_update[24])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         self.variance_update[2][2] = 0.0
-        print("variance update", 'Robot', self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], 'AT1', self.variance_update[9][9], self.variance_update[10][10], 'AT4', self.variance_update[9][9], self.variance_update[10][10], 'AT5', self.variance_update[11][11], self.variance_update[12][12], 'AT6', self.variance_update[13][13], self.variance_update[14][14], 'AT11', self.variance_update[23][23], self.variance_update[24][24])
+        print("variance update ", 'Robot', self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], 'AT1', self.variance_update[3][3], self.variance_update[4][4], 'AT2', self.variance_update[5][5], self.variance_update[6][6], 'AT4', self.variance_update[9][9], self.variance_update[10][10], 'AT5', self.variance_update[11][11], self.variance_update[12][12], 'AT6', self.variance_update[13][13], self.variance_update[14][14], 'AT7', self.variance_update[15][15], self.variance_update[16][16], 'AT10', self.variance_update[21][21], self.variance_update[22][22], 'AT11', self.variance_update[23][23], self.variance_update[24][24])
 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
@@ -267,11 +266,19 @@ class KalmanFilter():
         # print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
         # print("K_t_10: ", self.K_t[10][6:8], self.K_t[1][0:2])
         # print('state update after AT', self.state_update[0], self.state_update[1], self.state_update[2], self.state_update[3], self.state_update[4],self.state_update[9], self.state_update[10],self.state_update[11], self.state_update[12], self.state_update[13], self.state_update[14])
-        print('Measured z', 'AT1', self.z[0:2], 'AT4', self.z[6:8], 'AT5', self.z[8:10], 'AT6', self.z[10:12], 'AT11', self.z[20:22])
-        print('Estimated z', 'AT1', np.dot(self.H, self.state_update)[0:2], 'AT4', np.dot(self.H, self.state_update)[6:8], 'AT5', np.dot(self.H, self.state_update)[8:10], 'AT6', np.dot(self.H, self.state_update)[10:12], 'AT11', np.dot(self.H, self.state_update)[20:22])
-        print('innovation', 'AT1', (self.z - np.dot(self.H, self.state_update))[0:2], 'AT4', (self.z - np.dot(self.H, self.state_update))[6:8], 'AT5', (self.z - np.dot(self.H, self.state_update))[8:10], 'AT6', (self.z - np.dot(self.H, self.state_update))[10:12], 'AT11', (self.z - np.dot(self.H, self.state_update))[20:22])
+        print('Measured z ', 'AT1', self.z[0:2], 'AT2', self.z[2:4], 'AT4', self.z[6:8], 'AT5', self.z[8:10], 'AT6', self.z[10:12], 'AT7', self.z[12:14], 'AT10', self.z[18:20], 'AT11', self.z[20:22])
+        print('Estimated z ', 'AT1', np.dot(self.H, self.state_update)[0:2], 'AT2', np.dot(self.H, self.state_update)[2:4], 'AT4', np.dot(self.H, self.state_update)[6:8], 'AT5', np.dot(self.H, self.state_update)[8:10], 'AT6', np.dot(self.H, self.state_update)[10:12], 'AT7', np.dot(self.H, self.state_update)[12:14], 'AT10', np.dot(self.H, self.state_update)[18:20], 'AT11', np.dot(self.H, self.state_update)[20:22])
+        print('innovation ', 'AT1', (self.z - np.dot(self.H, self.state_update))[0:2], 'AT4', (self.z - np.dot(self.H, self.state_update))[6:8], 'AT5', (self.z - np.dot(self.H, self.state_update))[8:10], 'AT6', (self.z - np.dot(self.H, self.state_update))[10:12], 'AT11', (self.z - np.dot(self.H, self.state_update))[20:22])
         # print(self.z - np.dot(self.H, self.state_update))
-        print('kalman update term:', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4])
+        print('kalman update term:', 'Robot', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2][0], 
+              'AT1', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4][0], 
+              'AT2', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[5][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[6][0],
+              'AT4', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[9][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[10][0], 
+              'AT5', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[11][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[12][0], 
+              'AT6', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[13][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[14][0], 
+              'AT7', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[15][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[16][0], 
+              'AT10', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[21][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[22][0], 
+              'AT11', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[23][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[24][0])
         # print(np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update))))
         self.state = self.state_update + np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
         # print("z-H.state", self.z - np.dot(self.H, self.state_update))
@@ -338,7 +345,8 @@ def main():
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
         # waypoint = np.array([[0,1/2, 0],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         # waypoint = np.array([[1/2,1/2,-np.pi/4]])
-        waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0,0]])
+        # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0,0]])
+        waypoint = np.array([[0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0]]) # for square
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
         for _ in range(25):
