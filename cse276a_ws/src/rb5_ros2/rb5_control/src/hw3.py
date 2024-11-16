@@ -44,8 +44,8 @@ class PIDcontroller(Node):
             self.pose_callback,
             10)     
         self.subscription
-        # self.callback_data = {}
-        self.callback_data = []
+        self.callback_data = {}
+        # self.callback_data = []
         self.position_history = []
 
     def pose_callback(self, msg):
@@ -61,8 +61,8 @@ class PIDcontroller(Node):
 
         frame_id = msg.header.frame_id
         
-        # self.callback_data[frame_id] = {'x': x, 'z': z, 'pitch': pitch}
-        self.callback_data = [x, z, frame_id, pitch]
+        self.callback_data[frame_id] = {'x': x, 'z': z, 'pitch': pitch}
+        # self.callback_data = [x, z, frame_id, pitch]
 
 
     def get_measurement(self, kf):
