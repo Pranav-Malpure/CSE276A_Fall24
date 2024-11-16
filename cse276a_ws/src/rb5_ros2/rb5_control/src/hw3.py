@@ -345,27 +345,27 @@ def main():
         # waypoint = np.array([[1/2,1/2,-np.pi/4]])
         # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0,0]])
         # square
-        # waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0,0.4,0]]) # for square
-        octagon_side = 0.8/np.sqrt(2)
-        waypoint = np.array([
-            [0.0, 0.0, -np.pi/8],
-            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
-            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
-            [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
-            [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
-            [0.0, 0.0, -3*np.pi/8]
-            [0.0, 0.0, 0]
-        ])
+        waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0,0.4,0]]) # for square
+        # octagon_side = 0.8/np.sqrt(2)
+        # waypoint = np.array([
+        #     [0.0, 0.0, -np.pi/8],
+        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
+        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
+        #     [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
+        #     [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
+        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
+        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
+        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
+        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
+        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
+        #     [0.0, 0.0, -3*np.pi/8]
+        #     [0.0, 0.0, 0]
+        # ])
 
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
