@@ -136,9 +136,10 @@ class PIDcontroller(Node):
         result = np.zeros(3)
         result[0] = targetState[0] - currentState[0]
         result[1] = targetState[1] - currentState[1]
-        res_21 = targetState[2] - currentState[2]
-        res_22 = (targetState[2] + 2 * np.pi) % (2 * np.pi) - (currentState[2] + 2 * np.pi) % (2 * np.pi)
-        result[2] = res_21 if abs(res_21) < abs(res_22) else res_22
+        res_21 = abs(targetState[2] - currentState[2])
+        res_22 = abs((targetState[2] + 2 * np.pi) % (2 * np.pi) - (currentState[2] + 2 * np.pi) % (2 * np.pi))
+        # result[2] = res_21 if abs(res_21) < abs(res_22) else res_22
+        result[2] = min(res_21, res_22)*np.sign(targetState[2] - currentState[2])
 
         # result = targetState - currentState
 
