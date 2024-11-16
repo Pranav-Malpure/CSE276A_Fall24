@@ -42,7 +42,8 @@ class PIDcontroller(Node):
             PoseStamped,
             '/april_poses',
             self.pose_callback,
-            1)     
+            10)     
+        self.subscription
         self.callback_data = []
         self.position_history = []
 
@@ -68,6 +69,9 @@ class PIDcontroller(Node):
         time.sleep(0.1)
 
 
+
+        kf.z = np.zeros((50, 1))
+        kf.H = np.zeros((50, 50))
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
@@ -207,13 +211,6 @@ class KalmanFilter():
 
         # self.S = np.zeros((50, 50))
 
-        self.H_core = np.zeros((50, 53))
-        # for i in range(50):
-        #     if i % 2 == 0:
-        #         self.H_core[i][0] = -1
-        #     else:
-        #         self.H_core[i][1] = -1 
-
         self.H = np.zeros((50, 53)) # H.s is actually where you think the april tag is, and z is actually where it is. it should be in robot frame
         # for i in range(50):
         #     if i % 2 == 0:
@@ -261,6 +258,8 @@ class KalmanFilter():
         self.variance_update[2][2] = 0.0
         S = np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R
         self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(S))
+        print('H CHECK', 'AT1', self.H[0][0], self.H[0][1], 'AT2', self.H[2][0], self.H[2][1], 'AT4', self.H[6][0], self.H[6][1], 'AT5', self.H[8][0], self.H[8][1], 'AT6', self.H[10][0], self.H[10][1], 'AT7', self.H[12][0], self.H[12][1], 'AT10', self.H[18][0], self.H[18][1], 'AT11', self.H[20][0], self.H[20][1])
+        print('z CHECK', 'AT1', self.z[0][0], self.z[1][0], 'AT2', self.z[2][0], self.z[3][0], 'AT4', self.z[6][0], self.z[7][0], 'AT5', self.z[8][0], self.z[9][0], 'AT6', self.z[10][0], self.z[11][0], 'AT7', self.z[12][0], self.z[13][0], 'AT10', self.z[18][0], self.z[19][0], 'AT11', self.z[20][0], self.z[21][0])
         # print("K_t_0: ", self.K_t[0][6:8], self.K_t[0][0:2])
         # print("K_t_1: ", self.K_t[1][6:8], self.K_t[1][0:2])
         # print("K_t_9: ", self.K_t[9][6:8], self.K_t[1][0:2])
@@ -287,7 +286,8 @@ class KalmanFilter():
         # self.variance = np.dot(np.dot(np.identity(53) - np.dot(K_t, self.H), self.variance_update), (np.identity(53) - np.dot(K_t, self.H)).T) + np.dot(np.dot(K_t, self.R), K_t.T)
         # self.variance = self.variance_update - np.dot(K_t, np.dot(S, K_t.T))
         # print("variance", self.variance)
-        self.H = self.H_core
+        self.H = np.zeros((50, 53))
+        self.z = np.zeros((50, 1))
         self.detected_tag = []
 
 
