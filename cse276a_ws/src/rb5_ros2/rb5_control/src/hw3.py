@@ -389,7 +389,7 @@ def main():
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15:
+                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.05:
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
