@@ -427,6 +427,7 @@ def main():
                     twist_msg.linear.x = 0.0
                     pid.publisher_.publish(twist_msg)
 
+                print('X and Y velocites calculated')
                 input = input_x_moved + input_y_moved
                 # Stop Car's x
                 twist_msg.linear.x = 0.0
