@@ -67,11 +67,6 @@ class PIDcontroller(Node):
         while int(self.callback_data[2]) > 15:
             rclpy.spin_once(self)
         time.sleep(0.1)
-
-
-
-        kf.z = np.zeros((50, 1))
-        kf.H = np.zeros((50, 50))
         # print("callback data", self.callback_data)
         # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
         theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
