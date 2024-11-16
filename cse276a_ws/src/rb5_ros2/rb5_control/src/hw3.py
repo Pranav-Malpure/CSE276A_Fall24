@@ -363,7 +363,7 @@ def main():
             [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
             [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
             [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
-            [0.0, 0.0, -3*np.pi/8]
+            [0.0, 0.0, -3*np.pi/8],
             [0.0, 0.0, 0]
         ])
 
