@@ -136,10 +136,10 @@ class PIDcontroller(Node):
         result = np.zeros(3)
         result[0] = targetState[0] - currentState[0]
         result[1] = targetState[1] - currentState[1]
-        res_21 = abs(targetState[2] - currentState[2])
-        res_22 = abs((targetState[2] + 2 * np.pi) % (2 * np.pi) - (currentState[2] + 2 * np.pi) % (2 * np.pi))
-        # result[2] = res_21 if abs(res_21) < abs(res_22) else res_22
-        result[2] = min(res_21, res_22)*np.sign(targetState[2] - currentState[2])
+        res_21 = targetState[2] - currentState[2]
+        res_22 = (targetState[2] + 2 * np.pi) % (2 * np.pi) - (currentState[2] + 2 * np.pi) % (2 * np.pi)
+        result[2] = res_21 if abs(res_21) < abs(res_22) else res_22
+        # result[2] = min(res_21, res_22)*np.sign(targetState[2] - currentState[2])
 
         # result = targetState - currentState
 
@@ -541,7 +541,7 @@ def main():
                     err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
 
                     # while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.05:
-                    while rclpy.ok() and min(err1, err2) > 0.05:
+                    while rclpy.ok() and min(err1, err2) > 0.06:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
@@ -629,7 +629,8 @@ def main():
                         # kf.update() 
 
                         print("_____STATES(A)_____: ", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
-
+                        err1 = abs(kf.state[2][0] - wp[2])
+                        err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
 
