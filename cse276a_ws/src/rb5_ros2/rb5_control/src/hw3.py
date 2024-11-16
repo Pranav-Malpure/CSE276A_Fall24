@@ -432,7 +432,7 @@ def main():
                 # Stop Car's
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.2)
+                time.sleep(0.4)
 
                 input_x_moved = np.array(([0], [0], [0]))
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) < 0.05:
