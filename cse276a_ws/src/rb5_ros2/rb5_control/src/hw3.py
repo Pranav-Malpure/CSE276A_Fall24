@@ -396,7 +396,7 @@ def main():
                 
                 print("robot frame state", robot_frame_state)
                 print("wp robot frame", wp_robot_frame)
-
+                input_y_moved = np.array(([0], [0], [0]))
                 # if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.15:
                     print('Y Big')
