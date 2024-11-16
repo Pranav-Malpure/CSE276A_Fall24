@@ -522,7 +522,7 @@ def main():
 
                 print()
 
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.05:
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.04:
                     print('inside angle regime')
 
                     while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.06:
