@@ -408,6 +408,7 @@ def main():
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
 
+                input_x_moved = np.array(([0], [0], [0]))
                 # if abs(kf.state[1][0] - wp[1]) < 0.05:
                 while abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.05:
                     theta_ = kf.state[2][0]
@@ -421,7 +422,7 @@ def main():
                     time.sleep(delta_t)
                     input_x = np.cos(theta_)*calibration_x*twist_msg.linear.x/9
                     input_y = np.sin(theta_)*calibration_x*twist_msg.linear.x/9
-                    input_x_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input_x_moved += np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 
                 input = input_x_moved + input_y_moved
                 # Stop Car's x
