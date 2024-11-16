@@ -154,7 +154,7 @@ def main():
 
     waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
     time.sleep(3)
-    for _ in range(13):
+    for _ in range(18):
         twist_msg = Twist()
         twist_msg.linear.x = 0.0
         twist_msg.linear.y = 0.0

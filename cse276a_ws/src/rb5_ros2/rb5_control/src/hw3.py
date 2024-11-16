@@ -533,13 +533,18 @@ def main():
                 if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.06:
                     print('inside angle regime')
 
-                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.05:
+                    err1 = abs(kf.state[2][0] - wp[2])
+                    err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
+
+                    # while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.05:
+                    while rclpy.ok() and min(err1, err2) > 0.05:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
                         wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
                                           -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
-                        print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
+                        # print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
+                        print("ANGLE ERROR: ", min(err1, err2))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                         twist_msg.linear.x = 0.0
