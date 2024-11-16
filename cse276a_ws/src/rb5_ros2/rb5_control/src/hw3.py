@@ -388,7 +388,7 @@ def main():
                     theta_ = kf.state[2][0]
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
-                    input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15:
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
@@ -401,7 +401,7 @@ def main():
                     time.sleep(delta_t)
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.3
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.3
-                    input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
                 
                 # Stop Car's
@@ -421,8 +421,9 @@ def main():
                     time.sleep(delta_t)
                     input_x = np.cos(theta_)*calibration_x*twist_msg.linear.x/9
                     input_y = np.sin(theta_)*calibration_x*twist_msg.linear.x/9
-                    input = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                    input_x_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 
+                input = input_x_moved + input_y_moved
                 # Stop Car's x
                 twist_msg.linear.x = 0.0
                 
