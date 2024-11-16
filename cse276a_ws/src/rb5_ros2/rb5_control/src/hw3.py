@@ -376,6 +376,7 @@ def main():
 
                 # if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.15:
+                    print('Y Big')
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.04*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
@@ -390,6 +391,7 @@ def main():
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.05:
+                    print('Y Small')
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
@@ -500,7 +502,7 @@ def main():
                     print('inside angle regime')
 
                     time.sleep(0.5)
-                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.09:
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.06:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
