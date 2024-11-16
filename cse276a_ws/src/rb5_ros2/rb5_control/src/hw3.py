@@ -606,7 +606,7 @@ def main():
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
 
-            if wp == [0,0,0]:
+            if (wp == [0,0.4,0]).all():
                 with open('final_state_square_1.pkl', 'wb') as file:    # Save state to .pkl
                     pickle.dump(kf.state, file)
                 with open('states_track_square_1.pkl', 'wb') as file:   # Save robot trajectory
