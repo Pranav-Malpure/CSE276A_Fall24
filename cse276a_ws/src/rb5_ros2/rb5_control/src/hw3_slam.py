@@ -162,7 +162,7 @@ def main():
         twist_msg.angular.x = 0.0
         twist_msg.angular.y = 0.0
         twist_msg.angular.z = 0.1
-        for _ in range(19):
+        for _ in range(15):
             pid.publisher_.publish(twist_msg)
             time.sleep(2*delta_t)
             twist_msg.angular.z = 0.0
