@@ -423,7 +423,8 @@ def main():
                     input_x = np.cos(theta_)*calibration_x*twist_msg.linear.x/9
                     input_y = np.sin(theta_)*calibration_x*twist_msg.linear.x/9
                     input_x_moved += np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                
+                    twist_msg.linear.x = 0.0
+                    pid.publisher_.publish(twist_msg)
                 input = input_x_moved + input_y_moved
                 # Stop Car's x
                 twist_msg.linear.x = 0.0
