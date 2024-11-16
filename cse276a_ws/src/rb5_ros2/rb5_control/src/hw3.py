@@ -410,7 +410,7 @@ def main():
 
                 input_x_moved = np.array(([0], [0], [0]))
                 # if abs(kf.state[1][0] - wp[1]) < 0.05:
-                while abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.05:
+                if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.03:
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.05*pid.update_sign(robot_frame_state, wp_robot_frame)[0]
                     twist_msg.linear.y = 0.0
