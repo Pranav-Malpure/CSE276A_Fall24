@@ -233,7 +233,7 @@ class KalmanFilter():
         # self.state_update[1] = 1/2
         # self.state_update[2] = np.pi/2
 
-        self.R = np.identity(50)*1e-2
+        self.R = np.identity(50)*1e-4
         # self.R = np.zeros((50, 50))
 
         self.detected_tag = []
