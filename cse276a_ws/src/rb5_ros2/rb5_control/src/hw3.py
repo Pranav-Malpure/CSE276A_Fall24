@@ -609,7 +609,7 @@ def main():
                                 min_tag = tag
                         
                         if min_tag != 100:
-                            if (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi > 0.04:
+                            if (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi > 0.02:
                                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             else:
