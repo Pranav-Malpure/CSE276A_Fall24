@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 import sys
 #import rospy
-
+ 
 import rclpy 
 from rclpy.node import Node
-
+ 
 from geometry_msgs.msg import Twist
 import numpy as np
 import time 
@@ -13,7 +13,7 @@ import math
 from collections import defaultdict
 import pickle
 # import matplotlib.pyplot as plt
-
+ 
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
 ly = 0.07 
@@ -21,8 +21,8 @@ delta_t = 0.02
 calibration_x = 180
 calibration_y = 100
 calibration_ang = 60
-
-
+ 
+ 
 class PIDcontroller(Node):
     def __init__(self, Kp, Ki, Kd):
         super().__init__('PID_Controller_NodePub')
@@ -44,10 +44,10 @@ class PIDcontroller(Node):
             self.pose_callback,
             10)     
         self.subscription
-        self.callback_data = defaultdict(list)
-        # self.callback_data = []
+        # self.callback_data = {}
+        self.callback_data = []
         self.position_history = []
-
+ 
     def pose_callback(self, msg):
         x = msg.pose.position.x
         z = msg.pose.position.z
@@ -55,80 +55,89 @@ class PIDcontroller(Node):
         y_ang = msg.pose.orientation.y
         z_ang = msg.pose.orientation.z
         w_ang = msg.pose.orientation.w
-
+ 
         pitch = math.atan2(2 * (w_ang*y_ang - x_ang*z_ang), 1 - 2 * (y_ang*y_ang + z_ang*z_ang))
         pitch = (pitch + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-
+ 
         frame_id = msg.header.frame_id
-
-        if int(frame_id) < 15:
-            self.callback_data[frame_id] = [x, z, pitch]
-        # self.callback_data = [x, z, frame_id, pitch]
-
+        
+        # self.callback_data[frame_id] = {'x': x, 'z': z, 'pitch': pitch}
+        self.callback_data = [x, z, frame_id, pitch]
+ 
+ 
     def get_measurement(self, kf):
-        for _ in range(10):
+        rclpy.spin_once(self)
+        while int(self.callback_data[2]) > 15:
             rclpy.spin_once(self)
-
-        theta = kf.state_update[2][0]
-        kf.variance_update[2][2] = 0
-
-        for tag in self.callback_data.keys():
-            kf.z[(int(tag) - 1)*2] = self.callback_data[tag][0]
-            kf.z[(int(tag) - 1)*2 + 1] = self.callback_data[tag][1]
-            if kf.state_update[(int(tag) - 1)*2 + 3] == 0 and kf.state_update[(int(tag) - 1)*2 + 1 + 3] == 0:
-                kf.state_update[(int(tag) - 1)*2 + 3] = self.callback_data[tag][0]*np.cos(theta) - self.callback_data[tag][1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
-                kf.state_update[(int(tag) - 1)*2 + 1 + 3] = self.callback_data[tag][0]*np.sin(theta) + self.callback_data[tag][1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
-                kf.variance_update[(int(tag) - 1)*2 + 3][(int(tag) - 1)*2 + 3] = 1e-4
-                kf.variance_update[(int(tag) - 1)*2 + 3 + 1][(int(tag) - 1)*2 + 3 + 1] = 1e-4
-            kf.H[(int(tag) - 1)*2][0] = -np.cos(theta)
-            kf.H[(int(tag) - 1)*2][1] = -np.sin(theta)
-            kf.H[(int(tag) - 1)*2 + 1][0] = np.sin(theta)
-            kf.H[(int(tag) - 1)*2 + 1][1] = -np.cos(theta)
-            kf.H[(int(tag) - 1)*2][(int(tag) - 1)*2 + 3] = np.cos(theta)
-            kf.H[(int(tag) - 1)*2][(int(tag) - 1)*2 + 1 + 3] = np.sin(theta)
-            kf.H[(int(tag) - 1)*2 + 1][(int(tag) - 1)*2 + 3] = -np.sin(theta)
-            kf.H[(int(tag) - 1)*2 + 1][(int(tag) - 1)*2 + 1 + 3] = np.cos(theta)
-
-        print("DETECTED TAGS THIS ITR", self.callback_data.keys())
-        self.callback_data = defaultdict(list)
-
-
-    # def get_measurement(self, kf):
-    #     rclpy.spin_once(self)
-    #     while int(self.callback_data[2]) > 15:
-    #         rclpy.spin_once(self)
-    #     time.sleep(0.1)
-    #     # print("callback data", self.callback_data)
-    #     # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
-    #     theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
-    #     # print("callback data", self.callback_data)
-    #     # print("detected tag list ",kf.detected_tag)
-    #     kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
-    #     kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
-    #     kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
-    #     if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
-    #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
-    #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
-    #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-4
-    #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-4
-    #         # print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
-
-    #     if self.callback_data[2] not in kf.detected_tag:
-    #         kf.detected_tag.append(self.callback_data[2])
-
-    #     # kf.R = np.zeros((50, 50))
-    #     for tag_list in kf.detected_tag:
-    #         kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
-    #         kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
-    #         kf.H[(int(tag_list) - 1)*2 + 1][0] = np.sin(theta)
-    #         kf.H[(int(tag_list) - 1)*2 + 1][1] = -np.cos(theta)
-    #         kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 3] = np.cos(theta)
-    #         kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 1 + 3] = np.sin(theta)
-
-    #         kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
-    #         kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
-
-
+        time.sleep(0.1)
+        # print("callback data", self.callback_data)
+        # theta = (kf.state_update[2])   # TODO: have to bound this in -pi to pi
+        theta = kf.state_update[2][0]  # TODO: have to bound this in -pi to pi, and have to chose either this or above one
+        # print("callback data", self.callback_data)
+        # print("detected tag list ",kf.detected_tag)
+        kf.variance_update[2][2] = 0 # ADDED: Variance update for angle is very small # TODO: can we do it at the initialization instead
+        kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
+        kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
+        if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
+            kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) - self.callback_data[1]*np.sin(theta) + kf.state_update[0] # TODO: Add angle transformation of axes
+            kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
+            kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-4
+            kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-4
+            # print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
+ 
+        if self.callback_data[2] not in kf.detected_tag:
+            kf.detected_tag.append(self.callback_data[2])
+ 
+        # kf.R = np.zeros((50, 50))
+        for tag_list in kf.detected_tag:
+            kf.H[(int(tag_list) - 1)*2][0] = -np.cos(theta)
+            kf.H[(int(tag_list) - 1)*2][1] = -np.sin(theta)
+            kf.H[(int(tag_list) - 1)*2 + 1][0] = np.sin(theta)
+            kf.H[(int(tag_list) - 1)*2 + 1][1] = -np.cos(theta)
+            kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 3] = np.cos(theta)
+            kf.H[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2 + 1 + 3] = np.sin(theta)
+ 
+            kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 3] = -np.sin(theta)
+            kf.H[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1 + 3] = np.cos(theta)
+            # kf.R[(int(tag_list) - 1)*2][(int(tag_list) - 1)*2] = 1e-2
+            # kf.R[(int(tag_list) - 1)*2 + 1][(int(tag_list) - 1)*2 + 1] = 1e-2
+            # kf.Q[(int(tag_list) - 1)*2 + 3][(int(tag_list) - 1)*2 + 3] = 1e-2
+            # kf.Q[(int(tag_list) - 1)*2 + 3 + 1][(int(tag_list) - 1)*2 + 3 + 1] = 1e-2
+        
+ 
+        # kf.H[(int(self.callback_data[2]) - 1)*2][0] = -1
+        # kf.H[(int(self.callback_data[2]) - 1)*2 + 1][1] = -1
+ 
+        # #  _____________OLD CODE___________________
+        # if self.callback_data[2] in kf.detected_tag:
+        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
+        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+ 
+        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
+        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
+        #     # kf.H[int(self.callback_data[2])*2 - 1][int(self.callback_data[2])*2 - 1 + 3] = 1
+        #     # kf.H[int(self.callback_data[2])*2][int(self.callback_data[2])*2 + 3] = 1
+        # else:
+        #     print("inside elsee")
+        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 3] = np.cos(theta)
+        #     kf.H[(int(self.callback_data[2]) - 1)*2][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -np.sin(theta)
+ 
+        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 3] = np.sin(theta)
+        #     kf.H[(int(self.callback_data[2]) - 1)*2 + 1][(int(self.callback_data[2]) - 1)*2 + 1 + 3] = np.cos(theta)
+ 
+            
+        #     kf.z[(int(self.callback_data[2]) - 1)*2] = self.callback_data[0]
+        #     kf.z[(int(self.callback_data[2]) - 1)*2 + 1] = self.callback_data[1]
+        #     if kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] == 0 and kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] == 0:
+        #         print('inside new tag')
+        #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 3] = self.callback_data[0]*np.cos(theta) + self.callback_data[1]*np.sin(theta)  + kf.state_update[0] # TODO: Add angle transformation of axes
+        #         kf.state_update[(int(self.callback_data[2]) - 1)*2 + 1 + 3] = -self.callback_data[0]*np.sin(theta) + self.callback_data[1]*np.cos(theta) + kf.state_update[1] # TODO: Add angle transformation of axes
+        #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3] = 1e-2
+        #         kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1] = 1e-2
+        #         print("variance update in get_measurement", kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3][(int(self.callback_data[2]) - 1)*2 + 3], kf.variance_update[(int(self.callback_data[2]) - 1)*2 + 3 + 1][(int(self.callback_data[2]) - 1)*2 + 3 + 1])
+        # print('state update after AT', kf.state_update[0], kf.state_update[1], kf.state_update[2], kf.state_update[10], kf.state_update[11])
+ 
+ 
     def getError(self, currentState, targetState):
         """
         return the different between two states
@@ -136,13 +145,9 @@ class PIDcontroller(Node):
         result = np.zeros(3)
         result[0] = targetState[0] - currentState[0]
         result[1] = targetState[1] - currentState[1]
-        res_21 = targetState[2] - currentState[2]
-        res_22 = (targetState[2] + 2 * np.pi) % (2 * np.pi) - (currentState[2] + 2 * np.pi) % (2 * np.pi)
-        result[2] = res_21 if abs(res_21) < abs(res_22) else res_22
-        # result[2] = min(res_21, res_22)*np.sign(targetState[2] - currentState[2])
-
+        result[2] = targetState[2] - currentState[2]
         # result = targetState - currentState
-
+ 
         result[2] = (result[2] + np.pi) % (2 * np.pi) - np.pi
         return result 
     
@@ -151,16 +156,16 @@ class PIDcontroller(Node):
         calculate the update value on the state based on the error between current state and target state with PID.
         """
         e = self.getError(currentState, wp)
-
+ 
         # P = np.array([self.Kp * e[0]/0.75, self.Kp * e[1], self.Kp * e[2]])
         # # self.I = np.array([self.I[0] + self.Ki * e[0] * self.timestep, self.I[1] + self.Ki * e[1] * self.timestep , self.I[2] + self.Ki * e[2] * self.timestep/2]) 
         # self.I = self.I + self.Ki * e * self.timestep
         # I = self.I
         # D = np.array([self.Kd * (e[0] - self.lastError[0]), self.Kd * (e[1] - self.lastError[1]), self.Kd * (e[2] - self.lastError[2])])
         # result = P + I + D
-
+ 
         # self.lastError = e
-
+ 
         # scale down the twist if its norm is more than the maximum value. 
         # resultNorm = np.linalg.norm(result)
         # if(resultNorm > self.maximumValue):
@@ -168,13 +173,13 @@ class PIDcontroller(Node):
         #     self.I = 0.0
         result = [np.sign(e[0]), np.sign(e[1]), np.sign(e[2])]
         return result
-
+ 
     def setTarget(self, state):
         """
         set the target pose.
         """
         self.target = np.array(state)
-
+ 
 class KalmanFilter():
     def __init__(self):
         self.F = np.identity(53)
@@ -184,26 +189,26 @@ class KalmanFilter():
         self.G[2] = [0,0,1]
         self.G = delta_t*self.G
         # self.G = self.G*delta_t*r*0.25
-
+ 
         self.curpit = np.zeros(50)
         self.newpit = np.zeros(50)
-
+ 
         # self.variance = 1000*np.identity(53)
         self.variance = 100*np.identity(53)
         self.variance[0][0] = 0.0
         self.variance[1][1] = 0.0
         self.variance[2][2] = 0.0
-
+ 
         # self.Q = np.zeros((53, 53))
         self.Q = 1e-4*np.identity(53)
         self.Q[0][0] = 0.01
         self.Q[1][1] = 0.02
         self.Q[2][2] = 0.0
-
+ 
         self.K_t = np.zeros((53, 50))
-
+ 
         # self.S = np.zeros((50, 50))
-
+ 
         self.H = np.zeros((50, 53)) # H.s is actually where you think the april tag is, and z is actually where it is. it should be in robot frame
         # for i in range(50):
         #     if i % 2 == 0:
@@ -212,36 +217,36 @@ class KalmanFilter():
         #         self.H[i][1] = -1 # subtract the x and y of the robot to get where the april tag can be
         
         self.z = np.zeros((50, 1))
-
+ 
         self.variance_update = np.zeros((53, 53))
-
+ 
         self.state = np.zeros((53, 1))
         # self.state[1] = 1/2
         # self.state[2] = 0
-
+ 
         self.state_update = np.zeros((53, 1))
         # self.state_update[1] = 1/2
         # self.state_update[2] = np.pi/2
-
+ 
         self.R = np.identity(50)*1e-4
         # self.R = np.zeros((50, 50))
-
+ 
         self.detected_tag = []
-
+ 
         self.states_track = []
-
+ 
     def predict(self, u):        
         self.state_update = np.dot(self.F, self.state) + np.dot(self.G,u)
         self.state_update[2][0] = (self.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
         # print("u", u)
         # print("G.u", np.dot(self.G, u))
-
+ 
         print("state update in PREDICT ", 'Robot', self.state_update[0], self.state_update[1], self.state_update[2], 'AT1', self.state_update[3], self.state_update[4], 'AT2', self.state_update[5], self.state_update[6], 'AT4', self.state_update[9], self.state_update[10], 'AT5', self.state_update[11], self.state_update[12], 'AT6', self.state_update[13], self.state_update[14], 'AT7', self.state_update[15], self.state_update[16], 'AT10', self.state_update[21], self.state_update[22], 'AT11', self.state_update[23], self.state_update[24])
         # print(self.state_update)
         self.variance_update = np.dot(np.dot(self.F, self.variance), self.F.T) + self.Q
         self.variance_update[2][2] = 0.0
         print("variance update ", 'Robot', self.variance_update[0][0], self.variance_update[1][1], self.variance_update[2][2], 'AT1', self.variance_update[3][3], self.variance_update[4][4], 'AT2', self.variance_update[5][5], self.variance_update[6][6], 'AT4', self.variance_update[9][9], self.variance_update[10][10], 'AT5', self.variance_update[11][11], self.variance_update[12][12], 'AT6', self.variance_update[13][13], self.variance_update[14][14], 'AT7', self.variance_update[15][15], self.variance_update[16][16], 'AT10', self.variance_update[21][21], self.variance_update[22][22], 'AT11', self.variance_update[23][23], self.variance_update[24][24])
-
+ 
     def update(self):
         # print("H * var", np.dot(self.H, self.variance_update))
         # self.K_t = np.dot( np.dot(self.variance_update, self.H.T), np.linalg.inv(np.dot( np.dot(self.H, self.variance_update), self.H.T)  + self.R) )
@@ -262,7 +267,6 @@ class KalmanFilter():
         print('Estimated z ', 'AT1', np.dot(self.H, self.state_update)[0:2], 'AT2', np.dot(self.H, self.state_update)[2:4], 'AT4', np.dot(self.H, self.state_update)[6:8], 'AT5', np.dot(self.H, self.state_update)[8:10], 'AT6', np.dot(self.H, self.state_update)[10:12], 'AT7', np.dot(self.H, self.state_update)[12:14], 'AT10', np.dot(self.H, self.state_update)[18:20], 'AT11', np.dot(self.H, self.state_update)[20:22])
         print('innovation ', 'AT1', (self.z - np.dot(self.H, self.state_update))[0:2], 'AT4', (self.z - np.dot(self.H, self.state_update))[6:8], 'AT5', (self.z - np.dot(self.H, self.state_update))[8:10], 'AT6', (self.z - np.dot(self.H, self.state_update))[10:12], 'AT11', (self.z - np.dot(self.H, self.state_update))[20:22])
         # print(self.z - np.dot(self.H, self.state_update))
-
         print('kalman update term:', 'Robot', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2][0], 
               'AT1', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4][0], 
               'AT2', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[5][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[6][0],
@@ -282,22 +286,18 @@ class KalmanFilter():
         # print("variance", self.variance)
         self.H = np.zeros((50, 53))
         self.z = np.zeros((50, 1))
-        # update_term = np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
-        # if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) >= 0.03:
-        #     self.state[0][0] = self.state[0][0] - update_term[0][0]
-        #     self.state[1][0] = self.state[1][0] - update_term[1][0]
-        # self.detected_tag = []
-
-
+        self.detected_tag = []
+ 
+ 
     
-
-
+ 
+ 
 def main():
     # rclpy.init()
-
+ 
     # kf = KalmanFilter()
     # pid = PIDcontroller(0.02, 0, 0.075)
-
+ 
     # # move in a square path of 1.5m side
     # # for _ in range(3):
     # while(True):
@@ -309,14 +309,14 @@ def main():
     #     twist_msg.angular.y = 0.0
     #     twist_msg.angular.z = 0.0
     #     pid.publisher_.publish(twist_msg)
-
+ 
     #     time.sleep(delta_t)
     #     print("moving forward")
-
+ 
     #     input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z]))
     #     twist_msg.linear.y = 0.0
     #     kf.predict(input) # have to correct this input according to the kinematic model and rewrite
-
+ 
         
     #     pid.publisher_.publish(twist_msg)
         
@@ -332,85 +332,67 @@ def main():
     #     print()
         
     #     # if square side complete, break # TODO
-
+ 
         # NEW CLOSED LOOP code ________________________________________________________________________________________________________________
-
+ 
         rclpy.init()
-
+ 
         kf = KalmanFilter()
         pid = PIDcontroller(0.02, 0, 0.075)
-
+ 
         # waypoint = np.array([[0,0,0], [0, 1/2, 0], [0, 1/2, np.pi/2]])
         # waypoint = np.array([[0,1/2, 0],[0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2]])
         # waypoint = np.array([[1/2,1/2,-np.pi/4]])
         # waypoint = np.array([[0.0,1/2,0.0], [0.0, 1/2, np.pi/2], [-1/2, 1/2, np.pi/2], [-1/2, 1/2, -np.pi], [-1/2, 0, -np.pi], [-1/2, 0, -np.pi/2], [0,0, -np.pi/2], [0,0,0]])
-        # square
-        # waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0],]) # for square
-        waypoint = np.array([[0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0]]) # for square
-        octagon_side = 0.5/np.sqrt(2)
-        waypoint = np.array([
-            [0.0, 0.0, -np.pi/8],
-            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
-            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
-            [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
-            [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
-            [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
-            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
-            [0.0, 0.0, -3*np.pi/8],
-            [0.0, 0.0, 0]
-        ])
-
-
+        waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0]]) # for square
         # waypoint = np.array([[0, 1/2, np.pi/2]])
         seen_tags = set()
-        for _ in range(10):
+        for _ in range(25):
             rclpy.spin_once(pid)
-        
-        for tag in pid.callback_data.keys():
-            kf.curpit[int(tag) - 1] = pid.callback_data[tag][2]
-            seen_tags.add(tag)
-
-        pid.callback_data = defaultdict(list)
-
-        # seen_tags = set()
-        # for _ in range(10):
-        #     rclpy.spin_once(pid)
-        #     while int(pid.callback_data[2]) > 15:
-        #         rclpy.spin_once(pid)
-        #     time.sleep(0.1)
-        #     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-        #     kf.curpit[int(frame_id) - 1] = pitch
-        #     seen_tags.add(frame_id)
-        # time.sleep(0.5)
-
+            while int(pid.callback_data[2]) > 15:
+                rclpy.spin_once(pid)
+            time.sleep(0.1)
+            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+            kf.curpit[int(frame_id) - 1] = pitch
+            seen_tags.add(frame_id)
+        time.sleep(0.5)
+ 
         for wp in waypoint:
             pid.setTarget(wp)
             print("move to way point", wp)
             # print("linalg: ", np.linalg.norm(pid.getError(kf.state[0:3], wp[0:3])))
-            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.07):
+            while rclpy.ok() and (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2 + (kf.state[2][0] - wp[2])**2) > 0.06):
                 print()
                 print("NEW OUTSIDE LOOP____________________________________________________________")
                 twist_msg = Twist()
                 robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                       -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
-
+ 
                 wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
                                     -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
                 
                 print("robot frame state", robot_frame_state)
                 print("wp robot frame", wp_robot_frame)
-                input_y_moved = np.array(([0], [0], [0]))
+ 
                 # if (np.linalg.norm(pid.getError(kf.state[0:3], wp)[:2]) > 0.15):
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.15:
                     print('Y Big')
+                    twist_msg.linear.x = 0.0
+                    twist_msg.linear.y = 0.04*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
+                    twist_msg.linear.z = 0.0
+                    twist_msg.angular.x = 0.0
+                    twist_msg.angular.y = 0.0
+                    twist_msg.angular.z = 0.0
+                    pid.publisher_.publish(twist_msg)
+                    time.sleep(delta_t)
+ 
+                    theta_ = kf.state[2][0]
+                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
+                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
+                    input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
+                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.05:
+                    print('Y Small')
+                    theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
                     twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
@@ -419,24 +401,8 @@ def main():
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg)
                     time.sleep(delta_t)
-
-                    theta_ = kf.state[2][0]
                     input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.3
                     input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.3
-                    input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
-                elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.04:
-                    print('Y Small')
-                    theta_ = kf.state[2][0]
-                    twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.015*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
-                    twist_msg.linear.z = 0.0
-                    twist_msg.angular.x = 0.0
-                    twist_msg.angular.y = 0.0
-                    twist_msg.angular.z = 0.0
-                    pid.publisher_.publish(twist_msg)
-                    time.sleep(delta_t)
-                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.66
-                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.66
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
                 
@@ -444,10 +410,10 @@ def main():
                 twist_msg.linear.y = 0.0
                 pid.publisher_.publish(twist_msg)
                 time.sleep(0.2)
-
+ 
                 input_x_moved = np.array(([0], [0], [0]))
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) < 0.05:
-                    if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.04:
+                    if abs(robot_frame_state[0] - wp_robot_frame[0]) > 0.05:
                         input_y_moved = np.array(([0], [0], [0]))
                         print('inside x correction')
                         theta_ = kf.state[2][0]
@@ -464,40 +430,33 @@ def main():
                         input_x_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                         twist_msg.linear.x = 0.0
                         pid.publisher_.publish(twist_msg)
-
+ 
                 print('X and Y velocites calculated')
                 input = input_x_moved + input_y_moved
                 # Stop Car's x
                 twist_msg.linear.x = 0.0
                 
                 pid.publisher_.publish(twist_msg)
-                time.sleep(0.3)
+                time.sleep(0.5)
                 # Predict state in open loop
                 kf.predict(input)
-
+ 
                 # Measure april tag detection    
                 it_seen = set()
-                for _ in range(10):   
+                for _ in range(25):   
                     rclpy.spin_once(pid)  
-                
-                for tag in pid.callback_data.keys():
-                    kf.newpit[int(tag) - 1] = pid.callback_data[tag][2]
-                    it_seen.add(tag)
-
-                pid.callback_data = defaultdict(list)
-
-                    # while int(pid.callback_data[2]) > 15:
-                    #     rclpy.spin_once(pid)
-                    # time.sleep(0.1)      
-                    # frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-                    # kf.newpit[int(frame_id) - 1] = pitch
-                    # it_seen.add(frame_id)
-
+                    while int(pid.callback_data[2]) > 15:
+                        rclpy.spin_once(pid)
+                    time.sleep(0.1)      
+                    frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                    kf.newpit[int(frame_id) - 1] = pitch
+                    it_seen.add(frame_id)
+ 
                 # ang_rot = 0.0
                 # for tag in seen_tags.intersection(it_seen):
                 #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                 # ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
-
+ 
                 # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                 # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                 # kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
@@ -510,50 +469,46 @@ def main():
                     if d < min_dist:
                         min_dist = d
                         min_tag = tag               
-
+ 
                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                 kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-
+ 
                 kf.curpit = kf.newpit.copy()
                 seen_tags = it_seen.copy()
                 time.sleep(0.1)
-
-                # for i in range(8):
-                #     pid.get_measurement(kf)
-                pid.get_measurement(kf)
-                print('DETECTED TAGS CLEARED OR NOT?', pid.callback_data.keys())
+ 
+                for i in range(25):
+                    pid.get_measurement(kf)
+                print('DETECTED TAGS THIS ITR', kf.detected_tag)
             
                 # Reconcile measured and predicted measurements
                 kf.update() 
-
+                print('DETECTED TAGS CLEARED OR NOT?', kf.detected_tag)
+ 
                 print("______STATES(L)_________", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
-
-                # kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])  
-                kf.states_track.append(kf.state)
+ 
+                kf.states_track.append([kf.state[0][0], kf.state[1][0], kf.state[2][0]])     
+ 
                 print()
                 # print("error", np.linalg.norm(pid.getError(kf.state[0:3][0], wp[0:3])[:2]))
                 print("error", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
                 print("WAYPOINT:  ", wp)
-
+ 
                 print()
-
-                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.06:
+ 
+                if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.065:
                     print('inside angle regime')
-
-                    # err1 = abs(kf.state[2][0] - wp[2])
-                    # err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
-
-                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.04:
-                    # while rclpy.ok() and min(err1, err2) > 0.06:
+ 
+                    time.sleep(0.5)
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.06:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
-
+ 
                         wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
                                           -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
                         print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
-                        # print("ANGLE ERROR: ", min(err1, err2))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                         twist_msg.linear.x = 0.0
@@ -565,41 +520,31 @@ def main():
                         pid.publisher_.publish(twist_msg)
                         time.sleep(2*delta_t)
                         print("rotating")
-
+ 
                         # input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
-                        input = np.array(([calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
+                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
                         time.sleep(0.5)
                         # Predict state in open loop
                         # kf.predict(input)
-
-                        # Measure april tag detection
+ 
+                        # Measure april tag detection  
                         it_seen = set()
-                        for _ in range(10):   
-                            rclpy.spin_once(pid)  
-                        
-                        for tag in pid.callback_data.keys():
-                            kf.newpit[int(tag) - 1] = pid.callback_data[tag][2]
-                            it_seen.add(tag)
-
-                        pid.callback_data = defaultdict(list)  
-
-                        # it_seen = set()
-                        # for _ in range(25):      
-                        #     rclpy.spin_once(pid)   
-                        #     while int(pid.callback_data[2]) > 15:
-                        #         rclpy.spin_once(pid) 
-                        #     time.sleep(0.1)
-                        #     frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
-                        #     kf.newpit[int(frame_id) - 1] = pitch
-                        #     it_seen.add(frame_id)
+                        for _ in range(25):      
+                            rclpy.spin_once(pid)   
+                            while int(pid.callback_data[2]) > 15:
+                                rclpy.spin_once(pid)    
+                            frame_id, pitch = pid.callback_data[2], pid.callback_data[3]
+                            kf.newpit[int(frame_id) - 1] = pitch
+                            it_seen.add(frame_id)
+ 
                         # ang_rot = 0.0
                         # for tag in seen_tags.intersection(it_seen):
                         #     ang_rot += (kf.newpit[int(tag) - 1] - kf.curpit[int(tag) - 1])
                         # ang_rot = ang_rot / len(seen_tags.intersection(it_seen))
-
+ 
                         # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                         # kf.state_update[2][0] = kf.state_update[2][0] + ang_rot
                         # kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
@@ -614,51 +559,38 @@ def main():
                                 min_tag = tag
                         
                         if min_tag != 100:
-                            if (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi > 0.03:
-                                kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                                kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
-                            else:
-                                kf.state[2][0] += 0.075*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
-                                kf.state_update[2][0] += 0.075*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
-
-                        
+                            kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
+                            pass
+                        else:
+                            # TODO: kf.state[2] = Record the rotation estimated from open loop
+                            pass
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
                         kf.state_update[2][0] = (kf.state_update[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
-                            
-
-
+ 
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen.copy()
-                        time.sleep(0.4)
-
+                        time.sleep(0.1)
+ 
                         # for _ in range(25):           
                         #     pid.get_measurement(kf)
-
+ 
                         # Reconcile measured and predicted measurements
                         # kf.update() 
-
+ 
                         print("_____STATES(A)_____: ", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
-                        # err1 = abs(kf.state[2][0] - wp[2])
-                        # err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
-
+ 
+ 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
-
-                # if (wp == [0,0.4,0]).all():
-                #     with open('final_state_square_1.pkl', 'wb') as file:    # Save state to .pkl
-                #         pickle.dump(kf.state, file)
-                #     with open('states_track_square_1.pkl', 'wb') as file:   # Save robot trajectory
-                #         pickle.dump(kf.states_track, file)
-                #     with open('final_variance_square_1.pkl', 'wb') as file:    # Save variance to .pkl
-                #         pickle.dump(kf.variance, file)       
-       
-                with open('final_state_square_2.pkl', 'wb') as file:    # Save state to .pkl
-                    pickle.dump(kf.state, file)
-                with open('states_track_square_2.pkl', 'wb') as file:   # Save robot trajectory
-                    pickle.dump(kf.states_track, file)
-                with open('final_variance_square_2.pkl', 'wb') as file:    # Save variance to .pkl
-                    pickle.dump(kf.variance, file)       
-
-
+        with open('final_state.pkl', 'wb') as file:    # Save state to .pkl
+            pickle.dump(kf.state, file)
+        with open('states_track.pkl', 'wb') as file:   # Save robot trajectory
+            pickle.dump(kf.states_track, file)
+        with open('final_variance.pkl', 'wb') as file:    # Save variance to .pkl
+            pickle.dump(kf.variance, file)       
+ 
+ 
+ 
 if __name__ == '__main__':
     print("starting")
     main()
