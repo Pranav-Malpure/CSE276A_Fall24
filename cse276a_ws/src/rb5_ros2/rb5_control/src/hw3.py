@@ -283,7 +283,7 @@ class KalmanFilter():
         self.H = np.zeros((50, 53))
         self.z = np.zeros((50, 1))
         update_term = np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
-        if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) <= 0.03:
+        if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) >= 0.03:
             self.state[0][0] = self.state[0][0] - update_term[0][0]
             self.state[1][0] = self.state[1][0] - update_term[1][0]
         # self.detected_tag = []
@@ -618,8 +618,8 @@ def main():
                                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             else:
-                                kf.state[2][0] += 0.07*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
-                                kf.state_update[2][0] += 0.07*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
+                                kf.state[2][0] += 0.05*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
+                                kf.state_update[2][0] += 0.05*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
 
                         
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
