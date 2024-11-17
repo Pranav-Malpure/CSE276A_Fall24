@@ -347,26 +347,26 @@ def main():
         # square
         # waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0],]) # for square
         waypoint = np.array([[0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0]]) # for square
-        # octagon_side = 0.5/np.sqrt(2)
-        # waypoint = np.array([
-        #     [0.0, 0.0, -np.pi/8],
-        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
-        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
-        #     [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
-        #     [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
-        #     [0.0, 0.0, -3*np.pi/8],
-        #     [0.0, 0.0, 0]
-        # ])
+        octagon_side = 0.5/np.sqrt(2)
+        waypoint = np.array([
+            [0.0, 0.0, -np.pi/8],
+            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
+            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
+            [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
+            [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
+            [0.0, 0.0, -3*np.pi/8],
+            [0.0, 0.0, 0]
+        ])
 
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
@@ -618,8 +618,8 @@ def main():
                                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             else:
-                                kf.state[2][0] += 0.065*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
-                                kf.state_update[2][0] += 0.065*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
+                                kf.state[2][0] += 0.075*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
+                                kf.state_update[2][0] += 0.075*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
 
                         
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
