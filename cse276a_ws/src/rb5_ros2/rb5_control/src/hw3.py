@@ -262,6 +262,7 @@ class KalmanFilter():
         print('Estimated z ', 'AT1', np.dot(self.H, self.state_update)[0:2], 'AT2', np.dot(self.H, self.state_update)[2:4], 'AT4', np.dot(self.H, self.state_update)[6:8], 'AT5', np.dot(self.H, self.state_update)[8:10], 'AT6', np.dot(self.H, self.state_update)[10:12], 'AT7', np.dot(self.H, self.state_update)[12:14], 'AT10', np.dot(self.H, self.state_update)[18:20], 'AT11', np.dot(self.H, self.state_update)[20:22])
         print('innovation ', 'AT1', (self.z - np.dot(self.H, self.state_update))[0:2], 'AT4', (self.z - np.dot(self.H, self.state_update))[6:8], 'AT5', (self.z - np.dot(self.H, self.state_update))[8:10], 'AT6', (self.z - np.dot(self.H, self.state_update))[10:12], 'AT11', (self.z - np.dot(self.H, self.state_update))[20:22])
         # print(self.z - np.dot(self.H, self.state_update))
+
         print('kalman update term:', 'Robot', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[0][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[1][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[2][0], 
               'AT1', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[3][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[4][0], 
               'AT2', np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[5][0], np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))[6][0],
@@ -281,6 +282,10 @@ class KalmanFilter():
         # print("variance", self.variance)
         self.H = np.zeros((50, 53))
         self.z = np.zeros((50, 1))
+        update_term = np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
+        if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) <= 0.03:
+            self.state[0][0] = self.state[0][0] - update_term[0][0]
+            self.state[1][0] = self.state[1][0] - update_term[1][0]
         # self.detected_tag = []
 
 
