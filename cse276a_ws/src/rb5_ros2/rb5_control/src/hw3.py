@@ -193,6 +193,13 @@ class KalmanFilter():
         self.variance[0][0] = 0.0
         self.variance[1][1] = 0.0
         self.variance[2][2] = 0.0
+        
+        with open('superfinal_square_variance', 'rb') as f:
+            initial_variance = pickle.load(f)
+
+        self.variance = initial_variance
+
+
 
         # self.Q = np.zeros((53, 53))
         self.Q = 1e-4*np.identity(53)
@@ -214,6 +221,11 @@ class KalmanFilter():
         self.z = np.zeros((50, 1))
 
         self.variance_update = np.zeros((53, 53))
+
+        with open('superfinal_square_final_state', 'rb') as f:
+            initial_states = pickle.load(f)
+        self.state = initial_states
+
 
         self.state = np.zeros((53, 1))
         # self.state[1] = 1/2
