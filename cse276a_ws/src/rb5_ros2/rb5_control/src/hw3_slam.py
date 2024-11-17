@@ -168,7 +168,7 @@ def main():
 
         print("moving forward")
 
-        input = np.array(([calibration_x*twist_msg.linear.x/9], [calibration_y*twist_msg.linear.y/1.3], [calibration_ang*twist_msg.angular.z/1.45]))
+        input = np.array(([calibration_x*twist_msg.linear.x/9], [calibration_y*twist_msg.linear.y/1.66], [calibration_ang*twist_msg.angular.z/1.45]))
         # Stop Car
         twist_msg.linear.y = 0.0
         pid.publisher_.publish(twist_msg)

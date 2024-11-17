@@ -412,7 +412,7 @@ def main():
                 if abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.15:
                     print('Y Big')
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.04*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
+                    twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
@@ -421,22 +421,22 @@ def main():
                     time.sleep(delta_t)
 
                     theta_ = kf.state[2][0]
-                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.1
-                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.1
+                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.3
+                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.3
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 elif abs(robot_frame_state[1] - wp_robot_frame[1]) <= 0.15 and abs(robot_frame_state[1] - wp_robot_frame[1]) > 0.04:
                     print('Y Small')
                     theta_ = kf.state[2][0]
                     twist_msg.linear.x = 0.0
-                    twist_msg.linear.y = 0.02*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
+                    twist_msg.linear.y = 0.015*pid.update_sign(robot_frame_state, wp_robot_frame)[1]
                     twist_msg.linear.z = 0.0
                     twist_msg.angular.x = 0.0
                     twist_msg.angular.y = 0.0
                     twist_msg.angular.z = 0.0
                     pid.publisher_.publish(twist_msg)
                     time.sleep(delta_t)
-                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.3
-                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.3
+                    input_x = -np.sin(theta_)*calibration_y*twist_msg.linear.y/1.66
+                    input_y = np.cos(theta_)*calibration_y*twist_msg.linear.y/1.66
                     input_y_moved = np.array(([input_x], [input_y], [calibration_ang*twist_msg.angular.z/1.45]))
                 print("moving forward")
                 
