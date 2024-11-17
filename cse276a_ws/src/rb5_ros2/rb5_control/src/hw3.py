@@ -624,7 +624,7 @@ def main():
 
                         kf.curpit = kf.newpit.copy()
                         seen_tags = it_seen.copy()
-                        time.sleep(0.1)
+                        time.sleep(0.4)
 
                         # for _ in range(25):           
                         #     pid.get_measurement(kf)
