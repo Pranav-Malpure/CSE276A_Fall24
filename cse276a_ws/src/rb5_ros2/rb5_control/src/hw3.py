@@ -613,8 +613,8 @@ def main():
                                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             else:
-                                kf.state[2][0] += 0.07
-                                kf.state_update[2][0] += 0.07
+                                kf.state[2][0] += 0.07*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
+                                kf.state_update[2][0] += 0.07*pid.update_sign(robot_frame_state, wp_robot_frame)[2]
 
                         
                         kf.state[2][0] = (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi # scale to range [-pi, pi)
