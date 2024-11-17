@@ -538,18 +538,18 @@ def main():
                 if (np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2)) < 0.06:
                     print('inside angle regime')
 
-                    err1 = abs(kf.state[2][0] - wp[2])
-                    err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
+                    # err1 = abs(kf.state[2][0] - wp[2])
+                    # err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
 
-                    # while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.05:
-                    while rclpy.ok() and min(err1, err2) > 0.06:
+                    while rclpy.ok() and (abs(kf.state[2][0] - wp[2])) > 0.06:
+                    # while rclpy.ok() and min(err1, err2) > 0.06:
                         robot_frame_state = [kf.state[0][0]*np.cos(kf.state[2][0]) + kf.state[1][0]*np.sin(kf.state[2][0]),
                                              -kf.state[0][0]*np.sin(kf.state[2][0]) + kf.state[1][0]*np.cos(kf.state[2][0]), kf.state[2][0]]
 
                         wp_robot_frame = [wp[0]*np.cos(kf.state[2][0]) + wp[1]*np.sin(kf.state[2][0]),
                                           -wp[0]*np.sin(kf.state[2][0]) + wp[1]*np.cos(kf.state[2][0]), wp[2]]
-                        # print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
-                        print("ANGLE ERROR: ", min(err1, err2))
+                        print("ANGLE ERROR: ", abs(kf.state[2][0] - wp[2]))
+                        # print("ANGLE ERROR: ", min(err1, err2))
                         # rotating (1 movment = x rad)
                         twist_msg = Twist()
                         twist_msg.linear.x = 0.0
@@ -563,7 +563,7 @@ def main():
                         print("rotating")
 
                         # input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [calibration_ang*twist_msg.angular.z/1.45])) # TODO: have to calibrate the angle
-                        input = np.array(([-calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
+                        input = np.array(([calibration_x*twist_msg.linear.x/360], [calibration_y*twist_msg.linear.y/1.1], [0.0]))
                         # Stop Car
                         twist_msg.angular.z = 0.0
                         pid.publisher_.publish(twist_msg)
@@ -610,7 +610,7 @@ def main():
                                 min_tag = tag
                         
                         if min_tag != 100:
-                            if (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi > 0.02:
+                            if (kf.state[2][0] + math.pi) % (2 * math.pi) - math.pi > 0.03:
                                 kf.state[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                                 kf.state_update[2][0] += (kf.newpit[int(min_tag) - 1] - kf.curpit[int(min_tag) - 1])
                             else:
@@ -634,25 +634,25 @@ def main():
                         # kf.update() 
 
                         print("_____STATES(A)_____: ", 'Robot', kf.state[0], kf.state[1], kf.state[2], 'AT1', kf.state[3], kf.state[4], 'AT2', kf.state[5], kf.state[6], 'AT4', kf.state[9], kf.state[10], 'AT5', kf.state[11], kf.state[12], 'AT6', kf.state[13], kf.state[14], 'AT7', kf.state[15], kf.state[16], 'AT10', kf.state[21], kf.state[22], 'AT11', kf.state[23], kf.state[24])
-                        err1 = abs(kf.state[2][0] - wp[2])
-                        err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
+                        # err1 = abs(kf.state[2][0] - wp[2])
+                        # err2 = abs((kf.state[2][0] + 2 * np.pi) % (2 * np.pi) - (wp[2] + 2 * np.pi) % (2 * np.pi))
 
                 print("ERROR AT END: ", np.sqrt((kf.state[0][0] - wp[0])**2 + (kf.state[1][0] - wp[1])**2))
 
-            if (wp == [0,0.4,0]).all():
-                with open('final_state_square_1.pkl', 'wb') as file:    # Save state to .pkl
-                    pickle.dump(kf.state, file)
-                with open('states_track_square_1.pkl', 'wb') as file:   # Save robot trajectory
-                    pickle.dump(kf.states_track, file)
-                with open('final_variance_square_1.pkl', 'wb') as file:    # Save variance to .pkl
-                    pickle.dump(kf.variance, file)       
+                if (wp == [0,0.4,0]).all():
+                    with open('final_state_square_1.pkl', 'wb') as file:    # Save state to .pkl
+                        pickle.dump(kf.state, file)
+                    with open('states_track_square_1.pkl', 'wb') as file:   # Save robot trajectory
+                        pickle.dump(kf.states_track, file)
+                    with open('final_variance_square_1.pkl', 'wb') as file:    # Save variance to .pkl
+                        pickle.dump(kf.variance, file)       
        
-        with open('final_state_square_2.pkl', 'wb') as file:    # Save state to .pkl
-            pickle.dump(kf.state, file)
-        with open('states_track_square_2.pkl', 'wb') as file:   # Save robot trajectory
-            pickle.dump(kf.states_track, file)
-        with open('final_variance_square_2.pkl', 'wb') as file:    # Save variance to .pkl
-            pickle.dump(kf.variance, file)       
+                with open('final_state_square_2.pkl', 'wb') as file:    # Save state to .pkl
+                    pickle.dump(kf.state, file)
+                with open('states_track_square_2.pkl', 'wb') as file:   # Save robot trajectory
+                    pickle.dump(kf.states_track, file)
+                with open('final_variance_square_2.pkl', 'wb') as file:    # Save variance to .pkl
+                    pickle.dump(kf.variance, file)       
 
 
 if __name__ == '__main__':
