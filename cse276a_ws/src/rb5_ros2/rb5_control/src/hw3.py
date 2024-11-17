@@ -12,7 +12,6 @@ from geometry_msgs.msg import PoseStamped
 import math
 from collections import defaultdict
 import pickle
-# import matplotlib.pyplot as plt
 
 r = 0.025 # radius of the wheel
 lx = 0.055 # half of the distance between front wheel and back wheel
@@ -63,7 +62,6 @@ class PIDcontroller(Node):
 
         if int(frame_id) < 15:
             self.callback_data[frame_id] = [x, z, pitch]
-        # self.callback_data = [x, z, frame_id, pitch]
 
     def get_measurement(self, kf):
         for _ in range(10):
@@ -235,7 +233,7 @@ class KalmanFilter():
         # self.state_update[1] = 1/2
         # self.state_update[2] = np.pi/2
 
-        self.R = np.identity(50)*1e-4
+        self.R = np.identity(50)*1e-2
         # self.R = np.zeros((50, 50))
 
         self.detected_tag = []
@@ -359,26 +357,26 @@ def main():
         # square
         # waypoint = np.array([[0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0], [0, 0.4, 0], [0,0.8, 0], [0,0.8,np.pi/2], [-0.4,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0.4,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [-0.4,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0],]) # for square
         waypoint = np.array([[0,0.8, 0], [0,0.8,np.pi/2], [-0.8,0.8,np.pi/2], [-0.8,0.8,-np.pi], [-0.8,0,-np.pi], [-0.8,0,-np.pi/2], [0,0,-np.pi/2], [0,0,0]]) # for 1 square
-        # octagon_side = 0.5/np.sqrt(2)
-        # waypoint = np.array([
-        #     [0.0, 0.0, -np.pi/8],
-        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
-        #     [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
-        #     [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
-        #     [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
-        #     [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
-        #     [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
-        #     [0.0, 0.0, -3*np.pi/8],
-        #     [0.0, 0.0, 0]
-        # ])
+        octagon_side = 0.5/np.sqrt(2)
+        waypoint = np.array([
+            [0.0, 0.0, -np.pi/8],
+            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -np.pi/8],
+            [octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), np.pi/8],
+            [0.0, 2*octagon_side*np.cos(np.pi/8), np.pi/8],
+            [0.0, 2*octagon_side*np.cos(np.pi/8), 3*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 3*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8) + octagon_side*np.sin(np.pi/8), 5*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 5*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 2*octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), 7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8) - octagon_side*np.sin(np.pi/8), octagon_side*np.cos(np.pi/8), -7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 0.0, -7*np.pi/8],
+            [-2*octagon_side*np.cos(np.pi/8), 0.0, -5*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -5*np.pi/8],
+            [-octagon_side*np.cos(np.pi/8), -octagon_side*np.sin(np.pi/8), -3*np.pi/8],
+            [0.0, 0.0, -3*np.pi/8],
+            [0.0, 0.0, 0]
+        ])
 
 
         # waypoint = np.array([[0, 1/2, np.pi/2]])
@@ -663,11 +661,11 @@ def main():
                 #     with open('final_variance_square_1.pkl', 'wb') as file:    # Save variance to .pkl
                 #         pickle.dump(kf.variance, file)       
        
-                with open('final_state_square_2.pkl', 'wb') as file:    # Save state to .pkl
+                with open('final_state_octagon.pkl', 'wb') as file:    # Save state to .pkl
                     pickle.dump(kf.state, file)
-                with open('states_track_square_2.pkl', 'wb') as file:   # Save robot trajectory
+                with open('states_track_octagon.pkl', 'wb') as file:   # Save robot trajectory
                     pickle.dump(kf.states_track, file)
-                with open('final_variance_square_2.pkl', 'wb') as file:    # Save variance to .pkl
+                with open('final_variance_octagon.pkl', 'wb') as file:    # Save variance to .pkl
                     pickle.dump(kf.variance, file)       
 
 
