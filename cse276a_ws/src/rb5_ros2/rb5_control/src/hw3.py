@@ -282,10 +282,10 @@ class KalmanFilter():
         # print("variance", self.variance)
         self.H = np.zeros((50, 53))
         self.z = np.zeros((50, 1))
-        update_term = np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
-        if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) >= 0.03:
-            self.state[0][0] = self.state[0][0] - update_term[0][0]
-            self.state[1][0] = self.state[1][0] - update_term[1][0]
+        # update_term = np.dot(self.K_t, (self.z - np.dot(self.H, self.state_update)))
+        # if np.sqrt(update_term[0][0]**2 + update_term[1][0]**2) >= 0.03:
+        #     self.state[0][0] = self.state[0][0] - update_term[0][0]
+        #     self.state[1][0] = self.state[1][0] - update_term[1][0]
         # self.detected_tag = []
 
 
