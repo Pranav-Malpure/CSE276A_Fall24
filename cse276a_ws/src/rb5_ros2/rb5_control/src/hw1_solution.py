@@ -56,7 +56,7 @@ class PIDcontroller(Node):
         
         # z = z - np.sign(z)*(np.abs(z)-0.375)/0.125 # correcting for z error caused by april tag
 
-        # self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
+        self.current_state = self.calc_curr_state(x, z, x_ang, y_ang, z_ang, w_ang, frame_id)
         self.april_tag_data[frame_id] = [x, z, w_ang]
         self.new_pose_received = True
 
