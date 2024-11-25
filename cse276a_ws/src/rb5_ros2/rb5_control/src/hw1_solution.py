@@ -247,13 +247,14 @@ if __name__ == "__main__":
         pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
         # current_state += update_value
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.03): # check the error between current state and current way point
+            print("line 250", abs(pid.getError(pid.current_state, wp)[0]))
             if abs(pid.getError(pid.current_state, wp)[0]) < 0.03:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
             else:
                 x_reached = False
-
+            print("line 257", abs(pid.getError(pid.current_state, wp)[1]))
             if abs(pid.getError(pid.current_state, wp)[1]) < 0.03:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
@@ -277,6 +278,7 @@ if __name__ == "__main__":
 
             # print(genTwistMsg(coord(update_value, pid.current_state)))
             twist_msg = genTwistMsg(coord(update_value, pid.current_state))
+            print("twist msg",twist_msg)
             twist_msg.angular.z = 0.0
             if x_reached:
                 twist_msg.linear.z = 0.0

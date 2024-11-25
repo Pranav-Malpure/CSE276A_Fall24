@@ -21,6 +21,7 @@ def main():
     g = vg.VisGraph()
 
     obstacle = [[vg.Point(3,3), vg.Point(5,3), vg.Point(5,5), vg.Point(3,5)], [vg.Point(6,2)], [vg.Point(2,6)]]
+    
     g.build(obstacle)
 
     g_edges = g.visgraph.edges
