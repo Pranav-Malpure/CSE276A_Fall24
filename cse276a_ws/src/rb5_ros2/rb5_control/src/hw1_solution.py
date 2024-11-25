@@ -214,12 +214,15 @@ if __name__ == "__main__":
     # waypoint = np.array([[0.0,0.0,0.0], 
                         #  [-1.0,-1.0,0.0], [-1, -1, 0], [-1, -1, np.pi]])
 
-    waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+    # waypoint = np.array([[1/2,0,0], [1/2, 1, -np.pi], [0, 0, 0]])
+    # waypoint_shortest = np.array([(6, 2, 1.9089999999999998), (4.9957348061512725, 4.857785116509801, 2.6020000000000003), (4.62900857016478, 5.077592363336098, 2.8040000000000003), (2, 6, 0.0)])
+    # safest
+    waypoint = np.array([[1.829, 0.61, 1.263], [1.914, 0.876, 1.559], [1.917, 1.181, 1.578], [1.915, 1.486, 1.777], [1.851, 1.791, 2.721], [1.577, 1.913, 3.089], [1.273, 1.929, -3.141], [0.968, 1.929, -3.02], [0.663, 1.892, -2.271], [0.61, 1.829, 0.0]])
     # init pid controller
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
     time.sleep(3)
-    pid.current_state = np.array([0,0,0])
+    pid.current_state = np.array([6*0.3048,2*0.3048,np.pi/2])
 
     # in this loop we will go through each way point.
     # once error between the current state and the current way point is small enough, 
