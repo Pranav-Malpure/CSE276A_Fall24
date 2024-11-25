@@ -281,14 +281,14 @@ if __name__ == "__main__":
 
         while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.03): # check the error between current state and current way point
             # print("line 250", abs(pid.getError(pid.current_state, wp)[0]))
-            if abs(pid.getError(pid.current_state, wp)[0]) < 0.03:
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.05:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
             else:
                 x_reached = False
             # print("line 257", abs(pid.getError(pid.current_state, wp)[1]))
-            if abs(pid.getError(pid.current_state, wp)[1]) < 0.03:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.05:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
