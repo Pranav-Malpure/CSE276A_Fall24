@@ -344,7 +344,7 @@ if __name__ == "__main__":
             if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.15):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
-                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.03: # check the error between current state and current way point
+                while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.1: # check the error between current state and current way point
                     # calculate the current twist
                     update_value = pid.update(pid.current_state)
 
