@@ -298,6 +298,7 @@ if __name__ == "__main__":
             pid.position_history.append([pid.current_state[0], pid.current_state[1], pid.current_state[2]])
 
             # time.sleep(2)
+            print("angle enter error", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
             if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.03):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
