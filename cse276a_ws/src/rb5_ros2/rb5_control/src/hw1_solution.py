@@ -286,7 +286,7 @@ if __name__ == "__main__":
 
 
 
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.1): # check the error between current state and current way point
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.15): # check the error between current state and current way point
             # print("line 250", abs(pid.getError(pid.current_state, wp)[0]))
             print("WAYPOINT NUMBER", wp)
             if abs(pid.getError(pid.current_state, wp)[0]) < 0.1:
