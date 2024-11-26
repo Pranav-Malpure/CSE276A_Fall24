@@ -317,12 +317,14 @@ if __name__ == "__main__":
             # print("update_value",update_value)
 
             # print(genTwistMsg(coord(update_value, pid.current_state)))
+            if x_reached:
+                # twist_msg.linear.x = 0.0
+                update_value[0] = 0.0
+            if z_reached:
+                # twist_msg.linear.y = 0.0
+                update_value[1] = 0.0
             twist_msg = genTwistMsg(coord(update_value, pid.current_state))
             twist_msg.angular.z = 0.0
-            if x_reached:
-                twist_msg.linear.x = 0.0
-            if z_reached:
-                twist_msg.linear.y = 0.0
             print("twist msg",twist_msg)
             # if angle_reached:
             #     twist_msg.angular.z = 0.0
