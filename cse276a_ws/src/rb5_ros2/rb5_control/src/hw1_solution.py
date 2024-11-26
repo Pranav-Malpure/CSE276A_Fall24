@@ -328,10 +328,10 @@ if __name__ == "__main__":
             twist_msg.angular.z = 0.0
             print("twist msg",twist_msg)
 
-            if x_reached:
-                twist_msg.linear.x = 0.0
-            if z_reached:
-                twist_msg.linear.y = 0.0
+            # if x_reached:
+            #     twist_msg.linear.x = 0.0
+            # if z_reached:
+            #     twist_msg.linear.y = 0.0
             # if angle_reached:
             #     twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
