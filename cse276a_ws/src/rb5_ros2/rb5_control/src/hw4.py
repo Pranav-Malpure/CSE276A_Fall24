@@ -336,17 +336,17 @@ if __name__ == "__main__":
 
 
 
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.08): # check the error between current state and current way point
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.15): # check the error between current state and current way point
             # print("line 250", abs(pid.getError(pid.current_state, wp)[0]))
             print("WAYPOINT NUMBER", wp)
-            if abs(pid.getError(pid.current_state, wp)[0]) < 0.08:
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.1:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
             else:
                 x_reached = False
             # print("line 257", abs(pid.getError(pid.current_state, wp)[1]))
-            if abs(pid.getError(pid.current_state, wp)[1]) < 0.08:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.1:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
@@ -400,7 +400,7 @@ if __name__ == "__main__":
 
             # time.sleep(2)
             print("angle enter error", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
-            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.08):
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.15):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
                 while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.1: # check the error between current state and current way point
