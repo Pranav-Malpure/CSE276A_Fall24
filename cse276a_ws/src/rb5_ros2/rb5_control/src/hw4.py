@@ -30,7 +30,7 @@ class PIDcontroller(Node):
         self.maximumValue = 0.1
         self.publisher_ = self.create_publisher(Twist, '/twist', 10)
         print("created publisher")
-        self.current_state = np.array([0.0, 0.0, 0])
+        self.current_state = np.array([0.0762, 0.0762, 0])
         self.new_pose_received = False
         self.subscription = self.create_subscription(
             PoseStamped,
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     [2.0*0.3048, 6.0*0.3048, -np.pi]])
 
     #roomba waypoints
-    waypoint = np.array([[0.0762, 0.0762, 0.    ],
+    waypoint = np.array([
  [2.2098, 0.0762, 0.    ],
  [2.2098, 0.2286, 0.    ],
  [0.0762, 0.2286, 0.    ],
@@ -306,8 +306,8 @@ if __name__ == "__main__":
                 angle_twist_msg.linear.y = 0.0
                 pid.publisher_.publish(angle_twist_msg)
                 #print(coord(update_value, current_state))
-                # time.sleep(0.05)
-                time.sleep(0.2)
+                time.sleep(0.05)
+                # time.sleep(0.2)
                 # update the current state
                 # current_state += update_value
                 # pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
@@ -371,8 +371,8 @@ if __name__ == "__main__":
             #     twist_msg.angular.z = 0.0
             pid.publisher_.publish(twist_msg)
             #print(coord(update_value, current_state))
-            # time.sleep(0.05)
-            time.sleep(0.2)
+            time.sleep(0.05)
+            # time.sleep(0.2)
             # update the current state
             # current_state += update_value
             
