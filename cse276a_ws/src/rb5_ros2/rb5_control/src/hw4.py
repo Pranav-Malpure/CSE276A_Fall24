@@ -431,6 +431,11 @@ if __name__ == "__main__":
 
                     # time.sleep(2)
 
+        # Save the list to a file
+        with open('pid_position_history.pkl', 'wb') as f:
+            pickle.dump(pid.position_history, f)
+
+
     # stop the car and exit
     pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
 
