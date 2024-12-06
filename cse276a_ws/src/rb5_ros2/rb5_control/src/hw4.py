@@ -33,7 +33,7 @@ class PIDcontroller(Node):
         self.current_state = np.array([0.0762, 0.0762, 0])
         self.new_pose_received = False
         self.subscription = self.create_subscription(
-            PoseStamped,
+            PoseStamped, 
             '/april_poses',
             self.pose_callback,
             10)     
@@ -230,35 +230,50 @@ if __name__ == "__main__":
 
     #roomba waypoints
     waypoint = np.array([
- [2.2098, 0.0762, 0.    ],
- [2.2098, 0.2286, 0.    ],
- [0.0762, 0.2286, 0.    ],
- [0.0762, 0.381,  0.    ],
- [2.2098, 0.381 , 0.    ],
- [2.2098, 0.5334, 0.    ],
- [0.0762, 0.5334, 0.    ],
- [0.0762, 0.6858, 0.    ],
- [2.2098, 0.6858, 0.    ],
- [2.2098, 0.8382, 0.    ],
- [0.0762, 0.8382, 0.    ],
- [0.0762, 0.9906, 0.    ],
- [2.2098, 0.9906, 0.    ],
- [2.2098, 1.143,  0.    ],
- [0.0762, 1.143,  0.    ],
- [0.0762, 1.2954, 0.    ],
- [2.2098, 1.2954, 0.    ],
- [2.2098, 1.4478, 0.    ],
- [0.0762, 1.4478, 0.    ],
- [0.0762, 1.6002, 0.    ],
- [2.2098, 1.6002, 0.    ],
- [2.2098, 1.7526, 0.    ],
- [0.0762, 1.7526, 0.    ],
- [0.0762, 1.905,  0.    ],
- [2.2098, 1.905 , 0.    ],
- [2.2098, 2.0574, 0.    ],
- [0.0762, 2.0574, 0.    ],
- [0.0762, 2.2098, 0.    ],
- [2.2098, 2.2098, 0.    ]])
+[1.143, 0.0762, 0.0],
+[2.2098, 0.0762, 0.0],
+[2.2098, 0.22860000000000003, 0.0],
+[1.143, 0.22860000000000003, 0.0],
+[0.0762, 0.22860000000000003, 0.0],
+[0.0762, 0.381, 0.0],
+[1.143, 0.381, 0.0],
+[2.2098, 0.381, 0.0],
+[2.2098, 0.5334, 0.0],
+[1.143, 0.5334, 0.0],
+[0.0762, 0.5334, 0.0],
+[0.0762, 0.6858000000000001, 0.0],
+[1.143, 0.6858000000000001, 0.0],
+[2.2098, 0.6858000000000001, 0.0],
+[2.2098, 0.8382000000000001, 0.0],
+[1.143, 0.8382000000000001, 0.0],
+[0.0762, 0.8382000000000001, 0.0],
+[0.0762, 0.9906, 0.0],
+[1.143, 0.9906, 0.0],
+[2.2098, 0.9906, 0.0],
+[2.2098, 1.143, 0.0],
+[1.143, 1.143, 0.0],
+[0.0762, 1.143, 0.0],
+[0.0762, 1.2954, 0.0],
+[1.143, 1.2954, 0.0],
+[2.2098, 1.2954, 0.0],
+[2.2098, 1.4478, 0.0],
+[1.143, 1.4478, 0.0],
+[0.0762, 1.4478, 0.0],
+[0.0762, 1.6002, 0.0],
+[1.143, 1.6002, 0.0],
+[2.2098, 1.6002, 0.0],
+[2.2098, 1.7526000000000002, 0.0],
+[1.143, 1.7526000000000002, 0.0],
+[0.0762, 1.7526000000000002, 0.0],
+[0.0762, 1.905, 0.0],
+[1.143, 1.905, 0.0],
+[2.2098, 1.905, 0.0],
+[2.2098, 2.0574, 0.0],
+[1.143, 2.0574, 0.0],
+[0.0762, 2.0574, 0.0],
+[0.0762, 2.2098, 0.0],
+[1.143, 2.2098, 0.0],
+[2.2098, 2.2098, 0.0]])
 
     pid = PIDcontroller(0.02, 0, 0.075)
     print("kp", pid.Kp, "ki", pid.Ki, "kd", pid.Kd)
@@ -321,17 +336,17 @@ if __name__ == "__main__":
 
 
 
-        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.15): # check the error between current state and current way point
+        while rclpy.ok() and (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) > 0.08): # check the error between current state and current way point
             # print("line 250", abs(pid.getError(pid.current_state, wp)[0]))
             print("WAYPOINT NUMBER", wp)
-            if abs(pid.getError(pid.current_state, wp)[0]) < 0.1:
+            if abs(pid.getError(pid.current_state, wp)[0]) < 0.08:
                 x_reached = True
                 print("reached x")
                 print('X ERROR', pid.getError(pid.current_state, wp)[0])
             else:
                 x_reached = False
             # print("line 257", abs(pid.getError(pid.current_state, wp)[1]))
-            if abs(pid.getError(pid.current_state, wp)[1]) < 0.1:
+            if abs(pid.getError(pid.current_state, wp)[1]) < 0.08:
                 z_reached = True
                 print('Z ERROR', pid.getError(pid.current_state, wp)[1])
                 print("reached z")
@@ -385,7 +400,7 @@ if __name__ == "__main__":
 
             # time.sleep(2)
             print("angle enter error", (np.linalg.norm(pid.getError(pid.current_state, wp)[:2])))
-            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.15):
+            if (np.linalg.norm(pid.getError(pid.current_state, wp)[:2]) < 0.08):
                 pid.publisher_.publish(genTwistMsg(np.array([0.0,0.0,0.0])))
                 print("inside angle regime")
                 while rclpy.ok() and abs(pid.getError(pid.current_state, wp)[2]) > 0.1: # check the error between current state and current way point
